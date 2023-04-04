@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :visits
-  resources :hikes
-  resources :trailheads
   resources :users
+  resources :trailheads
+  resources :hikes
+  resources :visits
+
+  get "/users", to: "users#index"
+  get "/get_current_user", to: "users#get_current_user"
+
+  post "/signup", to: "users#create"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

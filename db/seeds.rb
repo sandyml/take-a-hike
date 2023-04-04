@@ -5,7 +5,6 @@ Hike.destroy_all
 Visit.destroy_all 
 
 puts "👤 Users..."
-
 sandy = User.create(
  username: "Sandy",
  email: "sandy@gmail.com",
@@ -87,56 +86,56 @@ hike_zion = Hike.create(
  image_url: "https://www.myutahparks.com/wp-content/uploads/2020/04/Zion-Observation-Point_DP_2400.jpg?crop=535:301&width=1070&enable=upscale",
  difficulty: "Easy, Moderate, and Strenuous",
  elevation_gain: "0.4 miles to 3.5 miles",
- distance: "two to three days",
+ distance: "two to three days"
 )
 hike_yosemite = Hike.create(
  trailhead_id: yosemite_national_park.id,
  image_url: "https://destinations.rei.com/wp-content/uploads/2018/06/stylesheet-fluid-half.jpg",
  difficulty: "Moderate to Strenuous",
  elevation_gain: "5.5 miles Loop",
- distance: "5 hours 21 minutes",
+ distance: "5 hours 21 minutes"
 )
 hike_glacier = Hike.create(
  trailhead_id: glacier_national_park.id,
  image_url: "https://cdn.aarp.net/content/dam/aarp/travel/destinations/2021/03/1140-glacier-national-park-hero.imgcache.rev.web.1400.804.jpg",
  difficulty: "Moderate to Strenuous",
  elevation_gain: "3,000 ft",
- distance: "3½ hours to 4 hours",
+ distance: "3½ hours to 4 hours"
 )
-hike_1 = Hike.create(
+hike_grand = Hike.create(
  trailhead_id: grand_canyon_national_park.id,
  image_url: "https://travel.home.sndimg.com/content/dam/images/travel/fullrights/2017/6/14/1/Original_SteveLarese_Nankoweap_IMG_20170324_112609.jpg.rend.hgtvcom.1280.960.suffix/1497478281936.jpeg",
  difficulty: "Very Strenuous",
  elevation_gain: "Rim to river is 4460 ft, along a 7.8 mile trail",
- distance: "4 hours to 5 hours",
+ distance: "4 hours to 5 hours"
 )
 hike_rocky = Hike.create(
  trailhead_id: rocky_mountain_national_park.id,
  image_url: "https://www.myutahparks.com/wp-content/uploads/2020/04/Zion-Observation-Point_DP_2400.jpg?crop=535:301&width=1070&enable=upscale",
  difficulty: "Moderate to Strenuous",
  elevation_gain: "7,860 ft to 14,259 ft",
- distance: "2 hours to 3 hours",
+ distance: "2 hours to 3 hours"
 )
 hike_bryce = Hike.create(
  trailhead_id: bryce_canyon_national_park.id,
  image_url: "https://hikingproject.com/assets/photos/hike/7013075_medium_1554822184.jpg?cache=1680304494",
  difficulty: "Moderate",
  elevation_gain: "0.4 miles to 3.5 miles",
- distance: "3 hours to 4 hours",
+ distance: "3 hours to 4 hours"
 )
 hike_arches = Hike.create(
  trailhead_id: arches_canyon_national_park.id,
  image_url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Arches-DelicateArch-LaSalMountains_DP_1600.jpg",
  difficulty: "Easy to Moderate",
  elevation_gain: "3 ft to 3,261 ft, round-trip",
- distance: "Under 1 hour",
+ distance: "Under 1 hour"
 )
 hike_olympic = Hike.create(
  trailhead_id: olympic_national_park.id,
  image_url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Arches-DelicateArch-LaSalMountains_DP_1600.jpg",
  difficulty: "Very Moderate",
  elevation_gain: "None to 3,000 ft",
- distance: "6 to 10 miles round trip - 10-15 minutes",
+ distance: "6 to 10 miles round trip - 10-15 minutes"
 )
 
 puts "🧗 Visit..."

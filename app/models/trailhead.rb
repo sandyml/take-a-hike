@@ -1,4 +1,4 @@
 class Trailhead < ApplicationRecord
- has_many :hikes
- has_many :users
+ has_many :visits, dependent: :destroy
+ has_many :users, through: :visits
 end
