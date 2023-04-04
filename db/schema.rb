@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_03_222605) do
+ActiveRecord::Schema.define(version: 2023_04_04_004658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,9 @@ ActiveRecord::Schema.define(version: 2023_04_03_222605) do
     t.string "elevation_gain"
     t.string "image_url"
     t.bigint "trailhead_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trailhead_id"], name: "index_hikes_on_trailhead_id"
-    t.index ["user_id"], name: "index_hikes_on_user_id"
   end
 
   create_table "trailheads", force: :cascade do |t|
@@ -35,6 +33,7 @@ ActiveRecord::Schema.define(version: 2023_04_03_222605) do
     t.string "fees"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "direction"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(version: 2023_04_03_222605) do
   end
 
   add_foreign_key "hikes", "trailheads"
-  add_foreign_key "hikes", "users"
   add_foreign_key "visits", "trailheads"
   add_foreign_key "visits", "users"
 end
