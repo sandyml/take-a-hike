@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/get_current_user", to: "users#get_current_user"
 
+  # TODO: post "users/:id/:visits" 
+
+  # TODO: testing will remove
+  # get "/hikes", to: "hikes#index"
+
   ## sessions ## 
   post "/login", to: "sessions#create"
   post "/signup", to: "users#create"

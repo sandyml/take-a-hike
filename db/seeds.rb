@@ -22,7 +22,6 @@ william = User.create(
 ) 
 
 puts "📍 Trailheads..." 
-
 zion_national_park = Trailhead.create(
  name: "Zion National Park",
  location: "Utah",
