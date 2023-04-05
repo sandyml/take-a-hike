@@ -8,6 +8,11 @@ class TrailheadsController < ApplicationController
   render json: Trailhead.all, status: :ok
  end
 
+#  def show
+#   th = Trailhead.find(params[:id])
+#   render json: th
+#  end
+
  # might not need create 
  def create
   # byebug
