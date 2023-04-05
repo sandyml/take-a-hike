@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
  # before_action :now_authorized, only: [:create]
  # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-
  # TODO: RESCUE_FROM CLEANER 
  # TODO: DRY
  # TODO: login and logout methods here! 
