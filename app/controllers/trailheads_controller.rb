@@ -20,7 +20,8 @@ class TrailheadsController < ApplicationController
   if @trailhead.save
   render json: @trailhead, status: :created
   else
-  render json: { errors: @trailhead.errors.full_messages }, status: :unprocessable_entity
+  render json: { errors: @trailhead.errors.full_messages }, status: :unprocessable_entity 
+  # include: [:trailhead_amenities]
   end
 end
 

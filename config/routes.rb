@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
   # get "/auth", to: "users#show"
-  get "/get_current_user", to: "users#get_current_user"
+  get "/me", to: "users#get_current_user"
+  # get "/get_current_user", to: "users#get_current_user"
 
   # TODO: post "users/:id/:visits" 
 

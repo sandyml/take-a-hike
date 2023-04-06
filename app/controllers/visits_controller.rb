@@ -6,6 +6,7 @@ class VisitsController < ApplicationController
   render json: Visit.all, status: :ok
  end
 
+ # GET /visits/:id
  def show
   v = Visit.find(params[:id])
   render json: v, status: :ok
@@ -14,39 +15,50 @@ class VisitsController < ApplicationController
  # TODO: Check again w byebug 
  # TODO: Boolean if I visited or not or add to visit soon! 
 
- def create
-  byebug
-  # create a visited boolean if they went or they have not for the current_user
-  visit = current_user.visits.create!(visit_params)
-  # render json if it passes validations
-  if visit.valid?
-    render json: visit, status: :created
-  else
-   # unprocessable_entity_error_response(visit) 
-    render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
-  end
-end
-
-# def create
-#   visited_collection = Visit.create(user_id: params["user_id"], trailhead_id: params["trailhead_id"])
-#   render json: visited_collection.to_json({ include: [:trailhead] }) 
+#  def create
+#   byebug
+#   # create a visited boolean if they went or they have not for the current_user
+#   visit = current_user.visits.create!(visit_params)
+#   # render json if it passes validations
+#   if visit.valid?
+#     render json: visit, status: :created
+#   else
+#    # unprocessable_entity_error_response(visit) 
+#     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
+#   end
 # end
+
+def create
+  # byebug
+  visited_collection = Visit.create(user_id: params[:user_id], trailhead_id: params[:trailhead_id])
+  render json: visited_collection.to_json({ include: [:trailhead] }) 
+end
 
 # TODO: Check Update && Delete methods 
 
 # PATCH /visits/:id
 # current_user be the user of the visited collection 
-# def update 
-#     @visit.update(visit_params)
-#     render json: @visit
-#     # render json: @visit, include: [:user]
-# end
+# can't figure out how to update 
+def update 
+    byebug
+    @visit.update(visit_params)
+    render json: @visit
+    # render json: @visit, include: [:user]
+end
 
 # DELETE /visits/:id
 # def destroy 
 #   @visit.destroy
 #   render json: @visit
 #   head :no_content
+# end
+
+# def destroy
+#   visit_collection = Visit.find(params[:id])
+#   visit_collection.destroy
+#   head :no_content
+#   # render json: { "Deleted": "deleted", visit: visit_collection }
+#   # render json: { message: ["Visit has been deleted!"] }, status: :no_content
 # end
 
  private 

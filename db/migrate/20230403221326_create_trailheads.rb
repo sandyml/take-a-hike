@@ -3,7 +3,7 @@ class CreateTrailheads < ActiveRecord::Migration[6.1]
     create_table :trailheads do |t|
       t.string :name
       t.string :location
-      t.string :amenities
+      t.string :direction
       t.string :fees
 
       t.timestamps
