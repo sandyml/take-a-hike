@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :trailheads
   resources :hikes
   resources :visits
+  resources :trailhead_amenities
+  resources :amenities
+  resources :difficulties
+  resources :hike_difficulties
 
   ## user ## 
   get "/users", to: "users#index"
