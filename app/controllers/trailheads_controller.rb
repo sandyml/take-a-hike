@@ -30,8 +30,7 @@ end
  def trailhead_params 
   params.permit(
     :name, 
-    :location, 
-    :amenities, 
+    :location,
     :fees,
     :direction 
   )
