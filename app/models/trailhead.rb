@@ -1,8 +1,14 @@
 class Trailhead < ApplicationRecord
  validates :name, :location, :direction, :fees, presence: true 
 
- has_many :visits, dependent: :delete_all
+ has_many :visits, dependent: :destroy
  has_many :users, through: :visits
  has_one :hike
 
+ # #TODO 
+ has_many :hike_difficulties, dependent: :destroy
+ has_many :difficulties, through: :hike_difficulties
+
+ has_many :amenities, through: :trailhead_amenities
+ # TODO: Not pulling up in postman 
 end

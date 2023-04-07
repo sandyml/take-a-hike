@@ -194,20 +194,20 @@ dif3 = Difficulty.create(name: "Strenous")
 
 puts "📈🥾 HikeDifficulty..."
 HikeDifficulty.create([
- { hike_id: dif1.id, difficulty_id: hike_zion.id },
- { hike_id: dif2.id, difficulty_id: hike_zion.id},
- { hike_id: dif3.id, difficulty_id: hike_zion.id },
- { hike_id: dif2.id, difficulty_id: hike_yosemite.id },
- { hike_id: dif3.id, difficulty_id: hike_yosemite.id },
- { hike_id: dif2.id, difficulty_id: hike_glacier.id },
- { hike_id: dif3.id, difficulty_id: hike_glacier.id },
- { hike_id: dif3.id, difficulty_id: hike_grand.id },
- { hike_id: dif2.id, difficulty_id: hike_rocky.id },
- { hike_id: dif3.id, difficulty_id: hike_rocky.id },
- { hike_id: dif2.id, difficulty_id: hike_bryce.id },
- { hike_id: dif1.id, difficulty_id: hike_arches.id },
- { hike_id: dif2.id, difficulty_id: hike_arches.id },
- { hike_id: dif2.id, difficulty_id: hike_olympic.id },
+ { hike_id: dif1.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
+ { hike_id: dif3.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_yosemite.id, trailhead_id: yosemite_national_park.id },
+ { hike_id: dif3.id, difficulty_id: hike_yosemite.id, trailhead_id: yosemite_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_glacier.id, trailhead_id: glacier_national_park.id },
+ { hike_id: dif3.id, difficulty_id: hike_glacier.id, trailhead_id: glacier_national_park.id },
+ { hike_id: dif3.id, difficulty_id: hike_grand.id, trailhead_id: grand_canyon_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_rocky.id, trailhead_id: rocky_mountain_national_park.id },
+ { hike_id: dif3.id, difficulty_id: hike_rocky.id, trailhead_id: rocky_mountain_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_bryce.id, trailhead_id: bryce_canyon_national_park.id },
+ { hike_id: dif1.id, difficulty_id: hike_arches.id, trailhead_id: arches_canyon_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_arches.id, trailhead_id: arches_canyon_national_park.id },
+ { hike_id: dif2.id, difficulty_id: hike_olympic.id, trailhead_id: olympic_national_park.id },
 ])
 
 puts "📍 Visit..."

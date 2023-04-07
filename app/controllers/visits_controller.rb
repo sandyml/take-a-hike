@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  # skip_before_action :authorize, only: [:index]
 
  # TODO: Check create method again to see if its okay! 
 
@@ -33,6 +34,15 @@ def create
   visited_collection = Visit.create(user_id: params[:user_id], trailhead_id: params[:trailhead_id])
   render json: visited_collection.to_json({ include: [:trailhead] }) 
 end
+
+# def create
+#   visit = current_user.visits.create(visit_params)
+#   if visit.save
+#     render json: visit, status: :created
+#   else
+#     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
+#   end  
+# end
 
 # TODO: Check Update && Delete methods 
 

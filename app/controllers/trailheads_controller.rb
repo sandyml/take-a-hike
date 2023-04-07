@@ -3,7 +3,8 @@ class TrailheadsController < ApplicationController
 
  # TODO: authorize skip only index? 
  # TODO: tentative if I need to create descriptions? 
- 
+ # TODO: include attr not working 
+
  def index
   render json: Trailhead.all, status: :ok
  end
@@ -15,13 +16,11 @@ class TrailheadsController < ApplicationController
 
  # might not need create 
  def create
-  # byebug
   @trailhead = Trailhead.new(trailhead_params)
   if @trailhead.save
   render json: @trailhead, status: :created
   else
   render json: { errors: @trailhead.errors.full_messages }, status: :unprocessable_entity 
-  # include: [:trailhead_amenities]
   end
 end
 

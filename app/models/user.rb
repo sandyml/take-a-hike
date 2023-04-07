@@ -1,7 +1,7 @@
 class User < ApplicationRecord
  has_secure_password
 
- has_many :visits, dependent: :delete_all
+ has_many :visits
  has_many :trailheads, through: :visits
  has_many :hikes
 

@@ -1,11 +1,5 @@
 class HikesController < ApplicationController
-
  def index
-  render json: Hike.all
+  render json: Hike.all, status: :ok
  end
-
- # def show
- #  byebug
- # end
-
 end

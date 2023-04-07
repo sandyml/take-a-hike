@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   # get "/auth", to: "users#show"
   get "/me", to: "users#get_current_user"
-  # get "/get_current_user", to: "users#get_current_user"
 
   # TODO: post "users/:id/:visits" 
 

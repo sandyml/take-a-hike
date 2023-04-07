@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 2023_04_05_220654) do
   create_table "hike_difficulties", force: :cascade do |t|
     t.bigint "hike_id", null: false
     t.bigint "difficulty_id", null: false
+    t.bigint "trailhead_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["difficulty_id"], name: "index_hike_difficulties_on_difficulty_id"
     t.index ["hike_id"], name: "index_hike_difficulties_on_hike_id"
+    t.index ["trailhead_id"], name: "index_hike_difficulties_on_trailhead_id"
   end
 
   create_table "hikes", force: :cascade do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_04_05_220654) do
 
   add_foreign_key "hike_difficulties", "difficulties"
   add_foreign_key "hike_difficulties", "hikes"
+  add_foreign_key "hike_difficulties", "trailheads"
   add_foreign_key "hikes", "trailheads"
   add_foreign_key "trailhead_amenities", "amenities"
   add_foreign_key "trailhead_amenities", "trailheads"
