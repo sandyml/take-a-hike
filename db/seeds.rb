@@ -72,7 +72,8 @@ am5 = Amenity.create( name: "picnic tables" )
 am6 = Amenity.create( name: "good for kids" )
 am7 = Amenity.create( name: "public restroom" )
 am8 = Amenity.create( name: "open:  24 hours a day, Closed for Season" )
-am9 = Amenity.create( name: "LGBTQ+ friendly, Transgender safespace," )
+am9 = Amenity.create( name: "open:  24 hours a day, hours might differ on holidays" )
+am10 = Amenity.create( name: "LGBTQ+ friendly, Transgender safespace," )
 
 puts "🪵 TrailheadAmenity..."
 # JOIN 
@@ -83,6 +84,7 @@ TrailheadAmenity.create([
  { trailhead_id: zion_national_park.id, amenity_id: am5.id },
  { trailhead_id: zion_national_park.id, amenity_id: am6.id },
  { trailhead_id: zion_national_park.id, amenity_id: am7.id },
+ { trailhead_id: zion_national_park.id, amenity_id: am8.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am1.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am2.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am3.id },
@@ -90,8 +92,8 @@ TrailheadAmenity.create([
  { trailhead_id: yosemite_national_park.id, amenity_id: am5.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am6.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am7.id },
- { trailhead_id: yosemite_national_park.id, amenity_id: am8.id },
  { trailhead_id: yosemite_national_park.id, amenity_id: am9.id },
+ { trailhead_id: yosemite_national_park.id, amenity_id: am10.id },
  { trailhead_id: glacier_national_park.id, amenity_id: am1.id },
  { trailhead_id: glacier_national_park.id, amenity_id: am2.id },
  { trailhead_id: glacier_national_park.id, amenity_id: am4.id },
@@ -112,7 +114,7 @@ TrailheadAmenity.create([
  { trailhead_id: rocky_mountain_national_park.id, amenity_id: am5.id },
  { trailhead_id: rocky_mountain_national_park.id, amenity_id: am6.id },
  { trailhead_id: rocky_mountain_national_park.id, amenity_id: am7.id },
- { trailhead_id: rocky_mountain_national_park.id, amenity_id: am8.id },
+ { trailhead_id: rocky_mountain_national_park.id, amenity_id: am9.id },
  { trailhead_id: bryce_canyon_national_park.id, amenity_id: am1.id },
  { trailhead_id: bryce_canyon_national_park.id, amenity_id: am2.id },
  { trailhead_id: bryce_canyon_national_park.id, amenity_id: am4.id },
@@ -133,7 +135,7 @@ TrailheadAmenity.create([
  { trailhead_id: olympic_national_park.id, amenity_id: am5.id },
  { trailhead_id: olympic_national_park.id, amenity_id: am6.id },
  { trailhead_id: olympic_national_park.id, amenity_id: am7.id },
- { trailhead_id: olympic_national_park.id, amenity_id: am8.id },
+ { trailhead_id: olympic_national_park.id, amenity_id: am9.id },
 ])
 
 
@@ -194,20 +196,20 @@ dif3 = Difficulty.create(name: "Strenous")
 
 puts "📈🥾 HikeDifficulty..."
 HikeDifficulty.create([
- { hike_id: dif1.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
- { hike_id: dif3.id, difficulty_id: hike_zion.id, trailhead_id: zion_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_yosemite.id, trailhead_id: yosemite_national_park.id },
- { hike_id: dif3.id, difficulty_id: hike_yosemite.id, trailhead_id: yosemite_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_glacier.id, trailhead_id: glacier_national_park.id },
- { hike_id: dif3.id, difficulty_id: hike_glacier.id, trailhead_id: glacier_national_park.id },
- { hike_id: dif3.id, difficulty_id: hike_grand.id, trailhead_id: grand_canyon_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_rocky.id, trailhead_id: rocky_mountain_national_park.id },
- { hike_id: dif3.id, difficulty_id: hike_rocky.id, trailhead_id: rocky_mountain_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_bryce.id, trailhead_id: bryce_canyon_national_park.id },
- { hike_id: dif1.id, difficulty_id: hike_arches.id, trailhead_id: arches_canyon_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_arches.id, trailhead_id: arches_canyon_national_park.id },
- { hike_id: dif2.id, difficulty_id: hike_olympic.id, trailhead_id: olympic_national_park.id },
+ { hike_id: hike_zion.id, difficulty_id: dif1.id, trailhead_id: zion_national_park.id },
+ { hike_id: hike_zion.id, difficulty_id: dif2.id, trailhead_id: zion_national_park.id },
+ { hike_id: hike_zion.id, difficulty_id: dif3.id, trailhead_id: zion_national_park.id },
+ { hike_id: hike_yosemite.id, difficulty_id: dif2.id, trailhead_id: yosemite_national_park.id },
+ { hike_id: hike_yosemite.id, difficulty_id: dif2.id, trailhead_id: yosemite_national_park.id },
+ { hike_id: hike_glacier.id, difficulty_id: dif2.id, trailhead_id: glacier_national_park.id },
+ { hike_id: hike_glacier.id, difficulty_id: dif3.id, trailhead_id: glacier_national_park.id },
+ { hike_id: hike_grand.id, difficulty_id: dif3.id, trailhead_id: grand_canyon_national_park.id },
+ { hike_id: hike_rocky.id, difficulty_id: dif2.id, trailhead_id: rocky_mountain_national_park.id },
+ { hike_id: hike_rocky.id, difficulty_id: dif3.id, trailhead_id: rocky_mountain_national_park.id },
+ { hike_id: hike_bryce.id, difficulty_id: dif2.id, trailhead_id: bryce_canyon_national_park.id },
+ { hike_id: hike_arches.id, difficulty_id: dif1.id, trailhead_id: arches_canyon_national_park.id },
+ { hike_id: hike_arches.id, difficulty_id: dif2.id, trailhead_id: arches_canyon_national_park.id },
+ { hike_id: hike_olympic.id, difficulty_id: dif2.id, trailhead_id: olympic_national_park.id },
 ])
 
 puts "📍 Visit..."

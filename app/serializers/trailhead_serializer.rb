@@ -1,15 +1,13 @@
 class TrailheadSerializer < ActiveModel::Serializer
   attributes :id, :name, :location, :fees, :direction, :amenities
-  # has_many :difficulties
 
-  has_many :hikes
+  has_one :hike
 
-  # TODO: Can't grab amenities
   def amenities
-    # byebug
-    # object.hike.amenities.pluck(:name)
+    object.amenities.pluck(:name)
   end
-
+  
 end
 
+# TODO: DOUBLE CHECK SEEDS AGAIN FOR DIFFICULTIES! 
 # TODO: do include in controller for :trailhead_amenities 
