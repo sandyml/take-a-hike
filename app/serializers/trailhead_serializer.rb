@@ -8,6 +8,3 @@ class TrailheadSerializer < ActiveModel::Serializer
   end
   
 end
-
-# TODO: DOUBLE CHECK SEEDS AGAIN FOR DIFFICULTIES! 
-# TODO: do include in controller for :trailhead_amenities 

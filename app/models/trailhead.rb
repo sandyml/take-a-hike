@@ -5,11 +5,9 @@ class Trailhead < ApplicationRecord
  has_many :users, through: :visits
  has_one :hike
 
- # #TODO 
  has_many :hike_difficulties, dependent: :destroy
  has_many :difficulties, through: :hike_difficulties
 
  has_many :trailhead_amenities, dependent: :destroy
  has_many :amenities, through: :trailhead_amenities
- # TODO: Not pulling up in postman 
 end

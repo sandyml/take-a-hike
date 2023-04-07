@@ -200,7 +200,7 @@ HikeDifficulty.create([
  { hike_id: hike_zion.id, difficulty_id: dif2.id, trailhead_id: zion_national_park.id },
  { hike_id: hike_zion.id, difficulty_id: dif3.id, trailhead_id: zion_national_park.id },
  { hike_id: hike_yosemite.id, difficulty_id: dif2.id, trailhead_id: yosemite_national_park.id },
- { hike_id: hike_yosemite.id, difficulty_id: dif2.id, trailhead_id: yosemite_national_park.id },
+ { hike_id: hike_yosemite.id, difficulty_id: dif3.id, trailhead_id: yosemite_national_park.id },
  { hike_id: hike_glacier.id, difficulty_id: dif2.id, trailhead_id: glacier_national_park.id },
  { hike_id: hike_glacier.id, difficulty_id: dif3.id, trailhead_id: glacier_national_park.id },
  { hike_id: hike_grand.id, difficulty_id: dif3.id, trailhead_id: grand_canyon_national_park.id },
