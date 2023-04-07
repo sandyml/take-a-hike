@@ -7,7 +7,7 @@ class TrailheadSerializer < ActiveModel::Serializer
   # TODO: Can't grab amenities
   def amenities
     # byebug
-    object.hike.amenities.pluck(:name)
+    # object.hike.amenities.pluck(:name)
   end
 
 end
