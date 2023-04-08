@@ -22,9 +22,8 @@ Rails.application.routes.draw do
   # get "users/:id/visits", to: "visits#index"
   
   # TODO: post "users/:id/:visits" 
-
   # TODO: Remove visits from visits or favorites 
-  delete "/visits/:trailhead_id", to: "visits#remove" 
+  # delete "/visits/:id", to: "visits#remove" 
   # delete "/trailhead/:deleted_trailhead_id", to: "trailheads#remove"
 
   # Routing logic: fallback requests for React Router.

@@ -1,6 +1,6 @@
 class VisitsController < ApplicationController
+  skip_before_action :authorize, only: [:index]
  # [] TODO: Check create method again to see if its okay! 
- # [] TODO: Need to be authorized will not do any skip_before_actions 
 
  def index
   render json: Visit.all, status: :ok
@@ -31,6 +31,7 @@ def create
   if visit.save
     render json: visit, status: :created
   else
+    # unprocessable_entity_error_response(visit)
     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
   end
 end
@@ -38,15 +39,6 @@ end
 # def create
 #   visited_collection = Visit.create(user_id: params[:user_id], trailhead_id: params[:trailhead_id])
 #   render json: visited_collection.to_json({ include: [:trailhead] }) 
-# end
-
-# def create
-#   visit = current_user.visits.create(visit_params)
-#   if visit.save
-#     render json: visit, status: :created
-#   else
-#     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
-#   end  
 # end
 
 # TODO: Check Update && Delete methods 
@@ -60,12 +52,37 @@ end
 #     render json: @visit
 # end
 
+# TODO: might not work check later
+def update
+  @visit = find_visit
+    if @visit.user_id == current_user.id
+      if @visit.update(visit_params)
+        render json: @visit, status: :accepted
+      else
+        render json: { errors: @visit.errors.full_messages }, status: :unprocessable_entity
+      end
+    else 
+      render json: { errors: ["Not an Authorized User"] }, status: :unprocessable_entity
+    end
+end
+
 # DELETE /visits/:id
 # def destroy 
 #   @visit.destroy
 #   render json: @visit
 #   head :no_content
 # end
+
+# TODO: might not work check later
+def destroy
+  @visit = Visit.find(params[:id])
+    if @visit.user_id == current_user.id
+      @visit.destroy
+      render json: @visit, status: :ok    
+    else
+      render json: { error: ["Can not delete!"] }, status: :unauthorized
+    end
+end 
 
 # def destroy
 #   visit_collection = Visit.find(params[:id])
