@@ -13,14 +13,13 @@ import trail_9 from '../../assets/trail_9.jpg'
 import trail_10 from '../../assets/trail_10.jpg'
 
 export function HikeCarousel() {
-
     return (
         <Carousel>
             {itemData.map((item) => (
                 <ImageListItem key={item}>
                     <img
-                        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
+                        srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
                         loading="lazy"
                     />
@@ -31,43 +30,14 @@ export function HikeCarousel() {
 }
 
 const itemData = [
-    {
-        img: trail_1,
-    },
-
-    {
-        img: trail_2,
-    },
-
-    {
-        img: trail_3,
-    },
-
-    {
-        img: trail_4,
-    },
-
-    {
-        img: trail_5,
-    },
-
-    {
-        img: trail_6,
-    },
-
-    {
-        img: trail_7,
-    },
-    {
-        img: trail_8,
-    },
-
-    {
-        img: trail_9,
-    },
-
-    {
-        img: trail_10,
-    }
-
+    { img: trail_1 },
+    { img: trail_2 },
+    { img: trail_3 },
+    { img: trail_4 },
+    { img: trail_5 },
+    { img: trail_6 },
+    { img: trail_7 },
+    { img: trail_8 },
+    { img: trail_9 },
+    { img: trail_10 }
 ]
