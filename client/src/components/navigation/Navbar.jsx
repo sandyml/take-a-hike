@@ -66,10 +66,10 @@ export const Navbar = () => {
               SOMETRAILS
             </Typography>
 
-            <Typography variant="h6">
-              <Button color="inherit" to="/" component={Link}>Home</Button>
-              <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
-              <Button color="inherit" to="/login" component={Link}>Login</Button>
+            <Typography variant="h2">
+              <Button variant="contained" color="inherit" to="/" component={Link}>Home</Button>
+              <Button variant="contained" color="inherit" to="/signup" component={Link}>SignUp</Button>
+              <Button variant="contained" color="inherit" to="/login" component={Link}>Login</Button>
             </Typography>
             {/* {loggedIn ? loggedInLinks() : loggedOutLinks()} */}
           </Toolbar>
