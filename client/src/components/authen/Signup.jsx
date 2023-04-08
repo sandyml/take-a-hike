@@ -1,83 +1,3 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-
-// export const Signup = () => {
-//   const [passwordShown, setPasswordShown] = useState(false)
-
-//   const togglePassword = () => {
-//     setPasswordShown(!passwordShown)
-//   };
-
-//   return (
-//     <div>
-//       Signup
-//       <h1>Signup Form</h1>
-//       <form>
-//         <h2>Create An Account</h2>
-//         <span>Username</span>
-//         <input
-//           type='text'
-//           id='username'
-//           placeholder='Create Username'
-//         // value={username}
-//         // onChange={handleChange}
-//         // required={true} 
-//         />
-
-//         <span>Email</span>
-//         <input
-//           type='email'
-//           id='email'
-//           placeholder='Create Email'
-//         // value={username}
-//         // onChange={handleChange}
-//         // required={true} 
-//         />
-
-//         <span>Password</span>
-//         <input
-//           placeholder="Create Password"
-//           id='password'
-//           // value={password}
-//           // onChange={handlePassword}
-//           autoComplete="current-password"
-//         // type={passwordShown ? "text" : "password"}
-//         // required={true}
-//         />
-//         <span>Confirm Password</span>
-//         <input
-//           placeholder="Confirm Password"
-//           id='password'
-//           // value={passwordConfirmation}
-//           // onChange={handleConfirmPassword}
-//           autoComplete="current-password"
-//         // type={passwordShown ? "text" : "password"}
-//         // required={true}
-//         />
-
-//         <button onClick={togglePassword}>Show Password</button>
-//         <p>By creating an account you agree to our
-//           <Link to="/termsandconditions">&nbsp;Terms & Privacy</Link>
-//         </p><br />
-//         <button type="submit" value="Submit" className="form-button">Register</button>
-
-//         {/* TO DO: CHECK LINKS  
-//         <p>
-//          Already have an account? &nbsp;
-//           <Link to="/login" className='signup'>
-//             Login
-//           </Link>
-//         </p> */}
-//         {/* <br /> */}
-//         {/* <div>
-//           { errors }
-//         </div> */}
-
-//       </form>
-//     </div>
-//   )
-// }
-
 import * as React from 'react';
 import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
@@ -112,9 +32,9 @@ const theme = createTheme();
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -196,6 +116,8 @@ export const Signup = () => {
                 />
               </Grid>
             </Grid>
+            By creating an account you agree to our
+            <Link color="inherit" href="/termsandconditions">&nbsp;Terms & Privacy</Link>
             <Button
               type="submit"
               fullWidth

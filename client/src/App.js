@@ -8,11 +8,14 @@ import { TermsPolicy } from './components/authen/TermsPolicy';
 // import { HikeCarousel } from './components/intro/HikeCarousel';
 import { VisitEdit } from './components/Hike.jsx/VisitEdit';
 // import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // TODO: If currentUser logged in show trails if not show login and signup to login 
 
 export function App() {
-  // const [me, setMe] = useState(null)
+  // const [isLoading, setIsLoading] = useState(false);
+  const reduxState = useSelector((store) => store.visitsReducer);
+  console.log(reduxState, "redux State")
 
   // useEffect(() => {
   //   fetch('/me')

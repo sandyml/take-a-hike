@@ -1,81 +1,3 @@
-// import React, { useState } from 'react'
-// import { Link } from 'react-router-dom';
-
-// // TODO: logout, handleSubmit
-// // form 
-
-// export const Login = () => {
-//   // const [loggedIn, setLoggedIn] = useState(false);
-//   // const [user, setUser] = useState(null);
-//   const [passwordShown, setPasswordShown] = useState(false);
-
-//   const togglePassword = () => {
-//     setPasswordShown(!passwordShown)
-//   }
-
-//   // TODO: fetch for login url 
-//   // useEffect(() => {
-//   //   // auto-login
-//   //   fetch("/me").then((r) => {
-//   //     if (r.ok) {
-//   //       r.json().then((user) => setUser(user));
-//   //     }
-//   //   });
-//   // }, []);
-
-//   return (
-//     <>
-//       <h1>Login</h1>
-//       <form 
-//       // onSubmit={handleSubmit} 
-//       className='main-form-log' action='#!' id='main-form'>
-//         <h2>Login to your account</h2>
-//           <label htmlFor='username'>Username</label>
-//           <input
-//             type='text'
-//             id='username'
-//             placeholder="Enter Username"
-//             autoComplete="off"
-//             // value={account_name}
-//             // onChange={handleUsername}
-//           />
-
-//           <label htmlFor='email'>Email</label>
-//           <input
-//             type='text'
-//             id='email'
-//             placeholder="Enter Email"
-//             autoComplete="current-password"
-//             // value={email}
-//             // onChange={handleEmail}
-//           />
-
-//           <label htmlFor='password'>Password</label>
-//           <input
-//             placeholder="Enter Password"
-//             id='password'
-//             // value={password}
-//             // onChange={handlePassword}
-//             type={passwordShown ? "text" : "password"}
-//           />
-
-//         <button onClick={togglePassword}>Show Password</button>
-//         <button type='submit'>Login</button>
-
-//         <p>
-//           Don't have an account?  &nbsp;
-//           <Link to="/signup" className='signup'>
-//             Signup
-//           </Link>
-//         </p><br />
-//         {/* <div>{errors}</div> */}
-
-//       </form>
-
-//     </>
-//   )
-// }
-
 import * as React from 'react';
 import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
@@ -91,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 
 function Copyright(props) {
   return (
@@ -110,10 +33,14 @@ const theme = createTheme();
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const user = useSelector((store) => store.usersReducer.loggedIn);
+  console.log("inside login component!", user);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
     console.log({
+      username: data.get('username'),
       email: data.get('email'),
       password: data.get('password'),
     });
@@ -151,6 +78,8 @@ export const Login = () => {
                   fullWidth
                   id="firstName"
                   label="Username"
+                  // value={username}
+                  // onChange={handleChange}
                   autoFocus
                 />
               </Grid>
@@ -162,6 +91,8 @@ export const Login = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  // value={email}
+                  // onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -173,6 +104,8 @@ export const Login = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="new-password"
+                  // value={password}
+                  // onChange={handleChange}
                 />
               </Grid>
               {/* TODO: Show password  */}
