@@ -1,26 +1,26 @@
 class UsersController < ApplicationController
  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-
-# skip_before_action :authorize, only: [:index, :get_current_user, :create]
+ skip_before_action :authorize, only: [:create] # don't need to be logged in in order to run create
 # before_action :now_authorized, only: [:get_current_user, :create, :index]
 
   def index
     render json: User.all, status: :ok
   end
 
-# tentative
+  # TODO: grab current_user method from SessionsController (not the instance from authorize)
+  # will give me the current_user /me
   def show
-  if @current_user
-   render json: @current_user, status: :ok 
-  else
-   render json: { errors: ["User not found"] }, status: :not_found
-  end  
- end
+    render json: current_user
+  end
 
-
- def get_current_user
-  render json: current_user
- end
+# tentative
+  # def show
+  #   if @current_user
+  #     render json: @current_user, status: :ok 
+  #   else
+  #     render json: { errors: ["User not found"] }, status: :not_found
+  #   end  
+  # end
 
 #  def create
 #   user = User.create!(user_params)
@@ -34,24 +34,25 @@ class UsersController < ApplicationController
 # end
 
 # other signup method option 
-def create
-  user = User.create!(user_params)
-  session[:user_id] = user.id
-  render json: user, status: :created
-end
+  def create
+    user = User.create!(user_params)
+    session[:user_id] = user.id
+    render json: user, status: :created
+  end
 
- private
- def user_params
-  params.permit(:username, :email, :password)
- end
+  private
+
+  def user_params
+    params.permit(:username, :email, :password)
+  end
 
 #  def render_unprocessable_entity_response(object)
 #   byebug
 #   render json: { errors: object.errors.full_messages }, status: :unprocessable_entity
 #  end
 
- def render_unprocessable_entity_response(object)
-  render json: { errors: object.record.errors.full_messages }, status: :unprocessable_entity
-end
+  def render_unprocessable_entity_response(object)
+    render json: { errors: object.record.errors.full_messages }, status: :unprocessable_entity
+  end
 
 end

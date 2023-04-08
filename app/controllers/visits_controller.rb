@@ -1,7 +1,6 @@
 class VisitsController < ApplicationController
-  # skip_before_action :authorize, only: [:index]
-
- # TODO: Check create method again to see if its okay! 
+ # [] TODO: Check create method again to see if its okay! 
+ # [] TODO: Need to be authorized will not do any skip_before_actions 
 
  def index
   render json: Visit.all, status: :ok
@@ -9,15 +8,12 @@ class VisitsController < ApplicationController
 
  # GET /visits/:id
  def show
-  v = Visit.find(params[:id])
-  render json: v, status: :ok
+  vis = Visit.find(params[:id])
+  render json: vis, status: :ok
  end
 
- # TODO: Check again w byebug 
- # TODO: Boolean if I visited or not or add to visit soon! 
-
 #  def create
-#   byebug
+#   # byebug
 #   # create a visited boolean if they went or they have not for the current_user
 #   visit = current_user.visits.create!(visit_params)
 #   # render json if it passes validations
@@ -31,9 +27,18 @@ class VisitsController < ApplicationController
 
 def create
   # byebug
-  visited_collection = Visit.create(user_id: params[:user_id], trailhead_id: params[:trailhead_id])
-  render json: visited_collection.to_json({ include: [:trailhead] }) 
+  visit = current_user.visits.create(visit_params)
+  if visit.save
+    render json: visit, status: :created
+  else
+    render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
+  end
 end
+
+# def create
+#   visited_collection = Visit.create(user_id: params[:user_id], trailhead_id: params[:trailhead_id])
+#   render json: visited_collection.to_json({ include: [:trailhead] }) 
+# end
 
 # def create
 #   visit = current_user.visits.create(visit_params)
@@ -49,12 +54,11 @@ end
 # PATCH /visits/:id
 # current_user be the user of the visited collection 
 # can't figure out how to update 
-def update 
-    byebug
-    @visit.update(visit_params)
-    render json: @visit
-    # render json: @visit, include: [:user]
-end
+# def update 
+#     # byebug
+#     @visit.update(visit_params)
+#     render json: @visit
+# end
 
 # DELETE /visits/:id
 # def destroy 

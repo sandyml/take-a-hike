@@ -12,21 +12,16 @@ Rails.application.routes.draw do
   ## user ## 
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
+  get "/me", to: "users#show"
   # get "/auth", to: "users#show"
-  get "/me", to: "users#get_current_user"
-
-  # TODO: post "users/:id/:visits" 
-
-  # TODO: testing will remove
-  # get "/hikes", to: "hikes#index"
 
   ## sessions ## 
   post "/login", to: "sessions#create"
-  post "/signup", to: "users#create"
-
+  delete "/logout", to: "sessions#destroy"
   # get "users/:user_id/visits", to: "visits#index"
   # get "users/:id/visits", to: "visits#index"
-  delete "/logout", to: "sessions#destroy"
+  
+  # TODO: post "users/:id/:visits" 
 
   # TODO: Remove visits from visits or favorites 
   delete "/visits/:trailhead_id", to: "visits#remove" 
