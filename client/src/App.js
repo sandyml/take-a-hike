@@ -5,7 +5,8 @@ import { Home } from './components/intro/Home';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 import { TermsPolicy } from './components/authen/TermsPolicy';
-import { HikeCarousel } from './components/intro/HikeCarousel';
+// import { HikeCarousel } from './components/intro/HikeCarousel';
+import { VisitEdit } from './components/Hike.jsx/VisitEdit';
 // import { useEffect, useState } from 'react';
 
 // TODO: If currentUser logged in show trails if not show login and signup to login 
@@ -50,14 +51,16 @@ export function App() {
   //   })
   // }, [])
 
+  // TODO: add back carousel when done (too many distractions) 
   return (
     <Routes>
       <Navbar />
-      <HikeCarousel />
-      <Route exact path="/home" component={Home} />
+      {/* <HikeCarousel /> */}
+      <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/termsandconditions" component={TermsPolicy} />
+      <Route exact path="/visits/:id/edit" component={VisitEdit} />
     </Routes>
   );
 }

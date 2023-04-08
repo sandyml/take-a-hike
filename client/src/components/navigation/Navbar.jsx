@@ -70,6 +70,7 @@ export const Navbar = () => {
               <Button variant="contained" color="inherit" to="/" component={Link}>Home</Button>
               <Button variant="contained" color="inherit" to="/signup" component={Link}>SignUp</Button>
               <Button variant="contained" color="inherit" to="/login" component={Link}>Login</Button>
+              <Button variant="contained" color="inherit" to="/visits/:id/edit" component={Link}>Edit Form(tentative)</Button>
             </Typography>
             {/* {loggedIn ? loggedInLinks() : loggedOutLinks()} */}
           </Toolbar>

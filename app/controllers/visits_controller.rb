@@ -1,10 +1,31 @@
 class VisitsController < ApplicationController
-  skip_before_action :authorize, only: [:index]
+  # rescue_from ActiveRecord::RecordInvalid, with: :not_found_error_response
+  # before_action :find_visit, only: [:update, :destroy]
+  # before_action :not_found_error_response, only: [:update, :destroy]
+  # skip_before_action :authorize, only: [:index]
+
+  before_action :find_visit, only: [:update, :destroy]
+  before_action :not_found_error_response, only: [:update, :destroy]
+
+  before_action only: [:update, :destroy] do
+    authorize_user_resource(@visit.user_id)
+  end
+
  # [] TODO: Check create method again to see if its okay! 
 
  def index
   render json: Visit.all, status: :ok
  end
+
+  def index
+    if params[:user_id]
+      user = User.find_by_id(params[:user_id])
+      @visit = user.visits
+    else 
+      @visit = Visit.all
+    end
+      render json: @visit, include: [:user], except: [:user_id] 
+  end
 
  # GET /visits/:id
  def show
@@ -53,18 +74,36 @@ end
 # end
 
 # TODO: might not work check later
-def update
-  @visit = find_visit
-    if @visit.user_id == current_user.id
-      if @visit.update(visit_params)
-        render json: @visit, status: :accepted
-      else
-        render json: { errors: @visit.errors.full_messages }, status: :unprocessable_entity
-      end
-    else 
-      render json: { errors: ["Not an Authorized User"] }, status: :unprocessable_entity
-    end
-end
+# PATCH visits/:id
+# def update
+#   @visit = find_visit
+#     if @visit.user_id == current_user.id
+#       if @visit.update(visit_params)
+#         render json: @visit, status: :ok
+#       else
+#         render json: { errors: @visit.errors.full_messages }, status: :unprocessable_entity
+#       end
+#     else 
+#       render json: { errors: ["Not an Authorized User"] }, status: :unprocessable_entity
+#     end
+# end
+
+  # def update
+  #   # byebug
+  #   @visit = find_visit
+  #     if @visit
+  #       @visit.update(visit_params)
+  #       render json: @visit, status: :ok
+  #     else
+  #       render json: { message: ["Visit not found"] }, status: :not_found 
+  #     end    
+  # end
+
+  # TODO: current_user to be the user of the visit
+  def update
+      @visit.update(visit_params)
+      render json: @visit, include: [:user]
+  end
 
 # DELETE /visits/:id
 # def destroy 
@@ -109,8 +148,8 @@ end
  end
 
  # Other option 
- def unprocessable_entity_error_response_not_found
-  render json: { message: ["Visit not found"] }, status: :unprocessable_entity unless @visit
+ def not_found_error_response
+  render json: { message: ["Visit not found"] }, status: :not_found unless @visit
  end
 
 end
