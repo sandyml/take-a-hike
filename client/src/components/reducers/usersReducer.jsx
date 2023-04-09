@@ -8,6 +8,7 @@ const initialState = {
  loggedIn: false
 }
 
+// will contain the state
 export const usersReducer = (state=initialState, action) => {
  return state;
 }

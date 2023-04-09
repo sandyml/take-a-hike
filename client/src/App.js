@@ -13,11 +13,17 @@ import { useState } from 'react';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
+// [] TODO: add two more reducers: hikes and trailheads 
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const reduxState = useSelector((store) => store.visitsReducer);
-  console.log(reduxState, "redux State")
+  const visits = useSelector((store) => store.visitsReducer);
+  // const users = useSelector((store) => store.usersReducer.currentUser);
+  // const errors = useSelector((store) => store.errorsReducer);
+
+  console.log(visits, "redux visits State")
+  // console.log(users, "redux users State")
+  // console.log(errors, "redux errors State")
   // setIsLoading(true); 
 
 

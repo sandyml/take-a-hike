@@ -34,6 +34,7 @@ const initialState = [
  },
 ]
 
+// will contain the state
 const visitsReducer = (state=initialState, action) => {
  return state;
 }
