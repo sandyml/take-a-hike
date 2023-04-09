@@ -1,4 +1,7 @@
-const errorsReducer = (state=[], action) => {
+// const [errors, setErrors] = useState([])
+
+
+const errorsReducer = (state = [], action) => {
  return state;
 }
 
