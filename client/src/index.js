@@ -38,17 +38,15 @@
 // reportWebVitals();
 
 import React from 'react';
+import { App } from './App';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import rootReducer from './components/reducers';
 import reportWebVitals from './reportWebVitals';
 
-import rootReducer from './components/reducers';
-import { App } from './App';
-import { BrowserRouter } from 'react-router-dom';
-
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-// const store =(() => [])
 
 ReactDOM.render(
   <React.StrictMode>
