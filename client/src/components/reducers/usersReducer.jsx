@@ -8,7 +8,7 @@ const initialState = {
  loggedIn: false
 }
 
-const usersReducer = (state=initialState, action) => {
+export const usersReducer = (state=initialState, action) => {
  return state;
 }
 

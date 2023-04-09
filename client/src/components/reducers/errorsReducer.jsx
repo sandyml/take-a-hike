@@ -1,7 +1,6 @@
 // const [errors, setErrors] = useState([])
 
-
-const errorsReducer = (state = [], action) => {
+export const errorsReducer = (state = [], action) => {
  return state;
 }
 
