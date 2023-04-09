@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, BrowserRouter as Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { Navbar } from './components/navigation/Navbar';
 import { Home } from './components/intro/Home';
 import { Signup } from './components/authen/Signup';
@@ -9,6 +9,7 @@ import { TermsPolicy } from './components/authen/TermsPolicy';
 import { VisitEdit } from './components/Hike.jsx/VisitEdit';
 // import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 // TODO: If currentUser logged in show trails if not show login and signup to login 
 
@@ -27,7 +28,7 @@ export function App() {
   // }, [])
 
   // const [trailheadsArr, setTrailheadsArr] = useState([])
-  
+
   // useEffect(() => {
   //   fetch('/trailheads')
   //   .then(resp => resp.json())
@@ -55,15 +56,23 @@ export function App() {
   // }, [])
 
   // TODO: add back carousel when done (too many distractions) 
+
+  const [loading, setLoading] = useState(false);
+
   return (
-    <Routes>
+    <BrowserRouter>
       <Navbar />
-      {/* <HikeCarousel /> */}
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/termsandconditions" component={TermsPolicy} />
-      <Route exact path="/visits/:id/edit" component={VisitEdit} />
-    </Routes>
+      {
+        loading ? <h1>Loading...please wait..</h1> :
+          <Routes>
+            {/* <HikeCarousel /> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/termsandconditions" component={TermsPolicy} />
+            <Route exact path="/visits/:id/edit" component={VisitEdit} />
+          </Routes>
+      }
+    </BrowserRouter>
   );
 }
