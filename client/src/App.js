@@ -1,12 +1,12 @@
 import './App.css';
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Navbar } from './components/navigation/Navbar';
 import { Home } from './components/intro/Home';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 import { TermsPolicy } from './components/authen/TermsPolicy';
 // import { HikeCarousel } from './components/intro/HikeCarousel';
-import { VisitEdit } from './components/Hike.jsx/VisitEdit';
+// import { VisitEdit } from './components/Hike.jsx/VisitEdit';
 // import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -59,20 +59,37 @@ export function App() {
 
   const [loading, setLoading] = useState(false);
 
-  return (
-    <BrowserRouter>
-      <Navbar />
-      {
-        loading ? <h1>Loading...please wait..</h1> :
-          <Routes>
-            {/* <HikeCarousel /> */}
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/termsandconditions" component={TermsPolicy} />
-            <Route exact path="/visits/:id/edit" component={VisitEdit} />
-          </Routes>
-      }
-    </BrowserRouter>
-  );
+//   return (
+//     <Router>
+//       <Navbar />
+//       {
+//         loading ? <h1>Loading...please wait..</h1> :
+//           <Routes>
+//             {/* <HikeCarousel /> */}
+//             <Route path="/" component={Home} />
+//             <Route path="/login" component={Login} />
+//             <Route path="/signup" component={Signup} />
+//             <Route path="/termsandconditions" component={TermsPolicy} />
+//             {/* <Route exact path="/visits/:id/edit" component={VisitEdit} /> */}
+//           </Routes>
+//       }
+//     </Router>
+//   );
+// }
+
+return (
+  <>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/locations" element={<VisitList />} /> */}
+          {/* <Route path="/visits/new" element={<AddForm />} /> */}
+          {/* <Route path="/visits/:id" element={<EditForm />} /> */}
+          <Route path="/termsandconditions" element={<TermsPolicy />} />
+        </Routes>
+  </>
+);
 }
