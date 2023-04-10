@@ -30,7 +30,6 @@ function Copyright(props) {
   );
 }
 
-
 // TODO: When hovering the blue should be different color 
 
 const theme = createTheme({
