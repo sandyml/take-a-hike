@@ -10,7 +10,7 @@ import { TermsPolicy } from './components/authen/TermsPolicy';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import NotFound from './components/navigation/NotFound';
-import { VisitEdit } from './components/Hike/EditForm';
+import { VisitEdit } from './components/hike/EditForm';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 

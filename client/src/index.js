@@ -36,11 +36,17 @@ import { App } from './App';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './components/reducers';
+import thunk from 'redux-thunk'; //middleware
+import { composeWithDevTools } from '@redux-devtools/extension';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// updated our store to use middleware for thunk to do async activity in order to connect to the backend/server
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk)
+));
+// const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 // const store = createStore(() => [])
 
 ReactDOM.render(
