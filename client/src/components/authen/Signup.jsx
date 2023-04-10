@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { headers } from '../../Global';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,6 +15,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from '@material-ui/core';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
+
+// [] TODO: Signup not signing up but errors works! 
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -68,15 +74,51 @@ const theme = createTheme({
 export const Signup = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { handleAddUser, handleLoginUser , setCurrentUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
+    setErrors([]);
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    setIsLoading(true);
+    fetch('/signup', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ 
+        username, 
+        email,
+        password 
+      })
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if(data.errors) {
+          setErrors(data.errors);
+        } else {
+          // handleAddUser(data)
+          handleLoginUser(data)
+          setCurrentUser(data)
+          navigate('/visits')
+        }
+      })
+  }
+
+  // useEffect(() => {
+  //   if(!loading && loggedIn) {
+  //     navigate("/")
+  //   }
+  //   return () => {
+  //     setErrors([])
+  //   }
+  // }, [loading, loggedIn, navigate, setErrors])
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -94,7 +136,7 @@ export const Signup = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -104,12 +146,15 @@ export const Signup = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  color="neutral"
                   autoComplete="given-name"
                   name="Username"
                   required
                   fullWidth
                   id="firstName"
                   label="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   autoFocus
                 />
               </Grid>
@@ -117,35 +162,44 @@ export const Signup = () => {
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   id="email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   name="password"
                   label="Password"
                   type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   name="password"
                   label="Confirm Password"
                   type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="new-password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </Grid>
-              {/* TODO: Show password  */}
+          
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
@@ -164,6 +218,13 @@ export const Signup = () => {
             >
               Sign Up
             </Button>
+            {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">

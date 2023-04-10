@@ -81,7 +81,7 @@ import { useEffect } from 'react';
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant="body2" color="text.neutral" align="center" {...props}>
       {'Copyright © Sandra Yun '}
       <Link color="inherit" href="https://github.com/sandyml/take-a-hike">
         Github
@@ -166,7 +166,7 @@ export const EditForm = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
             <EventIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -176,6 +176,7 @@ export const EditForm = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  color="neutral"
                   autoComplete="given-name"
                   name="trailname"
                   required
@@ -191,6 +192,7 @@ export const EditForm = () => {
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   name="date"
                   label="date"
                   type="text"

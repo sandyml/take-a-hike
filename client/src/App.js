@@ -14,6 +14,7 @@ import { loadVisits } from './components/actions/visits';
 import { UserProvider } from './components/context/UserContext';
 import { VisitProvider } from './components/context/VisitContext';
 import { EditForm } from './components/hike/EditForm';
+import Logout from './components/authen/Logout';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -51,6 +52,7 @@ export function App() {
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/visits/:id/edit" element={<EditForm />} />
               <Route path="/visits" element={<VisitList />} />

@@ -113,7 +113,7 @@ export const Login = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -123,6 +123,7 @@ export const Login = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  color="neutral"
                   autoComplete="given-name"
                   name="Username"
                   required
@@ -138,6 +139,7 @@ export const Login = () => {
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   id="email"
                   label="Email Address"
                   name="email"
@@ -150,6 +152,7 @@ export const Login = () => {
                 <TextField
                   required
                   fullWidth
+                  color="neutral"
                   name="password"
                   label="Password"
                   type={showPassword ? "text" : "password"}

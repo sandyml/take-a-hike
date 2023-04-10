@@ -80,7 +80,7 @@
 //   )
 // }
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -96,6 +96,7 @@ import Tooltip from '@mui/material/Tooltip';
 import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -116,14 +117,25 @@ const useStyles = makeStyles(() => ({
   grey: {
     backgroundColor: "#E0CD9"
   },
-}));  
+}));
 
 
 export const Navbar = () => {
   const classes = useStyles();
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  // const settings = ['Visited', 'Will Visit', 'Logout'];
+  const { handleOnLogout, currentUser } = useContext(UserContext);
+
+  const handleLogout = () => {
+    fetch('/logout', {
+      method: "DELETE"
+    }).then((resp) => {
+      if (resp.ok) {
+        handleOnLogout()
+      }
+    });
+  };
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
@@ -222,15 +234,15 @@ export const Navbar = () => {
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {/* TODO: username welcome! */}
-          <span className='welcome-h1'>Welcome, (insert username here)!&nbsp;</span>
+          <span className='welcome-h1'>Welcome, *current user username* ! &nbsp;</span>
+          {/* <span className='welcome-h1'>Welcome, {currentUser.username}! &nbsp;</span> */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {/* <span className='welcome-h1'>Welcome, (insert username here)!&nbsp;</span> inside avatar */}
                 <Avatar alt="Username" src="" />
               </IconButton>
             </Tooltip>
-
+      
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -247,14 +259,24 @@ export const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {/* <span className='welcome-h1'>Welcome, {currentUser.username}!</span> */}
-              <Button color="inherit" to="/login" component={Link}>Login</Button><br />
-              <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
               {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))} */}
+
+              <div>
+                {currentUser && currentUser.id ? (
+                  <div>
+                    <Button color="inherit" to="/logout" component={Link} onClick={handleLogout}>Logout</Button><br />
+                  </div>
+                ) : (
+                  <div>
+              <Button color="inherit" to="/login" component={Link}>Login</Button><br />
+              <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
+                  </div>
+                )}
+              </div>
             </Menu>
           </Box>
         </Toolbar>
