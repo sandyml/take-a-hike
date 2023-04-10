@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
  private
 
  def render_unprocessable_entity_response
-  render json: { errors: ["Username or password does not match"] }, status: :unprocessable_entity
+  render json: { errors: ["Invalid Username or Password"] }, status: :unprocessable_entity
  end
  
 end

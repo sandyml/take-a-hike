@@ -13,6 +13,28 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+  sage: {
+    backgroundColor: "#6E7F62"
+  },
+  lightSage: {
+    backgroundColor: "#919F88"
+  },
+  lighterSage: {
+    backgroundColor: "#C3CDBF"
+  },
+  grey: {
+    backgroundColor: "#E0CD9"
+  },
+}));  
 
 function Copyright(props) {
   return (
@@ -27,9 +49,24 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#6E7F62',
+      contrastText: '#fff',
+    },
+  },
+});
 
 export const Signup = () => {
+  const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
@@ -122,6 +159,7 @@ export const Signup = () => {
               type="submit"
               fullWidth
               variant="contained"
+              color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up

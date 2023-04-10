@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
+import { headers } from '../../Global';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -28,23 +30,70 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+
+// TODO: When hovering the blue should be different color 
+
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#6E7F62',
+      contrastText: '#fff',
+    },
+  },
+});
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const navigate = useNavigate();
 
   const user = useSelector((store) => store.usersReducer.loggedIn);
   console.log("inside login component!", user);
 
   const handleSubmit = (e) => {
+    setErrors([]);
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    console.log({
-      username: data.get('username'),
-      email: data.get('email'),
-      password: data.get('password'),
+    setIsLoading(true); 
+    fetch("/login", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((user) => {
+          console.log(user)
+          setCurrentUser(user);
+          setErrors([]);
+          navigate('/')
+        });
+      } else {
+        resp.json()
+        .then((err) => setErrors(err.errors));
+      }
     });
-  };
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  }
+
+  // console.log(username, "Username")
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -78,8 +127,8 @@ export const Login = () => {
                   fullWidth
                   id="firstName"
                   label="Username"
-                  // value={username}
-                  // onChange={handleChange}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   autoFocus
                 />
               </Grid>
@@ -91,8 +140,8 @@ export const Login = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  // value={email}
-                  // onChange={handleChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -104,8 +153,8 @@ export const Login = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   autoComplete="new-password"
-                  // value={password}
-                  // onChange={handleChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               {/* TODO: Show password  */}
@@ -120,10 +169,18 @@ export const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
+              color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
               Login
             </Button>
+            {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signup" variant="body2">

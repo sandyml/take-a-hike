@@ -25,7 +25,7 @@ export const VisitList = () => {
 
  return (
   <div>
-   <h2>Visits List</h2>
+   <h2>Places I've been too (visited)</h2>
    {/* {visitCards} */}
   </div>
  )
