@@ -9,3 +9,6 @@
  // Redux is not designed to have the delays, async delays 
   // What we do: Add a middleWare called thunk which allows us to put asleep on the process of the flow of updating state and then once that process completes then we are able to update state
   // MUST: cancel our server before installing anything. 
+
+  // loadViists => an action which is considered a function 
+

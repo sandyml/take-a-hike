@@ -219,6 +219,7 @@ export const Navbar = () => {
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button> */}
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button> */}
             <Button color="inherit" to="/visits/:id" component={Link}>Edit Form(tentative)</Button>
+            <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {/* TODO: username welcome! */}
           <span className='welcome-h1'>Welcome, (insert username here)!&nbsp;</span>

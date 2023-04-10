@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import NotFound from './components/navigation/NotFound';
 import { VisitEdit } from './components/hike/EditForm';
+import { VisitList } from './components/hike/VisitList';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -40,6 +41,7 @@ export function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/visits/:id" element={<VisitEdit />} />
+            <Route path="/visits" element={<VisitList />} />
             <Route path="/termsandconditions" element={<TermsPolicy />} />
             <Route path="/*" element={<NotFound />} />
             {/* <Route path="/visits" element={<VisitList />} /> */}
