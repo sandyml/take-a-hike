@@ -4,8 +4,19 @@
 // const initialState = []
 
 // will contain the state
-const visitsReducer = (state=[], action) => {
- return state;
+// action.type, action.payload => action is an obj that has these key values applied
+// action from visits action will be accepted here in the action
+const visitsReducer = (state = [], action) => {
+
+ switch (action.type) {
+  case "LOAD_VISITS":
+   // will be our new state => data we give the payload from server and want to be displayed
+   return action.payload  // return new non-destructive state, we'll need all the data, action.payload is out data that comes from the backend 
+  // acts like an else statement
+   default:
+   return state;
+ }
+
 }
 
 export default visitsReducer;

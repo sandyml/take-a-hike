@@ -6,12 +6,13 @@ import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 import { TermsPolicy } from './components/authen/TermsPolicy';
 // import { HikeCarousel } from './components/intro/HikeCarousel';
-// import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import NotFound from './components/navigation/NotFound';
 import { VisitEdit } from './components/hike/EditForm';
 import { VisitList } from './components/hike/VisitList';
+import { loadVisits } from './components/actions/visits';
+import { UserProvider } from './components/context/UserContext';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -19,6 +20,7 @@ import { VisitList } from './components/hike/VisitList';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
   const visits = useSelector((store) => store.visitsReducer);
   // const users = useSelector((store) => store.usersReducer.currentUser);
   // const errors = useSelector((store) => store.errorsReducer);
@@ -29,25 +31,34 @@ export function App() {
   // setIsLoading(true); 
 
 
+  // will grab all of the data(things), run once
+  // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
+  useEffect(() => {
+    dispatch(loadVisits()) // make sure to call () 
+  }, [dispatch])
+
   return (
     <>
-      <Navbar />
-      {
-        isLoading ? <h1>Loading...please wait..</h1> :
-          <Routes>
-            {/* <HikeCarousel/> */}
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/visits/:id" element={<VisitEdit />} />
-            <Route path="/visits" element={<VisitList />} />
-            <Route path="/termsandconditions" element={<TermsPolicy />} />
-            <Route path="/*" element={<NotFound />} />
-            {/* <Route path="/visits" element={<VisitList />} /> */}
-            {/* <Route path="/visits/new" element={<AddForm />} /> */}
-          </Routes>
-      }
+      <UserProvider>
+
+        <Navbar />
+        {
+          isLoading ? <h1>Loading...please wait..</h1> :
+            <Routes>
+              {/* <HikeCarousel/> */}
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/visits/:id" element={<VisitEdit />} />
+              <Route path="/visits" element={<VisitList />} />
+              <Route path="/termsandconditions" element={<TermsPolicy />} />
+              <Route path="/*" element={<NotFound />} />
+              {/* <Route path="/visits" element={<VisitList />} /> */}
+              {/* <Route path="/visits/new" element={<AddForm />} /> */}
+            </Routes>
+        }
+      </UserProvider>
     </>
   );
 }

@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux';
 import { headers } from '../../Global';
 import { useNavigate } from 'react-router-dom';
 
+// import Background from '../../assets/mountains.png'
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -100,6 +102,7 @@ export const Login = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      {/* <img src={Background} className="bg-image" alt="background" /> */}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
