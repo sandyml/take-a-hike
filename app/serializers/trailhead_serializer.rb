@@ -1,5 +1,5 @@
 class TrailheadSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :fees, :direction, :amenities
+  attributes :id, :name, :location, :fees, :direction, :amenities, :hike
 
   has_one :hike
 

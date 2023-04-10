@@ -4,6 +4,7 @@ class VisitSerializer < ActiveModel::Serializer
   
   has_one :user
   has_one :trailhead
+  # has_many :hikes
 
   # def hi
   #   "hello"

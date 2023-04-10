@@ -1,23 +1,22 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
-import { header } from '../../Global';
 import { Link } from 'react-router-dom';
 import { VisitContext } from '../context/VisitContext';
 
 // [] TODO: Remove context after Redux done
+// [] TODO: Not able to delete in real-time ENOCH HELP OFFICE HOURS!
 
 const VisitCards = ({ visit }) => {
   const { currentUser } = useContext(UserContext);
   const { deleteVisitDate, visits } = useContext(VisitContext)
   const navigate = useNavigate();
-  // const { id } = useParams(); 
 
   useEffect(() => {
     fetch('/visits')
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data, "visits")
+        console.log(data, "visits")
       })
   }, [])
 
@@ -34,25 +33,28 @@ const VisitCards = ({ visit }) => {
   //     })
   // }
 
+
+  // TODOL HELP - Can't delete real-time 
+  // debugger
   const handleDelete = (id) => {
     fetch(`/visits/${id}`, {
       method: 'DELETE',
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data, "deleted!")
-        const updatedState = visits.map(visit => {
-          // eslint-disable-next-line 
-          if(data.trailhead_id == visit.id) {
+        console.log(data, "Deleted!")
+        const updatedState = visits.map((visit) => {
+          if (data.trailhead_id === visit.id) {
             return {
               ...visit,
-              trailhead: visit.hike_trails.filter(ht => ht.id !== data.id)
+              trailhead: visits.filter((th) => th.trailhead.id !== data.id)
             }
           } else {
             return visit;
           }
         })
         deleteVisitDate(updatedState);
+        navigate('/visits')
       })
   }
 
@@ -73,12 +75,11 @@ const VisitCards = ({ visit }) => {
         <Link to={`/visits/${visit.id}`} >
           {visit.name}
         </Link>
-        <p>{visit.image_url}</p>
+        {/* <p>{visit.image_url}</p> */}
         <p>{visit.visited_date}</p>
         <p>{visit.visited}</p>
         {currentUser && currentUser.id === visit.user.id ? <>
           <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
-          {/* <button onClick={handleDelete}>Delete</button> */}
           <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button>
         </> : null}
         <hr />
