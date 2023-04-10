@@ -13,6 +13,7 @@ import { VisitEdit } from './components/hike/EditForm';
 import { VisitList } from './components/hike/VisitList';
 import { loadVisits } from './components/actions/visits';
 import { UserProvider } from './components/context/UserContext';
+import { VisitProvider } from './components/context/VisitContext';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -40,11 +41,12 @@ export function App() {
   return (
     <>
       <UserProvider>
+        <VisitProvider>
 
         <Navbar />
         {
           isLoading ? <h1>Loading...please wait..</h1> :
-            <Routes>
+          <Routes>
               {/* <HikeCarousel/> */}
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
@@ -58,6 +60,7 @@ export function App() {
               {/* <Route path="/visits/new" element={<AddForm />} /> */}
             </Routes>
         }
+        </VisitProvider>
       </UserProvider>
     </>
   );

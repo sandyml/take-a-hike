@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.errors) {
-          console.log(data)
+          // console.log(data)
           loginUser(data)
         } else {
           setIsLoading(false);
@@ -27,7 +27,7 @@ const UserProvider = ({ children }) => {
       fetch('/users')
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           setUsers(data)
           setIsLoading(false)
         })
