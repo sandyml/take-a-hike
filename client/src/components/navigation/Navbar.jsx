@@ -10,12 +10,9 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
-import { MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -46,9 +43,11 @@ export const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { handleOnLogout, currentUser } = useContext(UserContext);
 
+  // console.log(currentUser.username, "currentUser")
+
   const handleLogout = () => {
     fetch('/logout', {
-      method: "DELETE"
+      method: 'DELETE'
     }).then((resp) => {
       if (resp.ok) {
         handleOnLogout()
@@ -123,9 +122,16 @@ export const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+
+
+              <Button color="inherit" to="/" component={Link}>Home</Button><br />
+              {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
+              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button><br />
+              {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button><br/> */}
+              <Button color="inherit" to="/visits" component={Link}>Visits List</Button><br />
+
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -142,7 +148,7 @@ export const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            TakeAHike
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" to="/" component={Link}>Home</Button>
@@ -152,8 +158,8 @@ export const Navbar = () => {
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {/* TODO: username welcome! */}
-          <span className='welcome-h1'>Welcome, *current user username* ! &nbsp;</span>
-          {/* <span className='welcome-h1'>Welcome, {currentUser.username}! &nbsp;</span> */}
+          {/* <span>Welcome, *current user username* ! &nbsp;</span> */}
+          {/* <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span> */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -177,12 +183,6 @@ export const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-
               <div>
                 {currentUser && currentUser.id ? (
                   <div>
