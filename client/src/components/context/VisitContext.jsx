@@ -3,7 +3,7 @@ import React, { useState, useEffect, createContext }  from 'react';
 const VisitContext = createContext([]);
 
 const VisitProvider = ({ children }) => {
-  const [visits, setVisits] = useState([]);
+  const [visits, setVisits] = useState({});
 
   useEffect(() => {
     fetch('/visits')
@@ -27,7 +27,7 @@ const VisitProvider = ({ children }) => {
   // }
 
   // edit visit date
-  const editVisitData = (newVisitDate) => {
+  const editVisitDate = (newVisitDate) => {
     const updatedVisits = visits.map((visit) => {
       if (newVisitDate.id === visit.id) {
         return newVisitDate;
@@ -44,11 +44,8 @@ const VisitProvider = ({ children }) => {
     setVisits(updatedVisits)
   };
 
-  
-
-
   return (
-    <VisitContext.Provider value={{ visits, handleAddVisit, editVisitData, deleteVisitDate }}>
+    <VisitContext.Provider value={{ visits, handleAddVisit, editVisitDate, deleteVisitDate }}>
       {children}
     </VisitContext.Provider>
   )

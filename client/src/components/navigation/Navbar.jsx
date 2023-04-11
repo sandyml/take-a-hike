@@ -1,85 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-// import Box from '@mui/material/Box';
-
-// const useStyles = makeStyles(() => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-//   pink: {
-//     backgroundColor: "#ad6689"
-//   }
-// }));
-
-// export const Navbar = () => {
-//   const classes = useStyles();
-
-//   // const loggedInLinks = () => {
-//   //   return (
-//   //     <>
-//   //       <Button color="inherit" to="/" component={Link}>Home</Button>
-//   //       <Button color="inherit" to="/parks" component={Link}>ParkList</Button>
-//   //       <Button color="inherit" to="/#" component={Link}>Logout</Button>
-//   //     </>
-//   //   )
-//   // }
-
-
-//   // const loggedOutLinks = () => {
-//   //   return (
-//   //     <>
-//   //       <Button color="inherit" to="/" component={Link}>Home</Button>
-//   //       <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
-//   //       <Button color="inherit" to="/login" component={Link}>Login</Button>
-//   //     </>
-//   //   )
-//   // }
-
-//   return (
-//     <AppBar position="static">
-//       <Box sx={{ flexGrow: 1 }}>
-//         <Toolbar>
-//           <Toolbar>
-//             <Typography
-//               variant="h6"
-//               noWrap
-//               component="a"
-//               href="/"
-//               sx={{
-//                 mr: 2,
-//                 display: { xs: 'none', md: 'flex' },
-//                 fontFamily: 'monospace',
-//                 fontWeight: 700,
-//                 letterSpacing: '.3rem',
-//                 color: 'inherit',
-//                 textDecoration: 'none',
-//               }}
-//             >
-//               SOMETRAILS
-//             </Typography>
-
-//             <Typography variant="h2">
-//               <Button variant="contained" color="inherit" to="/" component={Link}>Home</Button>
-//               <Button variant="contained" color="inherit" to="/login" component={Link}>Login</Button>
-//               <Button variant="contained" color="inherit" to="/visits/:id/edit" component={Link}>Edit Form(tentative)</Button>
-//             </Typography>
-//             {/* {loggedIn ? loggedInLinks() : loggedOutLinks()} */}
-//           </Toolbar>
-//               <Button variant="contained" color="inherit" to="/signup" component={Link}>SignUp</Button>
-//         </Toolbar>
-//       </Box>
-//     </AppBar>
-//   )
-// }
-
 import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -97,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import { MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -230,7 +149,6 @@ export const Navbar = () => {
             {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> */}
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button> */}
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button> */}
-            <Button color="inherit" to="/visits/:id" component={Link}>Edit Form(tentative)</Button>
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {/* TODO: username welcome! */}
@@ -242,7 +160,7 @@ export const Navbar = () => {
                 <Avatar alt="Username" src="" />
               </IconButton>
             </Tooltip>
-      
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -272,8 +190,8 @@ export const Navbar = () => {
                   </div>
                 ) : (
                   <div>
-              <Button color="inherit" to="/login" component={Link}>Login</Button><br />
-              <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
+                    <Button color="inherit" to="/login" component={Link}>Login</Button><br />
+                    <Button color="inherit" to="/signup" component={Link}>SignUp</Button>
                   </div>
                 )}
               </div>

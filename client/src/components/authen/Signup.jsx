@@ -68,6 +68,10 @@ const theme = createTheme({
       main: '#6E7F62',
       contrastText: '#fff',
     },
+    lightersage: {
+      main: '#C3CDBF',
+      contrastText: '#fff',
+    },
   },
 });
 
@@ -136,7 +140,7 @@ export const Signup = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
