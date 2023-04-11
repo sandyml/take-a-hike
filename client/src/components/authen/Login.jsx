@@ -32,8 +32,6 @@ function Copyright(props) {
   );
 }
 
-// TODO: When hovering the blue should be different color 
-
 const theme = createTheme({
   status: {
     danger: '#e53e3e',
@@ -76,8 +74,8 @@ export const Login = () => {
     setErrors([]);
     e.preventDefault();
     setIsLoading(true); 
-    fetch("/login", {
-      method: "POST",
+    fetch('/login', {
+      method: 'POST',
       headers,
       body: JSON.stringify({
         username,
@@ -101,8 +99,6 @@ export const Login = () => {
     setEmail("");
     setPassword("");
   }
-
-  // console.log(username, "Username")
 
   const togglePassword = () => {
     setShowPassword(!showPassword)

@@ -17,11 +17,14 @@ import { TrailheadProvider } from './components/context/TrailheadContext';
 import Logout from './components/authen/Logout';
 import { EditForm } from './components/hike/EditForm';
 
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
 // [] TODO: add two more reducers: hikes and trailheads 
 
-export function App() {
+export function App({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const visits = useSelector((store) => store.visitsReducer);
@@ -42,6 +45,7 @@ export function App() {
 
   return (
     <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <UserProvider>
         <VisitProvider>
           <TrailheadProvider>
@@ -68,6 +72,7 @@ export function App() {
         </TrailheadProvider>
         </VisitProvider>
       </UserProvider>
+      </LocalizationProvider>
     </>
   );
 }

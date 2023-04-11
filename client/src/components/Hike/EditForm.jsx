@@ -16,6 +16,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { headers } from '../../Global';
 // import { useSelector } from 'react-redux';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.neutral" align="center" {...props}>
@@ -55,7 +59,7 @@ export const EditForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-  
+
   const { id } = useParams();
   const { user_id, trailhead_id, visited_date } = useContext(VisitContext);
 
@@ -83,7 +87,7 @@ export const EditForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true); 
+    setIsLoading(true);
     fetch(`visits/${id}/edit`, {
       method: 'PATCH',
       headers,
@@ -100,31 +104,33 @@ export const EditForm = () => {
         editVisitDate(data)
         console.log(data, "date has been updated(edited)!")
       });
-      navigate(`/visits`)
+    navigate(`/visits`)
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      {/* <img src={Background} className="bg-image" alt="background" /> */}
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
-            <EditCalendarIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Change Visit Date
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              {/* <Grid item xs={12}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+
+      <ThemeProvider theme={theme}>
+        {/* <img src={Background} className="bg-image" alt="background" /> */}
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
+              <EditCalendarIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Change Visit Date
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                {/* <Grid item xs={12}>
                 <TextField
                   color="neutral"
                   autoComplete="given-name"
@@ -138,42 +144,56 @@ export const EditForm = () => {
                   autoFocus
                 />
               </Grid> */}
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  color="neutral"
-                  name="date"
-                  label="date"
-                  type="text"
-                  id="date"
-                  placeholder="MM-DD-YYYY"
-                  autoComplete="new-date"
-                  defaultValue={visited_date}
-                  onChange={(e) => setDate(e.target.value)}
-                />
+                <Grid item xs={12}>
+                  {/* <TextField */}
+                  {/* // required
+                  // fullWidth
+                  // color="neutral"
+                  // name="date"
+                  // label="date"
+                  // type="text"
+                  // id="date"
+                  // placeholder="MM-DD-YYYY"
+                  // autoComplete="new-date"
+                  // defaultValue={visited_date} */}
+                  {/* // onChange={(e) => setDate(e.target.value)} */}
+                  {/* /> */}
+                  <DatePicker
+                    required
+                    fullWidth
+                    color="neutral"
+                    name="date"
+                    // label="date"
+                    type="text"
+                    id="date"
+                    // placeholder="MM-DD-YYYY"
+                    autoComplete="new-date"
+                    defaultValue={visited_date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="neutral"
-              sx={{ mt: 3, mb: 2 }}
-              value="Update Review"
-            >{isLoading ? "Loading..." : "Submit"}
-            </Button>
-            {errors.length > 0 && (
-              <ul style={{ color: "red" }}>
-                {errors.map((error) => (
-                  <li key={error}>{error}</li>
-                ))}
-              </ul>
-            )}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="neutral"
+                sx={{ mt: 3, mb: 2 }}
+                value="Update Review"
+              >{isLoading ? "Loading..." : "Submit"}
+              </Button>
+              {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
+            </Box>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 };
