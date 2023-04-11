@@ -1,40 +1,23 @@
 import React, { useContext } from 'react';
-import { VisitContext } from '../context/VisitContext';
+import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteVisit } from '../actions/visits';
 import { UserContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-
-// [] TODO: Remove context after Redux done
-// [] TODO: Not able to delete in real-time ENOCH HELP OFFICE HOURS!
 
 const VisitCard = ({ visit }) => {
   const { currentUser } = useContext(UserContext);
-  const { deleteVisitDate, visits } = useContext(VisitContext)
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-
-  // TODOL HELP - Can't delete real-time 
   const handleDelete = (id) => {
-    fetch(`/visits/${id}`, {
-      method: 'DELETE',
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data, "Deleted!")
-      // debugger
-        // const updatedState = visits.filter((visit) => data.id !== visit.id) 
-        deleteVisitDate(data);
-        navigate('/visits')
-      })
+    dispatch(deleteVisit(id))
   }
 
-  // console.log(currentUser, "currentUser")
-  // console.log(currentUser.id, "currentUser.id")
-  // console.log(visit.user.id, "visit.user.username.id")
-
-  // console.log(visit.format_date, "format_date")
-  // change date method in backend
-  // trailheads data to add name
+  // TODO: create dispatch for visits 
+  // const handleVisit= (id) => {
+  //   dispatch(visit(id))
+  // }
 
   return (
     <div>

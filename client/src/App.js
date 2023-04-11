@@ -16,7 +16,6 @@ import { VisitProvider } from './components/context/VisitContext';
 import { TrailheadProvider } from './components/context/TrailheadContext';
 import Logout from './components/authen/Logout';
 import { EditForm } from './components/hike/EditForm';
-
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
@@ -26,7 +25,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 export function App({ children }) {
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch(); 
+
   const visits = useSelector((store) => store.visitsReducer);
   // const users = useSelector((store) => store.usersReducer.currentUser);
   // const errors = useSelector((store) => store.errorsReducer);
@@ -35,7 +36,6 @@ export function App({ children }) {
   // console.log(users, "redux users State")
   // console.log(errors, "redux errors State")
   // setIsLoading(true); 
-
 
   // will grab all of the data(things), run once
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  

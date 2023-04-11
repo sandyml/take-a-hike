@@ -8,14 +8,16 @@
 // action from visits action will be accepted here in the action
 const visitsReducer = (state = [], action) => {
 
- switch (action.type) {
-  case "LOAD_VISITS":
-   // will be our new state => data we give the payload from server and want to be displayed
-   return action.payload  // return new non-destructive state, we'll need all the data, action.payload is out data that comes from the backend 
-  // acts like an else statement
-   default:
-   return state;
- }
+  switch (action.type) {
+    case "LOAD_VISITS":
+      // will be our new state => data we give the payload from server and want to be displayed
+      return action.payload  // return new non-destructive state, we'll need all the data, action.payload is out data that comes from the backend 
+    // acts as an else statement
+    case "DELETE_VISIT":
+      return state.filter((visit) => visit.id !== action.payload)
+    default:
+      return state;
+  }
 
 }
 

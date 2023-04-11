@@ -130,7 +130,7 @@ export const EditForm = () => {
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
-                {/* <Grid item xs={12}>
+                <Grid item xs={12}>
                 <TextField
                   color="neutral"
                   autoComplete="given-name"
@@ -139,11 +139,11 @@ export const EditForm = () => {
                   fullWidth
                   id="name"
                   label="name"
-                  defaultValue={formData.name}
-                  onChange={handleChange}
+                  placeholder="Will be set to default Value of hike name"
+                  // defaultValue={visits.name}
                   autoFocus
                 />
-              </Grid> */}
+              </Grid>
                 <Grid item xs={12}>
                   {/* <TextField */}
                   {/* // required

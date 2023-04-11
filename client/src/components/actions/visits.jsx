@@ -20,8 +20,29 @@ export const loadVisits = () => {
          .then((resp) => resp.json())
          .then((data) => {
             console.log(data, "Inside visits action")
-            const action = { type: "LOAD_VISITS", payload: data } // this action is an obj (has type & payload action.type, action.payload -> data will be given from the backend)
+            const action = {
+               type: "LOAD_VISITS",
+               payload: data
+            } // this action is an obj (has type & payload action.type, action.payload -> data will be given from the backend)
             dispatch(action) // dispatch action to reducer 
+         })
+   }
+}
+
+export const deleteVisit = (id) => {
+   return dispatch => {
+      fetch(`/visits/${id}`, {
+         method: 'DELETE',
+      })
+         .then((resp) => resp.json())
+         .then((data) => {
+            console.log(data, "Deleted in action!")
+            // const updatedState = visits.filter((visit) => data.id !== visit.id) // move to reducer  
+            const action = {
+               type: "DELETE_VISIT",
+               payload: id
+            }
+            dispatch(action)
          })
    }
 }
