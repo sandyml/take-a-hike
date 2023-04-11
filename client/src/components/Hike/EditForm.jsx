@@ -88,10 +88,10 @@ export const EditForm = () => {
       method: 'PATCH',
       headers,
       body: JSON.stringify({
-        user_id,
-        visited_date,
+        // user_id,
+        // visited_date,
         // visited_date: date,
-        trailhead_id,
+        // trailhead_id,
       }),
     })
       .then((resp) => resp.json())

@@ -39,6 +39,7 @@ const VisitProvider = ({ children }) => {
 
   // delete visit date 
   const deleteVisitDate = (deleteVisitDate) => {
+    // debugger  
     console.log("deleted visit!")
     const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
     setVisits(updatedVisits)

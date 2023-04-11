@@ -14,25 +14,16 @@ const VisitCard = ({ visit }) => {
 
 
   // TODOL HELP - Can't delete real-time 
-  // debugger
   const handleDelete = (id) => {
     fetch(`/visits/${id}`, {
       method: 'DELETE',
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data, "Deleted!")
-        const updatedState = visits.map((visit) => {
-          if (data.trailhead_id === visit.id) {
-            return {
-              ...visit,
-              trailhead: visits.filter((th) => th.trailhead.id !== data.id)
-            }
-          } else {
-            return visit;
-          }
-        })
-        deleteVisitDate(updatedState);
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data, "Deleted!")
+      // debugger
+        // const updatedState = visits.filter((visit) => data.id !== visit.id) 
+        deleteVisitDate(data);
         navigate('/visits')
       })
   }
@@ -48,13 +39,14 @@ const VisitCard = ({ visit }) => {
   return (
     <div>
       <h1>{visit.trailhead.name}</h1>
-      <h2>{visit.user.username}</h2>
+        <p>{visit.trailhead.location}</p>
+      <h2>Visited Date: {visit.user.username}</h2>
       <h3>
         <Link to={`/visits/${visit.id}`} >
-          {visit.name}
+         {visit.name}
         </Link>
         {/* <p>{visit.image_url}</p> */}
-        <p>{visit.visited_date}</p>
+        <p>Visited Date:{visit.visited_date}</p>
         <p>{visit.visited}</p>
         {currentUser && currentUser.id === visit.user.id ? <>
           <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
