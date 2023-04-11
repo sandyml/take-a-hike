@@ -9,22 +9,17 @@ Rails.application.routes.draw do
   resources :difficulties
   resources :hike_difficulties
 
-  ## user ## 
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   # get "/auth", to: "users#show"
 
-  ## sessions ## 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  # patch '/visits/:id', to: 'visits#update'
+  # patch "/visits/:id", to: "visits#update"
   # get "users/:user_id/visits", to: "visits#index"
   # get "users/:id/visits", to: "visits#index"
-  
-  # TODO: post "users/:id/:visits" 
-  # TODO: Remove visits from visits or favorites 
-  # delete "/visits/:id", to: "visits#remove" 
-  # delete "/trailhead/:deleted_trailhead_id", to: "trailheads#remove"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

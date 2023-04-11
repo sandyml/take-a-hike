@@ -3,7 +3,7 @@ import React, { useState, useEffect, createContext }  from 'react';
 const VisitContext = createContext([]);
 
 const VisitProvider = ({ children }) => {
-  const [visits, setVisits] = useState({});
+  const [visits, setVisits] = useState([]);
 
   useEffect(() => {
     fetch('/visits')
@@ -32,7 +32,7 @@ const VisitProvider = ({ children }) => {
       if (newVisitDate.id === visit.id) {
         return newVisitDate;
       } else {
-        return visit
+        return visit;
       }
     })
   }

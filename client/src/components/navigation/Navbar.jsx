@@ -147,7 +147,7 @@ export const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" to="/" component={Link}>Home</Button>
             {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> */}
-            {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button> */}
+            <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button>
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button> */}
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
