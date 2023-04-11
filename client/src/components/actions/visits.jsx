@@ -12,6 +12,7 @@
 
 // loadViists => an action which is considered a function 
 
+
 // dispatch on load 
 export const loadVisits = () => {
    return dispatch => {
@@ -37,7 +38,6 @@ export const deleteVisit = (id) => {
          .then((resp) => resp.json())
          .then((data) => {
             console.log(data, "Deleted in action!")
-            // const updatedState = visits.filter((visit) => data.id !== visit.id) // move to reducer  
             const action = {
                type: "DELETE_VISIT",
                payload: id
@@ -45,4 +45,24 @@ export const deleteVisit = (id) => {
             dispatch(action)
          })
    }
+}
+
+export const EditVisit = (id, date, navigate) => {
+   // setIsLoading(true);
+    fetch(`/visits/${id}`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify({
+        date,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+         const action = 
+         dispatch(action)
+        setIsLoading(false);
+        editVisitDate(data)
+        console.log(data, "visit has been updated(edited)! in action!")
+      });
+    navigate('/visits')
 }

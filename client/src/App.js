@@ -18,6 +18,7 @@ import Logout from './components/authen/Logout';
 import { EditForm } from './components/hike/EditForm';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { loadUsers } from './components/actions/users';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -29,11 +30,11 @@ export function App({ children }) {
   const dispatch = useDispatch(); 
 
   const visits = useSelector((store) => store.visitsReducer);
-  // const users = useSelector((store) => store.usersReducer.currentUser);
+  const users = useSelector((store) => store.usersReducer.currentUser);
   // const errors = useSelector((store) => store.errorsReducer);
 
   console.log(visits, "redux visits State")
-  // console.log(users, "redux users State")
+  console.log(users, "redux users State in APP")
   // console.log(errors, "redux errors State")
   // setIsLoading(true); 
 
@@ -41,6 +42,7 @@ export function App({ children }) {
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
   useEffect(() => {
     dispatch(loadVisits()) // make sure to call () 
+    // dispatch(loadUsers())
   }, [dispatch])
 
   return (

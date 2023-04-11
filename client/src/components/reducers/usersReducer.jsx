@@ -3,14 +3,22 @@
 // const [loggedIn, setLoggedIn] = useState(false) => loggedIn: false
 
 const initialState = {
- users: [],
- currentUser: null, 
- loggedIn: false
+  users: [],
+  currentUser: null,
+  loggedIn: false
 }
-
-// will contain the state
-export const usersReducer = (state=initialState, action) => {
- return state;
+const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "LOAD_USERS":
+      return action.payload
+    // case "HANDLE_LOGIN":
+    //   return ((user) => {
+    //     setCurrentUser(user);
+    //     setLoggedIn(true)
+    //   })
+    default:
+      return state;
+  }
 }
 
 export default usersReducer;

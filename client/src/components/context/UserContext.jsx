@@ -77,7 +77,6 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={{ users, loggedIn, currentUser, setCurrentUser, handleLoginUser, handleOnLogout }}>
-    {/* <UserContext.Provider value={{ users, loggedIn, currentUser, handleAddUser, handleLoginUser, handleOnLogout }}> */}
       {children}
     </UserContext.Provider>
   )

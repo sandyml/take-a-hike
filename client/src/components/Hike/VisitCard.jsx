@@ -1,23 +1,25 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteVisit } from '../actions/visits';
-import { UserContext } from '../context/UserContext';
+import { loadUsers } from '../actions/users';
 
 const VisitCard = ({ visit }) => {
-  const { currentUser } = useContext(UserContext);
+
+  const { currentUser } = useSelector((state) => state.visitsReducer )
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleDelete = (id) => {
-    dispatch(deleteVisit(id))
+  const handleDelete = () => {
+    dispatch(loadUsers());
   }
 
-  // TODO: create dispatch for visits 
-  // const handleVisit= (id) => {
-  //   dispatch(visit(id))
-  // }
+  console.log(currentUser, "currentUser in card")
+  // TODO: create dispatch for users 
+  const handleUser= (id) => {
+    dispatch(visit(id))
+  }
 
   return (
     <div>

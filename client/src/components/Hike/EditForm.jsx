@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
-import { VisitContext } from '../context/VisitContext';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,11 +13,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { headers } from '../../Global';
-// import { useSelector } from 'react-redux';
-
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useSelector } from 'react-redux';
+// users/:user_id/visits {user_id} useParams
 
 function Copyright(props) {
   return (
@@ -32,8 +31,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
-// TODO: When hovering the blue should be different color 
 
 const theme = createTheme({
   status: {
@@ -53,18 +50,17 @@ const theme = createTheme({
 
 export const EditForm = () => {
   const { loggedIn, currentUser } = useContext(UserContext);
-  const { editVisitDate, visits } = useContext(VisitContext);
-  // const [date, setDate] = useState(visit.visited_date);
+
+  const { editVisitDate, visits, user_id, trailhead_id, visited_date } = useSelector((state) => state.visitsReducer);
+
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { user_id, trailhead_id, visited_date } = useContext(VisitContext);
 
-  //     const visit = visits.find(visit => visit.id === parseInt(id, 10))
-  //     (!isLoading && currentUser.id !== visit.trailhead.id) ???
+  // us8 [loading, loggedIn, navigate])
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
