@@ -14,6 +14,8 @@
 
 
 // dispatch on load 
+import { headers } from '../../Global';
+
 export const loadVisits = () => {
    return dispatch => {
       // async calls 
@@ -47,22 +49,52 @@ export const deleteVisit = (id) => {
    }
 }
 
-export const EditVisit = (id, date, navigate) => {
+export const editVisit = (id, headers, visited_date, navigate) => {
    // setIsLoading(true);
-    fetch(`/visits/${id}`, {
-      method: 'PATCH',
-      headers,
-      body: JSON.stringify({
-        date,
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-         const action = 
-         dispatch(action)
-        setIsLoading(false);
-        editVisitDate(data)
-        console.log(data, "visit has been updated(edited)! in action!")
-      });
-    navigate('/visits')
+   return dispatch => {
+      fetch(`/visits/${id}`, {
+         method: 'PATCH',
+         headers,
+         body: JSON.stringify({
+            visited_date
+         })
+            .then((resp) => resp.json())
+            .then((data) => {
+               console.log(data)
+               const action = {
+                  type: "EDIT_VISIT",
+                  payload: data
+               }
+               dispatch(action)
+               navigate('/visits')
+            })
+      })
+   }
+}
+
+export const addVisit = (headers, visited_date, trailhead_id, navigate, setErrors) => {
+   return dispatch => {
+      fetch('visits', {
+         method: 'POST',
+         headers,
+         body: JSON.stringify({
+            visited_date,
+            trailhead_id,
+         })
+      })
+         .then((resp) => resp.json())
+         .then((data) => {
+            console.log(data, "visits addvisit")
+            if (data.errors) {
+               setErrors(data.errors)
+            } else {
+               const action = {
+                  type: "ADD_VISIT",
+                  payload: data
+               }
+               dispatch(action)
+               navigate('/visits')
+            }
+         })
+   }
 }

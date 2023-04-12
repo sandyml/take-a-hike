@@ -11,11 +11,6 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_USERS":
       return action.payload
-    // case "HANDLE_LOGIN":
-    //   return ((user) => {
-    //     setCurrentUser(user);
-    //     setLoggedIn(true)
-    //   })
     default:
       return state;
   }

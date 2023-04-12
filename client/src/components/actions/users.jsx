@@ -1,4 +1,9 @@
-export const loadUsers = () => {
+// const deleteVisitDate = (deleteVisitDate) => {
+//   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
+//   setVisits(updatedVisits)
+// };
+
+export const loadUsers = (handleLoginUser, setIsLoading) => {
  return dispatch => {
   fetch('/me')
    .then((resp) => resp.json())

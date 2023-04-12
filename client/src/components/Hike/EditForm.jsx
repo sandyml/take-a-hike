@@ -16,7 +16,8 @@ import { headers } from '../../Global';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { editVisit } from '../actions/visits';
 // users/:user_id/visits {user_id} useParams
 
 function Copyright(props) {
@@ -51,56 +52,20 @@ const theme = createTheme({
 export const EditForm = () => {
   const { loggedIn, currentUser } = useContext(UserContext);
 
-  const { editVisitDate, visits, user_id, trailhead_id, visited_date } = useSelector((state) => state.visitsReducer);
-
+  const { visited_date } = useSelector((state) => state.visitsReducer);
+  const visits = useSelector((store) => store.visitsReducer);
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
-  // us8 [loading, loggedIn, navigate])
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   fetch(`/visits/${id}`, {
-  //     method: 'PATCH',
-  //     headers,
-  //     body: JSON.stringify({
-  //       date,
-  //     }),
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setIsLoading(false);
-  //       editVisitDate(data)
-  //       console.log(data, "visit has been updated(edited)!")
-  //     });
-  //   navigate('/visits')
-  // }
-
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    fetch(`visits/${id}/edit`, {
-      method: 'PATCH',
-      headers,
-      body: JSON.stringify({
-        // user_id,
-        // visited_date,
-        // visited_date: date,
-        // trailhead_id,
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setIsLoading(false);
-        editVisitDate(data)
-        console.log(data, "date has been updated(edited)!")
-      });
-    navigate(`/visits`)
+    dispatch(editVisit(headers, visited_date, navigate))
   }
 
   return (
@@ -127,19 +92,19 @@ export const EditForm = () => {
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                <TextField
-                  color="neutral"
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="name"
-                  placeholder="Will be set to default Value of hike name"
-                  // defaultValue={visits.name}
-                  autoFocus
-                />
-              </Grid>
+                  <TextField
+                    color="neutral"
+                    autoComplete="given-name"
+                    name="name"
+                    required
+                    fullWidth
+                    id="name"
+                    label="name"
+                    placeholder="Will be set to default Value of hike name"
+                    // defaultValue={visits.name}
+                    autoFocus
+                  />
+                </Grid>
                 <Grid item xs={12}>
                   {/* <TextField */}
                   {/* // required

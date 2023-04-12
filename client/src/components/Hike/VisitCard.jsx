@@ -1,42 +1,49 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteVisit } from '../actions/visits';
+import { deleteVisit, loadVisits } from '../actions/visits';
 import { loadUsers } from '../actions/users';
 
 const VisitCard = ({ visit }) => {
 
-  const { currentUser } = useSelector((state) => state.visitsReducer )
+  const { currentUser } = useSelector((state) => state.visitsReducer)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(loadUsers());
+    dispatch(loadVisits());
+    // dispatch(loadUsers());
   }
 
-  console.log(currentUser, "currentUser in card")
-  // TODO: create dispatch for users 
-  const handleUser= (id) => {
-    dispatch(visit(id))
-  }
+  // const deleteVisitDate = (deleteVisitDate) => {
+  //   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
+  //   setVisits(updatedVisits)
+  // };
+
+  // console.log(currentUser, "currentUser in card")
+  // // TODO: create dispatch for users 
+  // const handleUser = (id) => {
+  //   dispatch(visit(id))
+  // }
 
   return (
     <div>
       <h1>{visit.trailhead.name}</h1>
-        <p>{visit.trailhead.location}</p>
+      <p>{visit.trailhead.location}</p>
       <h2>Visited Date: {visit.user.username}</h2>
       <h3>
         <Link to={`/visits/${visit.id}`} >
-         {visit.name}
+          {visit.name}
         </Link>
-        {/* <p>{visit.image_url}</p> */}
         <p>Visited Date:{visit.visited_date}</p>
         <p>{visit.visited}</p>
-        {currentUser && currentUser.id === visit.user.id ? <>
-          <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
-          <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button>
-        </> : null}
+        {
+          currentUser && currentUser.id === visit.user.id ? <>
+            <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
+            <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button>
+          </> : null
+        }
         <hr />
       </h3>
     </div>

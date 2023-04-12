@@ -14,32 +14,14 @@ const VisitProvider = ({ children }) => {
       })
   }, [])
 
-  // add visit
-  const handleAddVisit = (visit) => {
-    setVisits([
-      ...visits,
-      visit
-    ])
-  };
+
 
   // const handleAddVisit = (visit) => {
   //   setVisits((visit) => [...visits, visit])
   // }
 
-  // edit visit date
-  const editVisitDate = (newVisitDate) => {
-    const updatedVisits = visits.map((visit) => {
-      if (newVisitDate.id === visit.id) {
-        return newVisitDate;
-      } else {
-        return visit;
-      }
-    })
-  }
-
-
   return (
-    <VisitContext.Provider value={{ visits, handleAddVisit, editVisitDate }}>
+    <VisitContext.Provider value={{ visits }}>
       {children}
     </VisitContext.Provider>
   )
