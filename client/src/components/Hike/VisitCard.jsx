@@ -5,8 +5,6 @@ import { deleteVisit, loadVisits } from '../actions/visits';
 import { loadUsers } from '../actions/users';
 
 const VisitCard = ({ visit }) => {
-  // const users = useSelector((store) => store.usersReducer.user)
-  // const currentUser = useSelector((state) => state.visitsReducer)
   const currentUser = useSelector((store) => store.usersReducer.currentUser)
 
   const navigate = useNavigate();
@@ -15,12 +13,6 @@ const VisitCard = ({ visit }) => {
   const handleDelete = () => {
     dispatch(loadVisits());
   }
-
-  // console.log(currentUser, "currentUser in card")
-  // // TODO: create dispatch for users 
-  // const handleUser = (id) => {
-  //   dispatch(visit(id))
-  // }
 
   return (
     <div>

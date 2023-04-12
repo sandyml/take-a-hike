@@ -27,11 +27,9 @@ import { loadCurrentUser, loadUsers } from './components/actions/users';
 export function App({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const visits = useSelector((state) => state.visitsReducer);
+  const users = useSelector((state) => state.usersReducer.currentUser);
   const dispatch = useDispatch(); 
-
-  const visits = useSelector((store) => store.visitsReducer);
-  const users = useSelector((store) => store.usersReducer.currentUser);
-  // const errors = useSelector((store) => store.errorsReducer);
 
   console.log(visits, "redux visits State")
   console.log(users, "redux users State in APP")

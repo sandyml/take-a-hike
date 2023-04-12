@@ -46,10 +46,6 @@ export const Navbar = () => {
 
   const currentUser = useSelector((state) => state.usersReducer.currentUser)
 
-  // TODO: usersReducer to extract currentUser 
-  // console.log(currentUser.username, "currentUser")
-  // useEffect to prevent from logging out after refreshing 
-
   const handleLogout = () => {
     fetch('/logout', {
       method: 'DELETE'
@@ -63,6 +59,7 @@ export const Navbar = () => {
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
   };
+
   const handleOpenUserMenu = (e) => {
     setAnchorElUser(e.currentTarget);
   };
@@ -79,7 +76,6 @@ export const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl" className={classes.sage}>
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -162,9 +158,12 @@ export const Navbar = () => {
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button> */}
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
-          {/* TODO: username welcome! */}
-          <span>Welcome, *current user username* ! &nbsp;</span>
-          {/* <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span> */}
+          {currentUser && currentUser.id ? (
+            <>
+              <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span>
+            </>)
+            : (null)}
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

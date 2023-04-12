@@ -16,9 +16,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { headers } from '../../Global';
 import { useNavigate } from 'react-router-dom';
-import { setErrors, errors, clearErrors } from '../actions/errors';
-
-// import Background from '../../assets/mountains.png'
+import { setErrors, clearErrors } from '../actions/errors';
+import { useEffect } from 'react';
 
 function Copyright(props) {
   return (
@@ -59,29 +58,32 @@ const theme = createTheme({
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const [errors, setErrors] = useState([]);
+  const [email, setEmail] = useState("")
 
-  const [currentUser, setCurrentUser] = useState(null);
-  
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   // [] TODO: dispatch errrors
   // const errors = useSelector((state) => state.errorsReducer)
-  const user = useSelector((store) => store.usersReducer.loggedIn);
-  const errors = useSelector((state) => state.errorsReducer)
+  const { loggedIn, currentUser, setCurrentUser } = useSelector((state) => state.usersReducer);
+  const errors = useSelector((state) => state.errorsReducer);
 
-  console.log("users: inside login component!", user);
-  console.log("errors: inside login component!", errors);
+  useEffect(() => {
+    if (!loading && loggedIn) {
+      navigate('/')
+    }
+    return () => {
+      dispatch(clearErrors())
+    }
+  }, [loading, loggedIn, navigate, dispatch]);
 
   const handleSubmit = (e) => {
-    setErrors([]);
+    // dispatch(setErrors())
     e.preventDefault();
-    setIsLoading(true); 
+    setLoading(true);
     fetch('/login', {
       method: 'POST',
       headers,
@@ -93,19 +95,18 @@ export const Login = () => {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
-          console.log(user)
-          setCurrentUser(user);
+          console.log(user, "Login User")
+          // setCurrentUser(user);
           dispatch(clearErrors())
-          // setErrors([]); same thing as above 
           navigate('/')
         });
       } else {
         resp.json()
-        // [x] TODO: dispatch setErrors
-        // .then((err) => setErrors(err.errors));
-        .then((err) => {
-          dispatch(setErrors(err.errors))
-        })
+          // [x] TODO: dispatch setErrors
+          // .then((err) => setErrors(err.errors));
+          .then((err) => {
+            dispatch(setErrors(err.errors))
+          })
       }
     });
     setUsername("");
@@ -119,7 +120,6 @@ export const Login = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <img src={Background} className="bg-image" alt="background" /> */}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -194,15 +194,17 @@ export const Login = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
-               {isLoading ? "Loading..." : "Login"}
+              {loading ? "Loading..." : "Login"}
             </Button>
+
             {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                  {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                  ))}
-                </ul>
-              )}
+              <ul style={{ color: "red" }}>
+                {errors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            )}
+            
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signup" variant="body2">

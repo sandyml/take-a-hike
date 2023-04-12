@@ -1,6 +1,7 @@
 // const [users, setUsers] = useState([]) => users: []
 // const [currentUser, setCurrentUser] = useState(null) => currentUser: null 
 // const [loggedIn, setLoggedIn] = useState(false) => loggedIn: false
+// [] loggin, [] logout, [] user, [] currentUser 
 
 const initialState = {
   users: [],

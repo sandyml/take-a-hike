@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,54 +21,21 @@ import { setErrors, errors } from '../actions/errors';
 
 // users/:user_id/visits {user_id} useParams
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.neutral" align="center" {...props}>
-      {'Copyright © Sandra Yun '}
-      <Link color="inherit" href="https://github.com/sandyml/take-a-hike">
-        Github
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const theme = createTheme({
-  status: {
-    danger: '#e53e3e',
-  },
-  palette: {
-    primary: {
-      main: '#0971f1',
-      darker: '#053e85',
-    },
-    neutral: {
-      main: '#6E7F62',
-      contrastText: '#fff',
-    },
-  },
-});
-
 export const EditForm = () => {
-  // const currentUser = useSelector((store) => store.usersReducer.currentUser)
-  const currentUser = useSelector((store) => store.usersReducer.currentUser)
-  const loggedIn = useSelector((store) => store.usersReducer.loggedIn)
-  const visited_date = useSelector((state) => state.visitsReducer);
+  const { currentUser, loggedIn } = useSelector((state) => state.usersReducer)
+  const { visited_date, visits } = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer.errors);
-  const visits = useSelector((store) => store.visitsReducer);
 
-  const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [date, setDate] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editVisit(headers, visited_date, navigate))
+    dispatch(editVisit(headers, visited_date, visits, navigate))
   }
 
   return (
@@ -87,7 +53,7 @@ export const EditForm = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'neutral.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: 'beige.main' }}>
               <EditCalendarIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -147,13 +113,13 @@ export const EditForm = () => {
                 value="Update Review"
               >{isLoading ? "Loading..." : "Submit"}
               </Button>
-              {errors.length > 0 && (
+              {/* {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
                   {errors.map((error) => (
                     <li key={error}>{error}</li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </Box>
           </Box>
           <Copyright sx={{ mt: 5 }} />
@@ -162,3 +128,36 @@ export const EditForm = () => {
     </LocalizationProvider>
   );
 };
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.neutral" align="center" {...props}>
+      {'Copyright © Sandra Yun '}
+      <Link color="inherit" href="https://github.com/sandyml/take-a-hike">
+        Github
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const theme = createTheme({
+  status: {
+      danger: '#e53e3e',
+    },
+    palette: {
+      primary: {
+        main: '#0971f1',
+        darker: '#053e85',
+      },
+      neutral: {
+        main: '#6E7F62',
+        contrastText: '#fff',
+      },
+      beige: {
+        main: '#FODCD9',
+        contrastText: '#fff',
+      },
+    },
+  });

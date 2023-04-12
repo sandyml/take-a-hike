@@ -18,7 +18,8 @@ import { makeStyles } from '@material-ui/core';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react';
 // import { setErrors, clearErrors, errors } from '../actions/errors'; // check errors in reducer and action 
 
 const useStyles = makeStyles(() => ({
@@ -82,16 +83,17 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { handleAddUser, handleLoginUser , setCurrentUser } = useContext(UserContext);
+  const { loggedIn } = useSelector((state) => state.usersReducer)
 
   const handleSubmit = (e) => {
-    setErrors([]);
+    // setErrors([]);
     e.preventDefault();
     setIsLoading(true);
     fetch('/signup', {
@@ -108,7 +110,6 @@ export const Signup = () => {
         if(data.errors) {
           console.log(errors, "Signup: errors")
           dispatch((setErrors(data.errors)))
-          // setErrors(data.errors); // remove
         } else {
           // handleAddUser(data)
           handleLoginUser(data)
@@ -118,14 +119,14 @@ export const Signup = () => {
       })
   }
 
-  // useEffect(() => {
-  //   if(!loading && loggedIn) {
-  //     navigate("/")
-  //   }
-  //   return () => {
-  //     setErrors([])
-  //   }
-  // }, [loading, loggedIn, navigate, setErrors])
+  useEffect(() => {
+    if(!loading && loggedIn) {
+      navigate("/")
+    }
+    return () => {
+      setErrors([])
+    }
+  }, [loading, loggedIn, navigate, setErrors]);
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -143,12 +144,15 @@ export const Signup = () => {
             alignItems: 'center',
           }}
         >
+          
           <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+
           <Typography component="h1" variant="h5">
             Please Create An Account
           </Typography>
+
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -165,6 +169,7 @@ export const Signup = () => {
                   autoFocus
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -178,6 +183,7 @@ export const Signup = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -192,6 +198,7 @@ export const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -214,6 +221,7 @@ export const Signup = () => {
                 />
               </Grid>
             </Grid>
+
             By creating an account you agree to our
             <Link color="inherit" href="/termsandconditions">&nbsp;Terms & Privacy</Link>
             <Button
@@ -223,7 +231,7 @@ export const Signup = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
-               {isLoading ? "Loading..." : "Signup"}
+               {loading ? "Loading..." : "Signup"}
             </Button>
             {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
