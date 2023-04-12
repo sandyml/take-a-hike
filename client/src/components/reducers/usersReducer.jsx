@@ -7,10 +7,11 @@ const initialState = {
   currentUser: null,
   loggedIn: false
 }
+
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_USERS":
-      return action.payload
+      return { ...state, user: action.payload }
     default:
       return state;
   }

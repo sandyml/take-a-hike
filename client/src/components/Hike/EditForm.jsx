@@ -18,6 +18,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { editVisit } from '../actions/visits';
+import { setErrors, errors } from '../actions/errors';
+
 // users/:user_id/visits {user_id} useParams
 
 function Copyright(props) {
@@ -53,10 +55,12 @@ export const EditForm = () => {
   const { loggedIn, currentUser } = useContext(UserContext);
 
   const { visited_date } = useSelector((state) => state.visitsReducer);
+  const { errors } = useSelector((state) => state.errorsReducer);
+
   const visits = useSelector((store) => store.visitsReducer);
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

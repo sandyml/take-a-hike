@@ -14,7 +14,9 @@
 
 
 // dispatch on load 
-import { headers } from '../../Global';
+// import { headers } from '../../Global';
+// import { useNavigate } from 'react-router-dom';
+import { setErrors } from './errors'
 
 export const loadVisits = () => {
    return dispatch => {
@@ -22,7 +24,7 @@ export const loadVisits = () => {
       fetch('/visits')
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "Inside visits action")
+            console.log(data, "action: loadVisits")
             const action = {
                type: "LOAD_VISITS",
                payload: data
@@ -32,6 +34,10 @@ export const loadVisits = () => {
    }
 }
 
+// const deleteVisitDate = (deleteVisitDate) => {
+//   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
+//   setVisits(updatedVisits)
+// };
 export const deleteVisit = (id) => {
    return dispatch => {
       fetch(`/visits/${id}`, {
@@ -39,7 +45,7 @@ export const deleteVisit = (id) => {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "Deleted in action!")
+            console.log(data, "action: deleteVisit")
             const action = {
                type: "DELETE_VISIT",
                payload: id
@@ -49,18 +55,19 @@ export const deleteVisit = (id) => {
    }
 }
 
-export const editVisit = (id, headers, visited_date, navigate) => {
-   // setIsLoading(true);
+export const editVisit = (setIsLoading, id, headers, visited_date, trailhead_id, navigate) => {
+   setIsLoading(true);
    return dispatch => {
       fetch(`/visits/${id}`, {
          method: 'PATCH',
          headers,
          body: JSON.stringify({
-            visited_date
+            visited_date,
+            trailhead_id
          })
             .then((resp) => resp.json())
             .then((data) => {
-               console.log(data)
+               console.log(data, "action: editVisit")
                const action = {
                   type: "EDIT_VISIT",
                   payload: data
@@ -72,7 +79,7 @@ export const editVisit = (id, headers, visited_date, navigate) => {
    }
 }
 
-export const addVisit = (headers, visited_date, trailhead_id, navigate, setErrors) => {
+export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
    return dispatch => {
       fetch('visits', {
          method: 'POST',
@@ -84,13 +91,18 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate, setError
       })
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "visits addvisit")
+            console.log(data, "action: addVisit")
             if (data.errors) {
                setErrors(data.errors)
+               // const action = {
+               //    type: "SET_ERRORS",
+               //    payload: data.errors
+               // } // inside error.jsx/errors folder 
+               dispatch(setErrors(data.errors))
             } else {
                const action = {
                   type: "ADD_VISIT",
-                  payload: data
+                  payload: data // => action.payload 
                }
                dispatch(action)
                navigate('/visits')

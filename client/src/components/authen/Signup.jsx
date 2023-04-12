@@ -18,8 +18,8 @@ import { makeStyles } from '@material-ui/core';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
-
-// [] TODO: Signup not signing up but errors works! 
+import { useDispatch } from 'react-redux'
+// import { setErrors, clearErrors, errors } from '../actions/errors'; // check errors in reducer and action 
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -82,10 +82,11 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { handleAddUser, handleLoginUser , setCurrentUser } = useContext(UserContext);
 
@@ -105,7 +106,9 @@ export const Signup = () => {
       .then((resp) => resp.json())
       .then((data) => {
         if(data.errors) {
-          setErrors(data.errors);
+          console.log(errors, "Signup: errors")
+          dispatch((setErrors(data.errors)))
+          // setErrors(data.errors); // remove
         } else {
           // handleAddUser(data)
           handleLoginUser(data)
@@ -220,7 +223,7 @@ export const Signup = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+               {isLoading ? "Loading..." : "Signup"}
             </Button>
             {errors.length > 0 && (
                 <ul style={{ color: "red" }}>

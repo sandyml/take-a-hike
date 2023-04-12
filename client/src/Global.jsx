@@ -10,3 +10,5 @@ export const header = {
   "Content-Type": "application/json"
 };
 
+// [] TODO: CREATE A GLOBAL FUNCTION FOR UPDATEDVISITS, ADDVISIT / GENERIC 
+

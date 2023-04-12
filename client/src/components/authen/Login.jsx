@@ -13,9 +13,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { headers } from '../../Global';
 import { useNavigate } from 'react-router-dom';
+import { setErrors, errors, clearErrors } from '../actions/errors';
 
 // import Background from '../../assets/mountains.png'
 
@@ -62,13 +63,20 @@ export const Login = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
+
   const [currentUser, setCurrentUser] = useState(null);
-
+  
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  
+  // [] TODO: dispatch errrors
+  // const errors = useSelector((state) => state.errorsReducer)
   const user = useSelector((store) => store.usersReducer.loggedIn);
-  console.log("inside login component!", user);
+  const errors = useSelector((state) => state.errorsReducer)
+
+  console.log("users: inside login component!", user);
+  console.log("errors: inside login component!", errors);
 
   const handleSubmit = (e) => {
     setErrors([]);
@@ -87,12 +95,17 @@ export const Login = () => {
         resp.json().then((user) => {
           console.log(user)
           setCurrentUser(user);
-          setErrors([]);
+          dispatch(clearErrors())
+          // setErrors([]); same thing as above 
           navigate('/')
         });
       } else {
         resp.json()
-        .then((err) => setErrors(err.errors));
+        // [x] TODO: dispatch setErrors
+        // .then((err) => setErrors(err.errors));
+        .then((err) => {
+          dispatch(setErrors(err.errors))
+        })
       }
     });
     setUsername("");
@@ -181,7 +194,7 @@ export const Login = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
-              Login
+               {isLoading ? "Loading..." : "Login"}
             </Button>
             {errors.length > 0 && (
                 <ul style={{ color: "red" }}>

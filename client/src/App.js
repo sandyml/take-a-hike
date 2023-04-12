@@ -10,9 +10,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NotFound from './components/navigation/NotFound';
 import { VisitList } from './components/hike/VisitList';
-import { loadVisits } from './components/actions/visits';
 import { UserProvider } from './components/context/UserContext';
 import { VisitProvider } from './components/context/VisitContext';
+import { loadVisits } from './components/actions/visits';
 import { TrailheadProvider } from './components/context/TrailheadContext';
 import Logout from './components/authen/Logout';
 import { EditForm } from './components/hike/EditForm';
@@ -36,15 +36,15 @@ export function App({ children }) {
   console.log(visits, "redux visits State")
   console.log(users, "redux users State in APP")
   // console.log(errors, "redux errors State")
-  // setIsLoading(true); 
 
   // will grab all of the data(things), run once
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
   useEffect(() => {
     dispatch(loadVisits()) // make sure to call () 
-    // dispatch(loadUsers())
+    dispatch(loadUsers(setIsLoading))
   }, [dispatch])
 
+  // TODO: REMOVE ALL PROVIDERS AFTER DONE WITH REDUX SET UP!!
   return (
     <>
     <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
   //     })
   // }, [setIsLoading]);
 
+  // DONE/MOVED
   // useEffect(() => {
   //   if (loggedIn) {
   //     fetch('/users')

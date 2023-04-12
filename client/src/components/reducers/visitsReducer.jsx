@@ -22,8 +22,8 @@ const visitsReducer = (state = [], action) => {
         }
       })
       return updatedVisits;
-      case "ADD_VISIT":
-        return [...state, action.payload]
+    case "ADD_VISIT":
+      return [...state, action.payload]
     default:
       return state;
   }

@@ -31,11 +31,11 @@ const VisitCard = ({ visit }) => {
     <div>
       <h1>{visit.trailhead.name}</h1>
       <p>{visit.trailhead.location}</p>
-      <h2>Visited Date: {visit.user.username}</h2>
+      <h2>Username: {visit.user.username}</h2>
       <h3>
-        <Link to={`/visits/${visit.id}`} >
+        {/* <Link to={`/visits/${visit.id}`} >
           {visit.name}
-        </Link>
+        </Link> */}
         <p>Visited Date:{visit.visited_date}</p>
         <p>{visit.visited}</p>
         {
