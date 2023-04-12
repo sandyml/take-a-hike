@@ -1,25 +1,20 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteVisit, loadVisits } from '../actions/visits';
 import { loadUsers } from '../actions/users';
 
 const VisitCard = ({ visit }) => {
-
-  const { currentUser } = useSelector((state) => state.visitsReducer)
+  // const users = useSelector((store) => store.usersReducer.user)
+  // const currentUser = useSelector((state) => state.visitsReducer)
+  const currentUser = useSelector((store) => store.usersReducer.currentUser)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(loadVisits());
-    // dispatch(loadUsers());
   }
-
-  // const deleteVisitDate = (deleteVisitDate) => {
-  //   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
-  //   setVisits(updatedVisits)
-  // };
 
   // console.log(currentUser, "currentUser in card")
   // // TODO: create dispatch for users 

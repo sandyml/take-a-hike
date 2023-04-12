@@ -12,6 +12,12 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_USERS":
       return { ...state, user: action.payload }
+    case "LOAD_CURRENT_USER":
+      return { 
+        ...state, 
+      currentUser: action.payload, 
+      loggedIn: true
+    }
     default:
       return state;
   }

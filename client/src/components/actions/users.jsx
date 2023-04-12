@@ -3,7 +3,7 @@ export const loadUsers = (setIsLoading) => {
     fetch('/users')
       .then((resp) => resp.json())
       .then((data) => {
-         console.log(data, "action: user /me")
+         console.log(data, "action: user /users")
          const action = {
            type: "LOAD_USERS",
            payload: data
@@ -18,23 +18,24 @@ export const loadUsers = (setIsLoading) => {
 // loadLogoutUser => return nothing not payload 
 // DRY 
 
-
-// return a functiion 
-// export const loadCurrentUsers = (handleLoginUser, setIsLoading) => {
-//  return dispatch => {
-//   fetch('/me')
-//    .then((resp) => resp.json())
-//    .then((data) => {
-//     console.log(data, "action: user /me")
-//     if (!data.errors) {
-//      handleLoginUser(data)
-//     }
-//     setIsLoading(false)
-//     const action = {
-//      type: "LOAD_USERS",
-//      payload: data
-//     }
-//     dispatch(action)
-//    })
-//  }
-// }
+// thunk takesover using dispatch
+export const loadCurrentUser = (setIsLoading) => {
+  return dispatch => {
+      fetch('/me')
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (!data.errors) {
+          console.log(data, "action: '/me")
+          // dispatch store currentuser and logs in 
+          // handleLoginUser(data)
+          const action = {
+            type: "LOAD_CURRENT_USER",
+            payload: data
+          }
+          dispatch(action);
+        } else {
+          setIsLoading(false);
+        }
+      })
+  }
+}

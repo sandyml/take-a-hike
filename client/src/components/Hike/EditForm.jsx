@@ -52,15 +52,15 @@ const theme = createTheme({
 });
 
 export const EditForm = () => {
-  const { loggedIn, currentUser } = useContext(UserContext);
-
-  const { visited_date } = useSelector((state) => state.visitsReducer);
-  const { errors } = useSelector((state) => state.errorsReducer);
-
+  // const currentUser = useSelector((store) => store.usersReducer.currentUser)
+  const currentUser = useSelector((store) => store.usersReducer.currentUser)
+  const loggedIn = useSelector((store) => store.usersReducer.loggedIn)
+  const visited_date = useSelector((state) => state.visitsReducer);
+  const errors = useSelector((state) => state.errorsReducer.errors);
   const visits = useSelector((store) => store.visitsReducer);
+
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  // const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

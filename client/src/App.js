@@ -18,7 +18,7 @@ import Logout from './components/authen/Logout';
 import { EditForm } from './components/hike/EditForm';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { loadUsers } from './components/actions/users';
+import { loadCurrentUser, loadUsers } from './components/actions/users';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -42,7 +42,8 @@ export function App({ children }) {
   useEffect(() => {
     dispatch(loadVisits()) // make sure to call () 
     dispatch(loadUsers(setIsLoading))
-  }, [dispatch])
+    dispatch(loadCurrentUser(setIsLoading))
+  }, [dispatch]);
 
   // TODO: REMOVE ALL PROVIDERS AFTER DONE WITH REDUX SET UP!!
   return (

@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -41,9 +42,13 @@ export const Navbar = () => {
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const { handleOnLogout, currentUser } = useContext(UserContext);
+  const { handleOnLogout } = useContext(UserContext);
 
+  const currentUser = useSelector((state) => state.usersReducer.currentUser)
+
+  // TODO: usersReducer to extract currentUser 
   // console.log(currentUser.username, "currentUser")
+  // useEffect to prevent from logging out after refreshing 
 
   const handleLogout = () => {
     fetch('/logout', {
@@ -158,7 +163,7 @@ export const Navbar = () => {
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {/* TODO: username welcome! */}
-          {/* <span>Welcome, *current user username* ! &nbsp;</span> */}
+          <span>Welcome, *current user username* ! &nbsp;</span>
           {/* <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span> */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
