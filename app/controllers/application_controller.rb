@@ -19,10 +19,20 @@ class ApplicationController < ActionController::API
     render json: { errors: ["Not Authorized": "You must be logged in"] }, status: :unauthorized unless logged_in?
   end
 
-  ## already logged in and authorized
-  # def now_authorized
-  #   render json: { errors: ["You are already logged in"] }, status: :unauthorized if logged_in?
+  # check again w POSTMAN 
+  # def authorized
+  #   if !logged_in? 
+  #     render json: { errors: ["Not Authorized": "You must be logged in"] }, status: :unauthorized
+  #   else
+  # if logged_in? 
+  #     render json: { errors: ["You are already logged in"] }, status: :unauthorized if logged_in?
+  #   end 
   # end
+
+  ## already logged in and authorized
+  def now_authorized
+    render json: { errors: ["You are already logged in"] }, status: :unauthorized if logged_in?
+  end
 
   ## TODO: grab user_id from resources in models 
   def authorize_user_resource(user_id)

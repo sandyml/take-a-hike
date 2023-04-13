@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { headers } from '../../Global';
+// import { headers } from '../../Global';
 
-import { setErrors, errors } from '../actions/errors';
+// import { setErrors, errors } from '../actions/errors';
 import { editVisit } from '../actions/visits';
 // mui 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -27,11 +27,11 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 export const EditForm = () => {
   const { visited_date, trailhead_id, trailhead } = useSelector((state) => state.visitsReducer);
-  const { currentUser, loggedIn } = useSelector((state) => state.usersReducer)
-  const errors = useSelector((state) => state.errorsReducer.errors);
+  // const { currentUser, loggedIn } = useSelector((state) => state.usersReducer)
+  // const errors = useSelector((state) => state.errorsReducer.errors);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -105,7 +105,7 @@ export const EditForm = () => {
                     // placeholder="MM-DD-YYYY"
                     autoComplete="new-date"
                     defaultValue={visited_date}
-                    onChange={(e) => setDate(e.target.value)}
+                    // onChange={(e) => setDate(e.target.value)}
                   />
                 </Grid>
               </Grid>

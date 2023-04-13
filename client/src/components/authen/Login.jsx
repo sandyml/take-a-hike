@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { headers } from '../../Global';
 
-import { setErrors, clearErrors } from '../actions/errors';
+// import { setErrors, clearErrors } from '../actions/errors';
 
 // mui 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -19,6 +19,7 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { loginUser } from '../actions/users';
 
 
 function Copyright(props) {
@@ -69,50 +70,23 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   // [] TODO: dispatch errrors
-  const { loggedIn, currentUser, setCurrentUser } = useSelector((state) => state.usersReducer);
+  // const { loggedIn, currentUser, setCurrentUser } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 
-  useEffect(() => {
-    if (!loading && loggedIn) {
-      navigate('/')
-    }
-    return () => {
-      dispatch(clearErrors())
-    }
-  }, [loading, loggedIn, navigate, dispatch]);
+  // TODO: Remove useEffect to test out if current_user is already logged in with error messages "You are already logged in!"
+  // useEffect(() => {
+  //   if (!loading && loggedIn) {
+  //     navigate('/')
+  //   }
+  //   return () => {
+  //     dispatch(clearErrors())
+  //   }
+  // }, [loading, loggedIn, navigate, dispatch]);
 
   const handleSubmit = (e) => {
     // dispatch(setErrors())
     e.preventDefault();
-    setLoading(true);
-    fetch('/login', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-      }),
-    }).then((resp) => {
-      if (resp.ok) {
-        resp.json().then((user) => {
-          console.log(user, "Login User")
-          // setCurrentUser(user);
-          dispatch(clearErrors())
-          navigate('/')
-        });
-      } else {
-        resp.json()
-          // [x] TODO: dispatch setErrors
-          // .then((err) => setErrors(err.errors));
-          .then((err) => {
-            dispatch(setErrors(err.errors))
-          })
-      }
-    });
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    dispatch(loginUser(setLoading, headers, username, email, password, navigate))
   }
 
   const togglePassword = () => {

@@ -38,22 +38,40 @@ export const loadVisits = () => {
 //   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
 //   setVisits(updatedVisits)
 // };
+// export const deleteVisit = (id) => {
+//    return dispatch => {
+//       fetch(`/visits/${id}`, {
+//          method: 'DELETE',
+//       })
+//          .then((resp) => resp.json())
+//          .then((data) => {
+//             console.log(data, "action: deleteVisit")
+//             const action = {
+//                type: "DELETE_VISIT",
+//                payload: id
+//             }
+//             dispatch(action)
+//          })
+//    }
+// }
+
 export const deleteVisit = (id) => {
    return dispatch => {
-      fetch(`/visits/${id}`, {
-         method: 'DELETE',
-      })
-         .then((resp) => resp.json())
-         .then((data) => {
-            console.log(data, "action: deleteVisit")
-            const action = {
-               type: "DELETE_VISIT",
-               payload: id
-            }
-            dispatch(action)
-         })
+     fetch(`/visits/${id}`, {
+       method: "DELETE",
+       headers: {
+         "Accept": "application/json"
+       }
+     })
+       .then(resp => resp.json())
+       .then(data => {
+         dispatch({
+           type: "DELETE_Visit",
+           payload: id
+         });
+       })
    }
-}
+ }
 
 // export const editVisit = (setIsLoading, id, headers, visited_date, visits, trailhead_id, navigate) => {
 //    setIsLoading(true);

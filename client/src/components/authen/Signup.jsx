@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { headers } from '../../Global';
 
 // mui 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
@@ -18,32 +19,32 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { makeStyles } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core';
 
 // TODO: Remove useContext when done w Redux 
 import { UserContext } from '../context/UserContext';
 // import { setErrors, clearErrors, errors } from '../actions/errors'; // check errors in reducer and action 
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
-  sage: {
-    backgroundColor: "#6E7F62"
-  },
-  lightSage: {
-    backgroundColor: "#919F88"
-  },
-  lighterSage: {
-    backgroundColor: "#C3CDBF"
-  },
-  grey: {
-    backgroundColor: "#E0CD9"
-  },
-}));  
+// const useStyles = makeStyles(() => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   title: {
+//     flexGrow: 1,
+//   },
+//   sage: {
+//     backgroundColor: "#6E7F62"
+//   },
+//   lightSage: {
+//     backgroundColor: "#919F88"
+//   },
+//   lighterSage: {
+//     backgroundColor: "#C3CDBF"
+//   },
+//   grey: {
+//     backgroundColor: "#E0CD9"
+//   },
+// }));  
 
 function Copyright(props) {
   return (
@@ -58,28 +59,28 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme({
-  status: {
-    danger: '#e53e3e',
-  },
-  palette: {
-    primary: {
-      main: '#0971f1',
-      darker: '#053e85',
-    },
-    neutral: {
-      main: '#6E7F62',
-      contrastText: '#fff',
-    },
-    lightersage: {
-      main: '#C3CDBF',
-      contrastText: '#fff',
-    },
-  },
-});
+// const theme = createTheme({
+//   status: {
+//     danger: '#e53e3e',
+//   },
+//   palette: {
+//     primary: {
+//       main: '#0971f1',
+//       darker: '#053e85',
+//     },
+//     neutral: {
+//       main: '#6E7F62',
+//       contrastText: '#fff',
+//     },
+//     lightersage: {
+//       main: '#C3CDBF',
+//       contrastText: '#fff',
+//     },
+//   },
+// });
 
 export const Signup = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -91,8 +92,10 @@ export const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { handleAddUser, handleLoginUser } = useContext(UserContext);
+  const { handleLoginUser } = useContext(UserContext);
+  // const { handleAddUser, handleLoginUser } = useContext(UserContext);
   const { loggedIn, setCurrentUser } = useSelector((state) => state.usersReducer)
+  // const { loggedIn, setCurrentUser } = useSelector((state) => state.usersReducer)
 
   const handleSubmit = (e) => {
     // setErrors([]);
@@ -135,7 +138,8 @@ export const Signup = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
+    {/* <ThemeProvider theme={theme}> */}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

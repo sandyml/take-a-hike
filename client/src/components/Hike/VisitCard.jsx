@@ -1,17 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteVisit, loadVisits } from '../actions/visits';
-import { loadUsers } from '../actions/users';
+import { deleteVisit } from '../actions/visits';
 
 const VisitCard = ({ visit }) => {
-  const currentUser = useSelector((store) => store.usersReducer.currentUser)
+  const { currentUser } = useSelector((state) => state.usersReducer);
+  // const currentUser = useSelector((state) => state.usersReducer.currentUser);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // TODO: Not deleting in real-time 
   const handleDelete = () => {
-    dispatch(loadVisits());
+    dispatch(deleteVisit(visit.id))
+    console.log(visit.id, "deleted!")
   }
 
   return (
@@ -28,7 +30,8 @@ const VisitCard = ({ visit }) => {
         {
           currentUser && currentUser.id === visit.user.id ? <>
             <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
-            <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button>
+            <button onClick={handleDelete} type='delete'>Remove</button>
+            {/* <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button> */}
           </> : null
         }
         <hr />

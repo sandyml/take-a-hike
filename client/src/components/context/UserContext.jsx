@@ -1,10 +1,9 @@
-import React, { createContext, useEffect } from 'react';
-import { useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,7 +19,7 @@ const UserProvider = ({ children }) => {
    }
 
   return (
-    <UserContext.Provider value={{ users, loggedIn, currentUser, setCurrentUser, handleLoginUser, handleOnLogout }}>
+    <UserContext.Provider value={{ setUsers, users, loggedIn, currentUser, setCurrentUser, handleLoginUser, handleOnLogout }}>
       {children}
     </UserContext.Provider>
   )

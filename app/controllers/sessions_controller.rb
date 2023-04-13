@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
  skip_before_action :authorize, only: [:create]
+ before_action :now_authorized, only: [:create]
  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
  # [x] TODO: RESCUE_FROM CLEANER 

@@ -12,6 +12,7 @@ const visitsReducer = (state = [], action) => {
       // will be our new state => data we give the payload from server and want to be displayed
       return action.payload  // return new non-destructive state, we'll need all the data, action.payload is out data that comes from the backend 
     case "DELETE_VISIT":
+      // visits.filter((visit) => visit.id !== deleteVisitDate.id)
       return state.filter((visit) => visit.id !== action.payload)
     case "EDIT_VISIT":
       const updatedVisits = state.map((visit) => {

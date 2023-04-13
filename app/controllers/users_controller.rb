@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
  skip_before_action :authorize, only: [:create, :index] # don't need to be logged in in order to run create
-# before_action :now_authorized, only: [:me, :create, :index]
+ before_action :now_authorized, only: [:create]
 
   def index
     render json: User.all, status: :ok
