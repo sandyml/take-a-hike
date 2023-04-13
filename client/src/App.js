@@ -22,10 +22,6 @@ import { loadVisits } from './components/actions/visits';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 
-// TODO: Remove useContext when done w Redux 
-import { TrailheadProvider } from './components/context/TrailheadContext';
-import { VisitProvider } from './components/context/VisitContext';
-
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
 // [] TODO: add two more reducers: hikes and trailheads 
@@ -52,11 +48,7 @@ export function App({ children }) {
 
   // TODO: REMOVE ALL PROVIDERS AFTER DONE WITH REDUX SET UP!!
   return (
-    <>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <VisitProvider>
-          <TrailheadProvider>
-
         <Navbar />
         {
           isLoading ? <h1>Loading...please wait..</h1> :
@@ -76,9 +68,6 @@ export function App({ children }) {
               {/* <Route path="/visits/new" element={<AddForm />} /> */}
             </Routes>
         }
-        </TrailheadProvider>
-        </VisitProvider>
       </LocalizationProvider>
-    </>
   );
 }

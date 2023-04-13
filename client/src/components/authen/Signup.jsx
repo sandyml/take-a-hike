@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { headers } from '../../Global';
@@ -19,30 +19,6 @@ import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
-import { makeStyles } from '@material-ui/core';
-
-// import { setErrors, clearErrors, errors } from '../actions/errors'; // check errors in reducer and action 
-
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
-  sage: {
-    backgroundColor: "#6E7F62"
-  },
-  lightSage: {
-    backgroundColor: "#919F88"
-  },
-  lighterSage: {
-    backgroundColor: "#C3CDBF"
-  },
-  grey: {
-    backgroundColor: "#E0CD9"
-  },
-}));  
 
 function Copyright(props) {
   return (
@@ -78,34 +54,37 @@ const theme = createTheme({
 });
 
 export const Signup = () => {
-  const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [loading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loggedIn } = useSelector((state) => state.usersReducer)
+  const errors = useSelector((state) => state.errorsReducer);
 
   const handleSubmit = (e) => {
-    // setErrors([]);
     e.preventDefault();
-    dispatch(signupUser(setIsLoading, headers, username, email, password, navigate, errors))
+
+    dispatch(signupUser(setIsLoading, headers, username, email, password, navigate));
+
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    // setErrors([]);
   }
 
-  useEffect(() => {
-    if(!loading && loggedIn) {
-      navigate("/")
-    }
-    return () => {
-      setErrors([])
-    }
-  }, [loading, loggedIn, navigate, setErrors]);
+  // useEffect(() => {
+  //   if(!loading && loggedIn) {
+  //     navigate("/")
+  //   }
+  //   return () => {
+  //     setErrors([])
+  //   }
+  // }, [loading, loggedIn, navigate, setErrors]);
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -123,7 +102,7 @@ export const Signup = () => {
             alignItems: 'center',
           }}
         >
-          
+
           <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -192,7 +171,7 @@ export const Signup = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </Grid>
-          
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
@@ -202,7 +181,8 @@ export const Signup = () => {
             </Grid>
 
             By creating an account you agree to our
-            <Link color="inherit" href="/termsandconditions">&nbsp;Terms & Privacy</Link>
+            <Link color="inherit" href="/termsandconditions"> &nbsp;Terms & Privacy </Link>
+
             <Button
               type="submit"
               fullWidth
@@ -210,15 +190,17 @@ export const Signup = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2 }}
             >
-               {loading ? "Loading..." : "Signup"}
+              {loading ? "Loading..." : "Signup"}
             </Button>
+
             {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                  {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                  ))}
-                </ul>
-              )}
+              <ul style={{ color: "red" }}>
+                {errors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            )}
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">

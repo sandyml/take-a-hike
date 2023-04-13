@@ -63,7 +63,7 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
             payload: user
           }
           dispatch(action);
-          dispatch(loginUser)
+          // dispatch(loginUser)
           dispatch(clearErrors())
           navigate('/')
         });
@@ -102,7 +102,7 @@ export const logoutUser = () => {
 // }
 
 // signup 
-export const signupUser = (setIsLoading, headers, username, email, password, navigate, errors) => {
+export const signupUser = (setIsLoading, headers, username, email, password, navigate) => {
   return dispatch => {
     setIsLoading(true);
     fetch('/signup', {
@@ -117,9 +117,10 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
       .then((resp) => resp.json())
       .then((data) => {
         if (data.errors) {
-          console.log(errors, "Signup: errors")
-          dispatch((setErrors(data.errors)))
+          dispatch(setErrors(data.errors))
+          console.log(data.errors, "Signup: errors")
         } else {
+          dispatch(clearErrors())
           // handleLoginUser(data)
           const actionSignup = {
             type: "LOAD_SIGNUP_USER",

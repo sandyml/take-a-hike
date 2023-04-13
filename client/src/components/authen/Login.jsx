@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+// import { setErrors } from '../actions/errors';
+import { loginUser } from '../actions/users';
 import { headers } from '../../Global';
-
-// import { setErrors, clearErrors } from '../actions/errors';
 
 // mui 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -20,7 +20,6 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-import { loginUser } from '../actions/users';
 
 function Copyright(props) {
   return (
@@ -69,8 +68,6 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // [] TODO: dispatch errrors
-  // const { loggedIn, currentUser, setCurrentUser } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 
   // TODO: Remove useEffect to test out if current_user is already logged in with error messages "You are already logged in!"
@@ -84,12 +81,13 @@ export const Login = () => {
   // }, [loading, loggedIn, navigate, dispatch]);
 
   const handleSubmit = (e) => {
-    // dispatch(setErrors())
     e.preventDefault();
+
     dispatch(loginUser(setLoading, headers, username, email, password, navigate))
     setUsername("");
     setEmail("");
     setPassword("");
+    // setErrors([]);
   }
 
   const togglePassword = () => {

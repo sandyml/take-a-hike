@@ -8,7 +8,6 @@ import VisitCard from './VisitCard';
 export const VisitList = () => {
 
  const visits = useSelector((store) => store.visitsReducer);
- console.log(visits, "Visit redux state inside VisitList")
 
  const visitCards = visits.map((visit, index) =>
   <VisitCard key={index} visit={visit} />
