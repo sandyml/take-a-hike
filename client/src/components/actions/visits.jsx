@@ -55,19 +55,35 @@ export const loadVisits = () => {
 //    }
 // }
 
-export const deleteVisit = (id) => {
+// export const deleteVisit = (id) => {
+//    return dispatch => {
+//      fetch(`/visits/${id}`, {
+//        method: "DELETE",
+//        headers: {
+//          "Accept": "application/json"
+//        }
+//      })
+//        .then(resp => resp.json())
+//        .then(data => {
+//          dispatch({
+//            type: "DELETE_Visit",
+//            payload: id
+//          });
+//        })
+//    }
+//  }
+
+export const deleteVisit = (id, header) => {
    return dispatch => {
      fetch(`/visits/${id}`, {
        method: "DELETE",
-       headers: {
-         "Accept": "application/json"
-       }
+       header,
      })
        .then(resp => resp.json())
        .then(data => {
          dispatch({
-           type: "DELETE_Visit",
-           payload: id
+           type: "DELETE_VISIT",
+           payload: data.id
          });
        })
    }

@@ -1,19 +1,19 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { deleteVisit } from '../actions/visits';
+import { header } from '../../Global';
 
 const VisitCard = ({ visit }) => {
   const { currentUser } = useSelector((state) => state.usersReducer);
-  // const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  // debugger
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // TODO: Not deleting in real-time 
   const handleDelete = () => {
-    dispatch(deleteVisit(visit.id))
-    console.log(visit.id, "deleted!")
+    dispatch(deleteVisit(visit.id, header))
+    console.log(visit.id, "visit has been deleted!")
   }
 
   return (
