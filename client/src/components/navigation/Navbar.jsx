@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // mui 
 import IconButton from '@mui/material/IconButton';
@@ -16,8 +16,8 @@ import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
-// TODO: Remove useContext when done migrating redux 
-import { UserContext } from '../context/UserContext';
+// TODO: When logging out - login/signup button will not appear unless refresh - fix!
+import { logoutUser } from '../actions/users';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -46,19 +46,20 @@ export const Navbar = () => {
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const { handleOnLogout } = useContext(UserContext);
 
-  const currentUser = useSelector((state) => state.usersReducer.currentUser)
+  const currentUser = useSelector((state) => state.usersReducer.currentUser);
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     fetch('/logout', {
       method: 'DELETE'
-    }).then((resp) => {
-      if (resp.ok) {
-        handleOnLogout()
-      }
-    });
+    })
+    dispatch(logoutUser())
   };
+
+   // const handleLogout = () => {
+  //   dispatch(logoutUser())
+  // };
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);

@@ -19,8 +19,8 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { loginUser } from '../actions/users';
 
+import { loginUser } from '../actions/users';
 
 function Copyright(props) {
   return (
@@ -87,6 +87,9 @@ export const Login = () => {
     // dispatch(setErrors())
     e.preventDefault();
     dispatch(loginUser(setLoading, headers, username, email, password, navigate))
+    setUsername("");
+    setEmail("");
+    setPassword("");
   }
 
   const togglePassword = () => {
@@ -97,6 +100,7 @@ export const Login = () => {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+
         <Box
           sx={{
             marginTop: 8,
@@ -105,12 +109,15 @@ export const Login = () => {
             alignItems: 'center',
           }}
         >
+
           <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+
           <Typography component="h1" variant="h5">
             Please Login
           </Typography>
+
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

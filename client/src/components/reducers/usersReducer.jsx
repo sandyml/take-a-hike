@@ -23,6 +23,23 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state, 
         currentUser: action.payload,
+        loggedIn: true
+      }
+    case "LOAD_SIGNUP_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+        loggedIn: true
+      }
+    case "LOAD_ADD_USER":
+      return{
+        ...state,
+        users: [...state.users, action.payload]
+      }
+    case "LOAD_LOGOUT_USER":
+      return {
+        ...state,
+        currentUser: null,
         loggedIn: false
       }
     default:

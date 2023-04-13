@@ -78,3 +78,62 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
     });
   }
 }
+
+// const handleOnLogout = () => {
+//   setCurrentUser(null);
+//   setLoggedIn(false)
+//  }
+export const logoutUser = () => {
+  return dispatch => {
+    fetch('/logout', {
+      method: 'DELETE'
+    })
+    const action = {
+      type: "LOAD_LOGOUT_USER"
+    }
+    dispatch(action);
+  }
+}
+
+// export const logoutUser = () => {
+//   return {
+//     type: "LOAD_LOGOUT_USER"
+//   }
+// }
+
+// signup 
+export const signupUser = (setIsLoading, headers, username, email, password, navigate, errors) => {
+  return dispatch => {
+    setIsLoading(true);
+    fetch('/signup', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        username,
+        email,
+        password
+      })
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.errors) {
+          console.log(errors, "Signup: errors")
+          dispatch((setErrors(data.errors)))
+        } else {
+          // handleLoginUser(data)
+          const actionSignup = {
+            type: "LOAD_SIGNUP_USER",
+            payload: data
+          }
+          dispatch(actionSignup);
+          // setCurrentUser(data)
+          const actionAddUser = {
+            type: "LOAD_ADD_USER",
+            payload: data
+          }
+          dispatch(actionAddUser);
+          navigate('/visits')
+        }
+      })
+  }
+}

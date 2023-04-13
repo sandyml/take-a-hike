@@ -25,7 +25,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 // TODO: Remove useContext when done w Redux 
 import { TrailheadProvider } from './components/context/TrailheadContext';
 import { VisitProvider } from './components/context/VisitContext';
-import { UserProvider } from './components/context/UserContext';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -55,7 +54,6 @@ export function App({ children }) {
   return (
     <>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <UserProvider>
         <VisitProvider>
           <TrailheadProvider>
 
@@ -80,7 +78,6 @@ export function App({ children }) {
         }
         </TrailheadProvider>
         </VisitProvider>
-      </UserProvider>
       </LocalizationProvider>
     </>
   );
