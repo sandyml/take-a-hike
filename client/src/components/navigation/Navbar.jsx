@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+// mui 
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
+import MenuIcon from '@mui/icons-material/Menu';
+import Tooltip from '@mui/material/Tooltip';
+import Toolbar from '@mui/material/Toolbar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+import AppBar from '@mui/material/AppBar';
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+
+// TODO: Remove useContext when done migrating redux 
 import { UserContext } from '../context/UserContext';
-import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   root: {

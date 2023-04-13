@@ -1,24 +1,31 @@
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from './components/navigation/Navbar';
-import { Home } from './components/intro/Home';
+
+import { TermsPolicy } from './components/authen/TermsPolicy';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
-import { TermsPolicy } from './components/authen/TermsPolicy';
-// import { HikeCarousel } from './components/intro/HikeCarousel';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import NotFound from './components/navigation/NotFound';
-import { VisitList } from './components/hike/VisitList';
-import { UserProvider } from './components/context/UserContext';
-import { VisitProvider } from './components/context/VisitContext';
-import { loadVisits } from './components/actions/visits';
-import { TrailheadProvider } from './components/context/TrailheadContext';
 import Logout from './components/authen/Logout';
+
+// import { HikeCarousel } from './components/intro/HikeCarousel';
+import { Home } from './components/intro/Home';
+
+import { VisitList } from './components/hike/VisitList';
 import { EditForm } from './components/hike/EditForm';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+
+import { Navbar } from './components/navigation/Navbar';
+import NotFound from './components/navigation/NotFound';
+
 import { loadCurrentUser, loadUsers } from './components/actions/users';
+import { loadVisits } from './components/actions/visits';
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+
+// TODO: Remove useContext when done w Redux 
+import { TrailheadProvider } from './components/context/TrailheadContext';
+import { VisitProvider } from './components/context/VisitContext';
+import { UserProvider } from './components/context/UserContext';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -38,9 +45,10 @@ export function App({ children }) {
   // will grab all of the data(things), run once
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
   useEffect(() => {
-    dispatch(loadVisits()) // make sure to call () 
-    dispatch(loadUsers(setIsLoading))
+    // make sure to call ()
     dispatch(loadCurrentUser(setIsLoading))
+    dispatch(loadUsers(setIsLoading))
+    dispatch(loadVisits()) 
   }, [dispatch]);
 
   // TODO: REMOVE ALL PROVIDERS AFTER DONE WITH REDUX SET UP!!

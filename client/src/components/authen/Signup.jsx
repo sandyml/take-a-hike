@@ -1,25 +1,27 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import { headers } from '../../Global';
+
+// mui 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from '@material-ui/core';
-import { useContext } from 'react';
+
+// TODO: Remove useContext when done w Redux 
 import { UserContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react';
 // import { setErrors, clearErrors, errors } from '../actions/errors'; // check errors in reducer and action 
 
 const useStyles = makeStyles(() => ({
@@ -89,8 +91,8 @@ export const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { handleAddUser, handleLoginUser , setCurrentUser } = useContext(UserContext);
-  const { loggedIn } = useSelector((state) => state.usersReducer)
+  const { handleAddUser, handleLoginUser } = useContext(UserContext);
+  const { loggedIn, setCurrentUser } = useSelector((state) => state.usersReducer)
 
   const handleSubmit = (e) => {
     // setErrors([]);

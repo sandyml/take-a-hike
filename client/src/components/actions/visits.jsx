@@ -14,7 +14,7 @@
 
 
 // dispatch on load 
-// import { headers } from '../../Global';
+import { headers } from '../../Global';
 // import { useNavigate } from 'react-router-dom';
 import { setErrors } from './errors'
 
@@ -55,27 +55,54 @@ export const deleteVisit = (id) => {
    }
 }
 
-export const editVisit = (setIsLoading, id, headers, visited_date, trailhead_id, navigate) => {
-   setIsLoading(true);
+// export const editVisit = (setIsLoading, id, headers, visited_date, visits, trailhead_id, navigate) => {
+//    setIsLoading(true);
+//    return dispatch => {
+//       fetch(`/visits/${id}`, {
+//          method: 'PATCH',
+//          headers,
+//          body: JSON.stringify({
+//             visited_date,
+//             visits,
+//             trailhead_id
+//          })
+//             .then((resp) => resp.json())
+//             .then((data) => {
+//                console.log(data, "action: editVisit")
+//                const action = {
+//                   type: "EDIT_VISIT",
+//                   payload: data
+//                }
+//                dispatch(action)
+//                navigate('/visits')
+//             })
+//       })
+//    }
+// }
+
+export const editVisit = (id, setIsLoading, trailhead_id, trailhead, visited_date, navigate) => {
    return dispatch => {
+      setIsLoading(true); 
       fetch(`/visits/${id}`, {
-         method: 'PATCH',
-         headers,
-         body: JSON.stringify({
-            visited_date,
-            trailhead_id
-         })
-            .then((resp) => resp.json())
-            .then((data) => {
-               console.log(data, "action: editVisit")
-               const action = {
-                  type: "EDIT_VISIT",
-                  payload: data
-               }
-               dispatch(action)
-               navigate('/visits')
-            })
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify({
+          trailhead,
+          trailhead_id,
+          visited_date
+        }),
       })
+        .then((r) => r.json())
+        .then(data => {
+          setIsLoading(false);
+          const action = {
+            type: "EDIT_VISIT",
+            payload: data
+         }
+         dispatch(action)
+          console.log(data, "Trailhead date has been updated(edited)!")
+        });
+        navigate(`/visits`)
    }
 }
 

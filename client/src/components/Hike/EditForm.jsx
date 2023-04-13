@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { headers } from '../../Global';
+
+import { setErrors, errors } from '../actions/errors';
+import { editVisit } from '../actions/visits';
+// mui 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import EditCalendarIcon from '@mui/icons-material/EditCalendar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { headers } from '../../Global';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useDispatch, useSelector } from 'react-redux';
-import { editVisit } from '../actions/visits';
-import { setErrors, errors } from '../actions/errors';
+
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 // users/:user_id/visits {user_id} useParams
 
 export const EditForm = () => {
+  const { visited_date, trailhead_id, trailhead } = useSelector((state) => state.visitsReducer);
   const { currentUser, loggedIn } = useSelector((state) => state.usersReducer)
-  const { visited_date, visits } = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer.errors);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,9 +39,11 @@ export const EditForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editVisit(headers, visited_date, visits, navigate))
+    dispatch(editVisit(id, setIsLoading, trailhead_id, trailhead, visited_date, navigate))
   }
 
+  console.log(trailhead_id, "trailhead editform")
+ 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
 
@@ -70,8 +76,7 @@ export const EditForm = () => {
                     fullWidth
                     id="name"
                     label="name"
-                    placeholder="Will be set to default Value of hike name"
-                    // defaultValue={visits.name}
+                    defaultValue={trailhead}
                     autoFocus
                   />
                 </Grid>

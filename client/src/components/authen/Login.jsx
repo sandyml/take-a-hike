@@ -1,23 +1,25 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { headers } from '../../Global';
+
+import { setErrors, clearErrors } from '../actions/errors';
+
+// mui 
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useSelector, useDispatch } from 'react-redux';
-import { headers } from '../../Global';
-import { useNavigate } from 'react-router-dom';
-import { setErrors, clearErrors } from '../actions/errors';
-import { useEffect } from 'react';
+
 
 function Copyright(props) {
   return (
@@ -59,15 +61,14 @@ const theme = createTheme({
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // [] TODO: dispatch errrors
-  // const errors = useSelector((state) => state.errorsReducer)
   const { loggedIn, currentUser, setCurrentUser } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 

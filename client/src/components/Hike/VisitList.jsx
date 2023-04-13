@@ -6,7 +6,7 @@ import VisitCard from './VisitCard';
 // [] TODO: tentative - add photo of self in navbar
 
 export const VisitList = () => {
- 
+
  const visits = useSelector((store) => store.visitsReducer);
  console.log(visits, "Visit redux state inside VisitList")
 
@@ -16,8 +16,10 @@ export const VisitList = () => {
 
  return (
   <div>
-   <h2>Places I've been too (visited)</h2>
-   {visitCards}
+   <h2><center>Places I've been too (visited)</center></h2>
+   <center>
+    {visitCards}
+   </center>
   </div>
  )
 }

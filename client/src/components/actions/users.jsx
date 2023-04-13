@@ -14,11 +14,7 @@ export const loadUsers = (setIsLoading) => {
  }
 }
 
-// loadCurrentUser
-// loadLogoutUser => return nothing not payload 
-// DRY 
-
-// thunk takesover using dispatch
+// thunk takesover using dispatch return dispatch => {}
 export const loadCurrentUser = (setIsLoading) => {
   return dispatch => {
       fetch('/me')
