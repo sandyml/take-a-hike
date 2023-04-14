@@ -160,7 +160,7 @@ export const Navbar = () => {
             <Button color="inherit" to="/" component={Link}>Home</Button>
             {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> */}
             <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button>
-            <Button color="inherit" to="/favorites" component={Link}>Favorites</Button>
+            {/* <Button color="inherit" to="/favorites" component={Link}>Favorites</Button> */}
             <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
           </Box>
           {currentUser && currentUser.id ? (

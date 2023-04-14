@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteVisit } from '../actions/visits';
 import { header } from '../../Global';
-import { useEffect } from 'react';
 
 // TODO: Favorites, favorites list
 
 const VisitCard = ({ visit }) => {
   const { currentUser } = useSelector((state) => state.usersReducer);
-  const visits = useSelector((state) => state.visitsReducer);
+  // const visits = useSelector((state) => state.visitsReducer);
 
-  console.log(visits, "VISITS Card")
+  // console.log(visits, "VISITS Card")
   // debugger
 
   const navigate = useNavigate();
@@ -23,22 +22,22 @@ const VisitCard = ({ visit }) => {
   };
 
   // remove favorites
-  const [favorites, setFavorites] = useState([]);
-  const parkFavorites = (id) => {
-    const checkparkfave = favorites.some((park) => park.id === id);
-    return checkparkfave;
-  };
+  // const [favorites, setFavorites] = useState([]);
+  // const parkFavorites = (id) => {
+  //   const checkparkfave = favorites.some((park) => park.id === id);
+  //   return checkparkfave;
+  // };
 
   // remove useEffect 
-  const [parks, setParks] = useState([])
-  useEffect(() => {
-    fetch('/visits')
-      .then((resp) => resp.json())
-      .then(data => {
-        console.log(data, "visitcard")
-        setParks(data)})
-      .catch((error) => console.log(error, "errors"))
-  }, []); 
+  // const [parks, setParks] = useState([])
+  // useEffect(() => {
+  //   fetch('/visits')
+  //     .then((resp) => resp.json())
+  //     .then(data => {
+  //       console.log(data, "visitcard")
+  //       setParks(data)})
+  //     .catch((error) => console.log(error, "errors"))
+  // }, []); 
 
   return (
     <div>

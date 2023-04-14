@@ -48,7 +48,8 @@ export const deleteVisit = (id, header) => {
        .then(data => {
          dispatch({
            type: "DELETE_VISIT",
-           payload: data.id
+           payload: id
+         //   payload: data.id
          });
        })
    }
