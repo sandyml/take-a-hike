@@ -20,8 +20,16 @@ const VisitCard = ({ visit }) => {
   const handleDelete = () => {
     dispatch(deleteVisit(visit.id, header))
     console.log(visit.id, "visit has been deleted!")
-  }
+  };
 
+  // remove favorites
+  const [favorites, setFavorites] = useState([]);
+  const parkFavorites = (id) => {
+    const checkparkfave = favorites.some((park) => park.id === id);
+    return checkparkfave;
+  };
+
+  // remove useEffect 
   const [parks, setParks] = useState([])
   useEffect(() => {
     fetch('/visits')
