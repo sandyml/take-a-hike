@@ -4,6 +4,7 @@ class Visit < ApplicationRecord
 
   belongs_to :user
   belongs_to :trailhead
-  has_many :hikes
-  has_many :trailheads, through: :hikes
+
+  delegate :hikes, to: :treailhead
+  delegate :hike, to: :trailhead, prefix: :trailhead
 end

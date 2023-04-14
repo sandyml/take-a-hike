@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteVisit } from '../actions/visits';
-import { header } from '../../Global';
+import { addVisit, deleteVisit } from '../actions/visits';
+import { headers, header } from '../../Global';
 
 // TODO: Favorites, favorites list
 
 const VisitCard = ({ visit }) => {
   const { currentUser } = useSelector((state) => state.usersReducer);
-  // const visits = useSelector((state) => state.visitsReducer);
+  const {visited_date, trailhead_id} = useSelector((state) => state.visitsReducer);
 
   // console.log(visits, "VISITS Card")
   // debugger
@@ -21,6 +21,13 @@ const VisitCard = ({ visit }) => {
     console.log(visit.id, "visit has been deleted!")
   };
 
+  // addVisit = (headers, visited_date, trailhead_id, navigate)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("added to favorites but not really just testing if this works")
+    dispatch(addVisit(headers, visited_date, trailhead_id, navigate))
+  }
+// debugger
   // remove favorites
   // const [favorites, setFavorites] = useState([]);
   // const parkFavorites = (id) => {
@@ -55,7 +62,11 @@ const VisitCard = ({ visit }) => {
             <button onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</button>
             <button onClick={handleDelete} type='delete'>Remove</button>
             {/* <button onClick={() => handleDelete(visit.id)} type='delete'>Remove</button> */}
-          </> : null
+          </> : 
+          // null
+          <>
+          <button onClick={handleSubmit} type='add'>Will Visit</button>
+          </>
         }
         <hr />
       </h3>

@@ -106,7 +106,7 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
                   payload: data // => action.payload 
                }
                dispatch(action)
-               navigate('/visits')
+               navigate('/favorites')
             }
          })
    }

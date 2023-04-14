@@ -77,6 +77,8 @@ export const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  // /favorites route tentativev will convert to /visits/:id
+  
   return (
     <AppBar position="static">
       <Container maxWidth="xl" className={classes.sage}>
@@ -132,8 +134,8 @@ export const Navbar = () => {
 
               <Button color="inherit" to="/" component={Link}>Home</Button><br />
               {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
-              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button><br />
-              {/* <Button color="inherit" to="/visits/:id" component={Link}>Favorites</Button><br/> */}
+              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)/Favorites</Button><br />
+              <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/>
               <Button color="inherit" to="/visits" component={Link}>Visits List</Button><br />
 
             </Menu>
