@@ -28,7 +28,6 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 // TODO: Add errors in edit form 
 
 export const EditForm = () => {
-  // const [loading, setLoading] = useState(false);
   const [trailhead, setTrailhead] = useState("");
   const [visited_date, setVisitedDate] = useState(new Date());
 
@@ -80,26 +79,27 @@ export const EditForm = () => {
                     </center>
                   </Grid>
                   <Grid item xs={12}>
-                  {/* {visit.trailhead.trailhead_id} */}
-                  <TextField
+                  <h2>{visit.trailhead.trailhead_id}</h2>
+                  {/* <TextField
                       color="neutral"
                       autoComplete="given-name"
-                      name="trailname"
+                      name="trailhead name"
                       required
                       fullWidth
                       id="trailname"
-                      label="trailname"
-                      // disabled
+                      label="trailhead name"
+                      disabled
                       defaultValue={visit.trailhead.trailhead_id}
                       onChange={(e) => setTrailhead(e.target.value)}
                       autoFocus
-                    />
+                    /> */}
                     <center>
-                      <input
-                        id="date"
+                    initial date: &nbsp; {visit.visited_date}
+                      {/* <input
+                        id="initial date"
                         defaultValue={visit.visited_date}
                         disabled
-                      />
+                      /> */}
                     </center>
                     <center>
                        {/* <TextField
@@ -141,7 +141,7 @@ export const EditForm = () => {
                 variant="contained"
                 color="neutral"
                 sx={{ mt: 3, mb: 2 }}
-                value="Update Review"
+                value="Update Visitation"
               >{isLoading ? "Loading..." : "Submit"}
               </Button>
 
