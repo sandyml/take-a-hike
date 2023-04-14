@@ -10,7 +10,7 @@ import { editVisit } from '../actions/visits';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -28,14 +28,18 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 // TODO: Add errors in edit form 
 
 export const EditForm = () => {
-  const [trailhead, setTrailhead] = useState("");
+  // const [trailhead, setTrailhead] = useState(""); // didn't use setState for anything 
   const [visited_date, setVisitedDate] = useState(new Date());
 
-  // const { visited_date } = useSelector((state) => state.visitsReducer);
+  const trailhead = useSelector((state) => state.visitsReducer);
   const visits = useSelector((state) => state.visitsReducer);
   // const { loggedIn, currentUser } = useSelector((state) => state.usersReducer)
 
   const [isLoading, setIsLoading] = useState(false);
+
+  // useEffect cleanup function 
+
+  // debugger
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

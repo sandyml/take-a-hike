@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteVisit } from '../actions/visits';
 import { header } from '../../Global';
+import { useEffect } from 'react';
+
+// TODO: Favorites, favorites list
 
 const VisitCard = ({ visit }) => {
   const { currentUser } = useSelector((state) => state.usersReducer);
+  const visits = useSelector((state) => state.visitsReducer);
+
+  console.log(visits, "VISITS Card")
   // debugger
 
   const navigate = useNavigate();
@@ -15,6 +21,16 @@ const VisitCard = ({ visit }) => {
     dispatch(deleteVisit(visit.id, header))
     console.log(visit.id, "visit has been deleted!")
   }
+
+  const [parks, setParks] = useState([])
+  useEffect(() => {
+    fetch('/visits')
+      .then((resp) => resp.json())
+      .then(data => {
+        console.log(data, "visitcard")
+        setParks(data)})
+      .catch((error) => console.log(error, "errors"))
+  }, []); 
 
   return (
     <div>

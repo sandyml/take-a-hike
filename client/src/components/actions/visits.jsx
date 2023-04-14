@@ -24,7 +24,7 @@ export const loadVisits = () => {
       fetch('/visits')
          .then((resp) => resp.json())
          .then((data) => {
-            // console.log(data, "action: loadVisits")
+            console.log(data, "action: loadVisits")
             const action = {
                type: "LOAD_VISITS",
                payload: data

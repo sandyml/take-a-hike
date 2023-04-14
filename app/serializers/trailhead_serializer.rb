@@ -6,5 +6,9 @@ class TrailheadSerializer < ActiveModel::Serializer
   def amenities
     object.amenities.pluck(:name)
   end
+
+  # def hike
+  #   object.pluck(:hike)
+  # end
   
 end
