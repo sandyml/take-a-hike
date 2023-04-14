@@ -46,6 +46,7 @@ const VisitCard = ({ visit }) => {
   //     .catch((error) => console.log(error, "errors"))
   // }, []); 
 
+  
   return (
     <div>
       <h1>{visit.trailhead.name}</h1>
@@ -54,7 +55,7 @@ const VisitCard = ({ visit }) => {
       <p>{visit.trailhead.fees}</p>
       <>Direction Google Link</>
       {/* <p>{visit.trailhead.direction}</p> */}
-      
+
       <p>{visit.hike.map((h, idx) => <>
       <div key={idx}>
       <img src={h.image_url} alt="image-url"/><br/>
