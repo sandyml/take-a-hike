@@ -1,10 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, NavLink } from 'react-router-dom';
 import { addVisit, deleteVisit } from '../actions/visits';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { headers, header } from '../../Global';
 
+import PlaceIcon from '@mui/icons-material/Place';
+
 // TODO: Favorites, favorites list
+
+// PLAN: MOVE IMAGES IN ITS OWN COMPONENT AND THEN MOVE IT TO THE VISIT CARD COMPONENT
 
 // import ImageList from '@mui/material/ImageList';
 // import ImageListItem from '@mui/material/ImageListItem';
@@ -50,8 +54,8 @@ const VisitCard = ({ visit }) => {
   // addVisit = (headers, visited_date, trailhead_id, navigate)
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("added to favorites but not really just testing if this works")
     dispatch(addVisit(headers, visited_date, trailhead_id, navigate))
+    console.log("added to favorites but not really just testing if this works")
   }
   // debugger
   // remove favorites
@@ -80,15 +84,17 @@ const VisitCard = ({ visit }) => {
       <div>{visit.hike.map((h, idx) => <>
         <p key={idx}>
           <img src={h.image_url} alt="img-url" /><br />
-          distance: {h.distance}
+          <b>distance:</b> {h.distance} <b>elevation gain:</b> {h.elevation_gain}
         </p>
+        {/* check mark for accessiblity */}
       </>)}
       </div>
-
-      <p>{visit.trailhead.location}</p>
+      <PlaceIcon />{visit.trailhead.location}
       <p>{visit.trailhead.fees}</p>
       {/* <>Direction Google Link</> */}
-      <NavLink href="https://www.google.com/">Directions</NavLink>
+      <NavLink href={visit.trailhead.direction} variant="body2">
+      Directions
+      </NavLink>
       {/* <p>{visit.trailhead.direction}</p> */}
       {/* </ImageList> */}
 
@@ -126,7 +132,8 @@ const VisitCard = ({ visit }) => {
           </> :
             // null
             <>
-              <button onClick={handleSubmit} type='add'>Will Visit</button>
+              <button type='add'>Add To Visit</button>
+              <button onClick={handleSubmit} type='add'>Add To Favorites</button>
             </>
         }
         <hr />

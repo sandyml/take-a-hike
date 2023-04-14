@@ -47,8 +47,9 @@ export const Favorites = () => {
       </div>
      ))
     ) : (
-     <h1 className='favorites-h1'>No favorites found</h1>
+     <h1 className='favorites-h1'><center>No favorites found</center></h1>
     )}
+    
    </div>
   </Stack>
  )

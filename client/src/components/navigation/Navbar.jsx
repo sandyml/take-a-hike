@@ -131,12 +131,11 @@ export const Navbar = () => {
               }}
             >
 
-
               <Button color="inherit" to="/" component={Link}>Home</Button><br />
               {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
-              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)/Favorites</Button><br />
+              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button><br />
+              <Button color="inherit" to="/visits" component={Link}>Trailheads</Button><br />
               <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/>
-              <Button color="inherit" to="/visits" component={Link}>Visits List</Button><br />
 
             </Menu>
           </Box>
@@ -161,10 +160,11 @@ export const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" to="/" component={Link}>Home</Button>
             {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> */}
-            <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited (boolean)</Button>
-            {/* <Button color="inherit" to="/favorites" component={Link}>Favorites</Button> */}
-            <Button color="inherit" to="/visits" component={Link}>Visits List</Button>
+            <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button>
+            <Button color="inherit" to="/visits" component={Link}>Trailheads</Button>
+            <Button color="inherit" to="/favorites" component={Link}>Favorites</Button>
           </Box>
+
           {currentUser && currentUser.id ? (
             <>
               <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span>
@@ -194,6 +194,7 @@ export const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+
               <div>
                 {currentUser && currentUser.id ? (
                   <div>
@@ -206,6 +207,7 @@ export const Navbar = () => {
                   </div>
                 )}
               </div>
+
             </Menu>
           </Box>
         </Toolbar>
