@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
 import VisitCard from './VisitCard';
 
@@ -16,7 +16,7 @@ export const VisitList = () => {
  return (
   <div>
    <h2><center>Trailheads</center></h2>
-   <center>
+   <center >
     {visitCards}
    </center>
   </div>
