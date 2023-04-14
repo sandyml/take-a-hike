@@ -5,7 +5,7 @@ export const loadUsers = (setIsLoading) => {
     fetch('/users')
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data, "action: user /users")
+        // console.log(data, "action: user /users")
         const action = {
           type: "LOAD_USERS",
           payload: data
@@ -23,7 +23,7 @@ export const loadCurrentUser = (setIsLoading) => {
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.errors) {
-          console.log(data, "action: '/me")
+          // console.log(data, "action: '/me")
           const action = {
             type: "LOAD_CURRENT_USER",
             payload: data
@@ -55,7 +55,7 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
-          console.log(user, "Login User")
+          // console.log(user, "Login User")
           // setCurrentUser(user);
           // dispatch(setErrors())
           const action = {
@@ -118,7 +118,7 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
       .then((data) => {
         if (data.errors) {
           dispatch(setErrors(data.errors))
-          console.log(data.errors, "Signup: errors")
+          // console.log(data.errors, "Signup: errors")
         } else {
           dispatch(clearErrors())
           // handleLoginUser(data)

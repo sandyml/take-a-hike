@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { headers } from '../../Global';
+
+// PLAN: Update font and edit 
 
 // import { setErrors, errors } from '../actions/errors';
 import { editVisit } from '../actions/visits';
-// mui 
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
@@ -24,14 +25,18 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 // users/:user_id/visits {user_id} useParams
+// TODO: Add errors in edit form 
 
 export const EditForm = () => {
-  const { visited_date, trailhead_id, trailhead } = useSelector((state) => state.visitsReducer);
-  // const { currentUser, loggedIn } = useSelector((state) => state.usersReducer)
-  // const errors = useSelector((state) => state.errorsReducer.errors);
+  // const [loading, setLoading] = useState(false);
+  const [trailhead, setTrailhead] = useState("");
+  const [visited_date, setVisitedDate] = useState(new Date());
+
+  // const { visited_date } = useSelector((state) => state.visitsReducer);
+  const visits = useSelector((state) => state.visitsReducer);
+  // const { loggedIn, currentUser } = useSelector((state) => state.usersReducer)
 
   const [isLoading, setIsLoading] = useState(false);
-  // const [date, setDate] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,16 +44,14 @@ export const EditForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editVisit(id, setIsLoading, trailhead_id, trailhead, visited_date, navigate))
+    dispatch(editVisit(id, setIsLoading, trailhead, visited_date, navigate))
   }
 
-  console.log(trailhead_id, "trailhead editform")
- 
+  const visit = visits.find(visit => visit.id === parseInt(id, 10))
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-
       <ThemeProvider theme={theme}>
-        {/* <img src={Background} className="bg-image" alt="background" /> */}
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
@@ -66,49 +69,72 @@ export const EditForm = () => {
               Change Visit Date
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
+
+              {/* { visits.map((visit) => ( */}
+
+                <Grid container spacing={2}>
+                {/* <Grid container spacing={2} key={visit.id}> */}
+                  <Grid item xs={12}>
+                    <center>
+                    <h2>{visit.trailhead.name}</h2>
+                    </center>
+                  </Grid>
+                  <Grid item xs={12}>
+                  {/* {visit.trailhead.trailhead_id} */}
                   <TextField
-                    color="neutral"
-                    autoComplete="given-name"
-                    name="name"
-                    required
-                    fullWidth
-                    id="name"
-                    label="name"
-                    defaultValue={trailhead}
-                    autoFocus
-                  />
+                      color="neutral"
+                      autoComplete="given-name"
+                      name="trailname"
+                      required
+                      fullWidth
+                      id="trailname"
+                      label="trailname"
+                      // disabled
+                      defaultValue={visit.trailhead.trailhead_id}
+                      onChange={(e) => setTrailhead(e.target.value)}
+                      autoFocus
+                    />
+                    <center>
+                      <input
+                        id="date"
+                        defaultValue={visit.visited_date}
+                        disabled
+                      />
+                    </center>
+                    <center>
+                       {/* <TextField
+                      color="neutral"
+                      autoComplete="given-name"
+                      name="date"
+                      required
+                      fullWidth
+                      id="name"
+                      label="Date"
+                      defaultValue={visit.visited_date}
+                      onChange={(e) => setVisitedDate(e.target.value)}
+                      autoFocus
+                    /> */}
+                    <DatePicker
+                      required
+                      fullWidth
+                      color="neutral"
+                      name="visited_date"
+                      type="text"
+                      id="visited_date"
+                      autoComplete="new-date"
+                      // value={visited_date}
+                      // defaultValue={visit.visited_date}
+                      selected={visited_date}
+                      // onChange={(e) => setVisitedDate(e.target.value)}
+                      onChange={date => setVisitedDate(date)}
+                      selectsStart  
+                      visited_date={visited_date}
+                    />
+                    </center>
+                    <br /><br />
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  {/* <TextField */}
-                  {/* // required
-                  // fullWidth
-                  // color="neutral"
-                  // name="date"
-                  // label="date"
-                  // type="text"
-                  // id="date"
-                  // placeholder="MM-DD-YYYY"
-                  // autoComplete="new-date"
-                  // defaultValue={visited_date} */}
-                  {/* // onChange={(e) => setDate(e.target.value)} */}
-                  {/* /> */}
-                  <DatePicker
-                    required
-                    fullWidth
-                    color="neutral"
-                    name="date"
-                    // label="date"
-                    type="text"
-                    id="date"
-                    // placeholder="MM-DD-YYYY"
-                    autoComplete="new-date"
-                    defaultValue={visited_date}
-                    // onChange={(e) => setDate(e.target.value)}
-                  />
-                </Grid>
-              </Grid>
+              {/* ))} */}
               <Button
                 type="submit"
                 fullWidth
@@ -118,13 +144,15 @@ export const EditForm = () => {
                 value="Update Review"
               >{isLoading ? "Loading..." : "Submit"}
               </Button>
+
               {/* {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
-                  {errors.map((error) => (
-                    <li key={error}>{error}</li>
+                {errors.map((error) => (
+                  <li key={error}>{error}</li>
                   ))}
-                </ul>
-              )} */}
+                  </ul>
+                )} */}
+
             </Box>
           </Box>
           <Copyright sx={{ mt: 5 }} />
@@ -149,20 +177,20 @@ function Copyright(props) {
 
 const theme = createTheme({
   status: {
-      danger: '#e53e3e',
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
     },
-    palette: {
-      primary: {
-        main: '#0971f1',
-        darker: '#053e85',
-      },
-      neutral: {
-        main: '#6E7F62',
-        contrastText: '#fff',
-      },
-      beige: {
-        main: '#FODCD9',
-        contrastText: '#fff',
-      },
+    neutral: {
+      main: '#6E7F62',
+      contrastText: '#fff',
     },
-  });
+    beige: {
+      main: '#FODCD9',
+      contrastText: '#fff',
+    },
+  },
+});

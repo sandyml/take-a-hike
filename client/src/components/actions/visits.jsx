@@ -24,7 +24,7 @@ export const loadVisits = () => {
       fetch('/visits')
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "action: loadVisits")
+            // console.log(data, "action: loadVisits")
             const action = {
                type: "LOAD_VISITS",
                payload: data
@@ -38,41 +38,6 @@ export const loadVisits = () => {
 //   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
 //   setVisits(updatedVisits)
 // };
-// export const deleteVisit = (id) => {
-//    return dispatch => {
-//       fetch(`/visits/${id}`, {
-//          method: 'DELETE',
-//       })
-//          .then((resp) => resp.json())
-//          .then((data) => {
-//             console.log(data, "action: deleteVisit")
-//             const action = {
-//                type: "DELETE_VISIT",
-//                payload: id
-//             }
-//             dispatch(action)
-//          })
-//    }
-// }
-
-// export const deleteVisit = (id) => {
-//    return dispatch => {
-//      fetch(`/visits/${id}`, {
-//        method: "DELETE",
-//        headers: {
-//          "Accept": "application/json"
-//        }
-//      })
-//        .then(resp => resp.json())
-//        .then(data => {
-//          dispatch({
-//            type: "DELETE_Visit",
-//            payload: id
-//          });
-//        })
-//    }
-//  }
-
 export const deleteVisit = (id, header) => {
    return dispatch => {
      fetch(`/visits/${id}`, {
@@ -87,34 +52,9 @@ export const deleteVisit = (id, header) => {
          });
        })
    }
- }
+}
 
-// export const editVisit = (setIsLoading, id, headers, visited_date, visits, trailhead_id, navigate) => {
-//    setIsLoading(true);
-//    return dispatch => {
-//       fetch(`/visits/${id}`, {
-//          method: 'PATCH',
-//          headers,
-//          body: JSON.stringify({
-//             visited_date,
-//             visits,
-//             trailhead_id
-//          })
-//             .then((resp) => resp.json())
-//             .then((data) => {
-//                console.log(data, "action: editVisit")
-//                const action = {
-//                   type: "EDIT_VISIT",
-//                   payload: data
-//                }
-//                dispatch(action)
-//                navigate('/visits')
-//             })
-//       })
-//    }
-// }
-
-export const editVisit = (id, setIsLoading, trailhead_id, trailhead, visited_date, navigate) => {
+export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
    return dispatch => {
       setIsLoading(true); 
       fetch(`/visits/${id}`, {
@@ -122,11 +62,10 @@ export const editVisit = (id, setIsLoading, trailhead_id, trailhead, visited_dat
         headers,
         body: JSON.stringify({
           trailhead,
-          trailhead_id,
           visited_date
         }),
       })
-        .then((r) => r.json())
+        .then((resp) => resp.json())
         .then(data => {
           setIsLoading(false);
           const action = {
@@ -152,7 +91,7 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "action: addVisit")
+            // console.log(data, "action: addVisit")
             if (data.errors) {
                setErrors(data.errors)
                // const action = {

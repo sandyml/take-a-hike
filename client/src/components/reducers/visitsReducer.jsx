@@ -15,14 +15,14 @@ const visitsReducer = (state = [], action) => {
       // visits.filter((visit) => visit.id !== deleteVisitDate.id)
       return state.filter((visit) => visit.id !== action.payload)
     case "EDIT_VISIT":
-      const updatedVisits = state.map((visit) => {
-        if (action.payload.id === visit.id) {
+      return state.map((visit) => {
+        if (action.payload.id === visit.trailhead_id) {
           return action.payload;
         } else {
           return visit;
         }
       })
-      return updatedVisits;
+
     case "ADD_VISIT":
       return [...state, action.payload]
     default:
@@ -37,14 +37,6 @@ const visitsReducer = (state = [], action) => {
 //    ])
 //  };
 
-// change visits => state, newVisit => action.payload
-// const updatedVisits = visits.map((visit) => {
-//   if (newVisitDate.id === visit.id) {
-//     return newVisitDate;
-//   } else {
-//     return visit;
-//   }
 
 // rxreducer 
-
 export default visitsReducer;

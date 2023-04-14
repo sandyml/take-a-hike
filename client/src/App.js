@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 
 import { TermsPolicy } from './components/authen/TermsPolicy';
@@ -26,16 +26,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 // [] TODO: add back carousel when done (too many distractions) 
 // [] TODO: add two more reducers: hikes and trailheads 
 
-export function App({ children }) {
+export function App() {
   const [isLoading, setIsLoading] = useState(false);
+  // const visits = useSelector((state) => state.visitsReducer);
 
-  const visits = useSelector((state) => state.visitsReducer);
-  const users = useSelector((state) => state.usersReducer.currentUser);
   const dispatch = useDispatch(); 
 
-  console.log(visits, "redux visits State")
-  console.log(users, "redux users State in APP")
-  // console.log(errors, "redux errors State")
+  // console.log(visits, "redux visits State")
 
   // will grab all of the data(things), run once
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
@@ -46,7 +43,6 @@ export function App({ children }) {
     dispatch(loadVisits()) 
   }, [dispatch]);
 
-  // TODO: REMOVE ALL PROVIDERS AFTER DONE WITH REDUX SET UP!!
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Navbar />
