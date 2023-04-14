@@ -49,7 +49,20 @@ const VisitCard = ({ visit }) => {
   return (
     <div>
       <h1>{visit.trailhead.name}</h1>
+      <>*Insert Image Here*</>
       <p>{visit.trailhead.location}</p>
+      <p>{visit.trailhead.fees}</p>
+      <>Direction Google Link</>
+      {/* <p>{visit.trailhead.direction}</p> */}
+      
+      <p>{visit.hike.map((h, idx) => <>
+      <div key={idx}>
+      <img src={h.image_url} alt="image-url"/><br/>
+        distance: {h.distance}
+
+
+      </div>
+      </>)}</p>
       <h2>Username: {visit.user.username}</h2>
       <h3>
         {/* <Link to={`/visits/${visit.id}`} >

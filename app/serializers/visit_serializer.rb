@@ -1,5 +1,5 @@
 class VisitSerializer < ActiveModel::Serializer
-  attributes :id, :visited_date, :visited, :trailhead_id, :trailhead, :hi, :difficulties
+  attributes :id, :visited_date, :visited, :trailhead_id, :trailhead, :hi, :hike
   # attributes :id, :visited_date, :visited, :trailhead_id, :trailhead, :image_url
   
   has_one :user
@@ -10,8 +10,8 @@ class VisitSerializer < ActiveModel::Serializer
   end
 
   # it worked! TODO: Revisit
-  def difficulties
-    object.trailhead.hike_difficulties
+  def hike  
+    object.trailhead.hikes
   end
 
   # TODO: image_url 

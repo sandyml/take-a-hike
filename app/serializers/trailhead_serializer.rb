@@ -1,5 +1,5 @@
 class TrailheadSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :fees, :direction, :amenities, :hikes
+  attributes :id, :name, :location, :fees, :direction, :amenities, :hikes, :hike
 
   has_many :hikes
 
@@ -7,8 +7,8 @@ class TrailheadSerializer < ActiveModel::Serializer
     object.amenities.pluck(:name)
   end
 
-  def difficulties
-    object.first.hike_difficulties
+  def hike  
+    object.hikes
   end
 
   # def hike
