@@ -21,7 +21,8 @@ import { loadVisits } from './components/actions/visits';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { Favorites } from './components/hike/Favorites';
+// import { Favorites } from './components/hike/Favorites';
+import AddToFavorites from './components/hike/AddToFavorites';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -59,7 +60,7 @@ export function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/visits/:id/edit" element={<EditForm />} />
               <Route path="/visits" element={<VisitList />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/favorites" element={<AddToFavorites />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
               {/* <Route path="/visits" element={<VisitList />} /> */}

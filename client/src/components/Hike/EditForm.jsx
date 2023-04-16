@@ -33,6 +33,7 @@ export const EditForm = () => {
 
   const trailhead = useSelector((state) => state.visitsReducer);
   const visits = useSelector((state) => state.visitsReducer);
+  // const errors = useSelector((state) => state.errorsReducer)
   // const { loggedIn, currentUser } = useSelector((state) => state.usersReducer)
 
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +51,10 @@ export const EditForm = () => {
     dispatch(editVisit(id, setIsLoading, trailhead, visited_date, navigate))
   }
 
-  const visit = visits.find(visit => visit.id === parseInt(id, 10))
+  // const visit = visits.find(visit => visit.id === parseInt(id, 10));
+  const v = visits.find(visit => visit.id === parseInt(id, 10));
+  // const vi = visits.find(vis => vis.id > 10)
+  console.log(v, "visit find")
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -79,11 +83,11 @@ export const EditForm = () => {
                 {/* <Grid container spacing={2} key={visit.id}> */}
                   <Grid item xs={12}>
                     <center>
-                    <h2>{visit.trailhead.name}</h2>
+                    <h2>{v.trailhead.name}</h2>
                     </center>
                   </Grid>
                   <Grid item xs={12}>
-                  <h2>{visit.trailhead.trailhead_id}</h2>
+                  <h2>{v.trailhead.trailhead_id}</h2>
                   {/* <TextField
                       color="neutral"
                       autoComplete="given-name"
@@ -98,7 +102,7 @@ export const EditForm = () => {
                       autoFocus
                     /> */}
                     <center>
-                    initial date: &nbsp; {visit.visited_date}
+                    initial date: &nbsp; {v.visited_date}
                       {/* <input
                         id="initial date"
                         defaultValue={visit.visited_date}

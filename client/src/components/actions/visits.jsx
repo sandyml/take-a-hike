@@ -55,6 +55,34 @@ export const deleteVisit = (id, header) => {
    }
 }
 
+// export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
+//    return dispatch => {
+//       setIsLoading(true); 
+//       fetch(`/visits/${id}`, {
+//         method: 'PATCH',
+//         headers,
+//         body: JSON.stringify({
+//           trailhead,
+//           visited_date
+//         }),
+//       })
+//         .then((resp) => resp.json())
+//         .then((data) => {
+//          if (data.errors) {
+//            dispatch(setErrors(data.errors))
+//          } else {
+//            dispatch(clearErrors())
+//            const action = {
+//              type: "EDIT_VISIT",
+//              payload: data
+//            }
+//            dispatch(action);
+//            navigate('/visits')
+//          }
+//        })
+//    }
+//  }
+
 export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
    return dispatch => {
       setIsLoading(true); 
@@ -111,3 +139,10 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
          })
    }
 }
+
+// REVISIT
+// export const addToFavorites = (trailhead_post) => {
+//    return {
+//       type: "ADD_FAVORITES_TRAILHEAD"
+//    }
+// }

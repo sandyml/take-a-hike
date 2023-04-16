@@ -108,8 +108,8 @@ const AddForm = () => {
           </Button>
           {errors.length > 0 && (
               <ul style={{ color: "red" }}>
-                {errors.map((error) => (
-                  <li key={error}>{error}</li>
+                {errors.map((error, index) => (
+                  <li key={index}>{error}</li>
                 ))}
               </ul>
             )}
