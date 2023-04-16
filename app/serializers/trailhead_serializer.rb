@@ -1,5 +1,5 @@
 class TrailheadSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :fees, :direction, :amenities, :hikes, :hike
+  attributes :id, :name, :location, :fees, :direction, :amenities, :hikes
 
   has_many :hikes
 
@@ -7,12 +7,13 @@ class TrailheadSerializer < ActiveModel::Serializer
     object.amenities.pluck(:name)
   end
 
+  # def new_amenities
+  #   object.amenities
+  # end
+
+  # check to see if it needs to be deleted!
   def hike  
     object.hikes
   end
-
-  # def hike
-  #   object.pluck(:hike)
-  # end
   
 end

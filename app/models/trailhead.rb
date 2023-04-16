@@ -9,6 +9,8 @@ class Trailhead < ApplicationRecord
 
  has_many :hikes
 
+ # has_many :amenities, through: :hikes
+
  has_many :hike_difficulties, dependent: :destroy
  has_many :difficulties, through: :hike_difficulties
 

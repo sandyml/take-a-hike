@@ -37,14 +37,22 @@ import PlaceIcon from '@mui/icons-material/Place';
 // }
 
 const VisitCard = ({ visit }) => {
-  const { currentUser } = useSelector((state) => state.usersReducer);
+  // const [loading, setLoading] = useState(true);
+  const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
   const { visited_date, trailhead_id } = useSelector((state) => state.visitsReducer);
-
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   // console.log(visits, "VISITS Card")
   // debugger
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (!loading && !loggedIn) {
+  //     navigate('/')
+  //   }
+  //   // eslint-disable-next-line
+  // }, [loading, loggedIn, navigate]);
+
 
   const handleDelete = () => {
     dispatch(deleteVisit(visit.id, header))
