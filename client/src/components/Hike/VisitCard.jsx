@@ -1,10 +1,14 @@
 import React from 'react';
-import { addVisit, deleteVisit } from '../actions/visits';
+import { addToFavorites, addVisit, deleteVisit } from '../actions/visits';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { headers, header } from '../../Global';
 
-import PlaceIcon from '@mui/icons-material/Place';
+import { Check, FmdGoodRounded, Route } from '@mui/icons-material';
+// import { PlaceIcon, CheckIcon, RouteIcon } from '@mui/icons-material/Place';
+// import CheckIcon from '@mui/icons-material/Check';
+// import RouteIcon from '@mui/icons-material/Route';
+// import EventIcon from '@mui/icons-material/Event';
 
 // TODO: Favorites, favorites list
 
@@ -19,7 +23,7 @@ const VisitCard = ({ visit }) => {
 
   const handleDelete = () => {
     dispatch(deleteVisit(visit.id, header))
-    console.log(visit.id, "visit has been deleted!")
+    // console.log(visit.id, "visit has been deleted!")
   };
 
   // addVisit = (headers, visited_date, trailhead_id, navigate)
@@ -28,6 +32,15 @@ const VisitCard = ({ visit }) => {
     dispatch(addVisit(headers, visited_date, trailhead_id, navigate))
     console.log("added to favorites but not really just testing if this works")
   }
+
+  const handleFavorites = () => {
+    dispatch(addToFavorites(visit))
+    navigate('/favorites')
+  }
+
+  // const amenities = visit.trailhead.map((vt) => <div key={vt}>
+  //   {vt.amenities}
+  // </div>)
   // debugger
   // remove favorites
   // const [favorites, setFavorites] = useState([]);
@@ -35,6 +48,13 @@ const VisitCard = ({ visit }) => {
   //   const checkparkfave = favorites.some((park) => park.id === id);
   //   return checkparkfave;
   // };
+
+  const amenities = visit.amenities.map((a) => <><Check/>{a.name}{' '}</>)
+
+  // TODO: maybe move open hours to a diff column but tentative 
+  // const res = visit.amenities.filter(([key, value]) => key !== 'open');
+  // const res = visit.amenities.filter((vm) => vm.name !== 'open')
+  // console.log(res, "res");
 
   return (
     <div>
@@ -48,21 +68,24 @@ const VisitCard = ({ visit }) => {
         // check mark for accessiblity
       )}
 
-      <PlaceIcon /> {visit.trailhead.location}
-      <p>{visit.trailhead.fees}</p>
+      <FmdGoodRounded /> {visit.trailhead.location}
+      <p>{visit.trailhead.fees}</p> 
+      {/* <p>amenities: {visit.trailhead.amenities} did not work!</p> */}
+      <p>{amenities}</p>
+      {/* <p>amenitiess: {visit.amenities.name}</p> */}
+
       {/* <>Direction Google Link</> */}
+      <Route/>{' '}
       <NavLink href={visit.trailhead.direction} variant="body2">
-      Directions
+        Directions
       </NavLink>
       {/* <p>{visit.trailhead.direction}</p> */}
-
-
       <h2>Username: {visit.user.username}</h2>
       <h3>
         {/* <Link to={`/visits/${visit.id}`} >
           {visit.name}
         </Link> */}
-        <p>Visited Date:{visit.visited_date}</p>
+        <p>Visited Date:{' '}{visit.visited_date}</p>
         <p>{visit.visited}</p>
         {
           currentUser && currentUser.id === visit.user.id ? <>
@@ -73,7 +96,7 @@ const VisitCard = ({ visit }) => {
             // null
             <>
               <button type='add'>Add To Visit</button>
-              <button onClick={handleSubmit} type='add'>Add To Favorites</button>
+              <button onClick={handleFavorites} type='add'>Add To Favorites</button>
             </>
         }
         <hr />

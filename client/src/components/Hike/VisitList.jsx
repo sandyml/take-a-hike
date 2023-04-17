@@ -9,6 +9,7 @@ export const VisitList = () => {
 
  const visits = useSelector((state) => state.visitsReducer);
 
+ // const {visits} = useSelector((state) => state.visitsReducer);
  const visitCards = visits.map((visit, ix) =>
   <VisitCard key={ix} visit={visit} />
  );

@@ -17,4 +17,8 @@ class Trailhead < ApplicationRecord
  has_many :trailhead_amenities, dependent: :destroy
  has_many :amenities, through: :trailhead_amenities
 
+ # def all_amenities 
+ #  obect.trailhead.amenities
+ # end
+
 end

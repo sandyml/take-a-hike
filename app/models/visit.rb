@@ -5,8 +5,8 @@ class Visit < ApplicationRecord
   belongs_to :user
   belongs_to :trailhead
 
-  # delegate :hikes, to: :treailhead
-  # delegate :hike, to: :trailhead, prefix: :trailhead
+  # has_many :amenities
+  # delegate :amenities, to: :trailhead
 
   validates :visited_date, presence: true
 end

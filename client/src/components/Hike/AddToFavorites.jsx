@@ -5,8 +5,8 @@ const AddToFavorites = () => {
 
  // REVISITED
 
- const { visited } = useSelector((state) => state.visitsReducer)
- console.log(visited, "visited add to favorites")
+ const { visit } = useSelector((state) => state.visitsReducer)
+ console.log(visit, "visited add to favorites")
   return (
     <div>
       

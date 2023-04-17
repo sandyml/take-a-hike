@@ -20,4 +20,8 @@ class VisitSerializer < ActiveModel::Serializer
   def amenities
     object.trailhead.amenities
   end
+
+  def all_amenities
+    object.trailhead.amenities
+  end
 end

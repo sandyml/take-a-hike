@@ -7,6 +7,7 @@ class TrailheadsController < ApplicationController
 
  def index
   render json: Trailhead.all, status: :ok
+  # render json: Trailhead.all, include: [:all_amenities], status: :ok
  end
 
  def show

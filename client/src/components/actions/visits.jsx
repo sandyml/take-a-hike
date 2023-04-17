@@ -141,8 +141,9 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
 }
 
 // REVISIT
-// export const addToFavorites = (trailhead_post) => {
-//    return {
-//       type: "ADD_FAVORITES_TRAILHEAD"
-//    }
-// }
+export const addToFavorites = (visit) => {
+   return {
+      type: "ADD_FAVORITES_TRAILHEAD",
+      payload: visit
+   }
+}
