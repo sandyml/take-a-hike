@@ -23,7 +23,6 @@ export const loadCurrentUser = (setIsLoading) => {
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.errors) {
-          // console.log(data, "action: '/me")
           const action = {
             type: "LOAD_CURRENT_USER",
             payload: data
@@ -55,22 +54,16 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
-          // console.log(user, "Login User")
-          // setCurrentUser(user);
-          // dispatch(setErrors())
           const action = {
             type: "LOAD_LOGIN_USER",
             payload: user
           }
           dispatch(action);
-          // dispatch(loginUser)
           dispatch(clearErrors())
           navigate('/')
         });
       } else {
         resp.json()
-          // [x] TODO: dispatch setErrors
-          // .then((err) => setErrors(err.errors));
           .then((err) => {
             dispatch(setErrors(err.errors))
           })
@@ -95,13 +88,6 @@ export const logoutUser = () => {
   }
 }
 
-// export const logoutUser = () => {
-//   return {
-//     type: "LOAD_LOGOUT_USER"
-//   }
-// }
-
-// signup 
 export const signupUser = (setIsLoading, headers, username, email, password, navigate) => {
   return dispatch => {
     setIsLoading(true);
@@ -118,16 +104,13 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
       .then((data) => {
         if (data.errors) {
           dispatch(setErrors(data.errors))
-          // console.log(data.errors, "Signup: errors")
         } else {
           dispatch(clearErrors())
-          // handleLoginUser(data)
           const actionSignup = {
             type: "LOAD_SIGNUP_USER",
             payload: data
           }
           dispatch(actionSignup);
-          // setCurrentUser(data)
           const actionAddUser = {
             type: "LOAD_ADD_USER",
             payload: data
@@ -136,5 +119,12 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
           navigate('/visits')
         }
       })
+  }
+}
+
+export const addToVisits = (visited) => {
+  return {
+    type: "LOAD_ADD_VISITED_TRAILHEAD",
+    payload: visited
   }
 }

@@ -1,44 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
 
 export const MyVisitList = () => {
-  const { visits } = useSelector((state) => state.visitsReducer);
-  // const { currentUser } = useSelector((state) => state.usersReducer )
-  console.log(visits);
-
-  // const { id } = useParams();
-
-  // const visitedCard = visits.find((vis) => vis.user.visited && vis.user.username === true);
-  // const visited = visits.find(visit => visit.id === parseInt(id, 10));
-  // const v = visits.find(visit => visit.id === parseInt(id, 10));
-
-  // const visited = () => {
-  //   if (visits.length > 0) {
-  //     const visit = visits.find((vt) => vt.id && vt.user.username === parseInt(id, 10))
-  //   }
-  // }
-  
-return (
+  const visits = useSelector((state) => state.visitsReducer);
+  const { currentUser } = useSelector((state) => state.usersReducer)
+  // debugger
+  console.log(currentUser, "currentUser");
+  return (
     <div>
-      <h1><center>Trailheads I've Visited</center></h1>
-      {/* {visitedCard} */}
-      {/* {visited} */}
+      <center><h1>Trailheads I've Visited</h1>
+        <h3>{currentUser.username}</h3>
+        <span>
+          {currentUser.visits.map((current, cid) => 
+          <div key={cid}><h2>{current.trailhead.name}</h2>
+          <img src={current.hike.image_url} alt="img-url" style={{ width: 1000, height: 600 }} /><br />
+          {current.trailhead.location}<br/><br/>{' '}you visited on: {current.visited_date}<br/></div>)}
+        </span>
 
-      {/* { currentUser && currentUser.id ?  
-      <div> {visited} </div> : "No Visited Found"
-      } */}
-    
-{/* {
- visits.map((myVisits, m) => 
- <div key={m}>
-  <p>{myVisits.trailhead.name}</p>
-  <p>{myVisits.trailhead.fees}</p>
-  <p>{myVisits.user.visited === "true" ? myVisits.user.username : "null"}</p>
-  <hr/>
-  </div>
- )
-} */}
+        {/* {currentUser.hikes.map((h, i) =>
+        <div key={i}>
+          <img src={h.image_url} alt="img-url" style={{ width: 1000, height: 600 }} /><br />
+          <b>distance:</b> {h.distance} <b>elevation gain:</b> {h.elevation_gain}
+        </div>
+      )} */}
+
+      </center>
     </div>
   )
 }

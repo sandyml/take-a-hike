@@ -50,8 +50,7 @@ export const EditForm = () => {
     e.preventDefault();
     dispatch(editVisit(id, setIsLoading, trailhead, visited_date, navigate))
   }
-
-  // const visit = visits.find(visit => visit.id === parseInt(id, 10));
+  
   const v = visits.find(visit => visit.id === parseInt(id, 10));
   // const vi = visits.find(vis => vis.id > 10)
   console.log(v, "visit find")
@@ -76,11 +75,8 @@ export const EditForm = () => {
               Change Visit Date
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-
-              {/* { visits.map((visit) => ( */}
-
                 <Grid container spacing={2}>
-                {/* <Grid container spacing={2} key={visit.id}> */}
+
                   <Grid item xs={12}>
                     <center>
                     <h2>{v.trailhead.name}</h2>

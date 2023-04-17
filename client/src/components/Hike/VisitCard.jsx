@@ -76,7 +76,6 @@ const VisitCard = ({ visit }) => {
           <img src={h.image_url} alt="img-url" style={{ width: 1000, height: 600 }} /><br />
           <b>distance:</b> {h.distance} <b>elevation gain:</b> {h.elevation_gain}
         </div>
-        // check mark for accessiblity
       )}
 
 

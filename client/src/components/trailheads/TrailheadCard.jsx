@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import { Check, HikingRounded, FmdGoodRounded } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
+import { addToVisits } from '../actions/users';
+import { addVisit } from '../actions/visits';
+import { headers } from '../../Global';
 
 // TODO: Button for addToVisited
 
 export const TrailheadCard = ({ th }) => {
  const [loading, setLoading] = useState(false);
+ const { visited, visited_date, trailhead_id } = useSelector((state) => state.visitsReducer)
 
- const visits = useSelector((state) => state.visitsReducer);
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
 
- const handleAddToVisit = (e) => {
-  e.preventDefault();
+ const handleAddToVisit = () => {
+  dispatch(addVisit(headers, visited_date, trailhead_id, navigate))
   console.log("Clicked!")
+  navigate('/my_visit_list')
  }
 
  return (

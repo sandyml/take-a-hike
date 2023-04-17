@@ -110,7 +110,7 @@ export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) =
 
 export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
    return dispatch => {
-      fetch('visits', {
+      fetch('/visits', {
          method: 'POST',
          headers,
          body: JSON.stringify({
@@ -120,13 +120,8 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
       })
          .then((resp) => resp.json())
          .then((data) => {
-            // console.log(data, "action: addVisit")
             if (data.errors) {
-               setErrors(data.errors)
-               // const action = {
-               //    type: "SET_ERRORS",
-               //    payload: data.errors
-               // } // inside error.jsx/errors folder 
+               setErrors(data.errors) 
                dispatch(setErrors(data.errors))
             } else {
                const action = {
@@ -134,7 +129,7 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
                   payload: data // => action.payload 
                }
                dispatch(action)
-               navigate('/favorites')
+               navigate('/my_visit_list')
             }
          })
    }
