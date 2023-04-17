@@ -164,13 +164,14 @@ export const Navbar = () => {
             <Button color="inherit" to="/visits" component={Link}>Trailheads</Button>
             <Button color="inherit" to="/favorites" component={Link}>Favorites</Button>
             <Button color="inherit" to="/my_visit_list" component={Link}>Visited</Button>
+            <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
           </Box>
 
-          {currentUser && currentUser.id ? (
+          { currentUser && currentUser.id ? (
             <>
               <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span>
             </>)
-            : (null)}
+            : (null) }
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

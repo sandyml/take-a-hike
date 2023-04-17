@@ -64,7 +64,7 @@ olympic_national_park = Trailhead.create(
 )
 
 puts "🏞️ Amenity..."
-am1 = Amenity.create( name: "Wheelchair accessible entrance" )
+am1 = Amenity.create( name: "wheelchair accessible entrance" )
 am2 = Amenity.create( name: "wheelchair accessible parking lot" )
 am3 = Amenity.create( name: "wheelchair accessible restroom" )
 am4 = Amenity.create( name: "dogs allowed" )
@@ -184,7 +184,7 @@ hike_arches = Hike.create(
 )
 hike_olympic = Hike.create(
  trailhead_id: olympic_national_park.id,
- image_url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Arches-DelicateArch-LaSalMountains_DP_1600.jpg",
+ image_url: "https://www.outdoorproject.com/sites/default/files/styles/hero_image_desktop/public/features/dsc_0315_0.jpg?itok=dle2MRfU",
  elevation_gain: "None to 3,000 ft",
  distance: "6 to 10 miles round trip - 10-15 minutes"
 )

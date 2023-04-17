@@ -34,13 +34,5 @@ const visitsReducer = (state = [], action) => {
   }
 }
 
-// const handleAddVisit = (visit) => {
-//    setVisits([
-//      ...visits,
-//      visit
-//    ])
-//  };
-
-
 // rxreducer 
 export default visitsReducer;

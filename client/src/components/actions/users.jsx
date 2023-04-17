@@ -1,4 +1,4 @@
-import { setErrors, clearErrors } from '../actions/errors';
+import { setErrors, clearErrors } from './errors';
 
 export const loadUsers = (setIsLoading) => {
   return dispatch => {
