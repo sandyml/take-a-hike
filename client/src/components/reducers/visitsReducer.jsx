@@ -14,6 +14,8 @@ const visitsReducer = (state = [], action) => {
     case "DELETE_VISIT":
       // visits.filter((visit) => visit.id !== deleteVisitDate.id)
       return state.filter((visit) => visit.id !== action.payload)
+    case "DELETE_USERS_VISIT":
+      return state.filter((visit) => visit.trailhead_id !== action.payload)
     case "EDIT_VISIT":
       return state.map((visit) => {
         if (action.payload.id === visit.trailhead_id) {

@@ -55,33 +55,6 @@ export const deleteVisit = (id, header) => {
    }
 }
 
-// export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
-//    return dispatch => {
-//       setIsLoading(true); 
-//       fetch(`/visits/${id}`, {
-//         method: 'PATCH',
-//         headers,
-//         body: JSON.stringify({
-//           trailhead,
-//           visited_date
-//         }),
-//       })
-//         .then((resp) => resp.json())
-//         .then((data) => {
-//          if (data.errors) {
-//            dispatch(setErrors(data.errors))
-//          } else {
-//            dispatch(clearErrors())
-//            const action = {
-//              type: "EDIT_VISIT",
-//              payload: data
-//            }
-//            dispatch(action);
-//            navigate('/visits')
-//          }
-//        })
-//    }
-//  }
 
 export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
    return dispatch => {
@@ -108,14 +81,19 @@ export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) =
    }
 }
 
-export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
+export const addVisit = (th, navigate) => {
+   console.log(JSON.stringify({
+      visited_date: th.visited_date,
+      trailhead_id: th.id,
+   }), "visits addVisit action!")
    return dispatch => {
       fetch('/visits', {
          method: 'POST',
          headers,
          body: JSON.stringify({
-            visited_date,
-            trailhead_id,
+            visited_date: th.visited_date,
+            trailhead_id: th.id,
+            visited: th.visited,
          })
       })
          .then((resp) => resp.json())
@@ -129,16 +107,16 @@ export const addVisit = (headers, visited_date, trailhead_id, navigate) => {
                   payload: data // => action.payload 
                }
                dispatch(action)
-               navigate('/my_visit_list')
             }
+            navigate('/my_visits')
          })
    }
 }
 
 // REVISIT
-export const addToFavorites = (visit) => {
+export const addToVisits = (trailhead) => {
    return {
-      type: "ADD_FAVORITES_TRAILHEAD",
-      payload: visit
+      type: "LOAD_ADD_VISITED_TRAILHEAD",
+      payload: trailhead
    }
 }

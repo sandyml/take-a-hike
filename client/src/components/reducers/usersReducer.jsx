@@ -7,7 +7,7 @@ const initialState = {
   users: [],
   currentUser: null,
   loggedIn: false,
-  visited: []
+  trailhead: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -44,7 +44,12 @@ const usersReducer = (state = initialState, action) => {
     case "LOAD_ADD_VISITED_TRAILHEAD":
       return{
         ...state,
-       visited: action.payload
+       trailhead: [...state.trailhead, action.payload]
+      }
+    case "DELETE_USERS_VISIT":
+      return{
+        ...state,
+        visited: action.payload
       }
     case "LOAD_LOGOUT_USER":
       return {

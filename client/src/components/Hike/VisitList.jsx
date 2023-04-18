@@ -16,7 +16,7 @@ export const VisitList = () => {
 
  return (
   <div>
-   <h2><center>Trailheads</center></h2>
+   <h2><center>Users Trailheads Visited</center></h2>
    <center>
     {visitCards}
    </center>

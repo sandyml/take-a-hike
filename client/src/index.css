@@ -16,6 +16,11 @@ code {
   text-align: center;
 }
 
+.map-container {
+  width: 100vh;
+  height: 100vh;
+}
+
 .Landing-header {
   background-color: #282c34;
   min-height: 100vh;

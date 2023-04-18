@@ -1,5 +1,5 @@
 import React from 'react';
-import { addToFavorites, addVisit, deleteVisit } from '../actions/visits';
+import { addVisit, deleteVisit } from '../actions/visits';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { headers, header } from '../../Global';
@@ -32,12 +32,29 @@ const VisitCard = ({ visit }) => {
     console.log("added to visits but not really just testing if this works")
   };
 
-  const handleFavorites = (e) => {
-    e.preventDefault();
-    dispatch(addToFavorites(visit))
-    navigate('/favorites')
-    console.log("added to favorites but not really just testing if this works")
-  };
+  // const handleFavorites = (e) => {
+  //   e.preventDefault();
+  //   dispatch(addToVisits(visit))
+  //   console.log("added to favorites but not really just testing if this works")
+  //   // navigate('/favorites')
+  // };
+
+  // const [visited, setVisited] = useState([])
+  // const handleAddVisit = ht => {
+  //   const updatedAddedVisit = visits.map(vt => {
+  //     if(ht.trailhead_id === vt.id) {
+  //       // construct new clone
+  //       return {
+  //          ...vt, 
+  //          // what vt do we need to update
+  //          trailheads: [...vt.trailheads, ht] // map over vt .trailheads 
+  //       }
+  //     } else {
+  //       return vt;
+  //     }
+  //   })
+  //   setVisited(updatedAddedVisit);
+  // }
 
   // const amenities = visit.trailhead.map((vt) => <div key={vt}>
   //   {vt.amenities}
@@ -57,15 +74,6 @@ const VisitCard = ({ visit }) => {
   //   }
   //   return null
   // })
-  // debugger
-  // grab all users who has visited the trailheads so far only can grab one 
-  // const user = visits.filter((e) => e.visited === true) 
-  // console.log(user, "usernames")
-
-  // TODO: maybe move open hours to a diff column but tentative 
-  // const res = visit.amenities.filter(([key, value]) => key !== 'open');
-  // const res = visit.amenities.filter((vm) => vm.name !== 'open')
-  // console.log(res, "res");
 
   return (
     <div>
@@ -77,7 +85,6 @@ const VisitCard = ({ visit }) => {
           <b>distance:</b> {h.distance} <b>elevation gain:</b> {h.elevation_gain}
         </div>
       )}
-
 
       <FmdGoodRounded /> {visit.trailhead.location}
       <p>{visit.trailhead.fees}</p>
@@ -92,7 +99,7 @@ const VisitCard = ({ visit }) => {
       </NavLink><br /><br />
       {/* <p>{visit.trailhead.direction}</p> */}
       {/* <span>{user} has visited on {visit.visited_date}</span> */}
-      <ul>{visit.user.username} has visited on {visit.visited_date}</ul>
+      <ul><b>{visit.user.username}</b> visited on {visit.visited_date}</ul>
       <h3>
         {/* <Link to={`/visits/${visit.id}`} >
           {visit.name}
@@ -107,7 +114,7 @@ const VisitCard = ({ visit }) => {
             // null
             <>
               <button onClick={handleSubmit} type='add'>Add To Visit</button>
-              <button onClick={handleFavorites} type='add'>Add To Favorites</button>
+              {/* <button onClick={handleFavorites} type='add'>Add To Favorites</button> */}
             </>
         }
         <hr />

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { FavoriteCard } from './FavoriteCard';
 
 // TODO: REVISIT
-
+// not working 
 export const FavoritedList = () => {
 
  const { currentUser } = useSelector((state) => state.usersReducer)

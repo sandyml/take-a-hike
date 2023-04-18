@@ -17,8 +17,9 @@ import { loadVisits } from './components/actions/visits';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { MyVisitList } from './components/hike/MyVisitList';
-import { FavoritedList } from './components/hike/FavoritedList';
+// import { FavoritedList } from './components/hike/FavoritedList';
 import { Trailheads } from './components/trailheads/Trailheads';
+// import SimpleMap from './components/navigation/SimpleMap';
 
 // [] TODO: If currentUser logged in show trails if not show login and signup to login 
 // [] TODO: add back carousel when done (too many distractions) 
@@ -53,11 +54,12 @@ export function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/visits/:id/edit" element={<EditForm />} />
               <Route path="/visits" element={<VisitList />} />
-              <Route path="/favorites" element={<FavoritedList />} />
-              <Route path="/my_visit_list" element={<MyVisitList />} />
+              {/* <Route path="/favorites" element={<FavoritedList />} /> */}
+              <Route path="/my_visits" element={<MyVisitList />} />
               <Route path="/trailheads" element={<Trailheads />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
+              {/* <Route path="/map" element={<SimpleMap />} /> */}
               {/* <Route path="/visits" element={<VisitList />} /> */}
               {/* <Route path="/visits/new" element={<AddForm />} /> */}
             </Routes>

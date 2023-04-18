@@ -47,8 +47,8 @@ class VisitsController < ApplicationController
 # end
 
 def create
-  # byebug
   visit = current_user.visits.create(visit_params)
+  # byebug
   if visit.save
     render json: visit, status: :created
   else
@@ -135,7 +135,8 @@ end
 
  # no need to user_id for current_user is logged in 
  def visit_params
-  params.permit(:trailhead_id, :visited_date, :visited)
+  params.permit(:trailhead_id, :visited_date)
+  # params.permit(:trailhead_id, :visited_date, :visited)
  end
 
  def find_visit

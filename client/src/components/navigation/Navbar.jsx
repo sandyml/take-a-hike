@@ -57,10 +57,6 @@ export const Navbar = () => {
     dispatch(logoutUser())
   };
 
-   // const handleLogout = () => {
-  //   dispatch(logoutUser())
-  // };
-
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
   };
@@ -76,8 +72,6 @@ export const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
-  // /favorites route tentativev will convert to /visits/:id
   
   return (
     <AppBar position="static">
@@ -132,10 +126,12 @@ export const Navbar = () => {
             >
 
               <Button color="inherit" to="/" component={Link}>Home</Button><br />
+              <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button><br />
+              <Button color="inherit" to="/my_visits" component={Link}>Visited</Button><br/>
+            <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
               {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
-              <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button><br />
-              <Button color="inherit" to="/visits" component={Link}>Trailheads</Button><br />
-              <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/>
+              {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button><br /> */}
+              {/* <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/> */}
 
             </Menu>
           </Box>
@@ -159,12 +155,11 @@ export const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" to="/" component={Link}>Home</Button>
-            {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> */}
-            <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button>
-            <Button color="inherit" to="/visits" component={Link}>Trailheads</Button>
-            <Button color="inherit" to="/favorites" component={Link}>Favorites</Button>
-            <Button color="inherit" to="/my_visit_list" component={Link}>Visited</Button>
+            {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button> */}
+            <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button>
+            <Button color="inherit" to="/my_visits" component={Link}>Visited</Button>
             <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
+            {/* <Button color="inherit" to="/map" component={Link}>Map</Button> */}
           </Box>
 
           { currentUser && currentUser.id ? (

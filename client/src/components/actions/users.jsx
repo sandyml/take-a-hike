@@ -60,7 +60,8 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
           }
           dispatch(action);
           dispatch(clearErrors())
-          navigate('/')
+          navigate('/my_visits')
+          // navigate('/')
         });
       } else {
         resp.json()
@@ -126,5 +127,22 @@ export const addToVisits = (visited) => {
   return {
     type: "LOAD_ADD_VISITED_TRAILHEAD",
     payload: visited
+  }
+}
+
+export const deleteUsersVisit = (id, header) => {
+  return dispatch => {
+    fetch(`/users/${id}`, {
+      method: "DELETE",
+      header,
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        dispatch({
+          type: "DELETE_USERS_VISIT",
+          payload: data.id
+        //   payload: data.id
+        });
+      })
   }
 }
