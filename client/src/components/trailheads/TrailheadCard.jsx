@@ -72,7 +72,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
           ))}
         </ul>
       )}
-
     </center></div>
   )
 };
