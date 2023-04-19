@@ -11,8 +11,6 @@ class VisitsController < ApplicationController
     authorize_user_resource(@visit.user_id)
   end
 
- # [] TODO: Check create method again to see if its okay! 
-
  def index
   render json: Visit.all, status: :ok
  end

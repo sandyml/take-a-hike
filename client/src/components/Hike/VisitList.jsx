@@ -5,21 +5,21 @@ import VisitCard from './VisitCard';
 
 // [] TODO: useEffect for extra auth 
 
-export const VisitList = ({isLoading}) => {
+export const VisitList = ({ isLoading }) => {
 
  const visits = useSelector((state) => state.visitsReducer);
  const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
- 
+
  const navigate = useNavigate();
- 
+
  useEffect(() => {
   if (!isLoading && !loggedIn) {
    navigate('/login')
   }
  }, [isLoading, loggedIn, navigate])
- 
+
  const visitCards = visits.map((visit, ix) =>
-<VisitCard key={ix} visit={visit} isLoading={isLoading}/>
+  <VisitCard key={ix} visit={visit} isLoading={isLoading} />
  );
 
  return (
