@@ -68,12 +68,11 @@ export const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(signupUser(setIsLoading, headers, username, email, password, navigate));
 
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    // setUsername("");
+    // setEmail("");
+    // setPassword("");
     // setErrors([]);
   }
 
@@ -197,7 +196,7 @@ export const Signup = () => {
               <ul style={{ color: "red" }}>
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>
-                ))}
+                  ))}
               </ul>
             )}
 
@@ -211,6 +210,7 @@ export const Signup = () => {
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
+      <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' />
       </Container>
     </ThemeProvider>
   );

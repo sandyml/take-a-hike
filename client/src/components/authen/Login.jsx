@@ -91,14 +91,13 @@ export const Login = () => {
   }
 
   const togglePassword = () => {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword) 
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-
         <Box
           sx={{
             marginTop: 8,
@@ -184,7 +183,7 @@ export const Login = () => {
                 ))}
               </ul>
             )}
-            
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signup" variant="body2">
@@ -196,6 +195,7 @@ export const Login = () => {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
+      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I5NTBjOTcxMmQxNDQwMjVmMTg1MDI3ZTBkZTQ3MTNiYTUzZTRmZCZjdD1z/kd8ynEx9HxlW5gVqg8/giphy.gif" alt="gif" className='direction'/>
     </ThemeProvider>
   );
 };

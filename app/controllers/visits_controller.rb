@@ -123,17 +123,8 @@ def destroy
     end
 end 
 
-# def destroy
-#   visit_collection = Visit.find(params[:id])
-#   visit_collection.destroy
-#   head :no_content
-#   # render json: { "Deleted": "deleted", visit: visit_collection }
-#   # render json: { message: ["Visit has been deleted!"] }, status: :no_content
-# end
-
  private 
 
- # no need to user_id for current_user is logged in 
  def visit_params
   params.permit(:trailhead_id, :visited_date)
   # params.permit(:trailhead_id, :visited_date, :visited)

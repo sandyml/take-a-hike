@@ -31,3 +31,40 @@ code {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+img.bottomleft {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left; 
+  width: 50%;
+  height: auto;
+  opacity: 0.3;
+}
+
+.box {
+  position: relative;
+}
+img {
+  width: 100%;
+  height: auto;
+  opacity: 0.6;
+}
+.direction {
+  position: absolute;
+  bottom: 7px;
+  left: 19px;
+  font-size: 13px;
+}
+
+.etched-text {
+  text-shadow: 0 2px white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #b8bec5;
+}
+
+.box-example {
+  height: 280px;
+  background: #222 url('https://cdn.dribbble.com/users/550484/screenshots/2128340/media/ab10d36499f3f14a8749486c80d3cafe.gif') no-repeat;
+  background-position: calc(100% - 20px) calc(100% - 20px);
+}

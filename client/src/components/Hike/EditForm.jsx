@@ -34,13 +34,10 @@ export const EditForm = () => {
   const trailhead = useSelector((state) => state.visitsReducer);
   const visits = useSelector((state) => state.visitsReducer);
   // const errors = useSelector((state) => state.errorsReducer)
-  // const { loggedIn, currentUser } = useSelector((state) => state.usersReducer)
 
   const [isLoading, setIsLoading] = useState(false);
 
   // useEffect cleanup function 
-
-  // debugger
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { ImageListItem } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import trail_1 from '../../assets/trail_1.jpg'
 import trail_2 from '../../assets/trail_2.jpg'
 import trail_3 from '../../assets/trail_3.jpg'
@@ -12,19 +12,23 @@ import trail_8 from '../../assets/trail_8.jpg'
 import trail_9 from '../../assets/trail_9.jpg'
 import trail_10 from '../../assets/trail_10.jpg'
 
-export function HikeCarousel() {
+const TrailheadCarousel = () => {
+
     return (
         <Carousel>
-            {itemData.map((item) => (
-                <ImageListItem key={item}>
-                    <img
-                        src={`${item.img}?w=160&h=160&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=160&h=160&fit=crop&auto=format&dpr=2 2x`}
-                        alt={item.title}
-                        loading="lazy"
-                    />
-                </ImageListItem>
-            ))}
+            <Paper >
+                {itemData.map((item, imgId) => (
+                    <div key={imgId}>
+                        <img
+                            src={item.img}
+                            srcSet={item.img}
+                            alt="images"
+                            loading="lazy"
+                            style={{ width: "100%", height: "80vh" }}
+                        />
+                    </div>
+                ))}
+            </Paper>
         </Carousel>
     )
 }
@@ -41,3 +45,5 @@ const itemData = [
     { img: trail_9 },
     { img: trail_10 }
 ]
+
+export default TrailheadCarousel;

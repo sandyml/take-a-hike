@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
 
 // [] TODO: useEffect for extra auth 
-// [] TODO: tentative - add photo of self in navbar
 
-export const VisitList = () => {
+export const VisitList = ({isLoading}) => {
 
  const visits = useSelector((state) => state.visitsReducer);
-
- // const {visits} = useSelector((state) => state.visitsReducer);
+ const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
+ 
+ const navigate = useNavigate();
+ 
+ useEffect(() => {
+  if (!isLoading && !loggedIn) {
+   navigate('/login')
+  }
+ }, [isLoading, loggedIn, navigate])
+ 
  const visitCards = visits.map((visit, ix) =>
-  <VisitCard key={ix} visit={visit} />
+<VisitCard key={ix} visit={visit} isLoading={isLoading}/>
  );
 
  return (
   <div>
    <h2><center>Users Trailheads Visited</center></h2>
-   <center>
-    {visitCards}
-   </center>
+   {currentUser && currentUser.id ?
+    <center>
+     {visitCards}
+    </center>
+    : <h1>Please Login In To Access Account</h1>
+   }
   </div>
  );
 };

@@ -3,7 +3,7 @@ export const loadTrailheads = () => {
   fetch('/trailheads')
    .then((resp) => resp.json())
    .then((data) => {
-    console.log(data, "action: loadTrailheads")
+    // console.log(data, "action: loadTrailheads")
     dispatch({
      type: "LOAD_TRAILHEADS",
      payload: data

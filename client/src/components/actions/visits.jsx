@@ -10,8 +10,7 @@
 // What we do: Add a middleWare called thunk which allows us to put asleep on the process of the flow of updating state and then once that process completes then we are able to update state
 // MUST: cancel our server before installing anything. 
 
-// loadViists => an action which is considered a function 
-
+// loadVisits => an action which is considered a function 
 
 // dispatch on load 
 import { headers } from '../../Global';
@@ -24,7 +23,7 @@ export const loadVisits = () => {
       fetch('/visits')
          .then((resp) => resp.json())
          .then((data) => {
-            console.log(data, "action: loadVisits")
+            // console.log(data, "action: loadVisits")
             const action = {
                type: "LOAD_VISITS",
                payload: data
@@ -33,7 +32,6 @@ export const loadVisits = () => {
          })
    }
 }
-
 // const deleteVisitDate = (deleteVisitDate) => {
 //   const updatedVisits = visits.filter((visit) => visit.id !== deleteVisitDate.id)
 //   setVisits(updatedVisits)
@@ -110,13 +108,5 @@ export const addVisit = (th, navigate) => {
             }
             navigate('/my_visits')
          })
-   }
-}
-
-// REVISIT
-export const addToVisits = (trailhead) => {
-   return {
-      type: "LOAD_ADD_VISITED_TRAILHEAD",
-      payload: trailhead
    }
 }

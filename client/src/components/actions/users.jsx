@@ -1,4 +1,5 @@
 import { setErrors, clearErrors } from './errors';
+import { header } from '../../Global';
 
 export const loadUsers = (setIsLoading) => {
   return dispatch => {
@@ -12,6 +13,7 @@ export const loadUsers = (setIsLoading) => {
         }
         setIsLoading(false);
         dispatch(action);
+        dispatch(clearErrors())
       })
   }
 }
@@ -28,6 +30,7 @@ export const loadCurrentUser = (setIsLoading) => {
             payload: data
           }
           dispatch(action);
+          dispatch(clearErrors())
         } else {
           setIsLoading(false);
         }
@@ -117,31 +120,26 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
             payload: data
           }
           dispatch(actionAddUser);
+          dispatch(clearErrors())
           navigate('/visits')
         }
       })
   }
 }
 
-export const addToVisits = (visited) => {
-  return {
-    type: "LOAD_ADD_VISITED_TRAILHEAD",
-    payload: visited
-  }
-}
-
-export const deleteUsersVisit = (id, header) => {
+export const deleteUsersVisit = (id) => {
   return dispatch => {
-    fetch(`/users/${id}`, {
+    fetch(`/visits/${id}`, {
       method: "DELETE",
       header,
     })
       .then(resp => resp.json())
       .then(data => {
+        console.log(data, "deleted")
         dispatch({
           type: "DELETE_USERS_VISIT",
-          payload: data.id
-        //   payload: data.id
+          // payload: data.id
+          payload: id
         });
       })
   }
