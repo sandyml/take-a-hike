@@ -7,8 +7,9 @@ import VisitCard from './VisitCard';
 
 export const VisitList = ({ isLoading }) => {
 
- const visits = useSelector((state) => state.visitsReducer);
  const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
+ const visits = useSelector((state) => state.visitsReducer);
+ console.log(visits, "visits list reducer")
 
  const navigate = useNavigate();
 
@@ -18,19 +19,21 @@ export const VisitList = ({ isLoading }) => {
   }
  }, [isLoading, loggedIn, navigate])
 
+ if (visits.errors) {
+  return <div></div>
+ }
  const visitCards = visits.map((visit, ix) =>
   <VisitCard key={ix} visit={visit} isLoading={isLoading} />
  );
 
  return (
   <div>
-   <h2 className='etched-text'><center>Users Trailheads Visited</center></h2>
-   {currentUser && currentUser.id ?
-    <center>
-     {visitCards}
-    </center>
-    : <h1>Please Login In To Access Account</h1>
-   }
+   <h2 className='etched-text'>
+    <center>Users Trailheads Visited</center>
+   </h2>
+   <center>
+    {visitCards}
+   </center>
   </div>
  );
 };

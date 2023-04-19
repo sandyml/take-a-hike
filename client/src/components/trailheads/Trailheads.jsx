@@ -11,12 +11,22 @@ export const Trailheads = ({ isLoading }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isLoading && !loggedIn) {
+    if (!isLoading && !loggedIn) {
       navigate('/login')
     }
   }, [isLoading, loggedIn, navigate])
 
-  const trailheadCards = trailheads.map((th) => <TrailheadCard key={th.id} th={th} isLoading={isLoading} /> )
+  if (trailheads.errors) {
+    return <div></div>
+  }
+
+  const trailheadCards = trailheads.map((th) =>
+    <TrailheadCard
+      key={th.id}
+      th={th}
+      isLoading={isLoading}
+    />
+  )
 
   return (
     <div>

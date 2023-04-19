@@ -20,7 +20,6 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -158,7 +157,7 @@ export const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-              {/* TODO: Show password  */}
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
@@ -166,6 +165,7 @@ export const Login = () => {
                 />
               </Grid>
             </Grid>
+
             <Button
               type="submit"
               fullWidth
@@ -193,9 +193,15 @@ export const Login = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
-      <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I5NTBjOTcxMmQxNDQwMjVmMTg1MDI3ZTBkZTQ3MTNiYTUzZTRmZCZjdD1z/kd8ynEx9HxlW5gVqg8/giphy.gif" alt="gif" className='direction'/>
+      <Copyright sx={{ mt: 5 }} />
+
+      <img 
+      src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I5NTBjOTcxMmQxNDQwMjVmMTg1MDI3ZTBkZTQ3MTNiYTUzZTRmZCZjdD1z/kd8ynEx9HxlW5gVqg8/giphy.gif" 
+      alt="gif" 
+      className='direction'
+      />
+
     </ThemeProvider>
   );
 };

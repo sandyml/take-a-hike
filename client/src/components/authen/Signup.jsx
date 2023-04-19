@@ -19,19 +19,8 @@ import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © Sandra Yun '}
-      <Link color="inherit" href="https://github.com/sandyml/take-a-hike">
-        Github
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { BottomNavigation } from '@mui/material';
+import { Copyright } from '../copyright/Copyright';
 
 const theme = createTheme({
   status: {
@@ -68,7 +57,14 @@ export const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signupUser(setIsLoading, headers, username, email, password, navigate));
+    dispatch(signupUser(
+      setIsLoading,
+      headers,
+      username,
+      email,
+      password,
+      navigate
+    ));
 
     // setUsername("");
     // setEmail("");
@@ -196,7 +192,7 @@ export const Signup = () => {
               <ul style={{ color: "red" }}>
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>
-                  ))}
+                ))}
               </ul>
             )}
 
@@ -209,9 +205,11 @@ export const Signup = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
-      <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' />
+        {/* <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' /> */}
       </Container>
+
+      <BottomNavigation sx={{ height: 200 }} />
+      <Copyright />
     </ThemeProvider>
   );
 };

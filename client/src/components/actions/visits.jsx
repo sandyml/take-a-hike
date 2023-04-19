@@ -106,7 +106,7 @@ export const addVisit = (th, navigate) => {
                }
                dispatch(action)
             }
-            navigate('/my_visits')
+            navigate('/me')
          })
    }
 }

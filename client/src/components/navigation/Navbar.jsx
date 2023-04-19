@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // mui 
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { makeStyles } from '@material-ui/core/styles';
+import ForestIcon from '@mui/icons-material/Forest';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -14,11 +17,11 @@ import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
-import { makeStyles } from '@material-ui/core/styles';
 
 // TODO: When logging out - login/signup button will not appear unless refresh - fix!
 import { logoutUser } from '../actions/users';
 
+// move in own component
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
@@ -92,7 +95,7 @@ export const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            TakeAHike
+           <ForestIcon /> TakeAHike
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -127,8 +130,9 @@ export const Navbar = () => {
 
               <Button color="inherit" to="/" component={Link}>Home</Button><br />
               <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button><br />
-              <Button color="inherit" to="/my_visits" component={Link}>Visited</Button><br/>
-            <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
+              <Button color="inherit" to="/me" component={Link}><FavoriteIcon /> Visited</Button><br/>
+              {/* <Button color="inherit" to="/my_visits" component={Link}><FavoriteIcon /> Visited</Button><br/> */}
+              <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
               {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
               {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button><br /> */}
               {/* <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/> */}
@@ -151,13 +155,14 @@ export const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            TakeAHike
+           <ForestIcon/> TakeAHike
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button color="inherit" to="/" component={Link}>Home</Button>
             <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button>
             {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button> */}
-            <Button color="inherit" to="/my_visits" component={Link}>Visited</Button>
+            <Button color="inherit" to="/me" component={Link}><FavoriteIcon />&nbsp;Visited</Button>
+            {/* <Button color="inherit" to="/my_visits" component={Link}><FavoriteIcon />&nbsp;Visited</Button> */}
             <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
           </Box>
 

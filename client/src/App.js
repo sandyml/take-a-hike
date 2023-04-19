@@ -39,16 +39,17 @@ export function App() {
           isLoading ? <h1>Loading...please wait..</h1> :
           <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home isLoading={isLoading}/>} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/visits/:id/edit" element={<EditForm />} />
-              <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
-              <Route path="/my_visits" element={<MyVisitList isLoading={isLoading}/>} />
-              <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
-              <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/visits/:id/edit" element={<EditForm />} />
+              <Route path="/termsandconditions" element={<TermsPolicy />} />
+              <Route path="/home" element={<Home isLoading={isLoading}/>} />
+              <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
+              <Route path="/me" element={<MyVisitList isLoading={isLoading}/>} />
+              {/* <Route path="/my_visits" element={<MyVisitList isLoading={isLoading}/>} /> */}
+              <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
             </Routes>
         }
       </LocalizationProvider>

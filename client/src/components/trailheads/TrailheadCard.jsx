@@ -37,6 +37,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
     <div><center>
       <h1 className='etched-text'>All Trailheads</h1>
       <h2>{th.name}</h2>
+
       {th.hikes.map((thh) =>
         <ul key={thh}>
           <img src={thh.image_url} alt="hike-images" style={{ width: 1000, height: 600 }} /><br />
@@ -51,12 +52,14 @@ export const TrailheadCard = ({ th, isLoading }) => {
       <Link href={th.directions} variant="body2">
         <RouteIcon /> Directions
       </Link><br /><br />
+
       {/* <a href={th.directions}>Directions</a><br/> */}
-        {/* <div>
+      {/* <div>
         <a id='card-link' href={th.directions}>
         <RouteIcon /> Directions
         </a>
         </div><br/><br/> */}
+
       <Button
         variant="contained"
         disabled={!!isInVisited}
