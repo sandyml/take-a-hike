@@ -35,11 +35,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
   return (
     <div><center>
-      <h1>All Trailheads</h1>
+      <h1 className='etched-text'>All Trailheads</h1>
       <h2>{th.name}</h2>
       {th.hikes.map((thh) =>
         <ul key={thh}>
-          <img src={thh.image_url} alt="hike-images" /><br />
+          <img src={thh.image_url} alt="hike-images" style={{ width: 1000, height: 600 }} /><br />
           <h4><FmdGoodRounded />{th.location}</h4>
           <b>elevation_gain:</b> {thh.elevation_gain} <b>distance:</b> {thh.distance}
         </ul>)}

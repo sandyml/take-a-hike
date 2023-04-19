@@ -24,7 +24,7 @@ export const VisitList = ({isLoading}) => {
 
  return (
   <div>
-   <h2><center>Users Trailheads Visited</center></h2>
+   <h2 className='etched-text'><center>Users Trailheads Visited</center></h2>
    {currentUser && currentUser.id ?
     <center>
      {visitCards}
