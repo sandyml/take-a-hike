@@ -63,7 +63,7 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
           }
           dispatch(action);
           dispatch(clearErrors())
-          navigate('/me')
+          navigate('/homepage')
           // navigate('/')
         });
       } else {

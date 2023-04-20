@@ -68,3 +68,11 @@ img.bottomleft {
   background: rgb(255, 255, 255) url('https://media.tenor.com/FcVg5W9zZJQAAAAC/error.gif') no-repeat;
   background-position: calc(100% - 0px) calc(100% - -7px);
 }
+
+#rcorners1 {
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}

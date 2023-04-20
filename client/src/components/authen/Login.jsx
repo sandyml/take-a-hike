@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { setErrors } from '../actions/errors';
 import { loginUser } from '../actions/users';
 import { headers } from '../../Global';
 
-// mui 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -86,7 +84,6 @@ export const Login = () => {
     setUsername("");
     setEmail("");
     setPassword("");
-    // setErrors([]);
   }
 
   const togglePassword = () => {
@@ -197,7 +194,7 @@ export const Login = () => {
       <Copyright sx={{ mt: 5 }} />
 
       <img 
-      src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I5NTBjOTcxMmQxNDQwMjVmMTg1MDI3ZTBkZTQ3MTNiYTUzZTRmZCZjdD1z/kd8ynEx9HxlW5gVqg8/giphy.gif" 
+      src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif" 
       alt="gif" 
       className='direction'
       />

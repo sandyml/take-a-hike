@@ -7,7 +7,7 @@ import VisitCard from './VisitCard';
 
 export const VisitList = ({ isLoading }) => {
 
- const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
+ const { loggedIn } = useSelector((state) => state.usersReducer);
  const visits = useSelector((state) => state.visitsReducer);
  console.log(visits, "visits list reducer")
 

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-// mui 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 import ForestIcon from '@mui/icons-material/Forest';
@@ -10,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import MenuIcon from '@mui/icons-material/Menu';
+import { logoutUser } from '../actions/users';
 import Tooltip from '@mui/material/Tooltip';
 import Toolbar from '@mui/material/Toolbar';
 import Avatar from '@mui/material/Avatar';
@@ -17,11 +16,8 @@ import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
+import { cartoon_bear_gif } from '../styles/LandingCSS';
 
-// TODO: When logging out - login/signup button will not appear unless refresh - fix!
-import { logoutUser } from '../actions/users';
-
-// move in own component
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
@@ -43,7 +39,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 export const Navbar = () => {
   const classes = useStyles();
 
@@ -60,25 +55,9 @@ export const Navbar = () => {
     dispatch(logoutUser())
   };
 
-  const handleOpenNavMenu = (e) => {
-    setAnchorElNav(e.currentTarget);
-  };
-
-  const handleOpenUserMenu = (e) => {
-    setAnchorElUser(e.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" className={classes.sage}>
+    <AppBar position="static" >
+      <Container maxWidth="xl" className={classes.lightSage} variant="outlined">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -95,7 +74,7 @@ export const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-           <ForestIcon /> TakeAHike
+            <ForestIcon /> TakeAHike
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -104,7 +83,7 @@ export const Navbar = () => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={(e) => setAnchorElNav(e.currentTarget)}
               color="inherit"
             >
               <MenuIcon />
@@ -122,7 +101,7 @@ export const Navbar = () => {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              onClose={() => setAnchorElNav(null)}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
@@ -130,12 +109,7 @@ export const Navbar = () => {
 
               <Button color="inherit" to="/" component={Link}>Home</Button><br />
               <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button><br />
-              <Button color="inherit" to="/me" component={Link}><FavoriteIcon /> Visited</Button><br/>
-              {/* <Button color="inherit" to="/my_visits" component={Link}><FavoriteIcon /> Visited</Button><br/> */}
               <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
-              {/* <Button color="inherit" to="/trailheads" component={Link}>Trailheads</Button> <br/>*/}
-              {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button><br /> */}
-              {/* <Button color="inherit" to="/favorites" component={Link}>Favorites</Button><br/> */}
 
             </Menu>
           </Box>
@@ -155,29 +129,31 @@ export const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-           <ForestIcon/> TakeAHike
+            <ForestIcon /> TakeAHike
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button color="inherit" to="/" component={Link}>Home</Button>
-            <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button>
-            {/* <Button color="inherit" to="/visits/:id" component={Link}>Places I've Visited</Button> */}
-            <Button color="inherit" to="/me" component={Link}><FavoriteIcon />&nbsp;Visited</Button>
-            {/* <Button color="inherit" to="/my_visits" component={Link}><FavoriteIcon />&nbsp;Visited</Button> */}
-            <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
-          </Box>
-
           { currentUser && currentUser.id ? (
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              <Button color="inherit" to="/" component={Link}>Home</Button>
+              <Button color="inherit" to="/visits" component={Link}>Trailheads Hikers Visited</Button>
+              <Button color="inherit" to="/trailheads" component={Link}>All Trailheads</Button>
+              
+            </Box>
+          ) : ( null )}
+
+          {currentUser && currentUser.id ? (
             <>
               <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span>
             </>)
-            : (null) }
+            : (null)}
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            { currentUser && currentUser.id ? (
+              <Tooltip title="Open settings">
+              <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)} sx={{ p: 0 }}>
                 <Avatar alt="Username" src="" />
               </IconButton>
             </Tooltip>
+              ) : null }
 
             <Menu
               sx={{ mt: '45px' }}
@@ -193,13 +169,14 @@ export const Navbar = () => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={() => setAnchorElUser(null)}
             >
 
               <div>
                 {currentUser && currentUser.id ? (
                   <div>
-                    <Button color="inherit" to="/logout" component={Link} onClick={handleLogout}>Logout</Button><br />
+                    <Button color="inherit" to="/me" component={Link}><FavoriteIcon sx={{ width: 10, height: 10 }}/>&nbsp;I hiked</Button><br />
+                    <Button color="inherit" to="/logout" component={Link} onClick={handleLogout}>&nbsp;Logout</Button>
                   </div>
                 ) : (
                   <div>

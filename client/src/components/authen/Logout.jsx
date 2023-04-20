@@ -1,23 +1,19 @@
 import React from 'react';
 import { Copyright } from '../copyright/Copyright';
+import { HeaderNav } from '../navigation/HeaderNav';
 
 const Logout = () => {
   return (
     <div>
-      <><center><h1 className='etched-text '>You are not logged out!</h1></center></><br /><br />
+      <HeaderNav />
+      {/* https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif */}
       <img
-        src="https://cdn.dribbble.com/users/1866560/screenshots/6208943/2019_tamarack-hotel_scene_v3-dribbble.gif"
+        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif"
         alt="happy hiking!"
-        className=""
       />
-      {/* <img 
-      src="https://images.squarespace-cdn.com/content/v1/5c528d9e96d455e9608d4c63/1586379635937-DUGHB6LHU59QIVDH2QHZ/Hiker.gif?format=710w" 
-      alt="happy hiking!" 
-      className="bottomleft" 
-      /> */}
       <Copyright />
     </div>
   )
 }
 
-export default Logout
+export default Logout;
