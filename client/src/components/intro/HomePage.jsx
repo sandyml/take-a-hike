@@ -8,6 +8,7 @@ import HomePageCards from './HomePageCards';
 import Grid from '@material-ui/core/Grid';
 import { Parallax } from 'react-parallax';
 import HomePageDescription from './HomePageDescription';
+import { MyVisitList } from '../hike/MyVisitList';
 
 class HomePage extends React.Component {
   
@@ -41,6 +42,9 @@ class HomePage extends React.Component {
     </Parallax>
     <HomePageCards /><br/>
     <HomePageDescription />
+    <MyVisitList />
+    <br/>
+    {/* <Typography>Hikers Visits Interactions</Typography> */}
     <Copyright />
    </div>
   );

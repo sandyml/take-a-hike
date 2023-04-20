@@ -1,6 +1,8 @@
+import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { HeaderNav } from '../navigation/HeaderNav';
 import VisitCard from './VisitCard';
 
 // [] TODO: useEffect for extra auth 
@@ -28,12 +30,10 @@ export const VisitList = ({ isLoading }) => {
 
  return (
   <div>
-   <h2 className='etched-text'>
-    <center>Users Trailheads Visited</center>
-   </h2>
-   <center>
-    {visitCards}
-   </center>
+   <HeaderNav />
+   <Button align='right' variant='body2' onClick={() => navigate('/homepage')}>Back to the homepage I go..</Button>
+   <Typography align='center' variant='h3' className='etched-text'>Users Trailheads Visited</Typography>
+{visitCards}
   </div>
  );
 };

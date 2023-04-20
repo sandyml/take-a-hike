@@ -94,8 +94,6 @@ export const MyVisitList = ({ isLoading }) => {
                     {' '}You visited on {current.visited_date}
                   </Typography>
                 </CardContent>
-                <CardActions>
-                </CardActions>
               </Card>
             </Grid>
           </Grid>

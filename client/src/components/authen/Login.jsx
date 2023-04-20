@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import { Button } from '@mui/material';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -66,6 +66,7 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   const errors = useSelector((state) => state.errorsReducer);
+  const currentUser = useSelector((state) => state.usersReducer);
 
   // TODO: Remove useEffect to test out if current_user is already logged in with error messages "You are already logged in!"
   // useEffect(() => {
@@ -91,7 +92,10 @@ export const Login = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}> 
+      <Button align='right' variant='body1' onClick={() => navigate('/homepage')}>
+        Come back home! You're already logged in!
+        </Button> 
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
