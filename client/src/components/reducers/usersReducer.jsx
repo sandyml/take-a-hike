@@ -2,7 +2,7 @@ const initialState = {
   users: [],
   currentUser: null,
   loggedIn: false,
-  // visits: []
+  visits: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -10,20 +10,19 @@ const usersReducer = (state = initialState, action) => {
     case "LOAD_USERS":
       return {
         ...state,
-        user: action.payload
-        // loggedIn: true
-      }
-    case "LOAD_CURRENT_USER":
-      return {
-        ...state,
-        currentUser: action.payload,
-        loggedIn: true
+        users: action.payload
       }
     case "LOAD_LOGIN_USER":
       return {
         ...state,
         currentUser: action.payload,
-        // visits: action.payload.visits,
+        loggedIn: true
+      }
+    case "LOAD_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+        visits: action.payload.visits,
         loggedIn: true
       }
     case "LOAD_SIGNUP_USER":
@@ -51,7 +50,7 @@ const usersReducer = (state = initialState, action) => {
       case "ADD_USER_VISIT":
         return {
           ...state,
-          currentUser: [...state.currentUser.visits, action.payload]
+          visits: [...state.visits, action.payload]
           }
     default:
       return state;

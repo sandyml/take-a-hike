@@ -23,6 +23,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { Trailheads } from './components/trailheads/Trailheads';
 import { Copyright } from './components/copyright/Copyright';
+import { MyVisits } from './components/visits/MyVisits';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +54,7 @@ export function App() {
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
               <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
+              <Route path="/myvisits" element={<MyVisits />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
         }
