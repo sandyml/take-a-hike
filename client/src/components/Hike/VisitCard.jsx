@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { deleteVisit } from '../actions/visits';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate, NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { header } from '../../Global';
 
@@ -10,8 +10,13 @@ import { Button } from '@mui/material';
 const VisitCard = ({ visit, isLoading }) => {
   const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
 
+  // console.log(currentUser.id, "currentUser.id")
+  // debugger
+  // console.log(visit.user.id, "visit.user.id")
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const { id } = useParams();
 
   useEffect(() => {
     if (!isLoading && !loggedIn) {
@@ -43,9 +48,8 @@ const VisitCard = ({ visit, isLoading }) => {
       <NavLink href={visit.trailhead.direction} variant="body2">
         Directions
       </NavLink><br /><br />
-      <ul><b>{visit.user.username}</b> visited on {visit.visited_date}</ul>
+      {/* <ul><b>{visit.user.username}</b> visited on {visit.visited_date}</ul> */}
       <h3>
-
         {currentUser && currentUser.id === visit.user.id ?
           <>
             <Button variant="outlined" onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</Button>{' '}

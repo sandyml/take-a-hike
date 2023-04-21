@@ -1,15 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import VisitCard from '../hike/VisitCard';
 
 export const MyVisits = () => {
- // const { currentUser } = useSelector((state) => state.usersReducer);
- // console.log(currentUser, "currentUser Visits");
+ const { visits } = useSelector((state) => state.usersReducer);
+ console.log(visits, "visits Visits");
 
- // const myVisitCards = currentUser.visits.map((visit) => visit={visit})
+ const myVisitCards = visits.map((visit) => <VisitCard key={visit.id} visit={visit}/> )
+
   return (
     <div>
-     <h1>MyVisits</h1>
-     {/* {myVisitCards} */}
+     <h1><center>MyVisits</center></h1>
+     {myVisitCards}
      </div>
   )
 }
