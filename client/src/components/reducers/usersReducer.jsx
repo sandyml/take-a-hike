@@ -1,7 +1,6 @@
 // const [users, setUsers] = useState([]) => users: []
 // const [currentUser, setCurrentUser] = useState(null) => currentUser: null 
 // const [loggedIn, setLoggedIn] = useState(false) => loggedIn: false
-// [] loggin, [] logout, [] user, [] currentUser 
 
 const initialState = {
   users: [],
@@ -13,20 +12,20 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_USERS":
-      return { 
-        ...state, 
-      user: action.payload
-      // loggedIn: true
-    }
+      return {
+        ...state,
+        user: action.payload
+        // loggedIn: true
+      }
     case "LOAD_CURRENT_USER":
-      return { 
-        ...state, 
-      currentUser: action.payload, 
-      loggedIn: true
-    }
+      return {
+        ...state,
+        currentUser: action.payload,
+        loggedIn: true
+      }
     case "LOAD_LOGIN_USER":
       return {
-        ...state, 
+        ...state,
         currentUser: action.payload,
         loggedIn: true
       }
@@ -37,14 +36,22 @@ const usersReducer = (state = initialState, action) => {
         loggedIn: true
       }
     case "LOAD_ADD_USER":
-      return{
+      return {
         ...state,
         users: [...state.users, action.payload]
       }
     case "DELETE_USERS_VISIT":
-      return{
+      return {
         ...state,
         visited: action.payload
+      }
+    case "ADD_USER_VISIT":
+      return {
+        ...state,
+        // visits: [...state, action.payload]
+        visits: [...state.visits, action]
+        // visited_date: action.payload}
+        // visits: [...state.visits, action.payload]
       }
     case "LOAD_LOGOUT_USER":
       return {
@@ -52,11 +59,6 @@ const usersReducer = (state = initialState, action) => {
         currentUser: null,
         loggedIn: false
       }
-      case "ADD_USER_VISIT":
-        return {
-          ...state,
-          visited_date: action.payload}
-          // visits: [...state.visits, action.payload]}
     default:
       return state;
   }

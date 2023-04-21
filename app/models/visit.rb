@@ -10,18 +10,11 @@ class Visit < ApplicationRecord
   
   def record_visited_date_today
     object.visited_date = Date.today
+    # object.visited_date.save
   end
-
-  # def record_visited_date_today
-  #   if self.visited_date = nil
-  #      self.visited_date = Date.today
-  #   end
-  #   byebug
-  # end
   
   def record_visited_today
     self.visited = true
-    byebug
   end
   
 end

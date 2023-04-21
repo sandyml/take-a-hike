@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, CardContent, CardMedia } from '@mui/material';
+import { Button, CardContent, CardMedia, TextField } from '@mui/material';
 import { Check, FmdGoodRounded } from '@mui/icons-material';
 import RouteIcon from '@mui/icons-material/Route';
 import Typography from '@mui/material/Typography';
@@ -84,13 +84,15 @@ export const TrailheadCard = ({ th, isLoading }) => {
               <Typography variant='body2' align='center'>
                 <PaidIcon />{th.fees}
               </Typography>
+              {/* <input type="visited_date" value={vt.visited_date} onChange={(e) => setVisited(e.target.value)}/> */}
 
               <CardContent>
 
                 <Button
                   variant="contained"
                   disabled={!!isInVisited}
-                  onClick={() => handleAddToVisit(visited_date)}
+                  
+                  onClick={() => handleAddToVisit(vt.visited_date)}
                 >
                   {loading ? "Adding..." : "Add To Visit"}
                 </Button>

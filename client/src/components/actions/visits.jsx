@@ -107,10 +107,6 @@ export const addVisit = (th, vt, navigate) => {
                   type: "ADD_USER_VISIT",
                   payload: data // => action.payload 
                })
-               // dispatch({
-               //    type: "ADD_VISIT",
-               //    payload: data  // => action.payload 
-               // })
             }
             navigate('/me')
          })
