@@ -19,8 +19,6 @@ import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
-import { BottomNavigation } from '@mui/material';
-import { Copyright } from '../copyright/Copyright';
 
 const theme = createTheme({
   status: {
@@ -208,8 +206,6 @@ export const Signup = () => {
         {/* <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' /> */}
       </Container>
 
-      <BottomNavigation sx={{ height: 200 }} />
-      <Copyright />
     </ThemeProvider>
   );
 };

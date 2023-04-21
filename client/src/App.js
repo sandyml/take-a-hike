@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+
+import HomePage from './components/intro/HomePage';
+
 import { TermsPolicy } from './components/authen/TermsPolicy';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 import Logout from './components/authen/Logout';
+
 import { VisitList } from './components/hike/VisitList';
 import { EditForm } from './components/hike/EditForm';
+import { MyVisitList } from './components/hike/MyVisitList';
+
 import NotFound from './components/navigation/NotFound';
+
 import { loadCurrentUser, loadUsers } from './components/actions/users';
 import { loadTrailheads } from './components/actions/trailheads';
 import { loadVisits } from './components/actions/visits';
+
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { Trailheads } from './components/trailheads/Trailheads';
-import HomePage from './components/intro/HomePage';
-import { MyVisitList } from './components/hike/MyVisitList';
+import { Copyright } from './components/copyright/Copyright';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +42,6 @@ export function App() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
         {
           isLoading ? <h1>Loading...please wait..</h1> :
-          <div>
           <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/homepage" element={<HomePage />} />
@@ -49,8 +55,8 @@ export function App() {
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
-            </div>
         }
+        <Copyright />
       </LocalizationProvider>
   );
 }

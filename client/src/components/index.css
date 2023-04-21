@@ -76,3 +76,13 @@ img.bottomleft {
   width: 200px;
   height: 150px;
 }
+
+img.hike-img-visit {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left; 
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  border-radius: 20px;
+}

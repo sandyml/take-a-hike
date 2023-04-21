@@ -9,7 +9,7 @@ export const styles = (theme) => ({
   backgroundSize: 'cover',
   position: 'relative',
   paddingBottom: 150,
-  marginBottom: 20,
+  // marginBottom: 20,
   paddingTop: 290,
   paddingLeft: 50,
   marginRight: 40,

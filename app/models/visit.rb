@@ -1,22 +1,27 @@
 class Visit < ApplicationRecord
-  validates :user_id, :trailhead_id, :visited_date, :visited, :record_visited_date_today, :record_visited_today, presence: true
-  # validates :visited_date, presence: true
+  validates :user_id, :trailhead_id, :visited_date, :visited, presence: true
 
   belongs_to :user
   belongs_to :trailhead
   
+  # for adding visit to my profile (MyVisitList.jsx)
   before_create :record_visited_date_today
   before_create :record_visited_today
   
   def record_visited_date_today
-    self.visited_date = Date.today
+    object.visited_date = Date.today
   end
+
+  # def record_visited_date_today
+  #   if self.visited_date = nil
+  #      self.visited_date = Date.today
+  #   end
+  #   byebug
+  # end
   
   def record_visited_today
     self.visited = true
+    byebug
   end
   
 end
-
-# has_many :amenities
-# delegate :amenities, to: :trailhead

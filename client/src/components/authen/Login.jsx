@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../actions/users';
 import { headers } from '../../Global';
-
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -17,19 +16,6 @@ import { Button } from '@mui/material';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © Sandra Yun '}
-      <Link color="inherit" href="https://github.com/sandyml/take-a-hike">
-        Github
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme({
   status: {
@@ -66,7 +52,7 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   const errors = useSelector((state) => state.errorsReducer);
-  const currentUser = useSelector((state) => state.usersReducer);
+  // const currentUser = useSelector((state) => state.usersReducer);
 
   // TODO: Remove useEffect to test out if current_user is already logged in with error messages "You are already logged in!"
   // useEffect(() => {
@@ -195,7 +181,6 @@ export const Login = () => {
           </Box>
         </Box>
       </Container>
-      <Copyright sx={{ mt: 5 }} />
 
       <img 
       src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif" 

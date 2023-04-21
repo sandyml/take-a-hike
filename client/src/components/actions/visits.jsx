@@ -14,7 +14,6 @@
 
 // dispatch on load 
 import { headers } from '../../Global';
-// import { useNavigate } from 'react-router-dom';
 import { setErrors } from './errors'
 
 export const loadVisits = () => {
@@ -53,45 +52,49 @@ export const deleteVisit = (id, header) => {
    }
 }
 
-
-export const editVisit = (id, setIsLoading, trailhead, visited_date, navigate) => {
+export const editVisit = (id, setIsLoading, visited_date, navigate) => {
    return dispatch => {
       setIsLoading(true); 
       fetch(`/visits/${id}`, {
         method: 'PATCH',
         headers,
         body: JSON.stringify({
-          trailhead,
-          visited_date
+          visited_date,
         }),
       })
         .then((resp) => resp.json())
         .then(data => {
-          setIsLoading(false);
-          const action = {
-            type: "EDIT_VISIT",
-            payload: data
+         if (data.errors) {
+            setErrors(data.errors) 
+            dispatch(setErrors(data.errors))
+         } else {
+            setIsLoading(false);
+            const action = {
+               type: "EDIT_VISIT",
+               payload: data
+            }
+            dispatch(action)
+            console.log(data, "Trailhead date has been updated(edited)!")
          }
-         dispatch(action)
-          console.log(data, "Trailhead date has been updated(edited)!")
-        });
-        navigate(`/visits`)
+        })
+        navigate('/visits')
    }
 }
 
-export const addVisit = (th, navigate) => {
+export const addVisit = (th, vt, navigate) => {
    console.log(JSON.stringify({
-      visited_date: th.visited_date,
+      visited_date: vt.visited_date,
       trailhead_id: th.id,
+      visited: vt.visited
    }), "visits addVisit action!")
    return dispatch => {
       fetch('/visits', {
          method: 'POST',
          headers,
          body: JSON.stringify({
-            visited_date: th.visited_date,
+            visited_date: vt.visited_date,
             trailhead_id: th.id,
-            visited: th.visited,
+            visited: vt.visited,
          })
       })
          .then((resp) => resp.json())
@@ -100,11 +103,14 @@ export const addVisit = (th, navigate) => {
                setErrors(data.errors) 
                dispatch(setErrors(data.errors))
             } else {
-               const action = {
-                  type: "ADD_VISIT",
+               dispatch({
+                  type: "ADD_USER_VISIT",
                   payload: data // => action.payload 
-               }
-               dispatch(action)
+               })
+               // dispatch({
+               //    type: "ADD_VISIT",
+               //    payload: data  // => action.payload 
+               // })
             }
             navigate('/me')
          })

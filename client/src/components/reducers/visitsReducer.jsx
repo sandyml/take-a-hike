@@ -24,13 +24,6 @@ const visitsReducer = (state = [], action) => {
           return visit;
         }
       })
-    case "ADD_FAVORITES_TRAILHEAD":
-      return {
-        ...state,
-        visit: [...state, action.payload]
-      }
-    case "ADD_VISIT":
-      return [...state, action.payload]
     default:
       return state;
   }

@@ -21,7 +21,7 @@ class HomePageDescription extends React.Component {
     >
      <div className={classes.overlay}>
       <Grid container>
-       <Grid item md={20}>
+       <Grid>
         <div className={classes.main}>
          <Typography
           className={classes.title3}
