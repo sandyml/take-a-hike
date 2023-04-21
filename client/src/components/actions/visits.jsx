@@ -37,52 +37,51 @@ export const loadVisits = () => {
 // };
 export const deleteVisit = (id, header) => {
    return dispatch => {
-     fetch(`/visits/${id}`, {
-       method: "DELETE",
-       header,
-     })
-       .then(resp => resp.json())
-       .then(data => {
-         dispatch({
-           type: "DELETE_VISIT",
-           payload: id
-         //   payload: data.id
-         });
-       })
+      fetch(`/visits/${id}`, {
+         method: "DELETE",
+         header,
+      })
+         .then(resp => resp.json())
+         .then(data => {
+            dispatch({
+               type: "DELETE_VISIT",
+               payload: id
+               //   payload: data.id
+            });
+         })
    }
 }
 
 export const editVisit = (id, setIsLoading, visited_date, navigate) => {
    return dispatch => {
-      setIsLoading(true); 
+      setIsLoading(true);
       fetch(`/visits/${id}`, {
-        method: 'PATCH',
-        headers,
-        body: JSON.stringify({
-          visited_date,
-        }),
+         method: 'PATCH',
+         headers,
+         body: JSON.stringify({
+            visited_date,
+         }),
       })
-        .then((resp) => resp.json())
-        .then(data => {
-         if (data.errors) {
-            setErrors(data.errors) 
-            dispatch(setErrors(data.errors))
-         } else {
-            setIsLoading(false);
-            const action = {
-               type: "EDIT_VISIT",
-               payload: data
+         .then((resp) => resp.json())
+         .then(data => {
+            if (data.errors) {
+               setErrors(data.errors)
+               dispatch(setErrors(data.errors))
+            } else {
+               setIsLoading(false);
+               const action = {
+                  type: "EDIT_VISIT",
+                  payload: data
+               }
+               dispatch(action)
+               console.log(data, "Trailhead date has been updated(edited)!")
             }
-            dispatch(action)
-            console.log(data, "Trailhead date has been updated(edited)!")
-         }
-        })
-        navigate('/visits')
+         })
+      navigate('/visits')
    }
 }
 
 export const addVisit = (th, vi, navigate) => {
-// export const addVisit = (th, vt, navigate) => {
    console.log(JSON.stringify({
       visited_date: vi.visited_date,
       trailhead_id: th.id,
@@ -96,22 +95,23 @@ export const addVisit = (th, vi, navigate) => {
             visited_date: vi.visited_date,
             trailhead_id: th.id,
             visited: vi.visited,
-            // visited_date: vt.visited_date,
-            // trailhead_id: th.id,
-            // visited: vt.visited,
          })
       })
          .then((resp) => resp.json())
          .then((data) => {
             if (data.errors) {
-               setErrors(data.errors) 
+               setErrors(data.errors)
                dispatch(setErrors(data.errors))
             } else {
-               const action = {
+               dispatch({
                   type: "ADD_USER_VISIT",
-                  payload: data // => action.payload 
-               }
-               dispatch(action)
+                  payload: data
+               })
+               // navigate('/homepage')
+               dispatch({
+                  type: "ADD_VISIT",
+                  payload: data
+               })
                navigate('/me')
             }
          })
