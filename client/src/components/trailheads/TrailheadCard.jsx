@@ -21,7 +21,8 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const errors = useSelector((state) => state.errorsReducer);
 
   // debugger
-  const vt = visits.find((vi) => vi.visited && vi.visited_date)
+  const vt = visits.find((vi) => vi={vi})
+  // const vt = visits.find((vi) => vi.visited && vi.visited_date)
   const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
 
   const dispatch = useDispatch();
@@ -29,7 +30,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
 // debugger
   const handleAddToVisit = () => {
     setLoading(true);
-    dispatch(addVisit(th, vt, navigate))
+    const vt = visits.find((vi) => {
+
+      dispatch(addVisit(th, vi, navigate))
+      // dispatch(addVisit(th, vt, navigate))
+    })
     console.log("Clicked!")
   }
 
@@ -38,6 +43,10 @@ export const TrailheadCard = ({ th, isLoading }) => {
       navigate('/login')
     }
   }, [isLoading, loggedIn, navigate])
+
+  // if () {
+  //   return <>Loading still...</>
+  // }
 
   return (
     <Grid sx={{ flexGrow: 1 }} col={3}>
@@ -92,7 +101,8 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   variant="contained"
                   disabled={!!isInVisited}
                   
-                  onClick={() => handleAddToVisit(vt.visited_date)}
+                  onClick={handleAddToVisit}
+                  // onClick={() => handleAddToVisit(visited_date)}
                 >
                   {loading ? "Adding..." : "Add To Visit"}
                 </Button>

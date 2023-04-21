@@ -86,3 +86,13 @@ img.hike-img-visit {
   opacity: 1;
   border-radius: 20px;
 }
+
+img.loading {
+  display: block;
+  padding-top: 100;
+  margin-left: "auto";
+  margin-right: "auto";
+  text-align: "center";
+  width: "auto";
+  height: "auto";
+}

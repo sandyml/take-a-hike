@@ -39,7 +39,7 @@ class VisitsController < ApplicationController
     # visit = Visit.create(add_visit_params)
     visit = current_user.visits.create(add_visit_params)
     byebug
-    if visit.save
+    if visit.valid?
       render json: visit, status: :created
     else
       # unprocessable_entity_error_response(visit)

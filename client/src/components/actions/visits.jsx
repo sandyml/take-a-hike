@@ -81,20 +81,24 @@ export const editVisit = (id, setIsLoading, visited_date, navigate) => {
    }
 }
 
-export const addVisit = (th, vt, navigate) => {
+export const addVisit = (th, vi, navigate) => {
+// export const addVisit = (th, vt, navigate) => {
    console.log(JSON.stringify({
-      visited_date: vt.visited_date,
+      visited_date: vi.visited_date,
       trailhead_id: th.id,
-      visited: vt.visited
+      visited: vi.visited
    }), "visits addVisit action!")
    return dispatch => {
       fetch('/visits', {
          method: 'POST',
          headers,
          body: JSON.stringify({
-            visited_date: vt.visited_date,
+            visited_date: vi.visited_date,
             trailhead_id: th.id,
-            visited: vt.visited,
+            visited: vi.visited,
+            // visited_date: vt.visited_date,
+            // trailhead_id: th.id,
+            // visited: vt.visited,
          })
       })
          .then((resp) => resp.json())
@@ -103,12 +107,13 @@ export const addVisit = (th, vt, navigate) => {
                setErrors(data.errors) 
                dispatch(setErrors(data.errors))
             } else {
-               dispatch({
+               const action = {
                   type: "ADD_USER_VISIT",
                   payload: data // => action.payload 
-               })
+               }
+               dispatch(action)
+               navigate('/me')
             }
-            navigate('/me')
          })
    }
 }
