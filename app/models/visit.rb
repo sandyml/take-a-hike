@@ -5,12 +5,12 @@ class Visit < ApplicationRecord
   belongs_to :trailhead
   
   # for adding visit to my profile (MyVisitList.jsx)
-  before_create :record_visited_date_today
-  before_create :record_visited_today
+  before_validation :record_visited_date_today, if: :new_record? 
+  before_validation :record_visited_today, if: :new_record? 
   
   def record_visited_date_today
-    object.visited_date = Date.today
-    # object.visited_date.save
+    # byebug
+    self.visited_date = Date.today
   end
   
   def record_visited_today

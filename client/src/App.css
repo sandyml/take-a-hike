@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.park-list {
+  min-height: 1000vh;
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3,2fr);
+  justify-items: center;
+  text-align: center;
+}
+
+.ex1 {
+  background-color: lightblue;
+  width: 110px;
+  height: 110px;
+  overflow: scroll;
+}

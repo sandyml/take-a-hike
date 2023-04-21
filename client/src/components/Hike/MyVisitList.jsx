@@ -72,8 +72,12 @@ export const MyVisitList = ({ isLoading }) => {
                       </Grid>
                     )}
                   </Grid>
+
+
                   <Typography justifyContent="center">
                   </Typography>
+
+
                 <br />
             </Grid>
           </Grid>

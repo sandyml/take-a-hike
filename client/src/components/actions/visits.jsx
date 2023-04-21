@@ -81,20 +81,18 @@ export const editVisit = (id, setIsLoading, visited_date, navigate) => {
    }
 }
 
-export const addVisit = (th, vi, navigate) => {
+export const addVisit = (th, navigate) => {
+
    console.log(JSON.stringify({
-      visited_date: vi.visited_date,
       trailhead_id: th.id,
-      visited: vi.visited
    }), "visits addVisit action!")
+
    return dispatch => {
       fetch('/visits', {
          method: 'POST',
          headers,
          body: JSON.stringify({
-            visited_date: vi.visited_date,
-            trailhead_id: th.id,
-            visited: vi.visited,
+            trailhead_id: th.id
          })
       })
          .then((resp) => resp.json())

@@ -14,28 +14,19 @@ import { NavLink } from 'react-router-dom';
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
 
-  const { trailhead, visited_date, visited } = useSelector((state) => state.visitsReducer);
-  const visits = useSelector((state) => state.visitsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
   const { loggedIn } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 
   // debugger
-  const vt = visits.find((vi) => vi={vi})
-  // const vt = visits.find((vi) => vi.visited && vi.visited_date)
   const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
-
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
-// debugger
+  // debugger
   const handleAddToVisit = () => {
     setLoading(true);
-    const vt = visits.find((vi) => {
-
-      dispatch(addVisit(th, vi, navigate))
-      // dispatch(addVisit(th, vt, navigate))
-    })
-    console.log("Clicked!")
+    dispatch(addVisit(th, navigate))
   }
 
   useEffect(() => {
@@ -100,7 +91,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
                 <Button
                   variant="contained"
                   disabled={!!isInVisited}
-                  
                   onClick={handleAddToVisit}
                   // onClick={() => handleAddToVisit(visited_date)}
                 >

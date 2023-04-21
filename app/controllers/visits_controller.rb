@@ -29,7 +29,7 @@ class VisitsController < ApplicationController
   end
  
   def create
-    visit = current_user.visits.create(add_visit_params)
+    visit = current_user.visits.build(add_visit_params)
     # byebug
     if visit.save
       render json: visit, status: :created
