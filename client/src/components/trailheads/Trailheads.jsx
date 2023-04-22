@@ -1,10 +1,12 @@
-import { BottomNavigation, Button, Typography } from '@mui/material';
 import React from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { TrailheadCard } from './TrailheadCard';
 import '.././index.css'
+
+import { BottomNavigation, Button, Typography } from '@mui/material';
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
@@ -25,7 +27,8 @@ export const Trailheads = ({ isLoading }) => {
           {/* make it lower */}
           <BottomNavigation />
           <img className='loading' 
-          src="https://media0.giphy.com/media/UrEfC5EKRp4eQZdLSS/giphy.gif?cid=6c09b9529c716e9af32d817070c701b08bf924ca8b329f02&rid=giphy.gif&ct=s"/>
+          src="https://media0.giphy.com/media/UrEfC5EKRp4eQZdLSS/giphy.gif?cid=6c09b9529c716e9af32d817070c701b08bf924ca8b329f02&rid=giphy.gif&ct=s"
+          alt='trailheads-alt'/>
         </center>
       </div>
     )

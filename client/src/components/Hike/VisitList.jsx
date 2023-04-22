@@ -1,11 +1,14 @@
-import { Button, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
-import { Parallax } from 'react-parallax';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { HeaderNav } from '../navigation/HeaderNav';
-import { mountain_image } from '../styles/LandingCSS';
+
 import VisitCard from './VisitCard';
+
+import { HeaderNav } from '../navigation/HeaderNav';
+
+import { Button, Typography } from '@mui/material';
+// import { mountain_image } from '../styles/LandingCSS';
+// import { Parallax } from 'react-parallax';
 
 
 export const VisitList = ({ isLoading }) => {
@@ -22,8 +25,7 @@ export const VisitList = ({ isLoading }) => {
     }
   }, [isLoading, loggedIn, navigate])
 
-  if (visits.errors) {
-    //  debugger 
+  if (visits.errors) { 
     return <div></div>
   }
   const visitCards = visits.map((visit, ix) =>
@@ -31,7 +33,7 @@ export const VisitList = ({ isLoading }) => {
   );
 
   return (
-    <div>
+    <>
       <HeaderNav />
       <Button align='right' variant='body2' onClick={() => navigate('/homepage')}>Back to the homepage I go..</Button>
       <Typography align='center' variant='h3' className='etched-text'>Users Trailheads Visited</Typography>
@@ -42,6 +44,6 @@ export const VisitList = ({ isLoading }) => {
     > */}
       {visitCards}
       {/* </Parallax> */}
-    </div>
+    </>
   );
 };

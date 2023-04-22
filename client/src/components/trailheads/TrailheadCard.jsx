@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, CardContent, CardMedia, TextField } from '@mui/material';
+import { Button, CardContent, CardMedia } from '@mui/material';
 import { Check, FmdGoodRounded } from '@mui/icons-material';
 import RouteIcon from '@mui/icons-material/Route';
 import Typography from '@mui/material/Typography';
@@ -20,7 +20,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
   // debugger
   const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // debugger
@@ -52,11 +52,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
             spacing={-0.01}>
             <Card sx={{ maxWidth: 800 }}>
 
-                <CardMedia
-                  sx={{ width: 800, height: 350 }}
-                  image={hike.image_url}
-                  title="yosemite"
-                />
+              <CardMedia
+                sx={{ width: 800, height: 350 }}
+                image={hike.image_url}
+                title="yosemite"
+              />
               <Typography variant='body1' align='center'>
                 <FmdGoodRounded />
                 {th.location}
@@ -64,17 +64,18 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
               {th.hikes.map((thh) =>
                 <Typography variant='body1' align='center' key={thh.id}>
-                  <RouteIcon /> {' '}
-                
-                {/* TODO: Can't remove local host  */}
-                <NavLink component="a" href={th.direction} target="_blank" variant="body2" align='center'>
-                 Directions 
-                </NavLink><br /><br /> 
+                  <Typography>
+                    <RouteIcon /> {' '}
+                    {/* TODO: Can't remove local host  */}
+                    <NavLink component="a" href={th.direction} target="_blank" variant="body2" align='center'>
+                      Directions
+                    </NavLink>
+                  </Typography>
 
                   <b>elevation_gain:</b> {thh.elevation_gain} <b>distance:</b> {thh.distance}
                 </Typography>
-              )}
 
+              )}
               {th.amenities.map((amenity, index) =>
                 <Typography variant='body2' align='center' key={index}>
                   <Check />{amenity}
@@ -84,7 +85,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
               <Typography variant='body2' align='center'>
                 <PaidIcon />{th.fees}
               </Typography>
-              {/* <input type="visited_date" value={vt.visited_date} onChange={(e) => setVisited(e.target.value)}/> */}
 
               <CardContent>
 
@@ -92,7 +92,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   variant="contained"
                   disabled={!!isInVisited}
                   onClick={handleAddToVisit}
-                  // onClick={() => handleAddToVisit(visited_date)}
                 >
                   {loading ? "Adding..." : "Add To Visit"}
                 </Button>

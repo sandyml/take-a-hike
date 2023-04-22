@@ -24,9 +24,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { Trailheads } from './components/trailheads/Trailheads';
 import { Copyright } from './components/copyright/Copyright';
 import { MyVisits } from './components/visits/MyVisits';
-import Pricing from './components/visits/MyVisitsCard';
-import PricingContent from './components/visits/MyVisitsCard';
-import YouTube from './components/visits/MyVisitsCard';
+
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
 

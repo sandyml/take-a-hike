@@ -39,19 +39,29 @@ const usersReducer = (state = initialState, action) => {
     case "DELETE_USERS_VISIT":
       return {
         ...state,
-        visited: action.payload
+        visits: state.visits.filter((visit) => visit.id !== action.payload)
       }
-      case "LOAD_LOGOUT_USER":
-        return {
-          ...state,
-          currentUser: null,
-          loggedIn: false
-        }
-      case "ADD_USER_VISIT":
-        return {
-          ...state,
-          visits: [...state.visits, action.payload]
+    case "EDIT_USERS_VISIT":
+      return {
+        visits: state.visits.map((visit) => {
+          if(action.payload.id === visit.id) {
+            return action.payload;
+          } else {
+            return visit;
           }
+        })
+      }
+    case "LOAD_LOGOUT_USER":
+      return {
+        ...state,
+        currentUser: null,
+        loggedIn: false
+      }
+    case "ADD_USER_VISIT":
+      return {
+        ...state,
+        visits: [...state.visits, action.payload]
+      }
     default:
       return state;
   }

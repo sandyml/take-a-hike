@@ -30,7 +30,6 @@ class VisitsController < ApplicationController
  
   def create
     visit = current_user.visits.build(add_visit_params)
-    # byebug
     if visit.save
       render json: visit, status: :created
     else
@@ -64,7 +63,6 @@ class VisitsController < ApplicationController
 
  def add_visit_params
   params.permit(:trailhead_id, :visited_date, :visited)
-  # params.permit(:trailhead_id, :visited_date, :visited), include: [:record_visited_today, :record_visited_date_today]
  end
 
  def find_visit

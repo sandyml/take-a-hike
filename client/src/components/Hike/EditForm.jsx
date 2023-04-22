@@ -8,20 +8,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import '.././index.css'
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import { TextField } from '@mui/material';
 
 // users/:user_id/visits {user_id} useParams
-// TODO: Add errors in edit form 
 
 export const EditForm = () => {
   const [visited_date, setVisitedDate] = useState("");
@@ -30,8 +28,6 @@ export const EditForm = () => {
   const errors = useSelector((state) => state.errorsReducer);
 
   const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect cleanup function 
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,9 +39,7 @@ export const EditForm = () => {
   };
   
   const vis = visits.find(visit => visit.id === parseInt(id, 10));
-  // const vi = visits.find(vis => vis.id > 10)
-  console.log(vis, "visit find")
-// debugger
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
@@ -81,26 +75,8 @@ export const EditForm = () => {
                   </Grid>
                   <Grid item xs={12}>
                   <h2>{vis.trailhead.trailhead_id}</h2>
-                  {/* <TextField
-                      color="neutral"
-                      autoComplete="given-name"
-                      name="trailhead name"
-                      required
-                      fullWidth
-                      id="trailname"
-                      label="trailhead name"
-                      disabled
-                      defaultValue={vis.trailhead.trailhead_id}
-                      // onChange={(e) => setTrailhead(e.target.value)}
-                      autoFocus
-                    /> */}
                     <center>
                     initial date: &nbsp; {vis.visited_date}
-                      {/* <input
-                        id="initial date"
-                        defaultValue={visit.visited_date}
-                        disabled
-                      /> */}
                     </center>
                     <center>
                     <TextField

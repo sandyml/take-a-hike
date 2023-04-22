@@ -47,7 +47,11 @@ export const deleteVisit = (id, header) => {
                type: "DELETE_VISIT",
                payload: id
                //   payload: data.id
-            });
+            })
+            dispatch({
+               type: "DELETE_USERS_VISIT",
+               payload: id
+            })
          })
    }
 }
@@ -69,15 +73,20 @@ export const editVisit = (id, setIsLoading, visited_date, navigate) => {
                dispatch(setErrors(data.errors))
             } else {
                setIsLoading(false);
-               const action = {
+               dispatch({
                   type: "EDIT_VISIT",
                   payload: data
-               }
-               dispatch(action)
-               console.log(data, "Trailhead date has been updated(edited)!")
+               })
+               navigate('/visits')
+               console.log(data, "EDIT_VISIT")
+               dispatch({
+                  type: "EDIT_USERS_VISIT", 
+                  payload: data
+               })
+               navigate('/myvisits')
+               console.log(data, "EDIT_USERS_VISIT")
             }
          })
-      navigate('/visits')
    }
 }
 
