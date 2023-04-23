@@ -96,3 +96,78 @@ img.loading {
   width: "auto";
   height: "auto";
 }
+
+
+.cards {
+  list-style: none;
+}
+
+.card {
+  margin: 1rem;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card button {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: calc(25% - 2rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    width: calc(20% - 2rem);
+  }
+}
+
+.flexbox-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.card-my-visit {
+  display: flex;
+  min-height: 80vh;
+  width: 100%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-items: center;
+  text-align: center;
+  color: rgb(8, 7, 7);
+}
+
+img.parks-img {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 389px;
+    height: 200px;
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+  }
+/* .overlay {
+  position: absolute; 
+  left: 0;
+  top: 0;
+  color: black;
+} */

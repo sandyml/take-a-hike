@@ -45,12 +45,16 @@ export const Trailheads = ({ isLoading }) => {
     return (
       <div>
         <Typography
+          component={'div'}
           align='center'
-          variant='h2'>
-          Trailheads All Users Has Visited
+          variant='h2'
+          style={{ display:'flex', justifyContent:'center' }}
+          >
+          Trailheads
         </Typography>
         <br />
         <Button
+          style={{ display:'flex', justifyContent:'center' }}
           align='left'
           variant='body1'
           onClick={() => navigate('/homepage')}>

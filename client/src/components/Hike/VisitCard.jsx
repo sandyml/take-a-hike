@@ -39,7 +39,9 @@ const VisitCard = ({ visit, isLoading }) => {
     dispatch(deleteVisit(visit.id, header))
   };
 
-  const amenities = visit.amenities.map((a) => <div key={a.id}><Check />{a.name}</div>)
+  const amenities = visit.amenities.map((a) => 
+  <div key={a.id}><Check />{a.name}</div>
+  )
 
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden'}}>
@@ -51,28 +53,28 @@ const VisitCard = ({ visit, isLoading }) => {
             <Button variant="text" onClick={handleDelete} type='delete'>Remove</Button>
           </> : null}
 
-        <Typography noWrap variant="h5">{visit.trailhead.name}</Typography>
-        <Typography noWrap align='left'>You visited on {visit.visited_date}</Typography>
+        <Typography component={'div'} noWrap variant="h5">{visit.trailhead.name}</Typography>
+        <Typography component={'div'} noWrap align='left'>You visited on {visit.visited_date}</Typography>
         {/* <Stack spacing={2} direction="row" alignItems="center"> */}
           <Card sx={{ maxWidth: 900, height: 670, }} >
             {visit.hike.map((vh) =>
-              <div key={vh}>
                 <CardMedia
+                  key={vh}
                   sx={{ width: 900, height: 290 }}
-                  image={vh.image_url} />
-                <b>elevation gain:</b> {vh.elevation_gain}{' '}
-                <b>distance:</b> {vh.distance}
-              </div>
+                  image={vh.image_url}>
+                {/* <b>elevation gain:</b> {vh.elevation_gain}{' '}
+                <b>distance:</b> {vh.distance} */}
+                  </CardMedia>
             )}
             <CardContent>
               <FmdGoodRounded /> {visit.trailhead.location}
-                <Typography variant="body2">
+                <Typography variant="body2" component={'div'}>
                   {amenities}
                 </Typography>
-                <Typography variant="caption">
+                <Typography variant="caption" component={'div'}>
                   {visit.trailhead.fees}
                 </Typography>
-                <Typography variant="caption" display="block" align='center' color="text.secondary">
+                <Typography component={'div'} variant="caption" display="block" align='center' color="text.secondary">
                   <Route />{' '}
                   {/* <NavLink href={visit.trailhead.direction} variant="body2"> */}
                     Directions

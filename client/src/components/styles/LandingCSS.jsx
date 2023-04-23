@@ -4,12 +4,11 @@ export const styles = (theme) => ({
   backgroundColor: theme.palette.grey[800],
   color: theme.palette.common.white,
   marginBottom: theme.spacing(4),
-  backgroundRepeat: 'no-repeat',
   backgroundPosition: '70% 50%',
+  backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   position: 'relative',
   paddingBottom: 150,
-  // marginBottom: 20,
   paddingTop: 290,
   paddingLeft: 50,
   marginRight: 40,
@@ -33,7 +32,6 @@ export const styles = (theme) => ({
    paddingRight: 0,
   },
  },
-
  title: {
   fontSize: 200,
   textAlign: "center",
@@ -46,7 +44,6 @@ export const styles = (theme) => ({
   },
 
  },
-
  title2: {
   fontSize: 100,
   textAlign: "center",
@@ -57,9 +54,7 @@ export const styles = (theme) => ({
    paddingRight: 40,
    paddingTop: 250
   },
-
  },
-
  title3: {
   fontSize: 50,
   textAlign: "center",
@@ -70,9 +65,7 @@ export const styles = (theme) => ({
    paddingRight: 40,
    paddingTop: 250
   },
-
  },
-
  subtitle: {
   fontSize: 45,
   fontFamily: "Barlow Condensed",
@@ -81,7 +74,6 @@ export const styles = (theme) => ({
   letterSpacing: "3px",
   lineHeight: "1.5"
  },
-
 });
 
 export const mountain_image = {
@@ -119,4 +111,16 @@ export const cartoon_bear_gif = {
  marginRight: 40,
  marginLeft: 42,
  height: "2vh",
+}
+
+export const loading_gif = {
+ backgroundImage: "https://media0.giphy.com/media/UrEfC5EKRp4eQZdLSS/giphy.gif?cid=6c09b9529c716e9af32d817070c701b08bf924ca8b329f02&rid=giphy.gif&ct=s",
+ backgroundSize: 'small',
+ position: 'relative',
+ borderRadius: "4px",
+ marginBottom: 20,
+ marginTop: 40,
+ marginRight: 40,
+ marginLeft: 42,
+ // height: "2vh",
 }

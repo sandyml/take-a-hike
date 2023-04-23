@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, CardContent, CardMedia } from '@mui/material';
+import { Box, Button, CardContent, CardMedia } from '@mui/material';
 import { Check, FmdGoodRounded } from '@mui/icons-material';
 import RouteIcon from '@mui/icons-material/Route';
 import Typography from '@mui/material/Typography';
@@ -40,16 +40,21 @@ export const TrailheadCard = ({ th, isLoading }) => {
   // }
 
   return (
-    <Grid sx={{ flexGrow: 1 }} col={3}>
+    <Grid sx={{ flexGrow: 1 }} col={3} style={{ display: 'flex', justifyContent: 'center' }}>
       {th.hikes.map((hike) =>
-        <Grid key={hike.id}>
-          <Typography align='center' variant='h5'>{th.name}</Typography><br />
+        <Grid key={hike.id} >
+          <Typography
+            variant='h5'
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >{th.name}
+          </Typography><br />
 
           <Grid
             item xs={1} md={12}
             container
             justifyContent="center"
-            spacing={-0.01}>
+            spacing={-0.01}
+            style={{ display: 'flex', justifyContent: 'center' }}>
             <Card sx={{ maxWidth: 800 }}>
 
               <CardMedia
@@ -57,30 +62,63 @@ export const TrailheadCard = ({ th, isLoading }) => {
                 image={hike.image_url}
                 title="yosemite"
               />
-              <Typography variant='body1' align='center'>
+              <Typography
+                variant='body1'
+                style={{ display: 'flex', justifyContent: 'center' }}
+              >
                 <FmdGoodRounded />
                 {th.location}
-              </Typography><br />
+              </Typography>
 
               {th.hikes.map((thh) =>
-                <Typography variant='body1' align='center' key={thh.id}>
-                  <Typography>
+                <Typography
+                  key={thh.id}
+                  variant='body1'
+                  align='center'
+                // style={{ display:'flex', justifyContent:'center' }} 
+                >
+                  <Typography style={{ display: 'flex', justifyContent: 'center' }}>
                     <RouteIcon /> {' '}
                     {/* TODO: Can't remove local host  */}
                     <NavLink component="a" href={th.direction} target="_blank" variant="body2" align='center'>
                       Directions
                     </NavLink>
                   </Typography>
-
                   <b>elevation_gain:</b> {thh.elevation_gain} <b>distance:</b> {thh.distance}
                 </Typography>
+              )}
+              <div style={{ width: '100%' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexWrap: 'nowrap',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    maxWidth: 300,
+                    borderRadius: 1,
+                  }}
+                >
 
-              )}
-              {th.amenities.map((amenity, index) =>
-                <Typography variant='body2' align='center' key={index}>
-                  <Check />{amenity}
-                </Typography>
-              )}
+
+                  {th.amenities.map((amenity, index) =>
+                    <Typography
+                      key={index}
+                      sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        p: 1,
+                        m: 1,
+                        bgcolor: 'background.paper',
+                        maxWidth: 300,
+                        borderRadius: 1,
+                      }}
+                    >
+                      <Check />{amenity}
+                    </Typography>
+                  )}
+                </Box>
+              </div>
 
               <Typography variant='body2' align='center'>
                 <PaidIcon />{th.fees}
