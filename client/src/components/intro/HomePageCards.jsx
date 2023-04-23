@@ -19,7 +19,7 @@ export default function SpacingGrid() {
      justifyContent="center"
      spacing={-0.4}>
       
-     <Card sx={{ maxWidth: 438 }} onClick={() => navigate('/me')}>
+     <Card sx={{ maxWidth: 438 }} onClick={() => navigate('/my-visits')}>
       <CardMedia
        sx={{ width: 550, height: 200 }}
        image="https://cdn.aarp.net/content/dam/aarp/travel/destinations/2020/09/1140-yosemite-hero.imgcache.rev.web.1400.804.jpg"

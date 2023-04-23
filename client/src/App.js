@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import HomePage from './components/intro/HomePage';
 
@@ -9,9 +9,9 @@ import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 import Logout from './components/authen/Logout';
 
-import { VisitList } from './components/hike/VisitList';
 import { EditForm } from './components/hike/EditForm';
 import { MyVisitList } from './components/hike/MyVisitList';
+import { VisitList } from './components/hike/VisitList';
 
 import NotFound from './components/navigation/NotFound';
 
@@ -27,6 +27,7 @@ import { MyVisits } from './components/visits/MyVisits';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
+  const currentUser = useSelector((state) => state.usersReducer);
 
   const dispatch = useDispatch(); 
   // will grab all of the data(things), run once
@@ -41,11 +42,10 @@ export function App() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-        {
-          isLoading ? <h1>Loading...please wait..</h1> :
           <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/homepage" element={<HomePage />} />
+              <Route path="/my-visits" element={<MyVisits />} />
               <Route path="/me" element={<MyVisitList isLoading={isLoading}/>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
@@ -54,10 +54,8 @@ export function App() {
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
               <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
-              <Route path="/myvisits" element={<MyVisits />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
-        }
         <Copyright />
       </LocalizationProvider>
   );

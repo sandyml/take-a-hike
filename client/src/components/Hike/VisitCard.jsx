@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
 
 import { deleteVisit } from '../actions/visits';
 import { header } from '../../Global';
@@ -8,9 +8,7 @@ import { header } from '../../Global';
 import { Check, FmdGoodRounded, Route } from '@mui/icons-material';
 import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-// import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+import { Paper, Box } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

@@ -2,22 +2,16 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editVisit } from '../actions/visits';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import '.././index.css'
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Avatar, Box, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material';
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
-import { TextField } from '@mui/material';
 
 // users/:user_id/visits {user_id} useParams
 
@@ -59,7 +53,7 @@ export const EditForm = () => {
             <Typography component="h1" variant="h5">
               Change Visit Date
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
                 <Grid container spacing={2}>
 
                   <Grid item xs={12}>
@@ -67,10 +61,10 @@ export const EditForm = () => {
                     <h2>{vis.trailhead.name}</h2>
                     </center>
                   </Grid>
-                  <Grid>
+                  <Grid >
                     <center>
                     <h2>{vis.hike.map(visit => 
-                      <img src={visit.image_url} alt="hike-img-visit" className='hike-img-visit' />)}</h2>
+                      <img key={visit.id} src={visit.image_url} alt="hike-img-visit" className='hike-img-visit' />)}</h2>
                     </center>
                   </Grid>
                   <Grid item xs={12}>

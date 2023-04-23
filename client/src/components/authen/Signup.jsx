@@ -19,6 +19,9 @@ import Box from '@mui/material/Box';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
+import { Parallax } from 'react-parallax';
+import { sierra_image } from '../styles/LandingCSS';
+import '.././index.css';
 
 const theme = createTheme({
   status: {
@@ -85,127 +88,134 @@ export const Signup = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+      <Parallax
+        style={sierra_image}
+        display="flex"
+        bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        strength={680}
+      >
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              height: '200%'
+            }}
+          >
 
-          <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+            <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
 
-          <Typography component="h1" variant="h5">
-            Please Create An Account
-          </Typography>
+            <Typography component="h1" variant="h5">
+              Please Create An Account
+            </Typography>
 
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  color="neutral"
-                  autoComplete="given-name"
-                  name="Username"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  autoFocus
-                />
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    color="neutral"
+                    autoComplete="given-name"
+                    name="Username"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    autoFocus
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    color="neutral"
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    color="neutral"
+                    name="password"
+                    label="Password"
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    color="neutral"
+                    name="password"
+                    label="Confirm Password"
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    autoComplete="new-password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
+                    label="Show Password"
+                  />
+                </Grid>
               </Grid>
 
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  color="neutral"
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+              By creating an account you agree to our&nbsp;
+              <Link color="inherit" href="/termsandconditions">Terms & Privacy </Link>
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="neutral"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                {loading ? "Loading..." : "Signup"}
+              </Button>
+
+              {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error, index) => (
+                    <li key={index}>{error}</li>
+                  ))}
+                </ul>
+              )}
+
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    Already have an account? Login
+                  </Link>
+                </Grid>
               </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  color="neutral"
-                  name="password"
-                  label="Password"
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  color="neutral"
-                  name="password"
-                  label="Confirm Password"
-                  type={showPassword ? "text" : "password"}
-                  id="password"
-                  autoComplete="new-password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
-                  label="Show Password"
-                />
-              </Grid>
-            </Grid>
-
-            By creating an account you agree to our
-            <Link color="inherit" href="/termsandconditions"> &nbsp;Terms & Privacy </Link>
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="neutral"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              {loading ? "Loading..." : "Signup"}
-            </Button>
-
-            {errors.length > 0 && (
-              <ul style={{ color: "red" }}>
-                {errors.map((error, index) => (
-                  <li key={index}>{error}</li>
-                ))}
-              </ul>
-            )}
-
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Login
-                </Link>
-              </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
-        {/* <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' /> */}
-      </Container>
-
+          {/* <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' /> */}
+        </Container>
+      </Parallax>
     </ThemeProvider>
   );
 };

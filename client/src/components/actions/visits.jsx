@@ -83,7 +83,7 @@ export const editVisit = (id, setIsLoading, visited_date, navigate) => {
                   type: "EDIT_USERS_VISIT", 
                   payload: data
                })
-               navigate('/myvisits')
+               navigate('/my-visits')
                console.log(data, "EDIT_USERS_VISIT")
             }
          })

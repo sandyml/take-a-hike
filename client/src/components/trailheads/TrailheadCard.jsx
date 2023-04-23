@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, CardContent, CardMedia } from '@mui/material';
-import { Check, FmdGoodRounded } from '@mui/icons-material';
-import RouteIcon from '@mui/icons-material/Route';
-import Typography from '@mui/material/Typography';
+
 import { addVisit } from '../actions/visits';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import PaidIcon from '@mui/icons-material/Paid';
-import { NavLink } from 'react-router-dom';
+import { Box, Button, CardContent, CardMedia, Typography } from '@mui/material';
+import { Check, FmdGoodRounded, Paid, Route } from '@mui/icons-material';
+import { Grid, Card } from '@mui/material';
+
+
 
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
@@ -18,12 +16,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const { loggedIn } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 
-  // debugger
   const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // debugger
+
   const handleAddToVisit = () => {
     setLoading(true);
     dispatch(addVisit(th, navigate))
@@ -44,6 +41,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
       {th.hikes.map((hike) =>
         <Grid key={hike.id} >
           <Typography
+            component={'div'}
             variant='h5'
             style={{ display: 'flex', justifyContent: 'center' }}
           >{th.name}
@@ -75,10 +73,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   key={thh.id}
                   variant='body1'
                   align='center'
+                  component={'div'}
                 // style={{ display:'flex', justifyContent:'center' }} 
                 >
-                  <Typography style={{ display: 'flex', justifyContent: 'center' }}>
-                    <RouteIcon /> {' '}
+                  <Typography style={{ display: 'flex', justifyContent: 'center' }} component={'div'}>
+                    <Route /> {' '}
                     {/* TODO: Can't remove local host  */}
                     <NavLink component="a" href={th.direction} target="_blank" variant="body2" align='center'>
                       Directions
@@ -113,6 +112,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
                         maxWidth: 300,
                         borderRadius: 1,
                       }}
+                      component={'div'}
                     >
                       <Check />{amenity}
                     </Typography>
@@ -120,8 +120,8 @@ export const TrailheadCard = ({ th, isLoading }) => {
                 </Box>
               </div>
 
-              <Typography variant='body2' align='center'>
-                <PaidIcon />{th.fees}
+              <Typography variant='body2' align='center' component={'div'}>
+                <Paid />{th.fees}
               </Typography>
 
               <CardContent>

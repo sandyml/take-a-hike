@@ -29,7 +29,8 @@ class HomePageDescription extends React.Component {
           variant="h4"
           style={{ fontFamily: 'Raleway' }}
          >
-          When someone tells you to actually 'Take A Hike', thinking on the bright side of it...you take a hike. 
+          {/* When someone tells you to actually 'Take A Hike', thinking on the bright side of it...you take a hike.  */}
+          Mountains aren’t just funny. They’re hill-areas.
          </Typography>
          <br />
         </div>
