@@ -8,6 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import { Parallax } from 'react-parallax';
 import HomePageDescription from './HomePageDescription';
 import { MyVisitList } from '../hike/MyVisitList';
+import HomepageIntroCards from './HomepageIntroCards';
+import { WalkingGif } from './WalkingGif';
+// import HomepageIntroCards from './HomepageIntroCards';
+// import Me from '../visits/Me';
 
 const styles = (theme) => ({
   mainFeaturedPost: {
@@ -85,7 +89,7 @@ class HomePage extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: 'Raleway' }}
+          style={{ fontFamily: 'Fredoka, sans-serif' }}
          >
           TakeAHike
          </Typography>
@@ -95,8 +99,11 @@ class HomePage extends React.Component {
       </Grid>
      </div>
     </Parallax>
-    <HomePageCards /><br/>
+    <HomepageIntroCards /><br/>
+    {/* <HomePageCards /><br/> */}
     <HomePageDescription /><br/>
+    {/* <Me /> */}
+    {/* <WalkingGif /> */}
     <MyVisitList />
    </div>
   );

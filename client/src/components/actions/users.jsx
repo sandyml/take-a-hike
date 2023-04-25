@@ -63,8 +63,7 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
           }
           dispatch(action);
           dispatch(clearErrors())
-          navigate('/homepage')
-          // navigate('/')
+          navigate('/')
         });
       } else {
         resp.json()
@@ -76,10 +75,6 @@ export const loginUser = (setLoading, headers, username, email, password, naviga
   }
 }
 
-// const handleOnLogout = () => {
-//   setCurrentUser(null);
-//   setLoggedIn(false)
-//  }
 export const logoutUser = () => {
   return dispatch => {
     fetch('/logout', {

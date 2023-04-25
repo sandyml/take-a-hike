@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { TrailheadCard } from './TrailheadCard';
-import '.././index.css'
 
 import { BottomNavigation, Button, Typography } from '@mui/material';
 
@@ -40,7 +39,7 @@ export const Trailheads = ({ isLoading }) => {
         th={th}
         isLoading={isLoading}
       />
-    )
+    );
 
     return (
       <div>
@@ -57,7 +56,7 @@ export const Trailheads = ({ isLoading }) => {
           style={{ display:'flex', justifyContent:'center' }}
           align='left'
           variant='body1'
-          onClick={() => navigate('/homepage')}>
+          onClick={() => navigate('/')}>
           Go back to homepage
         </Button>
         <br /><br />

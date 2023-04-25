@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <>
       <center><h2 className='etched-text'>No Hike Routes Here. Not Found.</h2></center><br />
-      <Button onClick={() => navigate('/homepage')}>Go back to homepage</Button>
+      <Button onClick={() => navigate('/')}>Go back to homepage</Button>
       <div className="box-example">
       </div>
     </>

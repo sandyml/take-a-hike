@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addVisit } from '../actions/visits';
 import { Box, Button, CardContent, CardMedia, Typography } from '@mui/material';
-import { Check, FmdGoodRounded, Paid, Route } from '@mui/icons-material';
+import { FmdGoodRounded, Paid, Route } from '@mui/icons-material';
 import { Grid, Card } from '@mui/material';
-
-
 
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
@@ -16,10 +14,17 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const { loggedIn } = useSelector((state) => state.usersReducer);
   const errors = useSelector((state) => state.errorsReducer);
 
-  const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const difficulties = th.difficulties.map(thd => thd.name);
+  // console.log(difficulties.join(', '));
+  const amenities = th.amenities.map((amenity, idxx) => <div key={idxx}>✓{amenity}</div>);
+  // console.log(amenities.join('✓ '))
+
+  // debugger 
+
+  const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
 
   const handleAddToVisit = () => {
     setLoading(true);
@@ -37,117 +42,115 @@ export const TrailheadCard = ({ th, isLoading }) => {
   // }
 
   return (
-    <Grid sx={{ flexGrow: 1 }} col={3} style={{ display: 'flex', justifyContent: 'center' }}>
-      {th.hikes.map((hike) =>
-        <Grid key={hike.id} >
-          <Typography
-            component={'div'}
-            variant='h5'
-            style={{ display: 'flex', justifyContent: 'center' }}
-          >{th.name}
-          </Typography><br />
+    <Box>
+      <Grid sx={{ flexGrow: 1 }} col={3} style={{ display: 'flex', justifyContent: 'center' }}>
+        {th.hikes.map((hike) =>
+          <Grid key={hike.id} >
+            <Typography
+              component={'div'}
+              variant='h5'
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >{th.name}
+            </Typography><br />
 
-          <Grid
-            item xs={1} md={12}
-            container
-            justifyContent="center"
-            spacing={-0.01}
-            style={{ display: 'flex', justifyContent: 'center' }}>
-            <Card sx={{ maxWidth: 800 }}>
+            <Grid
+              item xs={1} md={12}
+              container
+              justifyContent="center"
+              spacing={-0.01}
+              style={{ display: 'flex', justifyContent: 'center' }}>
+              <Card sx={{ maxWidth: 593 }}>
 
-              <CardMedia
-                sx={{ width: 800, height: 350 }}
-                image={hike.image_url}
-                title="yosemite"
-              />
-              <Typography
-                variant='body1'
-                style={{ display: 'flex', justifyContent: 'center' }}
-              >
-                <FmdGoodRounded />
-                {th.location}
-              </Typography>
-
-              {th.hikes.map((thh) =>
+                <CardMedia
+                  sx={{ width: 593, height: 350, display: 'flex' }}
+                  image={hike.image_url}
+                  title="yosemite"
+                />
                 <Typography
-                  key={thh.id}
-                  variant='body1'
                   align='center'
-                  component={'div'}
-                // style={{ display:'flex', justifyContent:'center' }} 
+                  variant='body1'
+                  style={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <Typography style={{ display: 'flex', justifyContent: 'center' }} component={'div'}>
-                    <Route /> {' '}
-                    {/* TODO: Can't remove local host  */}
-                    <NavLink component="a" href={th.direction} target="_blank" variant="body2" align='center'>
-                      Directions
-                    </NavLink>
-                  </Typography>
-                  <b>elevation_gain:</b> {thh.elevation_gain} <b>distance:</b> {thh.distance}
+                  <FmdGoodRounded />
+                  {th.location}
                 </Typography>
-              )}
-              <div style={{ width: '100%' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexWrap: 'nowrap',
-                    p: 1,
-                    m: 1,
-                    bgcolor: 'background.paper',
-                    maxWidth: 300,
-                    borderRadius: 1,
-                  }}
-                >
 
-
-                  {th.amenities.map((amenity, index) =>
-                    <Typography
-                      key={index}
-                      sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        p: 1,
-                        m: 1,
-                        bgcolor: 'background.paper',
-                        maxWidth: 300,
-                        borderRadius: 1,
-                      }}
-                      component={'div'}
-                    >
-                      <Check />{amenity}
+                {th.hikes.map((thh) =>
+                  <Typography
+                    key={thh.id}
+                    variant='body1'
+                    align='center'
+                    component={'div'}
+                  // style={{ display:'flex', justifyContent:'center' }} 
+                  >
+                    <Typography style={{ display: 'flex', justifyContent: 'center' }} component={'div'}>
+                      <Route /> {' '}
+                      {/* <Card> */}
+                      <div>
+                        <a href={th.direction} target="_top">
+                          <center>Directions</center>
+                        </a>
+                      </div>
+                      <br />
+                      {/* </Card> */}
+                      <br />
+                      <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}
                     </Typography>
-                  )}
-                </Box>
-              </div>
+                    <b>elevation_gain:</b>&nbsp;{thh.elevation_gain} <b>distance:</b>&nbsp;{thh.distance}
+                  </Typography>
+                )}
+                <Typography style={{ display: 'flex', justifyContent: 'center' }} component='div'>
 
-              <Typography variant='body2' align='center' component={'div'}>
-                <Paid />{th.fees}
-              </Typography>
+                  <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
+                </Typography>
+                <div style={{ width: '100%' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'nowrap',
+                      p: 1,
+                      m: 1,
+                      bgcolor: 'background.paper',
+                      maxWidth: 200,
+                      borderRadius: 1,
+                    }}
+                  >
+                    <Typography align='center' style={{ display: 'flex' }} component='div'>
+                      {amenities}
+                    </Typography>
+                  </Box>
+                </div>
 
-              <CardContent>
 
-                <Button
-                  variant="contained"
-                  disabled={!!isInVisited}
-                  onClick={handleAddToVisit}
-                >
-                  {loading ? "Adding..." : "Add To Visit"}
-                </Button>
 
-              </CardContent>
-            </Card>
+                <Typography variant='body2' align='center' component={'div'}>
+                  <Paid />{th.fees}
+                </Typography>
+
+                <CardContent>
+
+                  <Button
+                    variant="contained"
+                    disabled={!!isInVisited}
+                    onClick={handleAddToVisit}
+                  >
+                    {loading ? "Adding..." : "Add To Visit"}
+                  </Button>
+
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
-      )}
+        )}
 
-      {errors.length > 0 && (
-        <ul style={{ color: "red" }}>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-      )}
-
-    </Grid>
+        {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
+      </Grid>
+    </Box>
   );
 };

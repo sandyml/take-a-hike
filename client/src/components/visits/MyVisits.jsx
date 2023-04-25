@@ -44,9 +44,9 @@ export const MyVisits = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Button component='div' align='left' color='black' onClick={() => navigate('/homepage')} >Back</Button>
-        <center>
+      <div className="objects-box">
+        <Button component='div' align='left' color='black' onClick={() => navigate('/')} >Back</Button>
+        <center className="object">
           <h1>My Visits ONLY</h1>
           {myVisitCards}
         </center>

@@ -142,7 +142,7 @@ export const Navbar = () => {
 
           {currentUser && currentUser.id ? (
             <>
-              <span>Welcome, {currentUser.username}! &nbsp;&nbsp;</span>
+              <span>Welcome, {currentUser.username}! &emsp;&emsp;</span>
             </>)
             : (null)}
 
@@ -175,7 +175,7 @@ export const Navbar = () => {
               <div>
                 {currentUser && currentUser.id ? (
                   <div>
-                    <Button color="inherit" to="/me" component={Link}><FavoriteIcon sx={{ width: 10, height: 10 }}/>&nbsp;I hiked</Button><br />
+                    {/* <Button color="inherit" to="/me" component={Link}><FavoriteIcon sx={{ width: 10, height: 10 }}/>&nbsp;I hiked</Button><br /> */}
                     <Button color="inherit" to="/logout" component={Link} onClick={handleLogout}>&nbsp;Logout</Button>
                   </div>
                 ) : (

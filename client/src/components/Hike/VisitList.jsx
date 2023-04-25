@@ -35,7 +35,7 @@ export const VisitList = ({ isLoading }) => {
   return (
     <>
       <HeaderNav />
-      <Button align='right' variant='body2' onClick={() => navigate('/homepage')}>Back to the homepage I go..</Button>
+      <Button align='right' variant='body2' onClick={() => navigate('/')}>Back to the homepage I go..</Button>
       <Typography align='center' variant='h3' className='etched-text'>Users Trailheads Visited</Typography>
       {/* <Parallax
      style={mountain_image}

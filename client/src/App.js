@@ -24,10 +24,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { Trailheads } from './components/trailheads/Trailheads';
 import { Copyright } from './components/copyright/Copyright';
 import { MyVisits } from './components/visits/MyVisits';
+import GoogleMaps from './components/googlemaps/GoogleMaps';
+import HomepageIntroCards from './components/intro/HomepageIntroCards';
+import AllTrailheads from './components/trailheads/AllTrailheads';
+import { PlacesIVisited } from './components/visits/PlacesIVisited';
+import Me from './components/visits/Me';
+// import AllTrailheads from './components/trailheads/AllTrailheads';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const currentUser = useSelector((state) => state.usersReducer);
 
   const dispatch = useDispatch(); 
   // will grab all of the data(things), run once
@@ -44,17 +49,21 @@ export function App() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/homepage" element={<HomePage />} />
               <Route path="/my-visits" element={<MyVisits />} />
-              <Route path="/me" element={<MyVisitList isLoading={isLoading}/>} />
+              {/* <Route path="/me" element={<MyVisitList isLoading={isLoading}/>} /> */}
+              <Route path="/me" element={<Me isLoading={isLoading}/>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/visits/:id/edit" element={<EditForm />} />
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
+              <Route path="/my-visits-only" element={<PlacesIVisited />} />
               <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
+              <Route path="/all-trailheads" element={<AllTrailheads />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path="/gmaps" element={<GoogleMaps />} />
+              <Route path="/intro-cards" element={<HomepageIntroCards />} />
             </Routes>
         <Copyright />
       </LocalizationProvider>

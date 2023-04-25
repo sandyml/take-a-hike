@@ -83,7 +83,7 @@ export const Login = () => {
     <ThemeProvider theme={theme}>
       {
         currentUser && currentUser.id ?
-          <Button align='right' variant='body1' onClick={() => navigate('/homepage')}>
+          <Button align='right' variant='body1' onClick={() => navigate('/')}>
             Come back home! You're already logged in!
           </Button> : null
       }
@@ -101,6 +101,7 @@ export const Login = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              height: '200%'
             }}
           >
 
@@ -193,11 +194,6 @@ export const Login = () => {
           </Box>
 
         </Container>
-        {/* <img 
-      src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif" 
-      alt="gif" 
-      className='direction'
-      /> */}
       </Parallax>
     </ThemeProvider>
   );

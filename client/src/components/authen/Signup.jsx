@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { headers } from '../../Global';
 
-// mui 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,8 +19,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
 import { Parallax } from 'react-parallax';
-import { sierra_image } from '../styles/LandingCSS';
 import '.././index.css';
+import { sierra_image } from '../styles/LandingCSS';
 
 const theme = createTheme({
   status: {
@@ -92,13 +91,13 @@ export const Signup = () => {
         style={sierra_image}
         display="flex"
         bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-        strength={680}
+        strength={300}
       >
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 2,
+              marginTop: 8,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -213,7 +212,6 @@ export const Signup = () => {
               </Grid>
             </Box>
           </Box>
-          {/* <img src='https://media3.giphy.com/media/JB7gGCFk47LOURvjci/giphy.gif?cid=ecf05e473ogrjno7saew4q3wh5uufv0aq48c7qxtj54hxbw0&rid=giphy.gif&ct=s' alt='shoe' className='direction' /> */}
         </Container>
       </Parallax>
     </ThemeProvider>

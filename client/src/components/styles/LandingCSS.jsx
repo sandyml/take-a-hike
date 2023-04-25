@@ -89,8 +89,35 @@ export const mountain_image = {
  height: "88vh",
 }
 
+export const mountain_image4 = {
+ backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+ backgroundRepeat: 'no-repeat',
+ backgroundPosition: '60% 40%',
+ backgroundSize: 'cover',
+ position: 'relative',
+ borderRadius: "4px",
+ marginBottom: 20,
+ marginRight: 40,
+ marginLeft: 42,
+ height: "50vh",
+}
+
 export const mountain_image2 = {
  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)'
+}
+
+export const mountain_image3 = {
+ backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+ backgroundRepeat: 'no-repeat',
+ backgroundPosition: '60% 40%',
+ backgroundSize: 'cover',
+ position: 'relative',
+ borderRadius: "4px",
+ marginBottom: 20,
+ marginRight: 40,
+ marginLeft: 42,
+ height: "95vh",
+ // width: "170vh"
 }
 
 export const sierra_image = {
@@ -104,7 +131,7 @@ export const sierra_image = {
  marginBottom: 29,
  marginRight: 40,
  marginLeft: 42,
- height: "88vh",
+ height: "95vh",
 }
 
 export const walking_gif = {
