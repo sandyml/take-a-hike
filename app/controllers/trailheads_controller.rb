@@ -34,7 +34,9 @@ end
     :name, 
     :location,
     :fees,
-    :direction 
+    :direction,
+    :latitude, 
+    :longitude
   )
 end
 

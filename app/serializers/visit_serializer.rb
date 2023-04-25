@@ -1,5 +1,5 @@
 class VisitSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :user, :visited_date, :visited, :trailhead_id, :trailhead, :hi, :hike, :amenities
+  attributes :id, :user_id, :user, :visited_date, :visited, :trailhead_id, :trailhead, :hi, :hike, :amenities, :difficulties
   
   has_one :user
   has_one :trailhead
@@ -10,6 +10,10 @@ class VisitSerializer < ActiveModel::Serializer
 
   def hike  
     object.trailhead.hikes
+  end
+  
+  def difficulties
+    object.trailhead.difficulties
   end
 
   def visited_date

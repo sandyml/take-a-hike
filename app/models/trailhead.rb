@@ -1,5 +1,5 @@
 class Trailhead < ApplicationRecord
- validates :name, :location, :direction, :fees, presence: true 
+ validates :name, :location, :direction, :latitude, :longitude, :fees, presence: true 
 
  has_many :visits, dependent: :destroy
  has_many :users, through: :visits

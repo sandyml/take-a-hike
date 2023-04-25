@@ -18,48 +18,64 @@ zion_national_park = Trailhead.create(
  name: "Zion National Park",
  location: "Utah",
  direction: "https://www.google.com/maps/dir//Zion+National+Park,+Utah/@37.3220096,-113.1833194,11z/data=!4m17!1m7!3m6!1s0x80caead08844f8d9:0x7c2e3a15aa3656f5!2sZion+National+Park!8m2!3d37.2982022!4d-113.0263005!16zL20vMDE2MjZ4!4m8!1m0!1m5!1m1!1s0x80caead08844f8d9:0x7c2e3a15aa3656f5!2m2!1d-113.0263005!2d37.2982022!3e2",
+ latitude: "37.269939",
+ longitude: "-113.107468",
  fees: "Zion Annual Pass - $70.00, Passes are non-transferable, $35 per vehicle"
 )
 yosemite_national_park = Trailhead.create(
  name: "Yosemite National Park",
  location: "California",
  direction: "https://www.google.com/maps/dir//Yosemite+National+Park,+California/@37.8535194,-119.8313002,10z/data=!4m17!1m7!3m6!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!2sYosemite+National+Park!8m2!3d37.8651011!4d-119.5383294!16zL20vMGNfeTg!4m8!1m0!1m5!1m1!1s0x8096f09df58aecc5:0x2d249c2ced8003fe!2m2!1d-119.5383294!2d37.8651011!3e2",
+ latitude: "37.746540",
+ longitude: "-119.590584",
  fees: "$35 per vehicle"
 )
 glacier_national_park = Trailhead.create(
  name: "Glacier National Park",
  location: "Montana",
  direction: "https://www.google.com/maps/dir/40.7107117,-73.9945162/Glacier+National+Park,+Montana/@43.310324,-111.8143785,4z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x5368901555555555:0xaf16bc2215c55dec!2m2!1d-113.7870225!2d48.7596128!3e2",
+ latitude: "36.845200",
+ longitude: "-118.717640",
  fees: "$35 This is a entrance fee for all persons traveling in a single, private, non-commercial vehicle"
 )
 grand_canyon_national_park = Trailhead.create(
  name: "Grand Canyon National Park",
  location: "Arizona",
  direction: "https://www.google.com/maps/dir//Grand+Canyon+National+Park,+Arizona/@36.2678855,-112.913828,10z/data=!4m18!1m8!3m7!1s0x873312ae759b4d15:0x1f38a9bec9912029!2sGrand+Canyon+National+Park!8m2!3d36.2678855!4d-112.3535253!15sCh9HcmFuZCBDYW55b24gTmF0aW9uYWwgUGFyayBoaWtlWiEiH2dyYW5kIGNhbnlvbiBuYXRpb25hbCBwYXJrIGhpa2WSAQ1uYXRpb25hbF9wYXJrmgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5UZGtsbGIzUjNSUkFC4AEA!16zL20vMGNucnI!4m8!1m0!1m5!1m1!1s0x873312ae759b4d15:0x1f38a9bec9912029!2m2!1d-112.3535253!2d36.2678855!3e2",
+ latitude: "35.965000",
+ longitude: "-111.973793",
  fees: "National Park (North and South rims) entrance fees - $30 per vehicle. West Rim entrance package - $46.65 per person. Helicopter tours - South Rim - $199 per person."
 )
 rocky_mountain_national_park = Trailhead.create(
  name: "Rocky Mountain National Park",
  location: "Colorado",
  direction: "https://www.google.com/maps/dir//Rocky+Mountain+National+Park,+Colorado/@40.3427932,-106.8042444,9z/data=!4m18!1m8!3m7!1s0x876979e4455903e9:0xfa27ee43a78e8217!2sRocky+Mountain+National+Park!8m2!3d40.3427932!4d-105.6836389!15sCitSb2NreSBNb3VudGFpbiBOYXRpb25hbCBQYXJrIGhpa2UgYW1lbml0aWVzWi0iK3JvY2t5IG1vdW50YWluIG5hdGlvbmFsIHBhcmsgaGlrZSBhbWVuaXRpZXOSAQ1uYXRpb25hbF9wYXJrmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVJWZDNWVFpVcDNFQUXgAQA!16zL20vMDFwX3p2!4m8!1m0!1m5!1m1!1s0x876979e4455903e9:0xfa27ee43a78e8217!2m2!1d-105.6836389!2d40.3427932!3e2",
+ latitude: "40.187141",
+ longitude: "-105.867958",
  fees: "Annual Pass $70, 7 Day Vehicle Pass $35, 7 Day Motorcycle Pass $30, 1 Day Vehicle Pass $30"
 )
 bryce_canyon_national_park = Trailhead.create(
  name: "Bryce Canyon National Park",
  location: "Utah",
  direction: "https://www.google.com/maps/dir//Bryce+Canyon+National+Park,+Utah/@37.597706,-112.2574552,12z/data=!4m18!1m8!3m7!1s0x87356bc602c3eb2d:0x6be9d8fbbeac6d06!2sBryce+Canyon+National+Park!8m2!3d37.5930377!4d-112.1870895!15sCh9CcnljZSBDYW55b24gTmF0aW9uYWwgUGFyayBoaWtlWiEiH2JyeWNlIGNhbnlvbiBuYXRpb25hbCBwYXJrIGhpa2WSAQ1uYXRpb25hbF9wYXJrmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVJyYUY5UWRHRm5FQUXgAQA!16zL20vMGNuc3A!4m8!1m0!1m5!1m1!1s0x87356bc602c3eb2d:0x6be9d8fbbeac6d06!2m2!1d-112.1870895!2d37.5930377!3e2?hl=en-US",
+ latitude: "37.627361",
+ longitude: "-112.185257",
  fees: "Vehicle fee of $30 plus a per-person fee of $20 for those 16 years of age and older"
 )
 arches_canyon_national_park = Trailhead.create(
  name: "Arches National Park",
  location: "Utah",
  direction: "https://www.google.com/maps/dir//Arches+National+Park,+Utah/@38.7315008,-109.865827,10z/data=!4m17!1m7!3m6!1s0x80caf61a860daa51:0x4f42ea69d128c495!2sArches+National+Park!8m2!3d38.733081!4d-109.5925139!16zL20vMGxndA!4m8!1m0!1m5!1m1!1s0x80caf61a860daa51:0x4f42ea69d128c495!2m2!1d-109.5925139!2d38.733081!3e2",
+ latitude: "38.733082",
+ longitude: "-109.592514",
  fees: "Annual Pass: $80; Annual Military Pass: Free, Private Vehicle Fee - $30.00, Motorcycle Fee - $25.00, Per Person - $15.00(Admits one individual with no car), Timed Entry Ticket Fee - $2.00"
 )
 olympic_national_park = Trailhead.create(
  name: "Olympic National Park",
  location: "3002 Mt Angeles Rd, Port Angeles, WA 98362",
  direction: "https://www.google.com/maps/dir//Olympic+National+Park,+3002+Mt+Angeles+Rd,+Port+Angeles,+WA+98362/@47.8095721,-124.200399,9z/data=!4m18!1m8!3m7!1s0x548e8009cf0472d1:0x2087abb27d7951!2sOlympic+National+Park!8m2!3d47.8021067!4d-123.6043524!15sChpvbHltcGljIG5hdGlvbmFsIHBhcmsgaGlrZVocIhpvbHltcGljIG5hdGlvbmFsIHBhcmsgaGlrZZIBDW5hdGlvbmFsX3BhcmuaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUkNNR0pVYkdKQkVBReABAA!16zL20vMDE1bnJu!4m8!1m0!1m5!1m1!1s0x548e8009cf0472d1:0x2087abb27d7951!2m2!1d-123.6043524!2d47.8021067!3e2",
+ latitude: "36.845200",
+ longitude: "-118.717640",
  fees: "Annual Pass: $55, entrance fee is $30 for a private, non-commercial vehicle, $25 for individuals entering on a motorcycle, or $15 for individuals entering on foot or bicycle. Entrance fees are good for seven consecutive days. Annual, interagency, military, senior, 4th grade, and access passes are also available."
 )
 
