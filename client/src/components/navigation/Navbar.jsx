@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 import ForestIcon from '@mui/icons-material/Forest';
 import IconButton from '@mui/material/IconButton';
@@ -16,7 +15,6 @@ import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
-import { cartoon_bear_gif } from '../styles/LandingCSS';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -67,7 +65,7 @@ export const Navbar = () => {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'Google Sans, Roboto, arial, sans-serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -122,7 +120,7 @@ export const Navbar = () => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Google Sans, Roboto, arial, sans-serif',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',

@@ -68,7 +68,7 @@ export const styles = (theme) => ({
  },
  subtitle: {
   fontSize: 45,
-  fontFamily: "Barlow Condensed",
+  fontFamily: "Google Sans, Roboto, arial, sans-serif",
   color: "white",
   paddingLeft: 60,
   letterSpacing: "3px",
@@ -169,3 +169,56 @@ export const loading_gif = {
  marginLeft: 42,
  // height: "2vh",
 }
+
+
+export const new_styles = theme => ({
+ buttons: {
+   margin: theme.spacing(3, 0, 2),
+   background: 'linear-gradient(45deg, #eaf7dc 30%, #79a67a 90%)',
+   border: 0,
+   borderRadius: 3,
+   boxShadow: '0 3px 5px 2px rgba(107, 125, 108)',
+   height: 60,
+   width: 150,
+   padding: '0 30px',
+   fontSize: 15,
+   float: "right"
+
+ },
+ div: {
+   fontSize: 80,
+   color: "white",
+   fontFamily: "Google Sans, Roboto, arial, sans-serif",
+   paddingLeft: 70,
+   fontWeight: "bold"
+ },
+//  fontFamily: 'Google Sans, Roboto, arial, sans-serif'
+ root: {
+   display: 'flex',
+   flexWrap: 'wrap',
+   justifyContent: 'space-around',
+   overflow: 'hidden',
+   backgroundColor: theme.palette.background.paper,
+ },
+ gridList: {
+   width: 500,
+   height: 450,
+   transform: 'translateZ(0)',
+ },
+ titleBar: {
+   background:
+     'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+     'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+ },
+ icon: {
+   color: 'white',
+ },
+
+ userPageHeader: {
+   display: "flex",
+   justifyContent: "space-between",
+   marginTop: -200,
+   marginRight: 70,
+   width: "100%"
+ }
+})

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/users';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, IconButton, Toolbar, Typography } from '@mui/material';
 import ForestIcon from '@mui/icons-material/Forest';
@@ -37,7 +36,7 @@ export const HeaderNav = () => {
       sx={{
        mr: 2,
        display: { xs: 'none', md: 'flex' },
-       fontFamily: 'monospace',
+       fontFamily: 'Google Sans, Roboto, arial, sans-serif',
        fontWeight: 700,
        letterSpacing: '.3rem',
        color: 'inherit',
@@ -46,7 +45,6 @@ export const HeaderNav = () => {
      >
       <ForestIcon /> TakeAHike
      </Typography>
-
      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
       <IconButton
        size="large"
@@ -92,7 +90,7 @@ export const HeaderNav = () => {
        mr: 2,
        display: { xs: 'flex', md: 'none' },
        flexGrow: 1,
-       fontFamily: 'monospace',
+       fontFamily: 'Google Sans, Roboto, arial, sans-serif',
        fontWeight: 700,
        letterSpacing: '.3rem',
        color: 'inherit',

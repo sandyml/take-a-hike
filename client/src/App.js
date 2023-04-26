@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import HomePage from './components/intro/HomePage';
 
@@ -10,7 +10,7 @@ import { Login } from "./components/authen/Login";
 import Logout from './components/authen/Logout';
 
 import { EditForm } from './components/hike/EditForm';
-import { MyVisitList } from './components/hike/MyVisitList';
+// import { MyVisitList } from './components/hike/MyVisitList';
 import { VisitList } from './components/hike/VisitList';
 
 import NotFound from './components/navigation/NotFound';

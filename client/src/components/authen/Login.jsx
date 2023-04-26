@@ -40,6 +40,10 @@ const theme = createTheme({
       main: '#C3CDBF',
       contrastText: '#fff',
     },
+    floralWhite: {
+      main: '#f5f5f5',
+      contrastText: '#fff',
+    },
   },
 });
 
@@ -185,7 +189,7 @@ export const Login = () => {
 
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/signup" variant="body2">
+                  <Link href="/signup" variant="body2" color='inherit' >
                     Don't have an account? Signup
                   </Link>
                 </Grid>

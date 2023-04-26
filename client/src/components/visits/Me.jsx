@@ -39,6 +39,7 @@ export default function Me({ isLoading }) {
   return <div></div>
  }
 
+ // delete component 
  return (
   <ThemeProvider theme={theme}>
    <Button onClick={() => navigate('/')}>Back</Button>
@@ -48,7 +49,7 @@ export default function Me({ isLoading }) {
     strength={680}
    >
     
-   <Typography style={{ fontFamily: 'Fredoka, sans-serif' }} component='div' align='center' margin={2}>Places {currentUser.username}'s Visited</Typography>
+   <Typography style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} component='div' align='center' margin={2}>Places {currentUser.username}'s Visited</Typography>
 
     <Stack align='left' direction={{ xs: 'column', sm: 'row' }}
      spacing={{ xs: 1, sm: 2, md: 0 }}

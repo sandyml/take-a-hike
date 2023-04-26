@@ -53,7 +53,7 @@ const styles = (theme) => ({
   },
   subtitle: {
    fontSize: 45,
-   fontFamily: "Barlow Condensed",
+   fontFamily: "Google Sans, Roboto, arial, sans-serif",
    color: "white",
    paddingLeft: 60,
    letterSpacing: "3px",
@@ -81,7 +81,7 @@ class Logout extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: 'Raleway' }}
+          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
          >
           You are now logged out! Thank you for visiting.
          </Typography>

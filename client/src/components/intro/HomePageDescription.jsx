@@ -27,7 +27,7 @@ class HomePageDescription extends React.Component {
          <Typography
           className={classes.title3}
           variant="h2"
-          style={{ fontFamily: 'Fredoka, sans-serif' }}
+          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
          >
           {/* When someone tells you to actually 'Take A Hike', thinking on the bright side of it...you take a hike.  */}
           Mountains aren’t just funny. They’re hill-areas.

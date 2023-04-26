@@ -3,8 +3,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Button, Card } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const images = [
  {
@@ -80,9 +80,10 @@ export default function HomepageIntroCards() {
  const navigate = useNavigate();
 
  return (
-  <Box sx={{ marginLeft: 5.2, display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  <Box align='center' sx={{ marginLeft: 5.2, marginRight: 5,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
    {images.map((image) => (
     <ImageButton
+     component={'div'}
      focusRipple
      key={image.title}
      style={{
@@ -104,8 +105,7 @@ export default function HomepageIntroCards() {
        }}
       >
        <div variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >       
-       <Button color='inherit' variant="text" style={{ fontFamily: 'Fredoka, sans-serif' }} >{image.title}</Button>
-       {/* <Button href={image.link} target="_parent" color='inherit' >{image.title}</Button> */}
+       <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} >{image.title}</Button>
        </div>
       </Typography>
      </Image>

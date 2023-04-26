@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addVisit } from '../actions/visits';
-import { Box, Button, CardContent, CardMedia, Typography } from '@mui/material';
-import { FmdGoodRounded, Paid, Route } from '@mui/icons-material';
+import { Box, Button, CardMedia, Typography } from '@mui/material';
+import { FmdGoodRounded, Paid } from '@mui/icons-material';
 import { Grid, Card } from '@mui/material';
 
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   const { currentUser } = useSelector((state) => state.usersReducer);
   const { loggedIn } = useSelector((state) => state.usersReducer);
@@ -17,9 +18,20 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const toggleSeeMap = () => {
+    (showMap === false) ? setShowMap(true) :
+    setShowMap(false);
+  };
+
   const difficulties = th.difficulties.map(thd => thd.name);
   // console.log(difficulties.join(', '));
-  const amenities = th.amenities.map((amenity, idxx) => <div key={idxx}>✓{amenity}</div>);
+  const amenities = th.amenities.map((amenity, idxx) =>
+    <div key={idxx}>
+      <Typography align="center" color='inherit' component={'div'}>
+        ✓{amenity}
+      </Typography>
+    </div>
+  );
   // console.log(amenities.join('✓ '))
 
   // debugger 
@@ -43,26 +55,45 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
   return (
     <Box>
-      <Grid sx={{ flexGrow: 1 }} col={3} style={{ display: 'flex', justifyContent: 'center' }}>
+      <Grid sx={{ flexGrow: 1 }} col={3} style={{ justifyContent: 'center' }}>
         {th.hikes.map((hike) =>
           <Grid key={hike.id} >
-            <Typography
+            {/* <Typography
               component={'div'}
               variant='h5'
               style={{ display: 'flex', justifyContent: 'center' }}
             >{th.name}
-            </Typography><br />
+            </Typography><br /> */}
 
             <Grid
+              sx={{ paddingLeft: 1, paddingBottom: 1 }}
               item xs={1} md={12}
               container
               justifyContent="center"
               spacing={-0.01}
               style={{ display: 'flex', justifyContent: 'center' }}>
-              <Card sx={{ maxWidth: 593 }}>
+              <Card sx={{ maxWidth: 593, height: 1000 }}>
+                <div align='right'>
+                  <Button
+                    sx={{ width: 100, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
+                    // sx={{fontFamily: 'Fredoka, sans-serif' }}
+                    size='small'
+                    variant="contained"
+                    disabled={!!isInVisited}
+                    onClick={handleAddToVisit}
+                  >
+                    {loading ? "Adding..." : "Add To Visit"}
+                  </Button>
+                </div><br />
+                <Typography
+                  component={'div'}
+                  variant='h5'
+                  style={{ display: 'flex', justifyContent: 'center' }}
+                >{th.name}
+                </Typography><br />
 
                 <CardMedia
-                  sx={{ width: 593, height: 350, display: 'flex' }}
+                  sx={{ width: 593, height: 300 }}
                   image={hike.image_url}
                   title="yosemite"
                 />
@@ -82,62 +113,47 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     align='center'
                     component={'div'}
                   // style={{ display:'flex', justifyContent:'center' }} 
-                  >
-                    <Typography style={{ display: 'flex', justifyContent: 'center' }} component={'div'}>
-                      <Route /> {' '}
-                      {/* <Card> */}
+                  ><br />
+                    <Typography style={{ display: 'flex', justifyContent: 'center', fontFamily: "Google Sans, Roboto, arial, sans-serif" }} component={'div'}>
+                      {/* <Route /> {' '} */}
+                      <Button onClick={toggleSeeMap}>Map/Directions</Button>
+                      <>
+                      {showMap ? 
                       <div>
-                        <a href={th.direction} target="_top">
-                          <center>Directions</center>
-                        </a>
+                      <iframe
+                        src={th.direction}
+                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1682533509259!5m2!1sen!2sus"
+                        width="600" height="450"
+                        style={{ border: "0" }}
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="hike google maps"
+                      >
+                        Directions/GoogleMaps 
+                      </iframe>
                       </div>
-                      <br />
-                      {/* </Card> */}
-                      <br />
-                      <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}
+                      : null}
+                      </>
+
                     </Typography>
+                    <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}<br />
                     <b>elevation_gain:</b>&nbsp;{thh.elevation_gain} <b>distance:</b>&nbsp;{thh.distance}
                   </Typography>
                 )}
                 <Typography style={{ display: 'flex', justifyContent: 'center' }} component='div'>
 
                   <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
-                </Typography>
+                </Typography><br />
                 <div style={{ width: '100%' }}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexWrap: 'nowrap',
-                      p: 1,
-                      m: 1,
-                      bgcolor: 'background.paper',
-                      maxWidth: 200,
-                      borderRadius: 1,
-                    }}
-                  >
-                    <Typography align='center' style={{ display: 'flex' }} component='div'>
-                      {amenities}
-                    </Typography>
-                  </Box>
+                  {/* <Typography component='div' align='center' > */}
+                  <Typography align='center' style={{ display: 'flex' }} component='div'>
+                    {amenities}
+                  </Typography>
                 </div>
-
-
-
                 <Typography variant='body2' align='center' component={'div'}>
                   <Paid />{th.fees}
                 </Typography>
-
-                <CardContent>
-
-                  <Button
-                    variant="contained"
-                    disabled={!!isInVisited}
-                    onClick={handleAddToVisit}
-                  >
-                    {loading ? "Adding..." : "Add To Visit"}
-                  </Button>
-
-                </CardContent>
               </Card>
             </Grid>
           </Grid>

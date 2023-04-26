@@ -3,15 +3,11 @@ import { mountain_image } from '../styles/LandingCSS';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { HeaderNav } from '../navigation/HeaderNav';
-import HomePageCards from './HomePageCards';
 import Grid from '@material-ui/core/Grid';
 import { Parallax } from 'react-parallax';
 import HomePageDescription from './HomePageDescription';
 import { MyVisitList } from '../hike/MyVisitList';
 import HomepageIntroCards from './HomepageIntroCards';
-import { WalkingGif } from './WalkingGif';
-// import HomepageIntroCards from './HomepageIntroCards';
-// import Me from '../visits/Me';
 
 const styles = (theme) => ({
   mainFeaturedPost: {
@@ -60,7 +56,7 @@ const styles = (theme) => ({
   },
   subtitle: {
    fontSize: 45,
-   fontFamily: "Barlow Condensed",
+   fontFamily: "Google Sans, Roboto, arial, sans-serif",
    color: "white",
    paddingLeft: 60,
    letterSpacing: "3px",
@@ -89,7 +85,7 @@ class HomePage extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: 'Fredoka, sans-serif' }}
+          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
          >
           TakeAHike
          </Typography>
@@ -100,10 +96,7 @@ class HomePage extends React.Component {
      </div>
     </Parallax>
     <HomepageIntroCards /><br/>
-    {/* <HomePageCards /><br/> */}
     <HomePageDescription /><br/>
-    {/* <Me /> */}
-    {/* <WalkingGif /> */}
     <MyVisitList />
    </div>
   );

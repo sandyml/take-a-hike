@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import VisitCard from '../hike/VisitCard';
+import '.././index.css';
 
-import { Button, createTheme, ThemeProvider } from '@mui/material';
+import { Button, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
   status: {
@@ -44,13 +45,14 @@ export const MyVisits = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="objects-box">
+      <center>
         <Button component='div' align='left' color='black' onClick={() => navigate('/')} >Back</Button>
-        <center className="object">
-          <h1>My Visits ONLY</h1>
-          {myVisitCards}
-        </center>
-      </div>
+        <h1>My Visits only</h1>
+        <CssBaseline />
+        <div className='parallex-scrollbar' >
+        {myVisitCards}
+        </div>
+      </center>
     </ThemeProvider>
   )
-}
+};

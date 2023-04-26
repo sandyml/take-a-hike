@@ -42,10 +42,10 @@ export default function AllTrailheads() {
    {/* <Box sx={{ width: 130 }}> */}
     <Stack direction="row">
      {/* <Item sx={{ paddingLeft: 75 }} useFlexGap flexWrap="wrap" className='scrollbar' > */}
-     <Item>
+     <Item className='all-trailheads-scrollbar' align='center'>
       {trailheadCards}
      </Item>
-     <Item className='scrollbar'>
+     <Item>
        <GoogleMaps />
      </Item>
     </Stack>

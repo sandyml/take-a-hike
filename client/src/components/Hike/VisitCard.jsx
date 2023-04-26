@@ -5,22 +5,38 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteVisit } from '../actions/visits';
 import { header } from '../../Global';
 
-import { Check, FmdGoodRounded, Route } from '@mui/icons-material';
-import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Paper, Box } from '@mui/material';
+import { Check, EditCalendarOutlined, FmdGoodRounded, Route } from '@mui/icons-material';
+import { Button, Card, CardContent, CardMedia, CssBaseline, Typography, createTheme, ThemeProvider } from '@mui/material';
+import { Box } from '@mui/material';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  maxWidth: 600,
-  height: 760,
-}));
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#6E7F62',
+      contrastText: '#fff',
+    },
+    lightsage: {
+      main: '#919F88',
+      contrastText: '#fff',
+    },
+    lightersage: {
+      main: '#C3CDBF',
+      contrastText: '#fff',
+    },
+  },
+});
+
 
 const VisitCard = ({ visit, isLoading }) => {
+  // const classes = useStyles();
 
   const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
 
@@ -38,52 +54,49 @@ const VisitCard = ({ visit, isLoading }) => {
   };
 
   const amenities = visit.amenities.map((a) => 
-  <div key={a.id}><Check />{a.name}</div>
-  )
+  <ul className='ul-visitcard' key={a.id}><Check />{a.name}</ul>
+  );
+
+  const difficulties = visit.difficulties.map(dif => dif.name);
 
   return (
-    <Box sx={{ flexGrow: 1, overflow: 'hidden'}}>
-      <Item sx={{ my: 0.5, mx: 'auto', p: 2 }} >
+    <ThemeProvider theme={theme}>
 
+      <Box sx={{ my: 0.5, mx: 'auto', p: 2, paddingLeft: 45 }} display='flex' align='center'>
+        <Card sx={{ maxWidth: 1050, height: 570 }} >
         {currentUser && currentUser.id === visit.user.id ?
-          <>
-            <Button variant="text" onClick={() => navigate(`/visits/${visit.id}/edit`)}>Edit</Button>{' '}
-            <Button variant="text" onClick={handleDelete} type='delete'>Remove</Button>
-          </> : null}
+          <div align='right' >
+            <Button sx={{width: 50, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text" onClick={() => navigate(`/visits/${visit.id}/edit`)}>edit<EditCalendarOutlined/></Button>&nbsp;&nbsp;&nbsp;
+            <Button sx={{width: 50, paddingRight: 2, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text" onClick={handleDelete} type='delete'>remove<DeleteOutlineIcon size='small'/></Button>
+          </div> : null}
 
-        <Typography component={'div'} noWrap variant="h5">{visit.trailhead.name}</Typography>
-        <Typography component={'div'} noWrap align='left'>You visited on {visit.visited_date}</Typography>
-        {/* <Stack spacing={2} direction="row" alignItems="center"> */}
-          <Card sx={{ maxWidth: 900, height: 670, }} >
+          <CssBaseline />
+        {/* <Typography sx={{fontFamily: 'Fredoka, sans-serif'}} component={'div'} variant="h5" align='center' >{visit.trailhead.name}</Typography> */}
+        <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} component={'div'} align='left'>&nbsp;&nbsp;You visited on {visit.visited_date}</Typography>
             {visit.hike.map((vh) =>
                 <CardMedia
-                  key={vh}
-                  sx={{ width: 900, height: 290 }}
-                  image={vh.image_url}>
-                {/* <b>elevation gain:</b> {vh.elevation_gain}{' '}
-                <b>distance:</b> {vh.distance} */}
+                key={vh}
+                sx={{ width: 1045, height: 295, borderRadius: 4 }}
+                image={vh.image_url}>
                   </CardMedia>
             )}
+            <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: 'white'}} component={'div'} variant="h5" align='center' >{visit.trailhead.name}</Typography>
             <CardContent>
               <FmdGoodRounded /> {visit.trailhead.location}
-                <Typography variant="body2" component={'div'}>
-                  {amenities}
-                </Typography>
-                <Typography variant="caption" component={'div'}>
-                  {visit.trailhead.fees}
-                </Typography>
-                <Typography component={'div'} variant="caption" display="block" align='center' color="text.secondary">
-                  <Route />{' '}
+            <Typography variant="caption" component={'div'} >
+              <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
+              &emsp; <Route sx={{ fontSize: 15 }} /> Directions<br/>
+              &emsp;{visit.trailhead.fees}&emsp;&emsp;
                   {/* <NavLink href={visit.trailhead.direction} variant="body2"> */}
-                    Directions
-                  {/* </NavLink> */}
-                </Typography>
+            </Typography>
+                <Typography flexDirection='row' col={2} variant="body2" className='ul-visitcard' component={'ul'}>
+                  {amenities}
+                </Typography><br/>
             </CardContent>
           </Card>
-        {/* </Stack> */}
-      </Item>
-    </Box>
+      </Box>
 
+    </ThemeProvider>
   )
 };
 
