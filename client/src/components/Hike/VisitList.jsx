@@ -10,22 +10,22 @@ export const VisitList = ({ isLoading }) => {
 
   const { loggedIn } = useSelector((state) => state.usersReducer);
   const visits = useSelector((state) => state.visitsReducer);
-  console.log(visits, "visits list reducer")
 
   const navigate = useNavigate();
 
+  const visitCards = visits.map((visit, ix) =>
+    <VisitCard key={ix} visit={visit} isLoading={isLoading} />
+  );
+
   useEffect(() => {
     if (!isLoading && !loggedIn) {
-      navigate('/login')
+      navigate('/visits')
     }
   }, [isLoading, loggedIn, navigate])
 
   if (visits.errors) { 
     return <div></div>
   }
-  const visitCards = visits.map((visit, ix) =>
-    <VisitCard key={ix} visit={visit} isLoading={isLoading} />
-  );
 
   return (
     <div>

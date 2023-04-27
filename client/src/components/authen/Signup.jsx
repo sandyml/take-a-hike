@@ -65,7 +65,6 @@ export const Signup = () => {
       password,
       navigate
     ));
-
     // setUsername("");
     // setEmail("");
     // setPassword("");

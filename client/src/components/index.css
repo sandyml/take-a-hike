@@ -371,7 +371,7 @@ div.visit-list-bgc {
 
 div.all-trailheads-scrollbar {
   width: 190vh;
-  height: 100vh;
+  height: 102.2vh;
   display: fixed;
   overflow-y: scroll;
   overflow: scroll;
@@ -382,6 +382,10 @@ div.all-trailheads-scrollbar {
 div.all-trailheads-scrollbar {
   /* background-image: url("https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683__480.png"); */
   --global-background: hsl(220, 25%, 10%);
+}
+
+div.all-trailheads {
+  background-color: #131720;
 }
 
 .background-color-edit {

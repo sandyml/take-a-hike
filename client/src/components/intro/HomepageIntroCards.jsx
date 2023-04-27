@@ -16,9 +16,17 @@ const images = [
  {
   url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
   title: 'All Trailheads',
-  width: '32.7%',
-  link: "/trailheads",
+  width: '31.5%',
+  // width: '32.7%',
+  link: "/all-trailheads",
  },
+ // {
+ //  url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
+ //  title: 'All Trailheads',
+ //  width: '31.5%',
+ //  // width: '32.7%',
+ //  link: "/trailheads",
+ // },
  {
   url: "https://www.sftravel.com/sites/default/files/styles/hero/public/2022-11/yosemite-falls.webp?h=05d46cef&itok=3r7CsbMg",
   title: 'Hikers Visits',
@@ -80,7 +88,7 @@ export default function HomepageIntroCards() {
  const navigate = useNavigate();
 
  return (
-  <Box align='center' sx={{ marginLeft: 5.2, marginRight: 5,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  <Box align='center' sx={{ marginLeft: 5.2, marginRight: 6.1,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
    {images.map((image) => (
     <ImageButton
      component={'div'}

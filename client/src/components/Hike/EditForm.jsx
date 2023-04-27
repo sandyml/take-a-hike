@@ -12,7 +12,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
-import { useEffect } from 'react';
 
 // users/:user_id/visits {user_id} useParams
 
@@ -22,7 +21,6 @@ export const EditForm = () => {
 
   const visits = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer);
-  const { loggedIn } = useSelector((state) => state.usersReducer);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,16 +28,9 @@ export const EditForm = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  useEffect(() => {
-    if(!isLoading && !loggedIn) {
-      navigate('/login')
-    }
-  }, [isLoading, loggedIn, navigate])
-
-  const handleEditDate = () => {
-    setIsLoading(true);
-    // e.preventDefault();
-    dispatch(editVisit(id, visited_date, navigate))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(editVisit(id, setIsLoading, visited_date, navigate))
   };
   
   const vis = visits.find(visit => visit.id === parseInt(id, 10));
@@ -64,7 +55,7 @@ export const EditForm = () => {
             <Typography component="h1" variant="h5">
               Change Visit Date
             </Typography>
-            <Box component="form" noValidate onSubmit={handleEditDate} sx={{ mt: 3 }} >
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
                 <Grid container spacing={2}>
 
                   <Grid item xs={12}>
@@ -96,18 +87,8 @@ export const EditForm = () => {
                       selected={visited_date}
                       value={visited_date}
                       onChange={(e) => setVisitedDate(e.target.value)}
-                      // onChange={(e) => setVisitedDate(e.target.value)}
                       autoFocus
                     />
-                     {/* <DatePicker
-                        value={visited_date}
-                        inputFormat="DD-MM-YYYY"
-                        // value={new Date()}
-                        onChange={(e) => setVisitedDate(e.target.value)}
-                        renderInput={(props) => (
-                          <TextField {...props} helperText="valid mask" />
-                        )}
-                      /> */}
                       {/* <DatePicker
                         label="Select date"
                         value={visited_date}

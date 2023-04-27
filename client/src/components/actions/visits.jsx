@@ -56,8 +56,9 @@ export const deleteVisit = (id, header) => {
    }
 }
 
-export const editVisit = (id, visited_date, navigate) => {
+export const editVisit = (id, setIsLoading, visited_date, navigate) => {
    return dispatch => {
+      setIsLoading(true);
       fetch(`/visits/${id}`, {
          method: 'PATCH',
          headers,
@@ -76,13 +77,14 @@ export const editVisit = (id, visited_date, navigate) => {
                   payload: data
                })
                navigate('/visits')
-               // console.log(data, "EDIT_VISIT")
+               console.log(data, "EDIT_VISIT")
                dispatch({
                   type: "EDIT_USERS_VISIT", 
                   payload: data
                })
                navigate('/my-visits')
                console.log(data, "EDIT_USERS_VISIT")
+               setIsLoading(false);
             }
          })
    }
@@ -117,7 +119,8 @@ export const addVisit = (th, navigate) => {
                   type: "ADD_VISIT",
                   payload: data
                })
-               navigate('/me')
+               navigate('/all-trailheads')
+               // navigate('/me')
             }
          })
    }

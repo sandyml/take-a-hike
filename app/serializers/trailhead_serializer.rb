@@ -8,7 +8,6 @@ class TrailheadSerializer < ActiveModel::Serializer
     object.amenities.pluck(:name)
   end
 
-  # check to see if it needs to be deleted!
   def hike  
     object.hikes
   end

@@ -43,12 +43,6 @@ const VisitCard = ({ visit, isLoading }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!isLoading && !loggedIn) {
-      navigate('/login')
-    }
-  }, [isLoading, loggedIn, navigate])
-
   const handleDelete = () => {
     dispatch(deleteVisit(visit.id, header))
   };
@@ -58,6 +52,12 @@ const VisitCard = ({ visit, isLoading }) => {
   );
 
   const difficulties = visit.difficulties.map(dif => dif.name);
+
+  // useEffect(() => {
+  //   if (!isLoading && !loggedIn) {
+  //     navigate('/login')
+  //   }
+  // }, [isLoading, loggedIn, navigate])
 
   return (
     <ThemeProvider theme={theme}>

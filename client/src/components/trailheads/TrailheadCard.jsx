@@ -20,7 +20,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
   const toggleSeeMap = () => {
     (showMap === false) ? setShowMap(true) :
-    setShowMap(false);
+      setShowMap(false);
   };
 
   const difficulties = th.difficulties.map(thd => thd.name);
@@ -34,13 +34,12 @@ export const TrailheadCard = ({ th, isLoading }) => {
   );
   // console.log(amenities.join('✓ '))
 
-  // debugger 
-
   const isInVisited = currentUser.visits.find((vi) => vi.trailhead_id === th.id);
 
   const handleAddToVisit = () => {
     setLoading(true);
     dispatch(addVisit(th, navigate))
+    navigate('/all-trailheads')
   }
 
   useEffect(() => {
@@ -58,12 +57,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
       <Grid sx={{ flexGrow: 1 }} col={3} style={{ justifyContent: 'center' }}>
         {th.hikes.map((hike) =>
           <Grid key={hike.id} >
-            {/* <Typography
-              component={'div'}
-              variant='h5'
-              style={{ display: 'flex', justifyContent: 'center' }}
-            >{th.name}
-            </Typography><br /> */}
 
             <Grid
               sx={{ paddingLeft: 1, paddingBottom: 1 }}
@@ -76,9 +69,8 @@ export const TrailheadCard = ({ th, isLoading }) => {
                 <div align='right'>
                   <Button
                     sx={{ width: 100, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
-                    // sx={{fontFamily: 'Fredoka, sans-serif' }}
                     size='small'
-                    variant="contained"
+                    variant="text"
                     disabled={!!isInVisited}
                     onClick={handleAddToVisit}
                   >
@@ -112,50 +104,28 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     variant='body1'
                     align='center'
                     component={'div'}
-                  // style={{ display:'flex', justifyContent:'center' }} 
                   ><br />
                     <Typography style={{ display: 'flex', justifyContent: 'center', fontFamily: "Google Sans, Roboto, arial, sans-serif" }} component={'div'}>
                       {/* <Route /> {' '} */}
-                      <Button onClick={toggleSeeMap}>Map/Directions</Button>
+                      <Button onClick={toggleSeeMap}>Map | Directions</Button>
                       <>
-                      {showMap ? 
-                      <div>
-                      <iframe
-                        src={th.direction}
-                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1682533509259!5m2!1sen!2sus"
-                        width="600" height="450"
-                        style={{ border: "0" }}
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="hike google maps"
-                      >
-                        Directions/GoogleMaps 
-                      </iframe>
-                      </div>
-                      : null}
-                      </>
-                      {/* <div className="box">
-                        <a href="#m2-o" className="link-1" id="m2-c">Modal 2</a>
-                        <div className="modal-container" id="m2-o">
-                          <div className="modal">
-                            <p className="modal__text">
-                        <iframe
-                        src={th.direction}
-                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1682533509259!5m2!1sen!2sus"
-                        width="600" height="450"
-                        style={{ border: "0" }}
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="hike google maps"
-                      >
-                        Directions/GoogleMaps 
-                      </iframe></p>
-                      <a href="#m2-c" className="link-2"></a>
+                        {showMap ?
+                          <div>
+                            <iframe
+                              src={th.direction}
+                              // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1682533509259!5m2!1sen!2sus"
+                              width="600" height="450"
+                              style={{ border: "0" }}
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"
+                              title="hike google maps"
+                            >
+                              Directions/GoogleMaps
+                            </iframe>
                           </div>
-                        </div>
-                      </div> */}
+                          : null}
+                      </>
 
                     </Typography>
                     <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}<br />
@@ -167,7 +137,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
                 </Typography><br />
                 <div style={{ width: '100%' }}>
-                  {/* <Typography component='div' align='center' > */}
                   <Typography align='center' style={{ display: 'flex' }} component='div'>
                     {amenities}
                   </Typography>
@@ -187,6 +156,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
             ))}
           </ul>
         )}
+
       </Grid>
     </Box>
   );
