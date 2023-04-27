@@ -15,13 +15,11 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 // users/:user_id/visits {user_id} useParams
 
-export const EditForm = () => {
+export const EditForm = ({ isLoading }) => {
   const [visited_date, setVisitedDate] = useState("");
 
   const visits = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +27,7 @@ export const EditForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editVisit(id, setIsLoading, visited_date, navigate))
+    dispatch(editVisit(id, visited_date, navigate))
   };
   
   const vis = visits.find(visit => visit.id === parseInt(id, 10));

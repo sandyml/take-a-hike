@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import VisitCard from '../hike/VisitCard';
 import '.././index.css';
 
-import { Button, CssBaseline, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 
 export const MyVisits = () => {

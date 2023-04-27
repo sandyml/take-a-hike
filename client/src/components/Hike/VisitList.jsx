@@ -13,10 +13,6 @@ export const VisitList = ({ isLoading }) => {
 
   const navigate = useNavigate();
 
-  const visitCards = visits.map((visit, ix) =>
-    <VisitCard key={ix} visit={visit} isLoading={isLoading} />
-  );
-
   useEffect(() => {
     if (!isLoading && !loggedIn) {
       navigate('/visits')
@@ -26,6 +22,10 @@ export const VisitList = ({ isLoading }) => {
   if (visits.errors) { 
     return <div></div>
   }
+
+  const visitCards = visits.map((visit, ix) =>
+    <VisitCard key={ix} visit={visit} isLoading={isLoading} />
+  );
 
   return (
     <div>

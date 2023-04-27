@@ -42,13 +42,12 @@ const theme = createTheme({
   },
 });
 
-export const Signup = () => {
+export const Signup = ({ isLoading }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [loading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,7 +57,6 @@ export const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signupUser(
-      setIsLoading,
       headers,
       username,
       email,
@@ -191,7 +189,7 @@ export const Signup = () => {
                 color="neutral"
                 sx={{ mt: 3, mb: 2 }}
               >
-                {loading ? "Loading..." : "Signup"}
+                {isLoading ? "Loading..." : "Signup"}
               </Button>
 
               {errors.length > 0 && (

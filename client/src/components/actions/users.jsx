@@ -6,14 +6,13 @@ export const loadUsers = (setIsLoading) => {
     fetch('/users')
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data, "action: user /users")
         const action = {
           type: "LOAD_USERS",
           payload: data
         }
         setIsLoading(false);
         dispatch(action);
-        dispatch(clearErrors())
+        // dispatch(clearErrors())
       })
   }
 }
@@ -38,14 +37,9 @@ export const loadCurrentUser = (setIsLoading) => {
   }
 }
 
-// login user 
-// const handleLoginUser = (user) => {
-//   setCurrentUser(user);
-//   setLoggedIn(true)
-//  }
-export const loginUser = (setLoading, headers, username, email, password, navigate) => {
+export const loginUser = (headers, username, email, password, navigate) => {
   return dispatch => {
-    setLoading(true);
+    // setLoading(true);
     fetch('/login', {
       method: 'POST',
       headers,
@@ -87,9 +81,9 @@ export const logoutUser = () => {
   }
 }
 
-export const signupUser = (setIsLoading, headers, username, email, password, navigate) => {
+export const signupUser = (headers, username, email, password, navigate) => {
   return dispatch => {
-    setIsLoading(true);
+    // setIsLoading(true);
     fetch('/signup', {
       method: 'POST',
       headers,
@@ -116,7 +110,7 @@ export const signupUser = (setIsLoading, headers, username, email, password, nav
           }
           dispatch(actionAddUser);
           dispatch(clearErrors())
-          navigate('/visits')
+          navigate('/')
         }
       })
   }
@@ -133,7 +127,6 @@ export const deleteUsersVisit = (id) => {
         console.log(data, "deleted")
         dispatch({
           type: "DELETE_USERS_VISIT",
-          // payload: data.id
           payload: id
         });
       })

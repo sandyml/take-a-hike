@@ -1,15 +1,14 @@
+import { Button, Grid } from '@mui/material';
 import React from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { TrailheadCard } from './TrailheadCard';
 
-import { BottomNavigation, Button, Grid } from '@mui/material';
-
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
-  const { loggedIn } = useSelector((state) => state.usersReducer);
+  // const { loggedIn } = useSelector((state) => state.usersReducer);
   // const visits = useSelector((state) => state.visitsReducer);
 
   console.log(trailheads, "Trailhead Card")

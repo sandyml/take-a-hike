@@ -20,6 +20,7 @@ export const MyVisitList = ({ isLoading }) => {
     if (!isLoading && !loggedIn) {
       navigate('/login')
     }
+    // eslint-disable-next-line
   }, [isLoading, loggedIn]);
 
   if (currentUser === null) {

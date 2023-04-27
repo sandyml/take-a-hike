@@ -29,24 +29,23 @@ export default function DialogMapTrailhead() {
 
   const [showMap, setShowMap] = useState(false);
 
-  const bull = <span className={classes.bullet}>•</span>;
-
   // debugger
   const trailheads = useSelector((state) => state.trailheadsReducer);
+  // const {currentUser} = useSelector((state) => state.usersReducer);
   console.log(trailheads, "Trailheads");
+
 
   const toggleSeeMap = () => {
     (showMap === false) ? setShowMap(true) :
       setShowMap(false);
   };
 
-
   return (
     <div>
       <center>
         {trailheads.map((trh) =>
-          <Card className={classes.root} variant="outlined">
-            <CardActions>
+          <Card component={'div'} className={classes.root} variant="outlined">
+            <CardActions component={'div'}>
               <Typography variant="body1" component="p">
 
                 {/* <Button size="small">Add to my visits</Button> */}
@@ -64,7 +63,7 @@ export default function DialogMapTrailhead() {
 
               <Typography variant="h5" component="h2">
 
-              <Button onClick={toggleSeeMap}>Map | Directions</Button>
+              <Button component={'div'} onClick={toggleSeeMap}>Map | Directions</Button>
                       <>
                         {showMap ?
                           <div>

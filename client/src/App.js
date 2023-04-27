@@ -7,7 +7,6 @@ import { HomePage } from './components/intro/HomePage';
 import { TermsPolicy } from './components/authen/TermsPolicy';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
-import Logout from './components/authen/Logout';
 
 import { EditForm } from './components/hike/EditForm';
 import { VisitList } from './components/hike/VisitList';
@@ -21,8 +20,6 @@ import { PlacesIVisited } from './components/visits/PlacesIVisited';
 import { MyVisits } from './components/visits/MyVisits';
 import GoogleMaps from './components/googlemaps/GoogleMaps';
 
-import Me from './components/visits/Me';
-
 import { loadCurrentUser, loadUsers } from './components/actions/users';
 import { loadTrailheads } from './components/actions/trailheads';
 import { loadVisits } from './components/actions/visits';
@@ -31,6 +28,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import HomepageIntroCards from './components/intro/HomepageIntroCards';
 import { DialogMap } from './components/intro/DialogMap';
+import { Logout } from './components/authen/Logout';
 
 
 export function App() {
@@ -52,11 +50,10 @@ export function App() {
           <Routes>
               <Route path="/" element={<HomePage isLoading={isLoading} />} />
               <Route path="/my-visits" element={<MyVisits />} />
-              <Route path="/me" element={<Me isLoading={isLoading}/>} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/visits/:id/edit" element={<EditForm/>} />
+              <Route path="/login" element={<Login isLoading={isLoading} />} />
+              <Route path="/signup" element={<Signup isLoading={isLoading} />} />
+              <Route path="/logout" element={<Logout isLoading={isLoading} />} />
+              <Route path="/visits/:id/edit" element={<EditForm isLoading={isLoading} />} />
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
               <Route path="/my-visits-only" element={<PlacesIVisited />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />

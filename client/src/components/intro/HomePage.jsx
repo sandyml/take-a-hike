@@ -16,8 +16,9 @@ export const HomePage = ({ isLoading }) => {
 
  useEffect(() => {
   if(!isLoading && !loggedIn) {
-   navigate('/')
+   navigate('/login')
   }
+  // eslint-disable-next-line
  }, [isLoading, loggedIn]);
 
   return (

@@ -47,9 +47,8 @@ const theme = createTheme({
   },
 });
 
-export const Login = () => {
+export const Login = ({ isLoading }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -73,10 +72,10 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(loginUser(setLoading, headers, username, email, password, navigate))
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    dispatch(loginUser(headers, username, email, password, navigate))
+    // setUsername("");
+    // setEmail("");
+    // setPassword("");
   }
 
   const togglePassword = () => {
@@ -176,7 +175,7 @@ export const Login = () => {
                 color="neutral"
                 sx={{ mt: 3, mb: 2 }}
               >
-                {loading ? "Loading..." : "Login"}
+                {isLoading ? "Loading..." : "Login"}
               </Button>
 
               {errors.length > 0 && (

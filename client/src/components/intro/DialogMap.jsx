@@ -1,30 +1,26 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DialogMapTrailhead from "./DialogMapTrailhead";
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { GMaps } from "../googlemaps/GMaps";
 import { HeaderNav } from "../navigation/HeaderNav";
 
 import '.././index.css';
 
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from '@mui/material/Button';
+import Slide from '@mui/material/Slide';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import { useNavigate } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
-
-// const TransitionTrailhead = React.forwardRef(function TransitionTrailhead(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
 
 const useStyles = makeStyles({
   gridContainer: {
@@ -41,7 +37,6 @@ export const DialogMap = () => {
 
   const navigate = useNavigate();
 
-
   return (
     <div>
       <div id='maps-form-header'>
@@ -55,9 +50,9 @@ export const DialogMap = () => {
         Slide in alert dialog
       </Button>&emsp;
       <Button id='trailhead-maps-form' label="Primary" primary={true} onClick={() => setOpenTrailhead(true)}>
-          Trailheads
-     </Button>
-        
+        Trailheads
+      </Button>
+
       <div>
         <Dialog
           open={open}
@@ -72,9 +67,9 @@ export const DialogMap = () => {
               Let Google help apps determine location. This means sending anonymous
               location data to Google, even when no apps are running. <br /><br />
 
-              Also, totally made up but using as an example. Latitude and longitude are not part of my project. 
-              Wanted to add something extra in the front-end/client-side.<br/>
-              <br/>
+              Also, totally made up but using as an example. Latitude and longitude are not part of my project.
+              Wanted to add something extra in the front-end/client-side.<br />
+              <br />
               &emsp;-Sandra Yun
             </DialogContentText>
           </DialogContent>
@@ -86,31 +81,18 @@ export const DialogMap = () => {
 
       <Grid container spacing={4} className={classes.gridContainer}>
         <div>
-        {/* <Button
-          id='trailhead-maps-form'
-          label="Primary"
-          primary={true}
-          onClick={() => setOpenTrailhead(true)}
-          >
-          Trailheads
-        </Button> */}
-        <Grid component={'div'} item xs={12} sm={6} md={4}>
-          <Dialog
-            className='all-trailheads-map-scrollbar'
-            open={openTrailhead}
-            // TransitionComponent={TransitionTrailhead}
-            keepMounted
-            onClose={() => setOpen(false)}
-            align='left'
-          >
-            <DialogMapTrailhead />
-              {/* <div className='all-trailheads-map-scrollbar'>
-                  <Grid component={'div'} item xs={12} sm={6} md={4}>
-                    <DialogMapTrailhead />
-                  </Grid>
-                </div> */}
+          <Grid component={'div'} item xs={12} sm={6} md={4}>
+            <Dialog
+              className='all-trailheads-map-scrollbar'
+              open={openTrailhead}
+              // TransitionComponent={TransitionTrailhead}
+              keepMounted
+              onClose={() => setOpen(false)}
+              align='left'
+            >
+              <DialogMapTrailhead />
               <Button onClick={() => setOpenTrailhead(false)}><CloseIcon fontSize='large' />close</Button>
-          </Dialog>
+            </Dialog>
           </Grid>
         </div>
         <div>
