@@ -48,7 +48,7 @@ const VisitCard = ({ visit, isLoading }) => {
   };
 
   const amenities = visit.amenities.map((a) => 
-  <div className='ul-visitcard' key={a.id}><Check />{a.name}</div>
+  <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} variant='body3' key={a.id}><Check />{a.name}</Typography>
   );
 
   const difficulties = visit.difficulties.map(dif => dif.name);
@@ -64,7 +64,7 @@ const VisitCard = ({ visit, isLoading }) => {
     <ThemeProvider theme={theme}>
 
       <Box component={'div'} sx={{ my: 0.5, mx: 'auto', p: 2, paddingLeft: 45 }} display='flex' align='center'>
-        <Card component={'div'} sx={{ maxWidth: 1050, height: 570 }} >
+        <Card component={'div'} sx={{ maxWidth: 1050, height: 580 }} >
         {currentUser && currentUser.id === visit.user.id ?
           <div align='right' >
             <Button sx={{width: 50, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text" onClick={() => navigate(`/visits/${visit.id}/edit`)}>edit<EditCalendarOutlined/></Button>&nbsp;&nbsp;&nbsp;
@@ -72,23 +72,29 @@ const VisitCard = ({ visit, isLoading }) => {
           </div> : null}
 
           <CssBaseline />
-        <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} component={'div'} align='left'>&nbsp;&nbsp;{visit.user.username} visited on {visit.visited_date}</Typography>
+        <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} variant='body4' component={'div'} align='left'>&nbsp;&nbsp;{visit.user.username} visited on {visit.visited_date}</Typography>
             {visit.hike.map((vh) =>
                 <CardMedia
                 key={vh}
-                sx={{ width: 1045, height: 295, borderRadius: 4 }}
+                sx={{ width: 1045, height: 295 }}
                 image={vh.image_url}>
                   </CardMedia>
-            )}
-            <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} component={'div'} variant="h5" align='center' >{visit.trailhead.name}</Typography>
+                  )}
+            <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} variant='body3' component={'div'} align='center' >{visit.trailhead.name}</Typography>
             <CardContent>
-              <FmdGoodRounded /> {visit.trailhead.location}
-            <Typography variant="caption" component={'div'} >
-              <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
+              <FmdGoodRounded /><Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}}>{visit.trailhead.location}</Typography> 
+            <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} variant='body3' component={'div'} >
+              difficulty:&nbsp;{difficulties.join(', ')}
+              {visit.hike.map(eg => 
+              <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} key={eg.id}>
+                elevation gain: {eg.elevation_gain}&emsp;
+                distance: {eg.distance}
+              </Typography>
+                )}
               &emsp; <Route sx={{ fontSize: 15 }} /> Directions<br/>
               &emsp;{visit.trailhead.fees}&emsp;&emsp;
             </Typography>
-                <Typography flexDirection='row' col={2} variant="body2" className='ul-visitcard' component={'div'}>
+                <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} flexDirection='row' col={2} variant='body3' component={'div'}>
                   {amenities}
                 </Typography><br/>
             </CardContent>

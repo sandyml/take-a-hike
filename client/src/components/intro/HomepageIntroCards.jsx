@@ -10,27 +10,25 @@ const images = [
  {
   url: "https://cdn.aarp.net/content/dam/aarp/travel/destinations/2020/09/1140-yosemite-hero.imgcache.rev.web.1400.804.jpg",
   title: 'My Visits',
-  width: '31.5%',
+  width: '23.9%',
   link: "/my-visits",
  },
  {
-  url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
+  url: "https://wallpapercave.com/wp/wp4291553.jpg",
   title: 'All Trailheads',
-  width: '31.5%',
-  // width: '32.7%',
+  width: '23.9%',
+  link: "/trailheads",
+ },
+ {
+  url: "https://wallpapercave.com/wp/wp4291552.jpg",
+  title: 'Trailheads With Maps',
+  width: '23.9%',
   link: "/all-trailheads",
  },
- // {
- //  url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
- //  title: 'All Trailheads',
- //  width: '31.5%',
- //  // width: '32.7%',
- //  link: "/trailheads",
- // },
  {
-  url: "https://www.sftravel.com/sites/default/files/styles/hero/public/2022-11/yosemite-falls.webp?h=05d46cef&itok=3r7CsbMg",
+  url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
   title: 'Hikers Visits',
-  width: '31.5%',
+  width: '23.9%',
   link: "/visits",
  },
 ];
@@ -88,7 +86,7 @@ export default function HomepageIntroCards() {
  const navigate = useNavigate();
 
  return (
-  <Box align='center' sx={{ marginLeft: 5.2, marginRight: 6.1,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  <Box align='center' sx={{ marginLeft: 5.5,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
    {images.map((image) => (
     <ImageButton
      component={'div'}

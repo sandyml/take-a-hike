@@ -34,7 +34,7 @@ export const MyVisitList = ({ isLoading }) => {
         sx={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', borderRadius: 20, color: 'black' }}
         onClick={() => navigate('/')}
       >
-        Back
+       Back
       </Button>
       <Parallax
         style={mountain_image}

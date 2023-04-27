@@ -29,8 +29,8 @@ import { loadVisits } from './components/actions/visits';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import HomePageDescription from './components/intro/HomePageDescription';
 import HomepageIntroCards from './components/intro/HomepageIntroCards';
+import { DialogMap } from './components/intro/DialogMap';
 
 
 export function App() {
@@ -59,12 +59,13 @@ export function App() {
               <Route path="/visits/:id/edit" element={<EditForm/>} />
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
               <Route path="/my-visits-only" element={<PlacesIVisited />} />
-              <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
-              <Route path="/all-trailheads" element={<AllTrailheads />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
               <Route path="/gmaps" element={<GoogleMaps />} />
               <Route path="/intro-cards" element={<HomepageIntroCards />} />
+              <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
+              <Route path="/all-trailheads" element={<DialogMap />} />
+              <Route path="/trailheads" element={<AllTrailheads />} />
             </Routes>
         <Copyright />
       </LocalizationProvider>

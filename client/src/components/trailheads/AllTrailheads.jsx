@@ -39,9 +39,7 @@ export default function AllTrailheads() {
    <Button onClick={() => navigate('/')}>Back</Button>
    <center>
    <Box>
-   {/* <Box sx={{ width: 130 }}> */}
     <Stack direction="row">
-     {/* <Item sx={{ paddingLeft: 75 }} useFlexGap flexWrap="wrap" className='scrollbar' > */}
      <Item 
       sx={{
       width: 300,

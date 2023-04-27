@@ -337,17 +337,37 @@ div.trailheads-scrollbar {
 }
 
 div.trailheads-scrollbar, div.all-trailheads-scrollbar  {
-  /* background-image: url("https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683__480.png"); */
-  /* background-color: #B4CCCF; */
   --global-background: hsl(220, 25%, 10%);
-  /* 
-#E8E8E1
-#E6EAF2
-#D3E3E8
-#B4CCCF
-#46585E
-#C0D1B6 
-*/
+}
+
+div.all-trailheads-map-scrollbar {
+  margin-top: 2rem;
+  width: 65vh;
+  height: 100vh;
+  display: fixed;
+  overflow-y: scroll;
+  overflow: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  position: absolute;
+	bottom: 0;
+}
+
+#all-trailheads-map-scrollbar {
+  margin-top: 2rem;
+  width: 65vh;
+  height: 100vh;
+  display: fixed;
+  overflow-y: scroll;
+  overflow: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  position: absolute;
+	bottom: 0;
+}
+
+div.all-trailheads-map-scrollbar  {
+  --global-background: hsl(220, 25%, 10%);
 }
 
 div.visit-list-scrollbar {
@@ -384,7 +404,7 @@ div.all-trailheads-scrollbar {
   --global-background: hsl(220, 25%, 10%);
 }
 
-div.all-trailheads {
+div.all-trailheads, .my-visit {
   background-color: #131720;
 }
 
@@ -831,4 +851,103 @@ const styles = (theme) => ({
   /* left: 0; */
   background-color: rgba(0,0,0,.2);
   height: 100vh;
+}
+
+/* .map-container { 
+  height: 100%; 
+  width: 100%; 
+  top: 0; 
+  left: 0;
+  position: relative; 
+  z-index: 200;
+} */
+/* .gmaps-grid {
+  position: relative;
+  border: 3px solid #73AD21;
+} */
+/* #googlemaps{
+  position: relative; */
+  /* border: 3px solid #73AD21; */
+  /* padding-top: 10rem; */
+  /* height: 400px;
+  width: 400px; */
+  /* position:absolute; */
+  /* top: 0;
+  left: 0;
+  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+
+/* #googlemaps-comp {
+  height: 90rem;
+  width: 160rem;
+} */
+
+#googlemaps {
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
+}
+
+div.absolute {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+
+#maps-form-header {
+  position: relative;
+  z-index: 1; /* The z-index should be higher than Google Maps */
+  width: 170vh;
+  margin: 2px auto 0;
+  padding: 10px;
+  background: black;
+  height: auto;
+  opacity: .50; /* Set the opacity for a slightly transparent Google Form */
+  color: white;
+}
+
+#trailhead {
+  position: relative;
+  z-index: 1; /* The z-index should be higher than Google Maps */
+  width: 17vh;
+  margin-left: 10px auto 0;
+  margin: 4px auto 0;
+  padding: 10px;
+  background: black;
+  height: auto;
+  opacity: .50; /* Set the opacity for a slightly transparent Google Form */
+  color: white;
+}
+
+#trailhead-maps-form {
+  align-items: right;
+  position: relative;
+  z-index: 1; /* The z-index should be higher than Google Maps */
+  width: 135px;
+  margin: 4px auto 0;
+  padding: 2px;
+  padding-left: 10px;
+  background: black;
+  height: auto;
+  opacity: .6; /* Set the opacity for a slightly transparent Google Form */
+  color: white;
+}
+
+#maps-form {
+  align-items: right;
+  position: relative;
+  z-index: 1; /* The z-index should be higher than Google Maps */
+  width: 135px;
+  margin: 4px auto 0;
+  margin-left: 10.5rem;
+  padding: 2px;
+  background: black;
+  height: auto;
+  opacity: .6; /* Set the opacity for a slightly transparent Google Form */
+  color: white;
 }
