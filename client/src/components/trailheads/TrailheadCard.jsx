@@ -43,10 +43,11 @@ export const TrailheadCard = ({ th, isLoading }) => {
   }
 
   useEffect(() => {
-    if (!isLoading && !loggedIn) {
+    if (!loading && !loggedIn) {
       navigate('/login')
     }
-  }, [isLoading, loggedIn, navigate])
+    // eslint-disable-next-line
+  }, [loading, loggedIn])
 
   // if () {
   //   return <>Loading still...</>

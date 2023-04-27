@@ -15,7 +15,6 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 // users/:user_id/visits {user_id} useParams
 
-
 export const EditForm = () => {
   const [visited_date, setVisitedDate] = useState("");
 
@@ -37,10 +36,10 @@ export const EditForm = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-    {/* <LocalizationProvider dateAdapter={AdapterDateFns}> */}
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
+
           <Box
             sx={{
               marginTop: 8,

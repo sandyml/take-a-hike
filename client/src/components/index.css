@@ -765,3 +765,70 @@ when users will click/enter button(link) browser will add a #id in a url and whe
   color: hsla(0, 0%, 1000%, .6);
   font-size: 1.6rem;
 }
+
+
+/* 
+const styles = (theme) => ({
+  mainFeaturedPost: {
+   backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+   backgroundColor: theme.palette.grey[800],
+   color: theme.palette.common.white,
+   marginBottom: theme.spacing(4),
+   backgroundRepeat: 'no-repeat',
+   backgroundPosition: '70% 50%',
+   backgroundSize: 'cover',
+   position: 'relative',
+   paddingBottom: 150,
+   paddingTop: 290,
+   paddingLeft: 50,
+   marginRight: 40,
+   marginLeft: 42,
+   height: "88vh"
+  }, */
+.overlay {
+  position: 'absolute';
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.2);
+  height: 100vh;
+}
+
+.main {
+  position: relative;
+  padding: spacing(3);
+  padding-right: 0;
+}
+
+.title {
+  font-size: 200;
+  text-align: center;
+  color: white;
+  padding: spacing(3);
+  padding-right: 40;
+  padding-top: 250;
+}
+
+.subtitle  {
+  font-size: 45;
+  font-family: "Google Sans, Roboto, arial, sans-serif";
+  color: white;
+  padding-left: 60;
+  letter-spacing: 3px;
+  line-height: 1.5;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: 'absolute';
+  /* top: 0; */
+  bottom: 0;
+  right: 0;
+  /* left: 0; */
+  background-color: rgba(0,0,0,.2);
+  height: 100vh;
+}

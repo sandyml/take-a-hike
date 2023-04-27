@@ -33,7 +33,8 @@ export default function Me({ isLoading }) {
   if (!isLoading && !loggedIn) {
    navigate('/login')
   }
- }, [isLoading, loggedIn, navigate]);
+  // eslint-disable-next-line
+ }, [isLoading, loggedIn]);
 
  if (currentUser === null) {
   return <div></div>

@@ -13,15 +13,14 @@ import '.././index.css';
 export const MyVisitList = ({ isLoading }) => {
 
   const { currentUser, loggedIn } = useSelector((state) => state.usersReducer);
-  // console.log(currentUser, "currentUser");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading && !loggedIn) {
-      navigate('/')
+      navigate('/login')
     }
-  }, [isLoading, loggedIn, navigate]);
+  }, [isLoading, loggedIn]);
 
   if (currentUser === null) {
     return <div></div>

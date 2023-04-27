@@ -53,11 +53,12 @@ const VisitCard = ({ visit, isLoading }) => {
 
   const difficulties = visit.difficulties.map(dif => dif.name);
 
-  // useEffect(() => {
-  //   if (!isLoading && !loggedIn) {
-  //     navigate('/login')
-  //   }
-  // }, [isLoading, loggedIn, navigate])
+  useEffect(() => {
+    if (!isLoading && !loggedIn) {
+      navigate('/login')
+    }
+    // eslint-disable-next-line
+  }, [isLoading, loggedIn])
 
   return (
     <ThemeProvider theme={theme}>
