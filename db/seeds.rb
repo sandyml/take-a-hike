@@ -244,7 +244,7 @@ Visit.create([
  { user_id: hunter.id, trailhead_id: yosemite_national_park.id, visited_date: Date.new(2021,03,10), visited: true },
  { user_id: william.id, trailhead_id: olympic_national_park.id, visited_date: Date.today, visited: false },
  { user_id: william.id, trailhead_id: arches_canyon_national_park.id, visited_date: Date.new(2023,10,01), visited: true },
- { user_id: sandy.id, trailhead_id: arches_canyon_national_park.id, visited_date: Date.today, visited: true },
- { user_id: sandy.id, trailhead_id: grand_canyon_national_park.id, visited_date: Date.today, visited: true },
- { user_id: sandy.id, trailhead_id: olympic_national_park.id, visited_date: Date.today, visited: true }
+ { user_id: sandy.id, trailhead_id: arches_canyon_national_park.id, visited_date: Date.new(2019,05,04), visited: true },
+ { user_id: sandy.id, trailhead_id: grand_canyon_national_park.id, visited_date: Date.new(2018,10,30), visited: true },
+ { user_id: sandy.id, trailhead_id: olympic_national_park.id, visited_date: Date.new(2023,1,02), visited: true }
 ])

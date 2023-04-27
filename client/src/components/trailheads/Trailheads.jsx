@@ -44,15 +44,7 @@ export const Trailheads = ({ isLoading }) => {
     return (
       <div>
         <center>
-        {/* <Typography
-          component={'div'}
-          align='center'
-          variant='h2'
-          style={{ display:'flex', justifyContent:'center' }}
-          >
-          Trailheads
-        </Typography> */}
-
+          
         <Button
           style={{ display:'flex', justifyContent:'center' }}
           align='left'
@@ -66,6 +58,7 @@ export const Trailheads = ({ isLoading }) => {
         {trailheadCards}
         </Grid>
         </div>
+
         </center>
       </div>
     )

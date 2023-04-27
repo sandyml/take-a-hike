@@ -135,6 +135,27 @@ export const TrailheadCard = ({ th, isLoading }) => {
                       </div>
                       : null}
                       </>
+                      {/* <div className="box">
+                        <a href="#m2-o" className="link-1" id="m2-c">Modal 2</a>
+                        <div className="modal-container" id="m2-o">
+                          <div className="modal">
+                            <p className="modal__text">
+                        <iframe
+                        src={th.direction}
+                        // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d403240.0035873217!2d-119.8312959809544!3d37.85297716348046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1682533509259!5m2!1sen!2sus"
+                        width="600" height="450"
+                        style={{ border: "0" }}
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="hike google maps"
+                      >
+                        Directions/GoogleMaps 
+                      </iframe></p>
+                      <a href="#m2-c" className="link-2"></a>
+                          </div>
+                        </div>
+                      </div> */}
 
                     </Typography>
                     <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}<br />

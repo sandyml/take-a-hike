@@ -1,14 +1,14 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Google Sans, Roboto, arial, sans-serif',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
-code {
+/* code {
   font-family: source-code-pro, Google Sans, Roboto, arial, sans-serif;
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;700&display=swap');
 
@@ -112,11 +112,7 @@ img.bottomleft {
 .box {
   position: relative;
 }
-/* img {
-  width: 100%;
-  height: auto;
-  opacity: 0.6;
-} */
+
 .direction {
   position: absolute;
   bottom: 7px;
@@ -340,11 +336,10 @@ div.trailheads-scrollbar {
   scrollbar-width: thin;
 }
 
-div.trailheads-scrollbar {
+div.trailheads-scrollbar, div.all-trailheads-scrollbar  {
   /* background-image: url("https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683__480.png"); */
   /* background-color: #B4CCCF; */
   --global-background: hsl(220, 25%, 10%);
-
   /* 
 #E8E8E1
 #E6EAF2
@@ -353,6 +348,25 @@ div.trailheads-scrollbar {
 #46585E
 #C0D1B6 
 */
+}
+
+div.visit-list-scrollbar {
+  width: 190vh;
+  height: 93vh;
+  display: fixed;
+  overflow-y: scroll;
+  overflow: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+div.visit-list-scrollbar {
+  /* --global-background: hsl(220, 25%, 10%); */
+  background-color: #131720;
+}
+div.visit-list-bgc {
+  /* --global-background: hsl(220, 25%, 10%); */
+  background-color: #131720;
 }
 
 div.all-trailheads-scrollbar {
@@ -368,6 +382,10 @@ div.all-trailheads-scrollbar {
 div.all-trailheads-scrollbar {
   /* background-image: url("https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683__480.png"); */
   --global-background: hsl(220, 25%, 10%);
+}
+
+.background-color-edit {
+  background-color: #131720;
 }
 
 /* .modal {
@@ -557,7 +575,6 @@ a:focus {
 button::-moz-focus-inner {
   border: 0;
 }
-
 
 /* box */
 .box {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
-import { HeaderNav } from '../navigation/HeaderNav';
+
 import { Button, Typography } from '@mui/material';
 
 
@@ -28,11 +28,27 @@ export const VisitList = ({ isLoading }) => {
   );
 
   return (
-    <>
-      <HeaderNav />
-      <Button align='right' variant='body2' onClick={() => navigate('/')}>Back to the homepage I go..</Button>
-      <Typography align='center' variant='h3' className='etched-text'>Users Trailheads Visited</Typography>
-      {visitCards}
-    </>
+    <div>
+      <center>
+        
+        <Button
+          style={{ display:'flex', justifyContent:'center' }}
+          align='left'
+          variant='body1'
+          component={'div'}
+          onClick={() => navigate('/')}>
+          Go back to homepage
+        </Button>
+
+        <div className='visit-list-scrollbar' >
+        <Typography component={'div'}>
+        {/* <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}> */}
+        {visitCards}
+        {/* </Grid> */}
+        </Typography>
+        </div>
+
+      </center>
+  </div>
   );
 };

@@ -56,9 +56,8 @@ export const deleteVisit = (id, header) => {
    }
 }
 
-export const editVisit = (id, setIsLoading, visited_date, navigate) => {
+export const editVisit = (id, visited_date, navigate) => {
    return dispatch => {
-      setIsLoading(true);
       fetch(`/visits/${id}`, {
          method: 'PATCH',
          headers,
@@ -72,13 +71,12 @@ export const editVisit = (id, setIsLoading, visited_date, navigate) => {
                setErrors(data.errors)
                dispatch(setErrors(data.errors))
             } else {
-               setIsLoading(false);
                dispatch({
                   type: "EDIT_VISIT",
                   payload: data
                })
                navigate('/visits')
-               console.log(data, "EDIT_VISIT")
+               // console.log(data, "EDIT_VISIT")
                dispatch({
                   type: "EDIT_USERS_VISIT", 
                   payload: data

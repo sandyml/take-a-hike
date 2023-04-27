@@ -55,7 +55,7 @@ export function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/visits/:id/edit" element={<EditForm />} />
+              <Route path="/visits/:id/edit" element={<EditForm/>} />
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
               <Route path="/my-visits-only" element={<PlacesIVisited />} />
               <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
