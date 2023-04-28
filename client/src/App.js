@@ -48,21 +48,19 @@ export function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/my-visits" element={<MyVisits />} />
+              <Route path="/" element={<HomePage isLoading={isLoading} />} />
+              <Route path="/my-visits" element={<MyVisits isLoading={isLoading} />} />
               <Route path="/login" element={<Login isLoading={isLoading} />} />
               <Route path="/signup" element={<Signup isLoading={isLoading} />} />
               <Route path="/logout" element={<Logout isLoading={isLoading} />} />
               <Route path="/visits/:id/edit" element={<EditForm isLoading={isLoading} />} />
               <Route path="/visits" element={<VisitList isLoading={isLoading}/>} />
-              <Route path="/my-visits-only" element={<PlacesIVisited />} />
               <Route path="/termsandconditions" element={<TermsPolicy />} />
               <Route path="/*" element={<NotFound />} />
               <Route path="/gmaps" element={<GoogleMaps />} />
               <Route path="/intro-cards" element={<HomepageIntroCards />} />
               <Route path="/trailheads" element={<Trailheads isLoading={isLoading}/>} />
               <Route path="/all-trailheads" element={<DialogMap />} />
-              <Route path="/trailheads" element={<AllTrailheads />} />
             </Routes>
         <Copyright />
       </LocalizationProvider>

@@ -8,7 +8,7 @@ import { TrailheadCard } from './TrailheadCard';
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
-  const { loggedIn } = useSelector((state) => state.usersReducer);
+  const { loggedIn, currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
@@ -49,13 +49,14 @@ export const Trailheads = ({ isLoading }) => {
           align='left'
           variant='body1'
           onClick={() => navigate('/')}>
-          Go back to homepage
+          Go back to homepage!
         </Button>
 
         <div className='trailheads-scrollbar' >
           <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
             {
-              isLoading ? <div>
+              isLoading || currentUser && currentUser.id ? 
+              <div>
                 {trailheads?.map((th) => <TrailheadCard
                   key={th.id}
                   th={th}
@@ -63,6 +64,7 @@ export const Trailheads = ({ isLoading }) => {
                 /> 
                 )}
               </div>
+              
               : null
             }
             {/* {trailheadCards} */}

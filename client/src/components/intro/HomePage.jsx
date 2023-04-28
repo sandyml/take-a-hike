@@ -7,24 +7,24 @@ import { HeaderNav } from '../navigation/HeaderNav';
 import { MyVisitList } from '../hike/MyVisitList';
 import Landing from './Landing';
 
-export const HomePage = () => {
+export const HomePage = ({ isLoading }) => {
 
- const { currentUser } = useSelector((state) => state.usersReducer);
+  const { currentUser } = useSelector((state) => state.usersReducer);
 
   return (
     <div>
       {
-        currentUser && currentUser.id ?
-        <>
-        <HeaderNav />
-        <Landing />
-        <HomepageIntroCards /><br/>
-        <HomePageDescription /><br/>
-        <MyVisitList />
-        </>
-      : null
-       }
-      </div>
-   );
-  }
+        !isLoading || currentUser && currentUser.id ?
+          <>
+            <HeaderNav />
+            <Landing />
+            <HomepageIntroCards /><br />
+            <HomePageDescription /><br />
+            <MyVisitList />
+          </>
+          : null
+      }
+    </div>
+  );
+};
 

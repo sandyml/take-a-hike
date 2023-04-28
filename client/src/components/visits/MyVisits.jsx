@@ -15,10 +15,11 @@ const useStyles = makeStyles({
   }
 });
 
-export const MyVisits = () => {
+export const MyVisits = ({ isLoading }) => {
   const classes = useStyles();
 
-  const { visits, currentUser } = useSelector((state) => state.usersReducer);
+  const { visits } = useSelector((state) => state.usersReducer);
+  const { currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
@@ -37,28 +38,29 @@ export const MyVisits = () => {
           Go back to homepage
         </Button>
         {/* added grid */}
+        {/* // REVISIT TOMORROW FRIDAY 04/28 */}
+        {
+        !isLoading || currentUser && currentUser.id ? 
+          <>
         <Grid container spacing={4} className={classes.gridContainer}>
-
         <Typography align='center' id="button-myvisits" component={'div'} variant='body2'>
           My Visits Only
         </Typography>
 
         {/* added grid */}
-        {/* {
-          currentUser && currentUser.id ? 
-          <> */}
         <div className='visit-list-scrollbar' >
         <Grid component={'div'} item xs={12} sm={6} md={20}>
         {/* <Grid component={'div'} item xs={12} sm={6} md={4}> */}
           <Typography component={'div'}>
-            {myVisitCards}
+            { visits.map((visit) => 
+            <VisitCard key={visit.id} visit={visit} />
+            )}
+            {/* {myVisitCards} */}
           </Typography>
           </Grid>
         </div>
-          {/* </> : null
-        } */}
-
         </Grid>
+          </> : null }
       </center>
     </div>
   )

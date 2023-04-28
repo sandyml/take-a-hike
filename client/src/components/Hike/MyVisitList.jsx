@@ -53,7 +53,8 @@ export const MyVisitList = ({ isLoading }) => {
           <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
             {/* <div className='card-my-visit'> */}
             {
-              currentUser.visits.map((current) => <div key={current.id}>
+              currentUser.visits.map((current) => 
+              <div key={current.id}>
                 {current.hike.map((ch) =>
                   <img className='parks-img' key={ch.id} src={ch.image_url} alt='' />)}
               </div>

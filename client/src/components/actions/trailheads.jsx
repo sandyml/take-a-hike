@@ -4,10 +4,11 @@ export const loadTrailheads = () => {
    .then((resp) => resp.json())
    .then((data) => {
     console.log(data, "action: loadTrailheads")
-    dispatch({
-     type: "LOAD_TRAILHEADS",
-     payload: data
-    })
+    const action = {
+      type: "LOAD_TRAILHEADS",
+      payload: data
+     }
+    dispatch(action)
    })
  }
 };
