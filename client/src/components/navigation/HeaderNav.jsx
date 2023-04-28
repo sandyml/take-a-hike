@@ -109,7 +109,7 @@ export const HeaderNav = () => {
      ) : (null)}
      {currentUser && currentUser.id ? (
       <Typography variant='h5' component={'div'}>
-       <span>Welcome, {currentUser.username}! &emsp;&emsp;</span>
+       Welcome, {currentUser.username}! &emsp;&emsp;
       </Typography>)
       : (null)}
 

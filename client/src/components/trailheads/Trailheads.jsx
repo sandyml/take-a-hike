@@ -12,18 +12,18 @@ export const Trailheads = ({ isLoading }) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isLoading && !loggedIn ) {
-      navigate('/login')
-    }
-    // eslint-disable-next-line
-  }, [isLoading, loggedIn]);
+  // useEffect(() => {
+  //   if (!isLoading && !loggedIn) {
+  //     navigate('/login')
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isLoading, loggedIn]);
 
   const trailheadCards = trailheads?.map((th) => <TrailheadCard
-      key={th.id}
-      th={th}
-      isLoading={isLoading}
-    />
+    key={th.id}
+    th={th}
+    isLoading={isLoading}
+  />
   );
 
   // if (trailheads.errors) {
@@ -54,7 +54,18 @@ export const Trailheads = ({ isLoading }) => {
 
         <div className='trailheads-scrollbar' >
           <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
-            {trailheadCards}
+            {
+              isLoading ? <div>
+                {trailheads?.map((th) => <TrailheadCard
+                  key={th.id}
+                  th={th}
+                  isLoading={isLoading}
+                /> 
+                )}
+              </div>
+              : null
+            }
+            {/* {trailheadCards} */}
           </Grid>
         </div>
 

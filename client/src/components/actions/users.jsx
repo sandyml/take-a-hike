@@ -1,7 +1,8 @@
 import { setErrors, clearErrors } from './errors';
 import { header } from '../../Global';
 
-export const loadUsers = (setIsLoading) => {
+export const loadUsers = () => {
+// export const loadUsers = (setIsLoading) => {
   return dispatch => {
     fetch('/users')
       .then((resp) => resp.json())
@@ -10,8 +11,8 @@ export const loadUsers = (setIsLoading) => {
           type: "LOAD_USERS",
           payload: data
         }
-        setIsLoading(false);
         dispatch(action);
+        // setIsLoading(false);
         // dispatch(clearErrors())
       })
   }

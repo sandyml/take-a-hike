@@ -83,7 +83,6 @@ export const Login = ({ isLoading }) => {
   };
 
   return (
-      <body className='body-login'>
     <ThemeProvider theme={theme}>
       {
         currentUser && currentUser.id ?
@@ -182,7 +181,7 @@ export const Login = ({ isLoading }) => {
               {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
                   {errors.map((error) => (
-                    <li key={error}>{error}</li>
+                    <Typography component={'li'} fontSize={13} variant='body2' key={error}>{error}</Typography>
                   ))}
                 </ul>
               )}
@@ -190,7 +189,7 @@ export const Login = ({ isLoading }) => {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link href="/signup" variant="h6" >
-                    <Typography component={'div'}>
+                    <Typography style={{ color: "white" }} component={'div'}>
                     Don't have an account? Signup
                     </Typography>
                   </Link>
@@ -202,6 +201,5 @@ export const Login = ({ isLoading }) => {
         </Container>
       </Parallax>
     </ThemeProvider>
-      </body>
   );
 };

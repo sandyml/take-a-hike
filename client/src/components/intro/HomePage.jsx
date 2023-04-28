@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import HomepageIntroCards from './HomepageIntroCards';
@@ -8,18 +7,9 @@ import { HeaderNav } from '../navigation/HeaderNav';
 import { MyVisitList } from '../hike/MyVisitList';
 import Landing from './Landing';
 
-export const HomePage = ({ isLoading }) => {
+export const HomePage = () => {
 
- const { loggedIn, currentUser } = useSelector((state) => state.usersReducer);
-
- const navigate = useNavigate();
-
-//  useEffect(() => {
-//   if(!isLoading && !loggedIn) {
-//    navigate('/login')
-//   }
-//   // eslint-disable-next-line
-//  }, [isLoading, loggedIn]);
+ const { currentUser } = useSelector((state) => state.usersReducer);
 
   return (
     <div>

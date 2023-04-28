@@ -384,12 +384,12 @@ div.visit-list-scrollbar {
   /* --global-background: hsl(220, 25%, 10%); */
   background-color: #131720;
 }
-div.visit-list-bgc, #myvisits-div {
+div.visit-list-bgc, #myvisits-div, #visitlist-div, .body-login {
   /* --global-background: hsl(220, 25%, 10%); */
   background-color: #131720;
 }
 
-#button-myvisits {
+#button-myvisits, #button-visitlist {
   color: white;
 }
 

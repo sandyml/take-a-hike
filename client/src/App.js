@@ -32,7 +32,7 @@ import { Logout } from './components/authen/Logout';
 
 
 export function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch(); 
   // will grab all of the data(things), run once
@@ -48,7 +48,7 @@ export function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Routes>
-              <Route path="/" element={<HomePage isLoading={isLoading} />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/my-visits" element={<MyVisits />} />
               <Route path="/login" element={<Login isLoading={isLoading} />} />
               <Route path="/signup" element={<Signup isLoading={isLoading} />} />

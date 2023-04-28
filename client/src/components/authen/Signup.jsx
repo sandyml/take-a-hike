@@ -182,7 +182,7 @@ export const Signup = ({ isLoading }) => {
 
               <Typography component={'div'}>
               By creating an account you agree to our&nbsp;
-              <Link color="inherit" fontSize='small' href="/termsandconditions" >Terms & Privacy </Link>
+              <Link color="inherit" fontSize='small' href="/termsandconditions" style={{ color: "white" }} >Terms & Privacy </Link>
               </Typography>
 
               <Button
@@ -198,7 +198,7 @@ export const Signup = ({ isLoading }) => {
               {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
                   {errors.map((error, index) => (
-                    <li key={index}>{error}</li>
+                    <Typography component={'li'} fontSize={13} variant='body2' key={index}>{error}</Typography>
                   ))}
                 </ul>
               )}
@@ -206,7 +206,7 @@ export const Signup = ({ isLoading }) => {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link href="/login" variant="body2">
-                  <Typography component={'div'}>
+                  <Typography style={{ color: "white" }} component={'div'}>
                     Already have an account? Login
                   </Typography>
                   </Link>

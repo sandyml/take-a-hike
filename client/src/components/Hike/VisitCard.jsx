@@ -91,7 +91,7 @@ const VisitCard = ({ visit, isLoading }) => {
                 distance: {eg.distance}
               </Typography>
                 )}
-              &emsp; <Route sx={{ fontSize: 15 }} /> Directions<br/>
+              {/* &emsp; <Route sx={{ fontSize: 15 }} /> Directions<br/> */}
               &emsp;{visit.trailhead.fees}&emsp;&emsp;
             </Typography>
                 <Typography sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} flexDirection='row' col={2} variant='body3' component={'div'}>

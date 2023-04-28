@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 export const MyVisits = () => {
   const classes = useStyles();
 
-  const { visits } = useSelector((state) => state.usersReducer);
+  const { visits, currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
@@ -44,6 +44,9 @@ export const MyVisits = () => {
         </Typography>
 
         {/* added grid */}
+        {/* {
+          currentUser && currentUser.id ? 
+          <> */}
         <div className='visit-list-scrollbar' >
         <Grid component={'div'} item xs={12} sm={6} md={20}>
         {/* <Grid component={'div'} item xs={12} sm={6} md={4}> */}
@@ -52,6 +55,8 @@ export const MyVisits = () => {
           </Typography>
           </Grid>
         </div>
+          {/* </> : null
+        } */}
 
         </Grid>
       </center>

@@ -140,7 +140,7 @@ export const Navbar = () => {
 
           {currentUser && currentUser.id ? (
             <>
-              <span>Welcome, {currentUser.username}! &emsp;&emsp;</span>
+            Welcome, {currentUser.username}! &emsp;&emsp;
             </>)
             : (null)}
 

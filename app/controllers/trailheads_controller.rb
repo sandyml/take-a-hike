@@ -1,10 +1,6 @@
 class TrailheadsController < ApplicationController
  skip_before_action :authorize, only: [:index, :show]
 
- # TODO: authorize skip only index? 
- # TODO: tentative if I need to create descriptions? 
- # TODO: include attr not working 
-
  def index
   render json: Trailhead.all, status: :ok
   # render json: Trailhead.all, include: [:all_amenities], status: :ok
