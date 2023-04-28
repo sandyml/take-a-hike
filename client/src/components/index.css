@@ -342,7 +342,7 @@ div.trailheads-scrollbar, div.all-trailheads-scrollbar  {
 
 div.all-trailheads-map-scrollbar {
   margin-top: 2rem;
-  width: 65vh;
+  width: 71vh;
   height: 100vh;
   display: fixed;
   overflow-y: scroll;
@@ -384,9 +384,13 @@ div.visit-list-scrollbar {
   /* --global-background: hsl(220, 25%, 10%); */
   background-color: #131720;
 }
-div.visit-list-bgc {
+div.visit-list-bgc, #myvisits-div {
   /* --global-background: hsl(220, 25%, 10%); */
   background-color: #131720;
+}
+
+#button-myvisits {
+  color: white;
 }
 
 div.all-trailheads-scrollbar {
@@ -410,147 +414,7 @@ div.all-trailheads, .my-visit {
 
 .background-color-edit {
   background-color: #131720;
-}
-
-/* .modal {
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  background: rgba(0,0,0, .9);
-  transition: opacity .25s ease;
-} */
-
-/* .modal__bg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-} */
-
-/* .modal-state {
-  display: none;
-} */
-
-/* .modal-state:checked + .modal {
-  opacity: 1;
-  visibility: visible;
-} */
-
-/* .modal-state:checked + .modal .modal__inner {
-  top: 0;
-} */
-
-/* .modal__inner {
-  transition: top .25s ease;
-  position: absolute;
-  top: -20%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  overflow: auto;
-  background: black;
-  border-radius: 5px;
-  padding: 1em 2em;
-  width: 33%;
-  height: 50%;
-  /* width: 60;
-  height: 45 }*/ 
-
-/* .modal__close {
-  position: absolute;
-  right: 1em;
-  top: 1em;
-  width: 1.1em;
-  height: 1.1em;
-  cursor: pointer;
-} */
-
-/* .modal__close:after,
-.modal__close:before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: 1.5em;
-  background: #ccc;
-  display: block;
-  transform: rotate(45deg);
-  left: 50%;
-  margin: -3px 0 0 -1px;
-  top: 0;
-} */
-
-/* .modal__close:hover:after,
-.modal__close:hover:before {
-  background: #aaa;
-} */
-
-/* .modal__close:before {
-  transform: rotate(-45deg);
-} */
-
-/* @media screen and (max-width: 768px) {
-  .modal__inner {
-    width: 90%;
-    height: 90%;
-    box-sizing: border-box;
-  }
-} */
-
-
-/* Other
- * =============================== */
-/* body {
-  padding: 1%;
-  font: 1/1.5em sans-serif;
-  text-align: center;
-} */
-/* 
-.btn {
-  cursor: pointer;
-  background: #27ae60;
-  display: inline-block;
-  padding: .5em 1em;
-  color: #fff;
-  border-radius: 3px;
-} */
-
-/* .btn:hover,
-.btn:focus {
-  background: #2ecc71;
-} */
-
-/* .btn:active {
-  background: #27ae60;
-  box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
-} */
-
-/* .btn--blue {
-  background: #2980b9;
-} */
-
-/* .btn--blue:hover,
-.btn--blue:focus {
-  background: #3498db;
-} */
-
-/* .btn--blue:active {
-  background: #2980b9;
-} */
-
-/* p img {
-  max-width: 200px;
-  height: auto;
-  float: left;
-  margin: 0 1em 1em 0;
-} */
+} 
 
 /*
     ================================
@@ -786,25 +650,6 @@ when users will click/enter button(link) browser will add a #id in a url and whe
   font-size: 1.6rem;
 }
 
-
-/* 
-const styles = (theme) => ({
-  mainFeaturedPost: {
-   backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
-   backgroundColor: theme.palette.grey[800],
-   color: theme.palette.common.white,
-   marginBottom: theme.spacing(4),
-   backgroundRepeat: 'no-repeat',
-   backgroundPosition: '70% 50%',
-   backgroundSize: 'cover',
-   position: 'relative',
-   paddingBottom: 150,
-   paddingTop: 290,
-   paddingLeft: 50,
-   marginRight: 40,
-   marginLeft: 42,
-   height: "88vh"
-  }, */
 .overlay {
   position: 'absolute';
   top: 0;
@@ -852,34 +697,6 @@ const styles = (theme) => ({
   background-color: rgba(0,0,0,.2);
   height: 100vh;
 }
-
-/* .map-container { 
-  height: 100%; 
-  width: 100%; 
-  top: 0; 
-  left: 0;
-  position: relative; 
-  z-index: 200;
-} */
-/* .gmaps-grid {
-  position: relative;
-  border: 3px solid #73AD21;
-} */
-/* #googlemaps{
-  position: relative; */
-  /* border: 3px solid #73AD21; */
-  /* padding-top: 10rem; */
-  /* height: 400px;
-  width: 400px; */
-  /* position:absolute; */
-  /* top: 0;
-  left: 0;
-  z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
-
-/* #googlemaps-comp {
-  height: 90rem;
-  width: 160rem;
-} */
 
 #googlemaps {
   height: 100%;
@@ -950,4 +767,9 @@ div.absolute {
   height: auto;
   opacity: .6; /* Set the opacity for a slightly transparent Google Form */
   color: white;
+}
+
+#terms-policy {
+  padding: 19vh;
+  border: 3px solid #ccd0c7;
 }

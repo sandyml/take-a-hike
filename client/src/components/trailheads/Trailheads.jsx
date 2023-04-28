@@ -1,5 +1,5 @@
 import { Button, Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,18 +8,23 @@ import { TrailheadCard } from './TrailheadCard';
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
-  // const { loggedIn } = useSelector((state) => state.usersReducer);
-  // const visits = useSelector((state) => state.visitsReducer);
-
-  console.log(trailheads, "Trailhead Card")
+  const { loggedIn } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!isLoading && !loggedIn) {
-  //     navigate('/login')
-  //   }
-  // }, [isLoading, loggedIn, navigate])
+  useEffect(() => {
+    if (!isLoading && !loggedIn ) {
+      navigate('/login')
+    }
+    // eslint-disable-next-line
+  }, [isLoading, loggedIn]);
+
+  const trailheadCards = trailheads?.map((th) => <TrailheadCard
+      key={th.id}
+      th={th}
+      isLoading={isLoading}
+    />
+  );
 
   // if (trailheads.errors) {
   //   return (
@@ -35,22 +40,12 @@ export const Trailheads = ({ isLoading }) => {
   //   )
   // } else {
 
-    const trailheadCards = trailheads.map((th) =>
-      <TrailheadCard
-        key={th.id}
-        th={th}
-        isLoading={isLoading}
-      />
-    );
+  return (
+    <div>
+      <center>
 
-    // debugger
-
-    return (
-      <div>
-        <center>
-          
         <Button
-          style={{ display:'flex', justifyContent:'center' }}
+          style={{ display: 'flex', justifyContent: 'center' }}
           align='left'
           variant='body1'
           onClick={() => navigate('/')}>
@@ -58,13 +53,13 @@ export const Trailheads = ({ isLoading }) => {
         </Button>
 
         <div className='trailheads-scrollbar' >
-        <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
-        {trailheadCards}
-        </Grid>
+          <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
+            {trailheadCards}
+          </Grid>
         </div>
 
-        </center>
-      </div>
-    )
+      </center>
+    </div>
+  )
   // }
 };

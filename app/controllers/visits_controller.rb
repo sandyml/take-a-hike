@@ -1,6 +1,7 @@
 class VisitsController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_error_response
 
+  skip_before_action :authorize, only: [:index, :show]
   before_action :find_visit, only: [:update, :destroy]
   before_action :not_found_error_response, only: [:update, :destroy]
 

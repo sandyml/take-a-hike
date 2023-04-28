@@ -1,9 +1,13 @@
 
 import React, { useState } from "react";
-import { GoogleMap, InfoWindow, Marker, useLoadScript } from "@react-google-maps/api";
 import { Grid } from "@mui/material";
-
 import '.././index.css';
+import { 
+  GoogleMap, 
+  InfoWindow, 
+  Marker, 
+  useLoadScript 
+} from "@react-google-maps/api";
 
 export const GMaps = () => {
 

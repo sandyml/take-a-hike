@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const TermsPolicy = () => {
    return (
-      <div><br /><center>
+      <div id='terms-policy'><br /><center>
          <Typography variant="h3">
             Terms and Conditions of Use<br />
          </Typography>
@@ -49,13 +49,11 @@ export const TermsPolicy = () => {
          <br />
 
          <Typography variant="body1">
-
             (2) You may NOT use our intellectual property in any way, which includes republishing any text, image, design or other property on another website, or posting a quote or image from our site to any third party website including social media. We have spent lots of time and money building the intellectual property located on this site and in order to maintain the integrity of it, we cannot allow any third party use.
          </Typography>
          <br /><br />
-         <Typography variant="body4">
-
-            <Link color='variant' to="/signup">&nbsp; <h5>If Agree, please return to signup (click here)</h5></Link>
+         <Typography component={'div'} variant="body3">
+            <Link to="/signup">&nbsp;If Agree, please return to signup (click here)</Link>
          </Typography>
       </center>
       </div>

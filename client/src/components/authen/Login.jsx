@@ -83,6 +83,7 @@ export const Login = ({ isLoading }) => {
   };
 
   return (
+      <body className='body-login'>
     <ThemeProvider theme={theme}>
       {
         currentUser && currentUser.id ?
@@ -188,8 +189,10 @@ export const Login = ({ isLoading }) => {
 
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/signup" variant="body2" color='inherit' >
+                  <Link href="/signup" variant="h6" >
+                    <Typography component={'div'}>
                     Don't have an account? Signup
+                    </Typography>
                   </Link>
                 </Grid>
               </Grid>
@@ -199,5 +202,6 @@ export const Login = ({ isLoading }) => {
         </Container>
       </Parallax>
     </ThemeProvider>
+      </body>
   );
 };

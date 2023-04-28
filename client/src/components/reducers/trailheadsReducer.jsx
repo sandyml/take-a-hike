@@ -1,4 +1,4 @@
-const trailheadsReducer = (state = [], action) => {
+const trailheadsReducer = (state=[], action) => {
  switch (action.type) {
   case "LOAD_TRAILHEADS":
    return action.payload

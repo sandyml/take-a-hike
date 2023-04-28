@@ -8,15 +8,17 @@ import { HeaderNav } from "../navigation/HeaderNav";
 import '.././index.css';
 
 import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from '@mui/material/Button';
-import Slide from '@mui/material/Slide';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide
+} from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -85,7 +87,6 @@ export const DialogMap = () => {
             <Dialog
               className='all-trailheads-map-scrollbar'
               open={openTrailhead}
-              // TransitionComponent={TransitionTrailhead}
               keepMounted
               onClose={() => setOpen(false)}
               align='left'
@@ -104,4 +105,3 @@ export const DialogMap = () => {
     </div>
   );
 }
-

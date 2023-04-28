@@ -10,25 +10,31 @@ import Landing from './Landing';
 
 export const HomePage = ({ isLoading }) => {
 
- const { loggedIn } = useSelector((state) => state.usersReducer);
+ const { loggedIn, currentUser } = useSelector((state) => state.usersReducer);
 
  const navigate = useNavigate();
 
- useEffect(() => {
-  if(!isLoading && !loggedIn) {
-   navigate('/login')
-  }
-  // eslint-disable-next-line
- }, [isLoading, loggedIn]);
+//  useEffect(() => {
+//   if(!isLoading && !loggedIn) {
+//    navigate('/login')
+//   }
+//   // eslint-disable-next-line
+//  }, [isLoading, loggedIn]);
 
   return (
     <div>
-     <HeaderNav />
-     <Landing />
-     <HomepageIntroCards /><br/>
-     <HomePageDescription /><br/>
-     <MyVisitList />
-    </div>
+      {
+        currentUser && currentUser.id ?
+        <>
+        <HeaderNav />
+        <Landing />
+        <HomepageIntroCards /><br/>
+        <HomePageDescription /><br/>
+        <MyVisitList />
+        </>
+      : null
+       }
+      </div>
    );
   }
 

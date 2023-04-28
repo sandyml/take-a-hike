@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Card, CardActions, CardContent, makeStyles, Typography} from "@material-ui/core";
+import PlaceIcon from '@mui/icons-material/Place';
+import { Check } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   root: {
@@ -29,11 +31,8 @@ export default function DialogMapTrailhead() {
 
   const [showMap, setShowMap] = useState(false);
 
-  // debugger
   const trailheads = useSelector((state) => state.trailheadsReducer);
   // const {currentUser} = useSelector((state) => state.usersReducer);
-  console.log(trailheads, "Trailheads");
-
 
   const toggleSeeMap = () => {
     (showMap === false) ? setShowMap(true) :
@@ -47,8 +46,6 @@ export default function DialogMapTrailhead() {
           <Card component={'div'} className={classes.root} variant="outlined">
             <CardActions component={'div'}>
               <Typography variant="body1" component="p">
-
-                {/* <Button size="small">Add to my visits</Button> */}
               </Typography>
             </CardActions>
             <CardContent>
@@ -62,14 +59,13 @@ export default function DialogMapTrailhead() {
               </Typography>
 
               <Typography variant="h5" component="h2">
-
               <Button component={'div'} onClick={toggleSeeMap}>Map | Directions</Button>
                       <>
                         {showMap ?
                           <div>
                             <iframe
                               src={trh.direction}
-                              width="600" height="450"
+                              width="410" height="410"
                               style={{ border: "0" }}
                               allowfullscreen=""
                               loading="lazy"
@@ -90,7 +86,7 @@ export default function DialogMapTrailhead() {
               </Typography>
 
               <Typography variant="body1" component="p">
-                {trh.location}
+              <PlaceIcon />  {trh.location}
               </Typography>
 
               <Typography variant="body2" component="p">
@@ -98,13 +94,17 @@ export default function DialogMapTrailhead() {
               </Typography>
               {(trh.hikes.map(th =>
                 <Typography variant="body2" component="p" key={trh.id} className={classes.pos} color="textSecondary">
-                  distance: {th.distance}
+                  distance: {th.distance} &nbsp;
                   elevation gain: {th.elevation_gain}
                 </Typography>
               ))}
               <Typography variant="body2" component="p">
-                {trh.amenities}<br />
-              </Typography>
+                {trh.amenities.map((tam) =>
+                <Typography 
+                sx={{fontFamily: 'Google Sans, Roboto, arial, sans-serif'}} 
+                variant='body3' key={tam.id}><Check />{tam}</Typography>
+                )}<br />
+              </Typography><br/>
               <Typography variant="body2" component="p">
                 {trh.fees}
                 <br />

@@ -83,6 +83,7 @@ export const Signup = ({ isLoading }) => {
   };
 
   return (
+    <body id='signup-body'>
     <ThemeProvider theme={theme}>
       <Parallax
         style={sierra_image}
@@ -179,8 +180,10 @@ export const Signup = ({ isLoading }) => {
                 </Grid>
               </Grid>
 
+              <Typography component={'div'}>
               By creating an account you agree to our&nbsp;
-              <Link color="inherit" href="/termsandconditions">Terms & Privacy </Link>
+              <Link color="inherit" fontSize='small' href="/termsandconditions" >Terms & Privacy </Link>
+              </Typography>
 
               <Button
                 type="submit"
@@ -202,8 +205,10 @@ export const Signup = ({ isLoading }) => {
 
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/login" variant="body2" color='inherit'>
+                  <Link href="/login" variant="body2">
+                  <Typography component={'div'}>
                     Already have an account? Login
+                  </Typography>
                   </Link>
                 </Grid>
               </Grid>
@@ -212,5 +217,6 @@ export const Signup = ({ isLoading }) => {
         </Container>
       </Parallax>
     </ThemeProvider>
+    </body>
   );
 };

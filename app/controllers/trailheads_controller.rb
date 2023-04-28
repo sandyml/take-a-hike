@@ -1,5 +1,5 @@
 class TrailheadsController < ApplicationController
-#  skip_before_action :authorize, only: [:index]
+ skip_before_action :authorize, only: [:index, :show]
 
  # TODO: authorize skip only index? 
  # TODO: tentative if I need to create descriptions? 

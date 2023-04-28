@@ -29,9 +29,9 @@ export const HeaderNav = () => {
    <div>
     <Toolbar disableGutters>
      <Typography
-      variant="h6"
+      variant="h5"
       noWrap
-      component="a"
+      component={'div'}
       href="/"
       sx={{
        mr: 2,
@@ -84,7 +84,7 @@ export const HeaderNav = () => {
      <Typography
       variant="h5"
       noWrap
-      component="a"
+      component={'div'}
       href=""
       sx={{
        mr: 2,
@@ -104,13 +104,13 @@ export const HeaderNav = () => {
        <Button color="inherit" to="/" component={Link}></Button>
        <Button color="inherit" to="/visits" component={Link}></Button>
        <Button color="inherit" to="/trailheads" component={Link}></Button>
-      
+
       </Box>
      ) : (null)}
      {currentUser && currentUser.id ? (
-      <>
+      <Typography variant='h5' component={'div'}>
        <span>Welcome, {currentUser.username}! &emsp;&emsp;</span>
-      </>)
+      </Typography>)
       : (null)}
 
      <Box sx={{ flexGrow: 0 }}>
@@ -141,10 +141,10 @@ export const HeaderNav = () => {
 
        <div>
         {currentUser && currentUser.id ? (
-         <div>
+         <Typography variant='h5' component={'div'}>
           {/* <Button color="inherit" to="/me" component={Link}><FavoriteIcon sx={{ width: 10, height: 10 }} />&nbsp;I hiked</Button><br /> */}
           <Button color="inherit" to="/logout" component={Link} onClick={handleLogout}>&nbsp;Logout</Button>
-         </div>
+         </Typography>
         ) : (
          <div>
           <Button color="inherit" to="/login" component={Link}>Login</Button><br />
