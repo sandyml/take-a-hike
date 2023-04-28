@@ -116,7 +116,7 @@ export default function HomepageIntroCards() {
        {/* <a variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >        */}
        {/* <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} >{image.title}</Button> */}
        {/* </a> */}
-       <NavLink to={image.link} >{image.title}</NavLink>
+       <NavLink style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} to={image.link} >{image.title}</NavLink>
       </Typography>
      </Image>
     </ImageButton>
