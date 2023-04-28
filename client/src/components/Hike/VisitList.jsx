@@ -42,8 +42,6 @@ export const VisitList = ({ isLoading }) => {
           Go back to homepage
         </Button>
 
-        TESTING!
-
         <div className='visit-list-scrollbar' >
         <Typography component={'div'}>
         {visitCards}

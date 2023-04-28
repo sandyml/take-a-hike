@@ -40,18 +40,17 @@ export const DialogMap = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <>
       <div id='maps-form-header'>
         <HeaderNav />
       </div>
-
       <Button id='maps-form' variant="outlined" onClick={() => navigate('/')}>
         Go home
       </Button>&emsp;
       <Button id='maps-form' variant="outlined" onClick={() => setOpen(true)}>
         Slide in alert dialog
       </Button>&emsp;
-      <Button id='trailhead-maps-form' label="Primary" primary={true} onClick={() => setOpenTrailhead(true)}>
+      <Button id='trailhead-maps-form' label="Primary" onClick={() => setOpenTrailhead(true)}>
         Trailheads
       </Button>
 
@@ -81,7 +80,7 @@ export const DialogMap = () => {
         </Dialog>
       </div>
 
-      <Grid container spacing={4} className={classes.gridContainer}>
+      <Grid component={'div'} container spacing={4} className={classes.gridContainer}>
         <div>
           <Grid component={'div'} item xs={12} sm={6} md={4}>
             <Dialog
@@ -90,6 +89,7 @@ export const DialogMap = () => {
               keepMounted
               onClose={() => setOpen(false)}
               align='left'
+              component={'div'}
             >
               <DialogMapTrailhead />
               <Button onClick={() => setOpenTrailhead(false)}><CloseIcon fontSize='large' />close</Button>
@@ -97,11 +97,11 @@ export const DialogMap = () => {
           </Grid>
         </div>
         <div>
-          <Grid className='gmaps-grid'>
+          <Grid component={'div'} className='gmaps-grid'>
             <GMaps />
           </Grid>
         </div>
       </Grid>
-    </div>
+    </>
   );
 }

@@ -110,9 +110,10 @@ export default function HomepageIntroCards() {
         pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
        }}
       >
-       <div variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >       
-       <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} >{image.title}</Button>
-       </div>
+       <a variant="text" href={image.link} target="_parent">       
+       {/* <a variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >        */}
+       <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} >{image.title}</Button>
+       </a>
       </Typography>
      </Image>
     </ImageButton>

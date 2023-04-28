@@ -44,7 +44,6 @@ export const GMaps = () => {
     setIsOpen(true);
   };
 
-
   return (
     <Grid>
     {/* <Grid id="googlemaps"> */}

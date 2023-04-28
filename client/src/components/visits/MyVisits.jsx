@@ -23,7 +23,7 @@ export const MyVisits = ({ isLoading }) => {
 
   const navigate = useNavigate();
 
-  const myVisitCards = visits.map((visit) => <VisitCard key={visit.id} visit={visit} />)
+  // const myVisitCards = visits.map((visit) => <VisitCard key={visit.id} visit={visit} />)
 
   return (
     <div id='myvisits-div'>
@@ -37,25 +37,21 @@ export const MyVisits = ({ isLoading }) => {
           onClick={() => navigate('/')}>
           Go back to homepage
         </Button>
-        {/* added grid */}
-        {/* // REVISIT TOMORROW FRIDAY 04/28 */}
         {
-        !isLoading || currentUser && currentUser.id ? 
+        currentUser && currentUser.id ? 
+        // ( isLoading || currentUser && currentUser.id ) ? 
           <>
         <Grid container spacing={4} className={classes.gridContainer}>
         <Typography align='center' id="button-myvisits" component={'div'} variant='body2'>
           My Visits Only
         </Typography>
 
-        {/* added grid */}
         <div className='visit-list-scrollbar' >
         <Grid component={'div'} item xs={12} sm={6} md={20}>
-        {/* <Grid component={'div'} item xs={12} sm={6} md={4}> */}
           <Typography component={'div'}>
             { visits.map((visit) => 
             <VisitCard key={visit.id} visit={visit} />
             )}
-            {/* {myVisitCards} */}
           </Typography>
           </Grid>
         </div>

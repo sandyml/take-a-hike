@@ -39,7 +39,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const handleAddToVisit = () => {
     setLoading(true);
     dispatch(addVisit(th, navigate))
-    navigate('/all-trailheads')
   }
 
   useEffect(() => {
@@ -75,7 +74,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     disabled={!!isInVisited}
                     onClick={handleAddToVisit}
                   >
-                    {loading ? "Adding..." : "Add To Visit"}
+                    {loading ? "Adding" : "Add To Visit"}
                   </Button>
                 </div><br />
                 <Typography

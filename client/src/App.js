@@ -13,10 +13,8 @@ import { VisitList } from './components/hike/VisitList';
 
 import NotFound from './components/navigation/NotFound';
 
-import AllTrailheads from './components/trailheads/AllTrailheads';
 import { Trailheads } from './components/trailheads/Trailheads';
 import { Copyright } from './components/copyright/Copyright';
-import { PlacesIVisited } from './components/visits/PlacesIVisited';
 import { MyVisits } from './components/visits/MyVisits';
 import GoogleMaps from './components/googlemaps/GoogleMaps';
 

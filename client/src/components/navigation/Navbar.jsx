@@ -58,9 +58,9 @@ export const Navbar = () => {
       <Container maxWidth="xl" className={classes.lightSage} variant="outlined">
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="body5"
             noWrap
-            component="a"
+            component={'div'}
             href="/"
             sx={{
               mr: 2,

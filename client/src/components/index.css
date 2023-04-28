@@ -760,8 +760,8 @@ div.absolute {
   position: relative;
   z-index: 1; /* The z-index should be higher than Google Maps */
   width: 135px;
-  margin: 4px auto 0;
-  margin-left: 10.5rem;
+  margin: 5px auto 0;
+  margin-left: 12.4rem;
   padding: 2px;
   background: black;
   height: auto;

@@ -14,7 +14,8 @@ export const HomePage = ({ isLoading }) => {
   return (
     <div>
       {
-        !isLoading || currentUser && currentUser.id ?
+        currentUser && currentUser.id ?
+        // !isLoading || currentUser && currentUser.id ?
           <>
             <HeaderNav />
             <Landing />

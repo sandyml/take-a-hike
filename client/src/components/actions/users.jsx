@@ -7,6 +7,7 @@ export const loadUsers = () => {
     fetch('/users')
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data, "loadUsers action")
         const action = {
           type: "LOAD_USERS",
           payload: data
