@@ -188,7 +188,7 @@ export const Login = ({ isLoading }) => {
 
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/signup" variant="p" >
+                  <Link href="/signup" variant="h6" >
                     <Typography style={{ color: "white" }} component={'div'}>
                     Don't have an account? Signup
                     </Typography>

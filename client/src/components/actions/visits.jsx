@@ -120,7 +120,7 @@ export const addVisit = (th, navigate) => {
                   type: "ADD_VISIT",
                   payload: data
                })
-               navigate('/all-trailheads')
+               navigate('/my-visits')
                // navigate('/me')
             }
          })

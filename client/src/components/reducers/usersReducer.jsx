@@ -34,10 +34,14 @@ const usersReducer = (state = initialState, action) => {
         currentUser: action.payload,
         loggedIn: true
       }
+    // case "LOAD_ADD_USER":
+    //   return {
+    //     ...state,
+    //     users: [...state.users, action.payload]
+    //   }
     case "LOAD_ADD_USER":
       return {
-        ...state,
-        users: [...state.users, action.payload]
+        ...state
       }
     case "DELETE_USERS_VISIT":
       return {

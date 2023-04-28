@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogMapTrailhead from "./DialogMapTrailhead";
-import { GMaps } from "../googlemaps/GMaps";
+import { GMaps } from "./GMaps";
 import { HeaderNav } from "../navigation/HeaderNav";
 
 import '.././index.css';

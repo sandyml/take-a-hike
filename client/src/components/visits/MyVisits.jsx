@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   }
 });
 
-export const MyVisits = ({ isLoading }) => {
+export const MyVisits = () => {
   const classes = useStyles();
 
   const { visits, currentUser } = useSelector((state) => state.usersReducer);
@@ -42,7 +42,7 @@ export const MyVisits = ({ isLoading }) => {
             // ( isLoading || currentUser && currentUser.id ) ? 
             <>
               <Grid container spacing={4} className={classes.gridContainer}>
-                <Typography align='center' id="button-myvisits" component={'div'} variant='body2'>
+                <Typography style={{ fontSize: 12, marginLeft: 40, marginTop: 10 }} align='center' id="button-myvisits" component={'div'} variant='body2'>
                   My Visits Only
                 </Typography>
 
@@ -56,7 +56,8 @@ export const MyVisits = ({ isLoading }) => {
                   </Grid>
                 </div>
               </Grid>
-            </> : null}
+            </> : null
+            }
       </center>
     </div>
   )
