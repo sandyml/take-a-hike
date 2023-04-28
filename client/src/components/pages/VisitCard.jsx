@@ -9,6 +9,9 @@ import { Check, EditCalendarOutlined, FmdGoodRounded } from '@mui/icons-material
 import { Button, Card, CardContent, CardMedia, CssBaseline, Typography, createTheme, ThemeProvider } from '@mui/material';
 import { Box } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Popover from '@mui/material/Popover';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import PopoverPopupState from './PopoverPopupState';
 
 const theme = createTheme({
   status: {
@@ -67,6 +70,7 @@ const VisitCard = ({ visit, isLoading }) => {
         <Card component={'div'} sx={{ maxWidth: 1050, height: 580 }} >
           {currentUser && currentUser.id === visit.user.id ?
             <div align='right' >
+              {/* <Button sx={{ width: 50, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text">{<PopoverPopupState />}</Button>&nbsp;&nbsp;&nbsp; */}
               <Button sx={{ width: 50, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text" onClick={() => navigate(`/visits/${visit.id}/edit`)}>edit<EditCalendarOutlined /></Button>&nbsp;&nbsp;&nbsp;
               <Button sx={{ width: 50, paddingRight: 2, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} color='lightsage' size='small' variant="text" onClick={handleDelete} type='delete'>remove<DeleteOutlineIcon size='small' /></Button>
             </div> : null}
@@ -91,8 +95,10 @@ const VisitCard = ({ visit, isLoading }) => {
                   distance: {eg.distance}
                 </Typography>
               )}
+              <hr />
               &emsp;{visit.trailhead.fees}&emsp;&emsp;
             </Typography>
+            <hr />
             <Typography sx={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }} flexDirection='row' col={2} variant='body3' component={'div'}>
               {amenities}
             </Typography><br />

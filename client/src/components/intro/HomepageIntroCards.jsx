@@ -5,6 +5,8 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const images = [
  {
@@ -110,10 +112,11 @@ export default function HomepageIntroCards() {
         pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
        }}
       >
-       <a variant="text" href={image.link} target="_parent">       
+       {/* <a variant="text" href={image.link} target="_parent">        */}
        {/* <a variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >        */}
-       <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} >{image.title}</Button>
-       </a>
+       {/* <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} >{image.title}</Button> */}
+       {/* </a> */}
+       <NavLink to={image.link} >{image.title}</NavLink>
       </Typography>
      </Image>
     </ImageButton>

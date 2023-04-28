@@ -79,10 +79,11 @@ export const editVisit = (id, visited_date, navigate) => {
                navigate('/visits')
                console.log(data, "EDIT_VISIT")
                dispatch({
-                  type: "EDIT_USERS_VISIT", 
+                  type: "EDIT_USERS_VISIT",
                   payload: data
                })
                navigate('/my-visits')
+               // navigate('/my-visits')
                console.log(data, "EDIT_USERS_VISIT")
                // setIsLoading(false);
             }
@@ -119,7 +120,7 @@ export const addVisit = (th, navigate) => {
                   type: "ADD_VISIT",
                   payload: data
                })
-               navigate('/trailheads')
+               navigate('/all-trailheads')
                // navigate('/me')
             }
          })

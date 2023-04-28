@@ -47,10 +47,10 @@ export default function DialogMapTrailhead() {
   };
 
   return (
-    <div>
+    <div style={{ margin: 3 }}>
       <center>
         {trailheads.map((trh) =>
-          <Card key={trh.id} component={'div'} className={classes.root} variant="outlined">
+          <Card style={{ borderColor: "black", margin: 3, marginBottom: 7 }} key={trh.id} component={'div'} className={classes.root} variant="outlined">
             <CardActions component={'div'}>
               <Typography variant="body1" component="p">
               </Typography>
@@ -106,12 +106,14 @@ export default function DialogMapTrailhead() {
                   elevation gain: {th.elevation_gain}
                 </Typography>
               ))}
+              <hr/>
               <Typography variant="body2" component={"div"}>
                 {trh.amenities.map((tam) =>
                   <Typography
                     sx={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
                     variant='subtitle1' key={tam}><Check style={{ color: "green", fontSize: "small"}} />{tam}</Typography>
                 )}<br />
+                <hr/>
               </Typography><br />
               <Typography variant="body2" component={"div"}>
                 {trh.fees}

@@ -17,22 +17,27 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 export const EditForm = ({ isLoading }) => {
   const [visited_date, setVisitedDate] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const visits = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer);
+  const { currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     dispatch(editVisit(id, visited_date, navigate))
   };
-  
+
   const vis = visits.find(visit => visit.id === parseInt(id, 10));
 
   return (
+    <div>
+      
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
@@ -57,16 +62,19 @@ export const EditForm = ({ isLoading }) => {
 
                   <Grid item xs={12}>
                     <center>
-                    <h2>{vis.trailhead.name}</h2>
                     </center>
                   </Grid>
                   <Grid >
+                  {/* { 
+                    currentUser && currentUser.id ? 
                     <center>
-                    <h2>{vis.hike.map(visit => 
+                    <h2>{vis.hike.map((visit) => 
                       <img key={visit.id} src={visit.image_url} alt="hike-img-visit" className='hike-img-visit' />)}</h2>
                     </center>
+                    : null }  */}
                   </Grid>
                   <Grid item xs={12}>
+                      <h2>{vis.trailhead.name}</h2>
                   <h2>{vis.trailhead.trailhead_id}</h2>
                     <center>
                     initial date: &nbsp; {vis.visited_date}
@@ -80,7 +88,7 @@ export const EditForm = ({ isLoading }) => {
                       required
                       fullWidth
                       id="name"
-                      label="Date"
+                      label="DD/MM/YYY"
                       selected={visited_date}
                       value={visited_date}
                       onChange={(e) => setVisitedDate(e.target.value)}
@@ -108,7 +116,9 @@ export const EditForm = ({ isLoading }) => {
                 color="neutral"
                 sx={{ mt: 3, mb: 2 }}
                 value="Update Visitation"
-              >{isLoading ? "Loading..." : "Submit"}
+              >
+                {/* {!isLoading ? "Loading..." : "Submit"} */}
+              Submit
               </Button>
               <Button
                 type="submit"
@@ -134,6 +144,7 @@ export const EditForm = ({ isLoading }) => {
         </Container>
       </ThemeProvider>
     </LocalizationProvider>
+    </div>
   );
 };
 
@@ -150,8 +161,8 @@ const theme = createTheme({
       main: '#6E7F62',
       contrastText: '#fff',
     },
-    beige: {
-      main: '#FODCD9',
+    dark: {
+      main: '#01579b',
       contrastText: '#fff',
     },
   },

@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import HomepageIntroCards from './HomepageIntroCards';
 import HomePageDescription from './HomePageDescription';
 import { HeaderNav } from '../navigation/HeaderNav';
-import { MyVisitList } from '../hike/MyVisitList';
+import { MyVisitList } from '../pages/MyVisitList';
 import Landing from './Landing';
 
-export const HomePage = ({ isLoading }) => {
+export const HomePage = () => {
 
   const { currentUser } = useSelector((state) => state.usersReducer);
 
@@ -15,7 +15,7 @@ export const HomePage = ({ isLoading }) => {
     <div>
       {
         currentUser && currentUser.id ?
-        // !isLoading || currentUser && currentUser.id ?
+          // !isLoading || currentUser && currentUser.id ?
           <>
             <HeaderNav />
             <Landing />

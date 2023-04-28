@@ -8,8 +8,8 @@ import { TermsPolicy } from './components/authen/TermsPolicy';
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
 
-import { EditForm } from './components/hike/EditForm';
-import { VisitList } from './components/hike/VisitList';
+import { EditForm } from './components/pages/EditForm';
+import { VisitList } from './components/pages/VisitList';
 
 import NotFound from './components/navigation/NotFound';
 
@@ -37,10 +37,10 @@ export function App() {
   // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
   useEffect(() => {
     // make sure to call ()
-    dispatch(loadCurrentUser(setIsLoading))
-    dispatch(loadUsers(setIsLoading))
-    dispatch(loadTrailheads()) 
     dispatch(loadVisits())
+    dispatch(loadTrailheads()) 
+    // dispatch(loadUsers(setIsLoading))
+    dispatch(loadCurrentUser(setIsLoading))
   }, [dispatch]);
 
   return (

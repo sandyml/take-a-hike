@@ -1,5 +1,7 @@
+import { updateResource } from "../../Global"
+
 const initialState = {
-  users: [],
+  // users: [],
   currentUser: null,
   loggedIn: false,
   visits: []
@@ -7,15 +9,16 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOAD_USERS":
-      return {
-        ...state,
-        users: action.payload
-      }
+    // case "LOAD_USERS":
+    //   return {
+    //     ...state,
+    //     users: action.payload
+    //   }
     case "LOAD_LOGIN_USER":
       return {
         ...state,
         currentUser: action.payload,
+        visits: action.payload.visits,
         loggedIn: true
       }
     case "LOAD_CURRENT_USER":
@@ -41,16 +44,24 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         visits: state.visits.filter((visit) => visit.id !== action.payload)
       }
+    // case "EDIT_USERS_VISIT":
+    //   return {
+    //     visits: state.visits.map((visit) => {
+    //       if(action.payload.id === visit.id) {
+    //         return action.payload;
+    //       } else {
+    //         return visit;
+    //       }
+    //     })
+    //   }
     case "EDIT_USERS_VISIT":
+      const updatedDate = state.visits.map(visit => visit.id === action.payload.id ? action.payload : visit);
       return {
-        visits: state.visits.map((visit) => {
-          if(action.payload.id === visit.id) {
-            return action.payload;
-          } else {
-            return visit;
-          }
-        })
-      }
+        ...state,
+        visits: updatedDate
+      };
+    // case "EDIT_USERS_VISIT":
+    //   return updateResource(state, action.payload);
     case "LOAD_LOGOUT_USER":
       return {
         ...state,

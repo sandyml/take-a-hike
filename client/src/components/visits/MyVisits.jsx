@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import VisitCard from '../hike/VisitCard';
+import VisitCard from '../pages/VisitCard';
 import '.././index.css';
 
 import { Button, Grid, Typography } from '@mui/material';
@@ -18,8 +18,8 @@ const useStyles = makeStyles({
 export const MyVisits = ({ isLoading }) => {
   const classes = useStyles();
 
-  const { visits } = useSelector((state) => state.usersReducer);
-  const { currentUser } = useSelector((state) => state.usersReducer);
+  const { visits, currentUser } = useSelector((state) => state.usersReducer);
+  // const { currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
@@ -38,25 +38,25 @@ export const MyVisits = ({ isLoading }) => {
           Go back to homepage
         </Button>
         {
-        currentUser && currentUser.id ? 
-        // ( isLoading || currentUser && currentUser.id ) ? 
-          <>
-        <Grid container spacing={4} className={classes.gridContainer}>
-        <Typography align='center' id="button-myvisits" component={'div'} variant='body2'>
-          My Visits Only
-        </Typography>
+          currentUser && currentUser.id ?
+            // ( isLoading || currentUser && currentUser.id ) ? 
+            <>
+              <Grid container spacing={4} className={classes.gridContainer}>
+                <Typography align='center' id="button-myvisits" component={'div'} variant='body2'>
+                  My Visits Only
+                </Typography>
 
-        <div className='visit-list-scrollbar' >
-        <Grid component={'div'} item xs={12} sm={6} md={20}>
-          <Typography component={'div'}>
-            { visits.map((visit) => 
-            <VisitCard key={visit.id} visit={visit} />
-            )}
-          </Typography>
-          </Grid>
-        </div>
-        </Grid>
-          </> : null }
+                <div className='visit-list-scrollbar' >
+                  <Grid component={'div'} item xs={12} sm={6} md={20}>
+                    <Typography component={'div'}>
+                      {visits.map((visit) =>
+                        <VisitCard key={visit.id} visit={visit} />
+                      )}
+                    </Typography>
+                  </Grid>
+                </div>
+              </Grid>
+            </> : null}
       </center>
     </div>
   )

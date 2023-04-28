@@ -1,5 +1,7 @@
 // NOTE: Reducers have to be functions 
 
+import { updateResource } from "../../Global";
+
 // Make sure the correct array of objects comes from the backend 
 // const initialState = []
 
@@ -16,14 +18,16 @@ const visitsReducer = (state = [], action) => {
       return state.filter((visit) => visit.id !== action.payload)
     case "DELETE_USERS_VISIT":
       return state.filter((visit) => visit.id !== action.payload)
+    // case "EDIT_VISIT":
+    //   return state.map((visit) => {
+    //     if (action.payload.id === visit.trailhead_id) {
+    //       return action.payload;
+    //     } else {
+    //       return visit;
+    //     }
+    //   })
     case "EDIT_VISIT":
-      return state.map((visit) => {
-        if (action.payload.id === visit.trailhead_id) {
-          return action.payload;
-        } else {
-          return visit;
-        }
-      })
+      return updateResource(state, action.payload);
     case "ADD_VISIT":
       return [...state, action.payload]
     default:
