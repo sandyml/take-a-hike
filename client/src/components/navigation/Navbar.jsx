@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { logoutUser } from '../actions/users';
+
 import { makeStyles } from '@material-ui/core/styles';
-import ForestIcon from '@mui/icons-material/Forest';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import MenuIcon from '@mui/icons-material/Menu';
-import { logoutUser } from '../actions/users';
 import Tooltip from '@mui/material/Tooltip';
 import Toolbar from '@mui/material/Toolbar';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Menu from '@mui/material/Menu';
 import Box from '@mui/material/Box';
+import { 
+  ForestIcon, 
+  MenuIcon, 
+  PersonOutlineOutlinedIcon 
+} from '@mui/icons-material';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -148,7 +152,8 @@ export const Navbar = () => {
             { currentUser && currentUser.id ? (
               <Tooltip title="Open settings">
               <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)} sx={{ p: 0 }}>
-                <Avatar alt="Username" src="" />
+                {/* <Avatar alt="Username" src="" /> */}
+                <PersonOutlineOutlinedIcon />
               </IconButton>
             </Tooltip>
               ) : null }

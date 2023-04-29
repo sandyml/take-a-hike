@@ -36,11 +36,6 @@ export const MyVisitList = ({ isLoading }) => {
       >
         <Typography component='div' align='center' variant="h5" marginTop={1} sx={{ marginTop: 2, fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: 'white' }}>{currentUser.username}'s Gallery</Typography>
         <Stack direction="row" >
-
-          <div className="objects-box">
-            <div className="object">
-            </div>
-          </div>
           <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
             {
               visits.map((current) =>

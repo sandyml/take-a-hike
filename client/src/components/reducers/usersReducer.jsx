@@ -1,4 +1,4 @@
-import { updateResource } from "../../Global"
+// import { updateResource } from "../../Global"
 
 const initialState = {
   // users: [],

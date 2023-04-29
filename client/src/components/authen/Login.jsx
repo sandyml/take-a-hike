@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Parallax } from 'react-parallax';
 import { loginUser } from '../actions/users';
 import { headers } from '../../Global';
+
+import { sierra_image } from '../styles/LandingCSS';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -16,8 +20,6 @@ import { Button } from '@mui/material';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Parallax } from 'react-parallax';
-import { sierra_image } from '../styles/LandingCSS';
 
 const theme = createTheme({
   status: {
@@ -59,24 +61,10 @@ export const Login = ({ isLoading }) => {
   const errors = useSelector((state) => state.errorsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
 
-  // TODO: Remove useEffect to test out if current_user is already logged in with error messages "You are already logged in!"
-  // useEffect(() => {
-  //   if (!loading && loggedIn) {
-  //     navigate('/')
-  //   }
-  //   return () => {
-  //     dispatch(clearErrors())
-  //   }
-  // }, [loading, loggedIn, navigate, dispatch]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(loginUser(headers, username, email, password, navigate))
-    // setUsername("");
-    // setEmail("");
-    // setPassword("");
-  }
+  };
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -86,13 +74,12 @@ export const Login = ({ isLoading }) => {
     <ThemeProvider theme={theme}>
       {
         currentUser && currentUser.id ?
-          <Button align='right' variant='body1' onClick={() => navigate('/')}>
+          <Button variant='body1' onClick={() => navigate('/')}>
             Come back home! You're already logged in!
           </Button> : null
       }
       <Parallax
         style={sierra_image}
-        display="flex"
         bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
         strength={300}
       >

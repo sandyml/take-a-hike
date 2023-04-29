@@ -63,20 +63,7 @@ export const Signup = ({ isLoading }) => {
       password,
       navigate
     ));
-    // setUsername("");
-    // setEmail("");
-    // setPassword("");
-    // setErrors([]);
-  }
-
-  // useEffect(() => {
-  //   if(!loading && loggedIn) {
-  //     navigate("/")
-  //   }
-  //   return () => {
-  //     setErrors([])
-  //   }
-  // }, [loading, loggedIn, navigate, setErrors]);
+  };
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
@@ -84,139 +71,139 @@ export const Signup = ({ isLoading }) => {
 
   return (
     <body id='signup-body'>
-    <ThemeProvider theme={theme}>
-      <Parallax
-        style={sierra_image}
-        display="flex"
-        bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-        strength={300}
-      >
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              height: '200%'
-            }}
-          >
+      <ThemeProvider theme={theme}>
+        <Parallax
+          style={sierra_image}
+          display="flex"
+          bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+          strength={300}
+        >
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                height: '200%'
+              }}
+            >
 
-            <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+              <Avatar sx={{ m: 1, bgcolor: 'lightersage.main' }}>
+                <LockOutlinedIcon />
+              </Avatar>
 
-            <Typography component="h1" variant="h5">
-              Please Create An Account
-            </Typography>
-
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField
-                    color="neutral"
-                    autoComplete="given-name"
-                    name="Username"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    autoFocus
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    color="neutral"
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    color="neutral"
-                    name="password"
-                    label="Password"
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    autoComplete="new-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    color="neutral"
-                    name="password"
-                    label="Confirm Password"
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    autoComplete="new-password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
-                    label="Show Password"
-                  />
-                </Grid>
-              </Grid>
-
-              <Typography component={'div'}>
-              By creating an account you agree to our&nbsp;
-              <Link color="inherit" fontSize='small' href="/termsandconditions" style={{ color: "white" }} >Terms & Privacy </Link>
+              <Typography component="h1" variant="h5">
+                Please Create An Account
               </Typography>
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="neutral"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                {isLoading ? "Loading..." : "Signup"}
-              </Button>
+              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      color="neutral"
+                      autoComplete="given-name"
+                      name="Username"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="Username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      autoFocus
+                    />
+                  </Grid>
 
-              {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                  {errors.map((error, index) => (
-                    <Typography component={'li'} fontSize={13} variant='body2' key={index}>{error}</Typography>
-                  ))}
-                </ul>
-              )}
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      color="neutral"
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Grid>
 
-              <Grid container justifyContent="flex-end">
-                <Grid item>
-                  <Link href="/login" variant="body2">
-                  <Typography style={{ color: "white" }} component={'div'}>
-                    Already have an account? Login
-                  </Typography>
-                  </Link>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      color="neutral"
+                      name="password"
+                      label="Password"
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      autoComplete="new-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      color="neutral"
+                      name="password"
+                      label="Confirm Password"
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      autoComplete="new-password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={<Checkbox value="allowExtraEmails" color="primary" onClick={togglePassword} />}
+                      label="Show Password"
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
+
+                <Typography component={'div'}>
+                  By creating an account you agree to our&nbsp;
+                  <Link color="inherit" fontSize='small' href="/termsandconditions" style={{ color: "white" }} >Terms & Privacy </Link>
+                </Typography>
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="neutral"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  {isLoading ? "Loading..." : "Signup"}
+                </Button>
+
+                {errors.length > 0 && (
+                  <ul style={{ color: "red" }}>
+                    {errors.map((error, index) => (
+                      <Typography component={'li'} fontSize={13} variant='body2' key={index}>{error}</Typography>
+                    ))}
+                  </ul>
+                )}
+
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
+                    <Link href="/login" variant="body2">
+                      <Typography style={{ color: "white" }} component={'div'}>
+                        Already have an account? Login
+                      </Typography>
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Box>
             </Box>
-          </Box>
-        </Container>
-      </Parallax>
-    </ThemeProvider>
+          </Container>
+        </Parallax>
+      </ThemeProvider>
     </body>
   );
 };

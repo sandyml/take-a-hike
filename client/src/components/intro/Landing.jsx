@@ -79,9 +79,9 @@ class Landing extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
+          style={{ fontFamily: "Google Sans, Roboto, arial, sans-serif"}}
          >
-          TakeAHike
+          Take A Hike
          </Typography>
          <br />
         </div>

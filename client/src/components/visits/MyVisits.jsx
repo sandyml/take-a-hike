@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import VisitCard from '../pages/VisitCard';
 import '.././index.css';
 
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, CssBaseline, Grid, Typography } from '@mui/material';
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -29,7 +29,7 @@ export const MyVisits = () => {
     <div id='myvisits-div'>
       <center>
         <Button
-          style={{ display: 'flex', justifyContent: 'center' }}
+          style={{ textAlign: 'center', color: 'white' }}
           align='left'
           variant='body1'
           component={'div'}
@@ -37,16 +37,24 @@ export const MyVisits = () => {
           onClick={() => navigate('/')}>
           Go back to homepage
         </Button>
+        <CssBaseline />
         {
           currentUser && currentUser.id ?
             // ( isLoading || currentUser && currentUser.id ) ? 
             <>
-              <Grid container spacing={4} className={classes.gridContainer}>
-                <Typography style={{ fontSize: 12, marginLeft: 40, marginTop: 10 }} align='center' id="button-myvisits" component={'div'} variant='body2'>
+              <Grid container
+                spacing={4}
+                className={classes.gridContainer}>
+                <Typography
+                  style={{ fontSize: 12, marginLeft: 40, marginTop: 10 }}
+                  align='center'
+                  id="button-myvisits"
+                  component={'div'}
+                  variant='body2'>
                   My Visits Only
                 </Typography>
 
-                <div className='visit-list-scrollbar' >
+                <div className='my-visit-list-scrollbar' >
                   <Grid component={'div'} item xs={12} sm={6} md={20}>
                     <Typography component={'div'}>
                       {visits.map((visit) =>
@@ -56,8 +64,7 @@ export const MyVisits = () => {
                   </Grid>
                 </div>
               </Grid>
-            </> : null
-            }
+            </> : null }
       </center>
     </div>
   )

@@ -327,7 +327,7 @@ div.parallex-scrollbar {
 }
 
 div.trailheads-scrollbar {
-  width: 190vh;
+  width: 210vh;
   height: 93vh;
   display: fixed;
   overflow-y: scroll;
@@ -371,12 +371,12 @@ div.all-trailheads-map-scrollbar  {
 }
 
 div.visit-list-scrollbar {
-  width: 190vh;
+  width: 200vh;
   height: 93vh;
   display: fixed;
   overflow-y: scroll;
   overflow: scroll;
-  scrollbar-color: rebeccapurple green;
+  scrollbar-color: rgb(249, 249, 249) green;
   scrollbar-width: thin;
 }
 
@@ -387,6 +387,17 @@ div.visit-list-scrollbar {
 div.visit-list-bgc, #myvisits-div, #visitlist-div, .body-login {
   /* --global-background: hsl(220, 25%, 10%); */
   background-color: #131720;
+}
+
+div.my-visit-list-scrollbar {
+  /* width: 230vh; */
+  width: 230vh;
+  height: 93vh;
+  display: fixed;
+  overflow-y: scroll;
+  overflow: scroll;
+  /* scrollbar-color: rgb(249, 249, 249) rgb(255, 255, 255); */
+  /* scrollbar-width: thin; */
 }
 
 #button-myvisits, #button-visitlist {

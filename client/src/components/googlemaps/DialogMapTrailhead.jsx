@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
-import { Check, LocationOnTwoTone } from "@mui/icons-material";
+import { Check } from "@mui/icons-material";
 import {
   Button,
   Card,
@@ -93,7 +93,7 @@ export default function DialogMapTrailhead() {
               </Typography>
 
               <Typography variant="body1" component={"div"}>
-                <LocationOnTwoToneIcon style={{ color: "red", fontSize: "small"}} />  {trh.location}
+                <LocationOnTwoToneIcon style={{ color: "red", fontSize: "small" }} />  {trh.location}
               </Typography>
 
               <Typography variant="body2" component={"div"}>
@@ -106,14 +106,14 @@ export default function DialogMapTrailhead() {
                   elevation gain: {th.elevation_gain}
                 </Typography>
               ))}
-              <hr/>
+              <hr />
               <Typography variant="body2" component={"div"}>
                 {trh.amenities.map((tam) =>
                   <Typography
                     sx={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
-                    variant='subtitle1' key={tam}><Check style={{ color: "green", fontSize: "small"}} />{tam}</Typography>
+                    variant='subtitle1' key={tam}><Check style={{ color: "green", fontSize: "small" }} />{tam}</Typography>
                 )}<br />
-                <hr/>
+                <hr />
               </Typography><br />
               <Typography variant="body2" component={"div"}>
                 {trh.fees}

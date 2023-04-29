@@ -1,12 +1,6 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import ButtonBase from '@mui/material/ButtonBase';
-import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { Box, ButtonBase, Typography, styled } from '@mui/material';
 
 const images = [
  {
@@ -85,10 +79,8 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 
 export default function HomepageIntroCards() {
 
- const navigate = useNavigate();
-
  return (
-  <Box align='center' sx={{ marginLeft: 5.5,  display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  <Box align='center' sx={{ marginLeft: 5.5, display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
    {images.map((image) => (
     <ImageButton
      component={'div'}
@@ -112,11 +104,11 @@ export default function HomepageIntroCards() {
         pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
        }}
       >
-       {/* <a variant="text" href={image.link} target="_parent">        */}
-       {/* <a variant="text" href={image.link} target="_parent" onClick={() => navigate(image.link)} >        */}
-       {/* <Button component={'button'} color='inherit' variant="text" style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} >{image.title}</Button> */}
-       {/* </a> */}
-       <NavLink style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }} to={image.link} >{image.title}</NavLink>
+       <NavLink
+        style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }}
+        to={image.link} >
+        {image.title}
+       </NavLink>
       </Typography>
      </Image>
     </ImageButton>

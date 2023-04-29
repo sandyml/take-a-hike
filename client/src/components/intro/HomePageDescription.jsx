@@ -26,7 +26,6 @@ class HomePageDescription extends React.Component {
         <div className={classes.main}>
          <Typography
           className={classes.title3}
-          variant="h2"
           style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
          >
           {/* When someone tells you to actually 'Take A Hike', thinking on the bright side of it...you take a hike.  */}

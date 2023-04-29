@@ -6,6 +6,7 @@ import { addVisit } from '../actions/visits';
 import { Box, Button, CardMedia, Typography } from '@mui/material';
 import { FmdGoodRounded, Paid } from '@mui/icons-material';
 import { Grid, Card } from '@mui/material';
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const amenities = th.amenities.map((amenity, idxx) =>
     <div key={idxx}>
       <Typography align="center" color='inherit' component={'div'}>
-        ✓{amenity}
+       <DoneOutlinedIcon style={{ color: 'green', fontSize: 10}} />{amenity}
       </Typography>
     </div>
   );
@@ -57,15 +58,14 @@ export const TrailheadCard = ({ th, isLoading }) => {
       <Grid sx={{ flexGrow: 1 }} col={3} style={{ justifyContent: 'center' }}>
         {th.hikes.map((hike) =>
           <Grid key={hike.id} >
-
             <Grid
               sx={{ paddingLeft: 1, paddingBottom: 1 }}
-              item xs={1} md={12}
+              item xs={1} md={12} sm={6}
               container
               justifyContent="center"
               spacing={-0.01}
               style={{ display: 'flex', justifyContent: 'center' }}>
-              <Card sx={{ maxWidth: 593, height: 1000 }}>
+              <Card sx={{ maxWidth: 593, justifyContent: 'center' }}>
                 <div align='right'>
                   <Button
                     sx={{ width: 100, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
@@ -87,14 +87,14 @@ export const TrailheadCard = ({ th, isLoading }) => {
                 <CardMedia
                   sx={{ width: 593, height: 300 }}
                   image={hike.image_url}
-                  title="yosemite"
+                  title="hike images"
                 />
                 <Typography
                   align='center'
                   variant='body1'
                   style={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <FmdGoodRounded />
+                  <FmdGoodRounded style={{ color: 'red', fontSize: 15}}  />
                   {th.location}
                 </Typography>
 
@@ -127,13 +127,13 @@ export const TrailheadCard = ({ th, isLoading }) => {
                       </>
 
                     </Typography>
-                    <b>lng:</b> {th.longitude} <b>lat:</b>{th.latitude}<br />
-                    <b>elevation_gain:</b>&nbsp;{thh.elevation_gain} <b>distance:</b>&nbsp;{thh.distance}
+                    {/* lng: {th.longitude} &emsp; lat: {th.latitude}<br /> */}
+                    elevation gain:&nbsp;{thh.elevation_gain}&emsp; distance:&nbsp;{thh.distance}
                   </Typography>
                 )}
                 <Typography style={{ display: 'flex', justifyContent: 'center' }} component='div'>
 
-                  <b>difficulty:</b>&nbsp;{difficulties.join(', ')}
+                  difficulty:&nbsp;{difficulties.join(', ')}
                 </Typography><br />
                 <div style={{ width: '100%' }}>
                   <Typography align='center' style={{ display: 'flex' }} component='div'>

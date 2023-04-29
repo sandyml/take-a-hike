@@ -108,7 +108,7 @@ export const HeaderNav = () => {
       </Box>
      ) : (null)}
      {currentUser && currentUser.id ? (
-      <Typography variant='h5' component={'div'}>
+      <Typography style={{ fontFamily: "Google Sans, Roboto, arial, sans-serif"}} variant='h5' component={'div'}>
        Welcome, {currentUser.username}! &emsp;&emsp;
       </Typography>)
       : (null)}

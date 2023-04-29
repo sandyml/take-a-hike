@@ -5,23 +5,22 @@ import { editVisit } from '../actions/visits';
 import '.././index.css'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Avatar, Box, Button, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Card, Container, CssBaseline, Grid, TextField, Typography } from '@mui/material';
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 // users/:user_id/visits {user_id} useParams
 
-export const EditForm = ({ isLoading }) => {
+export const EditForm = () => {
   const [visited_date, setVisitedDate] = useState("");
   const [loading, setLoading] = useState(false);
 
   const visits = useSelector((state) => state.visitsReducer);
   const errors = useSelector((state) => state.errorsReducer);
-  const { currentUser } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,113 +36,117 @@ export const EditForm = ({ isLoading }) => {
 
   return (
     <div>
-      
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
+      <center>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+              <CssBaseline />
+              <Card style={{
+                borderColor: "black",
+                margin: 3,
+                marginBottom: 7,
+                marginTop: 10
+              }}>
+                <Box
+                  sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
 
-          <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'beige.main' }}>
-              <EditCalendarIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Change Visit Date
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
-                <Grid container spacing={2}>
+                  }}
+                >
+                  <Avatar sx={{ m: 1, bgcolor: 'beige.main' }}>
+                    <EditCalendarIcon />
+                  </Avatar>
+                  <Typography component="h1" variant="h5">
+                    Change Visit Date
+                  </Typography>
+                  <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
+                    <Grid container spacing={2}>
 
-                  <Grid item xs={12}>
-                    <center>
-                    </center>
-                  </Grid>
-                  <Grid >
-                  {/* { 
-                    currentUser && currentUser.id ? 
-                    <center>
-                    <h2>{vis.hike.map((visit) => 
-                      <img key={visit.id} src={visit.image_url} alt="hike-img-visit" className='hike-img-visit' />)}</h2>
-                    </center>
-                    : null }  */}
-                  </Grid>
-                  <Grid item xs={12}>
-                      <h2>{vis.trailhead.name}</h2>
-                  <h2>{vis.trailhead.trailhead_id}</h2>
-                    <center>
-                    initial date: &nbsp; {vis.visited_date}
-                    </center>
+                      <Grid item xs={12}>
+                        <center>
+                        </center>
+                      </Grid>
+                      <Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography style={{ fontSize: 20 }}>
+                          {vis.trailhead.name}
+                          <h2>{vis.trailhead.trailhead_id}</h2>
+                        </Typography>
+                        <Typography style={{ fontSize: 12 }}>
+                          initial date: &nbsp; {vis.visited_date}
+                        </Typography>
 
-                    <center>
-                    <TextField
-                      color="neutral"
-                      autoComplete="given-name"
-                      name="date"
-                      required
+                        <center>
+                          {/* <TextField
+                            color="neutral"
+                            autoComplete="given-name"
+                            name="date"
+                            required
+                            fullWidth
+                            id="name"
+                            label="DD/MM/YYY"
+                            selected={visited_date}
+                            value={visited_date}
+                            onChange={(e) => setVisitedDate(e.target.value)}
+                            autoFocus
+                          /> */}
+                          <DatePicker
+                            style={{ color: 'green' }}
+                            label="Select date"
+                            value={visited_date}
+                            // onChange={(e) => setVisitedDate(e.target.value)}
+                            onChange={(newValue) => setVisitedDate(newValue)}
+                            textField={(props) =>
+                              <TextField {...props} />
+                            }
+                          />
+
+                        </center>
+                        <br /><br />
+                      </Grid>
+                    </Grid>
+                   
+                    <Button
+                      type="submit"
                       fullWidth
-                      id="name"
-                      label="DD/MM/YYY"
-                      selected={visited_date}
-                      value={visited_date}
-                      onChange={(e) => setVisitedDate(e.target.value)}
-                      autoFocus
-                    />
-                      {/* <DatePicker
-                        label="Select date"
-                        value={visited_date}
-                        // onChange={(e) => setVisitedDate(e.target.value)}
-                        onChange={(newValue) => setVisitedDate(newValue)}
-                        textField={(props) => 
-                          <TextField {...props} />
-                        }
-                       /> */}
+                      variant="contained"
+                      color="neutral"
+                      sx={{ mt: 3, mb: 2 }}
+                      value="Update Visitation"
+                    >
+                      {loading ? "Loading..." : "Submit"}
+                      Submit
+                    </Button>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="neutral"
+                      sx={{ mt: 3, mb: 2 }}
+                      value="Update Visitation"
+                      onClick={() => navigate('/visits')}
+                    >Cancel - Take me back
+                    </Button>
 
-                    </center>
-                    <br /><br />
-                  </Grid>
-                </Grid>
-              {/* ))} */}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="neutral"
-                sx={{ mt: 3, mb: 2 }}
-                value="Update Visitation"
-              >
-                {/* {!isLoading ? "Loading..." : "Submit"} */}
-              Submit
-              </Button>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="neutral"
-                sx={{ mt: 3, mb: 2 }}
-                value="Update Visitation"
-                onClick={() => navigate('/visits')}
-              >Cancel - Take me back
-              </Button>
+                    {errors.length > 0 && (
+                      <ul style={{ color: "red" }}>
+                        {errors.map((error) => (
+                          <li key={error}>{error}</li>
+                        ))}
+                      </ul>
+                    )}
 
-              {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                {errors.map((error) => (
-                  <li key={error}>{error}</li>
-                  ))}
-                  </ul>
-                )}
-
-            </Box>
-          </Box>
-        </Container>
-      </ThemeProvider>
-    </LocalizationProvider>
+                  </Box>
+                </Box>
+              </Card>
+            </Container>
+          </ThemeProvider>
+        </LocalizationProvider>
+      </center>
     </div>
   );
 };

@@ -28,7 +28,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 
 import { DialogMap } from './components/googlemaps/DialogMap';
 
-
 export function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,11 +44,11 @@ export function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Routes>
-        <Route path="/" element={<HomePage isLoading={isLoading} />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login isLoading={isLoading} />} />
         <Route path="/signup" element={<Signup isLoading={isLoading} />} />
         <Route path="/logout" element={<Logout isLoading={isLoading} />} />
-        <Route path="/visits/:id/edit" element={<EditForm isLoading={isLoading} />} />
+        <Route path="/visits/:id/edit" element={<EditForm />} />
         <Route path="/visits" element={<VisitList isLoading={isLoading} />} />
         <Route path="/my-visits" element={<MyVisits />} />
         <Route path="/all-trailheads" element={<DialogMap />} />

@@ -1,22 +1,11 @@
-import { Button, Grid } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
+import { Button, Grid, Stack } from '@mui/material';
 import { TrailheadCard } from './TrailheadCard';
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
-
-  const navigate = useNavigate();
-
-  // const trailheadCards = trailheads?.map((th) => <TrailheadCard
-  //   key={th.id}
-  //   th={th}
-  //   isLoading={isLoading}
-  // />
-  // );
 
   // if (trailheads.errors) {
   //   return (
@@ -35,14 +24,6 @@ export const Trailheads = ({ isLoading }) => {
   return (
     <div>
       <center>
-
-        {/* <Button
-          style={{ display: 'flex', justifyContent: 'center' }}
-          align='left'
-          variant='body1'
-          onClick={() => navigate('/')}>
-          Go back to homepage!
-        </Button> */}
         <a variant="text" href='/' target="_parent">
           <Button
             component={'button'}
@@ -54,27 +35,24 @@ export const Trailheads = ({ isLoading }) => {
           </Button>
         </a>
 
-        <div className='trailheads-scrollbar' >
-          <Grid component={'div'} item xs={12} sm={6} md={20}>
+        <Stack direction="row" >
 
-            <Grid>
-              {
-                currentUser && currentUser.id ?
-                  // isLoading || currentUser && currentUser.id ? 
-                  <div>
-                    {trailheads?.map((th) => <TrailheadCard
-                      key={th.id}
-                      th={th}
-                      isLoading={isLoading}
-                    />
-                    )}
-                  </div>
-
-                  : null
-              }
+          <div className='trailheads-scrollbar' >
+              <Grid>
+                {
+                  currentUser && currentUser.id ?
+                    <div>
+                      {trailheads?.map((th) => <TrailheadCard
+                        key={th.id}
+                        th={th}
+                        isLoading={isLoading}
+                      />
+                      )}
+                    </div>
+                    : null}
             </Grid>
-          </Grid>
-        </div>
+          </div>
+        </Stack>
 
       </center>
     </div>

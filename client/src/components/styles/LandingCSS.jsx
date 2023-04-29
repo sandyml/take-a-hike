@@ -89,19 +89,6 @@ export const mountain_image = {
  height: "88vh",
 }
 
-export const mountain_image4 = {
- backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
- backgroundRepeat: 'no-repeat',
- backgroundPosition: '60% 40%',
- backgroundSize: 'cover',
- position: 'relative',
- borderRadius: "4px",
- marginBottom: 20,
- marginRight: 40,
- marginLeft: 42,
- height: "50vh",
-}
-
 export const mountain_image2 = {
  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)'
 }
@@ -119,6 +106,33 @@ export const mountain_image3 = {
  height: "95vh",
  // width: "170vh"
 }
+
+export const mountain_image4 = {
+  backgroundImage: 'url(https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1682727970~exp=1682728570~hmac=a05faf50c1951c76f1de7b56944da7c1646735e1ce8cb8349706b340b06c94c8)',
+  backgroundRepeat: 'no-repeat',
+  // backgroundColor: 'white',
+  backgroundPosition: '60% 40%',
+  backgroundSize: 'cover',
+  position: 'relative',
+  borderRadius: "4px",
+  marginBottom: 20,
+  marginRight: 40,
+  marginLeft: 42,
+  height: "50vh",
+ }
+
+export const mountain_image5 = {
+  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '60% 40%',
+  backgroundSize: 'cover',
+  position: 'relative',
+  borderRadius: "4px",
+  marginBottom: 20,
+  marginRight: 40,
+  marginLeft: 42,
+  height: "88vh",
+ }
 
 export const sierra_image = {
  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const TermsPolicy = () => {
    return (
-      <div id='terms-policy'><br /><center>
+      <div style={{ margin: 15, marginLeft: 390, marginRight: 15, width: 1030, display: 'flex' }} id='terms-policy'><br /><center>
          <Typography variant="h3">
             Terms and Conditions of Use<br />
          </Typography>
