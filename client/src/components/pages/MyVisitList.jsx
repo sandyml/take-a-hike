@@ -34,16 +34,28 @@ export const MyVisitList = ({ isLoading }) => {
         bgImage="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80"
         strength={680}
       >
-        <Typography component='div' align='center' variant="h5" marginTop={1} sx={{ marginTop: 2, fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: 'white' }}>{currentUser.username}'s Gallery</Typography>
+        <Typography
+          component='div'
+          align='center'
+          variant="h5"
+          marginTop={1}
+          sx={{ marginTop: 2, fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: 'white' }}
+        >
+          {currentUser.username}'s Gallery
+        </Typography>
         <Stack direction="row" >
-          <Grid container justifyContent="flex-end" margin={5} marginLeft={-2}>
-            {
-              visits.map((current) =>
-                <div key={current.id}>
-                  {current.hike.map((ch) =>
-                    <img className='parks-img' key={ch.id} src={ch.image_url} alt='' />)}
-                </div>
-              )}
+          <Grid
+            container
+            justifyContent="flex-end"
+            margin={5}
+            marginLeft={-2}
+          >
+            {visits.map((current) =>
+              <div key={current.id}>
+                {current.hike.map((ch) =>
+                  <img className='parks-img' key={ch.id} src={ch.image_url} alt='' />)}
+              </div>
+            )}
           </Grid>
         </Stack>
       </Parallax>

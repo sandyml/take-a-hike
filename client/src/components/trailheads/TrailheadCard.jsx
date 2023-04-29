@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import '.././index.css';
+
 import { addVisit } from '../actions/visits';
-import { Box, Button, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardMedia, Grid, Typography } from '@mui/material';
 import { FmdGoodRounded, Paid } from '@mui/icons-material';
-import { Grid, Card } from '@mui/material';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 
 export const TrailheadCard = ({ th, isLoading }) => {
@@ -29,7 +30,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
   const amenities = th.amenities.map((amenity, idxx) =>
     <div key={idxx}>
       <Typography align="center" color='inherit' component={'div'}>
-       <DoneOutlinedIcon style={{ color: 'green', fontSize: 10}} />{amenity}
+        <DoneOutlinedIcon style={{ color: 'green', fontSize: 10 }} />{amenity}
       </Typography>
     </div>
   );
@@ -68,7 +69,10 @@ export const TrailheadCard = ({ th, isLoading }) => {
               <Card sx={{ maxWidth: 593, justifyContent: 'center' }}>
                 <div align='right'>
                   <Button
-                    sx={{ width: 100, fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
+                    sx={{
+                      width: 100,
+                      fontFamily: 'Google Sans, Roboto, arial, sans-serif'
+                    }}
                     size='small'
                     variant="text"
                     disabled={!!isInVisited}
@@ -77,24 +81,42 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     {loading ? "Adding" : "Add To Visit"}
                   </Button>
                 </div><br />
-                <Typography
-                  component={'div'}
-                  variant='h5'
-                  style={{ display: 'flex', justifyContent: 'center' }}
-                >{th.name}
-                </Typography><br />
-
+                
                 <CardMedia
                   sx={{ width: 593, height: 300 }}
                   image={hike.image_url}
                   title="hike images"
                 />
                 <Typography
+                  component={'div'}
+                  style={{
+                    marginLeft: 10,
+                    fontSize: 50,
+                    marginBottom: 0,
+                    fontWeight: 'bold',
+                    color: 'black',
+                    fontFamily: 'aesthetica',
+                    letterSpacing: 0,
+                    position: 'relative',
+                    top: -320,
+                    // display: 'flex',
+                    // zIndex: 6,
+                    justifyContent: 'left'
+                  }}
+                >{th.name}
+                </Typography>
+{/* 
+                <CardMedia
+                  sx={{ width: 593, height: 300 }}
+                  image={hike.image_url}
+                  title="hike images"
+                /> */}
+                <Typography
                   align='center'
                   variant='body1'
                   style={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <FmdGoodRounded style={{ color: 'red', fontSize: 15}}  />
+                  <FmdGoodRounded style={{ color: 'red', fontSize: 15 }} />
                   {th.location}
                 </Typography>
 
@@ -105,8 +127,15 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     align='center'
                     component={'div'}
                   ><br />
-                    <Typography style={{ display: 'flex', justifyContent: 'center', fontFamily: "Google Sans, Roboto, arial, sans-serif" }} component={'div'}>
-              
+                    <Typography
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        fontFamily: "Google Sans, Roboto, arial, sans-serif"
+                      }}
+                      component={'div'}
+                    >
+
                       <Button onClick={toggleSeeMap}>Map | Directions</Button>
                       <>
                         {showMap ?

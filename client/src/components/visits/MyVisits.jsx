@@ -28,6 +28,11 @@ export const MyVisits = () => {
   return (
     <div id='myvisits-div'>
       <center>
+      <Grid container
+        id="results"
+        direction="column"
+        justifyContent="center"
+        alignItems="center" >
         <Button
           style={{ textAlign: 'center', color: 'white' }}
           align='left'
@@ -55,7 +60,12 @@ export const MyVisits = () => {
                 </Typography>
 
                 <div className='my-visit-list-scrollbar' >
-                  <Grid component={'div'} item xs={12} sm={6} md={20}>
+                  {/* <Grid component={'div'} item xs={12} sm={6} md={20}> */}
+                  <Grid container item
+                    direction="row"
+                    justifyContent="space-around"
+                    alignItems="stretch"
+                    spacing={6} >
                     <Typography component={'div'}>
                       {visits.map((visit) =>
                         <VisitCard key={visit.id} visit={visit} />
@@ -64,7 +74,8 @@ export const MyVisits = () => {
                   </Grid>
                 </div>
               </Grid>
-            </> : null }
+            </> : null}
+            </Grid>
       </center>
     </div>
   )

@@ -1,11 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Grid, Stack } from '@mui/material';
 import { TrailheadCard } from './TrailheadCard';
+import { Button, Grid, Typography } from '@material-ui/core'
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
+
+  // const checkIfParkIsSaved = (checkPark) => {
+  //     return savedParks.find(park => park.id === checkPark.id)
+  // }
 
   // if (trailheads.errors) {
   //   return (
@@ -23,39 +27,58 @@ export const Trailheads = ({ isLoading }) => {
 
   return (
     <div>
-      <center>
-        <a variant="text" href='/' target="_parent">
-          <Button
-            component={'button'}
-            color='inherit'
-            variant="text"
-            style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }}
-          >
-            Go back to homepage!
-          </Button>
-        </a>
+      <a variant="text" href='/' target="_parent">
+        <Button
+          component={'button'}
+          color='inherit'
+          variant="text"
+          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }}
+        >
+          Go back to homepage!
+        </Button>
+      </a>
 
-        <Stack direction="row" >
+      <Grid container
+        id="results"
+        direction="column"
+        justifyContent="center"
+        alignItems="center" >
+        <Grid container item
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          style={{ position: 'relative' }}
+        >
+          <Typography
+            style={{ fontSize: 90, color: 'white', fontFamily: 'aesthetica', letterSpacing: 0, fontWeight: 200 }}
+            variant="h3"
+            component="h2"
+            className="center"
+            gutterBottom>
+            <span className="subtitle"></span>
+            All Trailheads
+          </Typography>
+        </Grid>
 
-          <div className='trailheads-scrollbar' >
-              <Grid>
-                {
-                  currentUser && currentUser.id ?
-                    <div>
-                      {trailheads?.map((th) => <TrailheadCard
-                        key={th.id}
-                        th={th}
-                        isLoading={isLoading}
-                      />
-                      )}
-                    </div>
-                    : null}
-            </Grid>
-          </div>
-        </Stack>
+        <Grid container item
+          direction="row"
+          justifyContent="space-around"
+          alignItems="stretch"
+          spacing={6}
+        >
+          {currentUser && currentUser.id ?
+            <>
+              {trailheads?.map((th) => <TrailheadCard
+                key={th.id}
+                th={th}
+                isLoading={isLoading}
+              />
+              )}
+            </>
+            : null}
+        </Grid>
 
-      </center>
+      </Grid>
     </div>
   )
-  // }
-};
+}

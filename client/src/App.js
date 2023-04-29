@@ -57,7 +57,7 @@ export function App() {
         <Route path="/termsandconditions" element={<TermsPolicy />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      <Copyright />
+      {/* <Copyright /> */}
     </LocalizationProvider>
   );
 }
