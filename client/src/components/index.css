@@ -15,7 +15,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Google Sans, Roboto, arial, sans-serif';
+  /* font-family: 'Google Sans, Roboto, arial, sans-serif'; */
 }
 
 .container {
@@ -460,14 +460,14 @@ body {
   --shadow-1: hsla(236, 50%, 50%, .3);
   --shadow-2: hsla(236, 50%, 50%, .4);
 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', sans-serif; */
   color: var(--light);
   background: var(--global-background);
 }
 
 a,
 a:link {
-  font-family: inherit;
+  /* font-family: inherit; */
   text-decoration: none;
 }
 
@@ -579,7 +579,7 @@ when users will click/enter button(link) browser will add a #id in a url and whe
   color: inherit;
   background: transparent;
   font-size: 1.4rem;
-  font-family: inherit;
+  /* font-family: inherit; */
   letter-spacing: .2rem;
 
   transition: .2s;
@@ -601,6 +601,7 @@ when users will click/enter button(link) browser will add a #id in a url and whe
 /* link-... */
 .link-1 {
   font-size: 1.8rem;
+
 
   color: var(--light);
   background: var(--background);
@@ -692,7 +693,7 @@ when users will click/enter button(link) browser will add a #id in a url and whe
 
 .subtitle  {
   font-size: 45;
-  font-family: "Google Sans, Roboto, arial, sans-serif";
+  /* font-family: "Google Sans, Roboto, arial, sans-serif"; */
   color: white;
   padding-left: 60;
   letter-spacing: 3px;
@@ -787,4 +788,21 @@ div.absolute {
 #terms-policy {
   padding: 19vh;
   border: 3px solid #ccd0c7;
+}
+
+
+.title-category{
+  position: relative;
+}
+
+.title-category::before {
+  content: 'Terms and Conditions of Use';
+  font-family: "Astralaga Light";
+  /* font-family: "Leky Calgria"; */
+  font-size: 100;
+  position: absolute;
+  top: 0;
+  left: -25%;
+  color: #f8d7b1;
+  z-index: -1;
 }

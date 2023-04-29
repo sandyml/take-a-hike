@@ -76,6 +76,19 @@ export const styles = (theme) => ({
  },
 });
 
+export const mountain_image8 = {
+  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '80% 40%',
+  backgroundSize: 'cover',
+  position: 'relative',
+  // borderRadius: "4px",
+  marginBottom: 20,
+  // marginRight: 40,
+  // marginLeft: 42,
+  height: "60vh",
+ }
+
 export const mountain_image = {
  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
  backgroundRepeat: 'no-repeat',

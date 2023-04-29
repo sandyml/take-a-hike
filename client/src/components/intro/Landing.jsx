@@ -1,6 +1,6 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
-import { mountain_image } from '../styles/LandingCSS';
+import { mountain_image8 } from '../styles/LandingCSS';
 
 import { Grid, Typography, withStyles } from '@material-ui/core';
 
@@ -51,7 +51,7 @@ const styles = (theme) => ({
   },
   subtitle: {
    fontSize: 45,
-   fontFamily: "Google Sans, Roboto, arial, sans-serif",
+  //  fontFamily: "Google Sans, Roboto, arial, sans-serif",
    color: "white",
    paddingLeft: 60,
    letterSpacing: "3px",
@@ -68,7 +68,7 @@ class Landing extends React.Component {
    <div>
     <Parallax
     //  blur={3}
-     style={mountain_image}
+     style={mountain_image8}
      bgImage="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80"
      strength={680}
     >
@@ -79,7 +79,7 @@ class Landing extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: "Google Sans, Roboto, arial, sans-serif"}}
+          id='landing'
          >
           Take A Hike
          </Typography>

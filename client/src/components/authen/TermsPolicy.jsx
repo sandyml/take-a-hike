@@ -1,14 +1,15 @@
 import { Typography } from '@mui/material';
 import React from 'react'
 import { Link } from 'react-router-dom';
+// import '.././index.css';
 
 export const TermsPolicy = () => {
    return (
       <div style={{ margin: 15, marginLeft: 390, marginRight: 15, width: 1030, display: 'flex' }} id='terms-policy'><br /><center>
-         <Typography variant="h3">
+         <Typography variant="h2" style={{ fontFamily: 'Astralaga Light'}}>
             Terms and Conditions of Use<br />
          </Typography>
-         <Typography variant="h5">
+         <Typography variant="h5" >
             All Pretend<br />
          </Typography>
          <Typography variant="body1">
