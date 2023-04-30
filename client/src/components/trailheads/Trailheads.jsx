@@ -32,17 +32,20 @@ export const Trailheads = ({ isLoading }) => {
           component={'button'}
           color='inherit'
           variant="text"
-          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }}
+          style={{ 
+            fontFamily: 'Google Sans, Roboto, arial, sans-serif', 
+            color: "white" 
+          }}
         >
           Go back to homepage!
         </Button>
       </a>
 
       <Grid container
-        id="results"
         direction="column"
         justifyContent="center"
-        alignItems="center" >
+        alignItems="center"
+      >
         <Grid container item
           direction="column"
           justifyContent="center"
@@ -50,7 +53,13 @@ export const Trailheads = ({ isLoading }) => {
           style={{ position: 'relative' }}
         >
           <Typography
-            style={{ fontSize: 90, color: 'white', fontFamily: 'aesthetica', letterSpacing: 0, fontWeight: 200 }}
+            style={{
+              fontSize: 90,
+              color: 'white',
+              fontFamily: 'aesthetica',
+              letterSpacing: 0,
+              fontWeight: 200
+            }}
             variant="h3"
             component="h2"
             className="center"

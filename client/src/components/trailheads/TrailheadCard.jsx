@@ -8,6 +8,8 @@ import { addVisit } from '../actions/visits';
 import { Box, Button, Card, CardMedia, Grid, Typography } from '@mui/material';
 import { FmdGoodRounded, Paid } from '@mui/icons-material';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+import LoadingButton from '@mui/lab/LoadingButton';
+import SaveIcon from '@mui/icons-material/Save';
 
 export const TrailheadCard = ({ th, isLoading }) => {
   const [loading, setLoading] = useState(false);
@@ -56,17 +58,34 @@ export const TrailheadCard = ({ th, isLoading }) => {
 
   return (
     <Box>
-      <Grid sx={{ flexGrow: 1 }} col={3} style={{ justifyContent: 'center' }}>
+      <Grid
+        sx={{ flexGrow: 1 }}
+        col={3}
+        style={{
+          justifyContent: 'center'
+        }}
+      >
         {th.hikes.map((hike) =>
           <Grid key={hike.id} >
             <Grid
-              sx={{ paddingLeft: 1, paddingBottom: 1 }}
+              sx={{
+                paddingRight: 2,
+                paddingLeft: 2,
+                paddingTop: 2,
+                paddingBottom: 5
+              }}
               item xs={1} md={12} sm={6}
               container
               justifyContent="center"
-              spacing={-0.01}
-              style={{ display: 'flex', justifyContent: 'center' }}>
-              <Card sx={{ maxWidth: 593, justifyContent: 'center' }}>
+            // spacing={-0.01}
+            // style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <Card
+                sx={{
+                  maxWidth: 593,
+                  justifyContent: 'center'
+                }}
+              >
                 <div align='right'>
                   <Button
                     sx={{
@@ -78,10 +97,20 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     disabled={!!isInVisited}
                     onClick={handleAddToVisit}
                   >
-                    {loading ? "Adding" : "Add To Visit"}
+                    {/* {loading ? "Adding" : "Add To Visit"} */}
+                    {loading ?
+                      <LoadingButton
+                        loading
+                        loadingPosition="start"
+                        startIcon={<SaveIcon />}
+                        variant="text"
+                      >
+                        Save
+                      </LoadingButton>
+                      : "Add To Visit"}
                   </Button>
                 </div><br />
-                
+
                 <CardMedia
                   sx={{ width: 593, height: 300 }}
                   image={hike.image_url}
@@ -105,7 +134,7 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   }}
                 >{th.name}
                 </Typography>
-{/* 
+                {/* 
                 <CardMedia
                   sx={{ width: 593, height: 300 }}
                   image={hike.image_url}
@@ -116,7 +145,12 @@ export const TrailheadCard = ({ th, isLoading }) => {
                   variant='body1'
                   style={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <FmdGoodRounded style={{ color: 'red', fontSize: 15 }} />
+                  <FmdGoodRounded
+                    style={{
+                      color: 'red',
+                      fontSize: 15
+                    }}
+                  />
                   {th.location}
                 </Typography>
 
@@ -160,16 +194,32 @@ export const TrailheadCard = ({ th, isLoading }) => {
                     elevation gain:&nbsp;{thh.elevation_gain}&emsp; distance:&nbsp;{thh.distance}
                   </Typography>
                 )}
-                <Typography style={{ display: 'flex', justifyContent: 'center' }} component='div'>
+                <Typography
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                  component='div'
+                >
 
                   difficulty:&nbsp;{difficulties.join(', ')}
                 </Typography><br />
                 <div style={{ width: '100%' }}>
-                  <Typography align='center' style={{ display: 'flex' }} component='div'>
+                  <Typography
+                    align='center'
+                    style={{
+                      display: 'flex'
+                    }}
+                    component='div'
+                  >
                     {amenities}
                   </Typography>
                 </div>
-                <Typography variant='body2' align='center' component={'div'}>
+                <Typography
+                  variant='body2'
+                  align='center'
+                  component={'div'}
+                >
                   <Paid />{th.fees}
                 </Typography>
               </Card>

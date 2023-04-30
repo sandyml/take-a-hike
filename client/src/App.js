@@ -11,13 +11,13 @@ import { Logout } from './components/authen/Logout';
 import { TermsPolicy } from './components/authen/TermsPolicy';
 
 import { EditForm } from './components/pages/EditForm';
-import { VisitList } from './components/pages/VisitList';
+import { HikersVisitList } from './components/pages/HikersVisitList';
 
 import NotFound from './components/navigation/NotFound';
 
 import { Trailheads } from './components/trailheads/Trailheads';
 import { Copyright } from './components/copyright/Copyright';
-import { MyVisits } from './components/visits/MyVisits';
+import { MyVisits } from './components/pages/MyVisits';
 
 import { loadCurrentUser } from './components/actions/users';
 import { loadTrailheads } from './components/actions/trailheads';
@@ -49,7 +49,7 @@ export function App() {
         <Route path="/signup" element={<Signup isLoading={isLoading} />} />
         <Route path="/logout" element={<Logout isLoading={isLoading} />} />
         <Route path="/visits/:id/edit" element={<EditForm />} />
-        <Route path="/visits" element={<VisitList isLoading={isLoading} />} />
+        <Route path="/visits" element={<HikersVisitList isLoading={isLoading} />} />
         <Route path="/my-visits" element={<MyVisits />} />
         <Route path="/all-trailheads" element={<DialogMap />} />
         <Route path="/trailheads" element={<Trailheads isLoading={isLoading} />} />

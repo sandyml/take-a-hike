@@ -3,6 +3,7 @@ import { Parallax } from 'react-parallax';
 import { mountain_image8 } from '../styles/LandingCSS';
 
 import { Grid, Typography, withStyles } from '@material-ui/core';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 const styles = (theme) => ({
   mainFeaturedPost: {
@@ -46,7 +47,8 @@ const styles = (theme) => ({
    [theme.breakpoints.up('md')]: {
     padding: theme.spacing(6),
     paddingRight: 40,
-    paddingTop: 250
+    paddingTop: 250,
+    zIndex: 'tooltip'
    },
   },
   subtitle: {
@@ -75,13 +77,16 @@ class Landing extends React.Component {
      <div className={classes.overlay}>
       <Grid container>
        <Grid>
-        <div className={classes.main}>
+        {/* <div className={classes.overlay}> */}
          <Typography
-          className={classes.title}
+          // className={classes.overlay}
           variant="h4"
           id='landing'
+          style={{ zIndex: 10, fontFamily: 'Playfair Display, serif', fontWeight: 80, fontSize: 100 }}
          >
-          Take A Hike
+          Take A Hike 
+          Take A Hike 
+          Take A Hike 
          </Typography>
          <br />
         </div>

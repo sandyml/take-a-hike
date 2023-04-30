@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
 
-import { Button, Typography } from '@mui/material';
+import { Button, CssBaseline, Typography } from '@mui/material';
 
-export const VisitList = ({ isLoading }) => {
+export const HikersVisitList = ({ isLoading }) => {
 
   // const { loggedIn, currentUser } = useSelector((state) => state.usersReducer);
   const visits = useSelector((state) => state.visitsReducer);
@@ -31,9 +31,9 @@ export const VisitList = ({ isLoading }) => {
   return (
     <div id='visitlist-div'>
       <center>
-        
+
         <Button
-          style={{ display:'flex', justifyContent:'center' }}
+          style={{ display: 'flex' }}
           align='left'
           variant='body1'
           component={'div'}
@@ -41,14 +41,32 @@ export const VisitList = ({ isLoading }) => {
           onClick={() => navigate('/')}>
           Go back to homepage
         </Button>
+        <CssBaseline />
+
+        <Typography
+        style={{
+          marginLeft: 8,
+          display: 'flex',
+          fontSize: 90,
+          color: 'white',
+          fontFamily: 'aesthetica',
+          letterSpacing: 0,
+          fontWeight: 260,
+        }}
+        align='left'
+        component={"h2"}
+        gutterBottom>
+        <span className="subtitle"></span>
+        Places Hikers has Visited
+      </Typography>
 
         <div className='visit-list-scrollbar' >
-        <Typography component={'div'}>
-        {visitCards}
-        </Typography>
+          <Typography component={'div'}>
+            {visitCards}
+          </Typography>
         </div>
 
       </center>
-  </div>
+    </div>
   );
 };
