@@ -5,21 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
 import '.././index.css';
 
-import { Button, CssBaseline, Grid, Typography } from '@mui/material';
-import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Button, Card, CssBaseline, Grid, Toolbar, Typography } from '@mui/material';
+// import { makeStyles } from "@material-ui/core/styles";
+import { NavLink } from 'react-router-dom';
 
-const useStyles = makeStyles({
-  gridContainer: {
-    paddingLeft: "20px",
-    paddingRight: "40px"
-  }
-});
+// const useStyles = makeStyles({
+//   gridContainer: {
+//     paddingLeft: "20px",
+//     paddingRight: "40px"
+//   }
+// });
 
 export const MyVisits = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
-  const { visits, currentUser } = useSelector((state) => state.usersReducer);
-  // const { currentUser } = useSelector((state) => state.usersReducer);
+  const { currentUser, visits } = useSelector((state) => state.usersReducer);
 
   const navigate = useNavigate();
 
@@ -28,24 +28,37 @@ export const MyVisits = () => {
   return (
     <div id='myvisits-div'>
       <center>
+      <AppBar position="sticky" id='appbar'>
+          <Toolbar>
+            <Button 
+            style={{ marginLeft: -9 }}
+            top={8}
+            onClick={() => navigate('/')} 
+            color="inherit">
+              Go back to homepage
+              </Button>
+            <Typography
+            style={{
+              marginLeft: 350,
+              align: 'center',
+              fontSize: 90,
+              fontFamily: 'aesthetica',
+              letterSpacing: 0,
+              fontWeight: 260,
+            }}
+             component="h2"
+             variant="h6"
+             >
+              Places I've Visited
+              </Typography>
+          </Toolbar>
+        </AppBar>
         <Grid container
           direction="row"
         >
           <Grid container item
             direction="row" 
           >
-            <Button
-              style={{ 
-                color: 'white',
-              position: 'fixed',
-             }}
-              align='left'
-              variant='body1'
-              component={'div'}
-              id='button-myvisits'
-              onClick={() => navigate('/')}>
-              Go back to homepage
-            </Button>
             <CssBaseline />
             {
               currentUser && currentUser.id ?
@@ -57,21 +70,6 @@ export const MyVisits = () => {
                     alignItems="center"
                     style={{ position: 'relative' }}
                   >
-                    <Typography
-                      style={{
-                        fontSize: 90,
-                        color: 'white',
-                        position: 'fixed',
-                        fontFamily: 'aesthetica',
-                        letterSpacing: 0,
-                        fontWeight: 260,
-                        marginTop: 60,
-                      }}
-                      variant="h3"
-                      component="h2"
-                      gutterBottom>
-                      Places I've Visited
-                    </Typography><br/>
                   </Grid><br/>
                   <Grid
                     sx={{
@@ -98,6 +96,22 @@ export const MyVisits = () => {
           </Grid>
         </Grid>
       </center>
+      <Copyright/>
     </div>
   )
 };
+
+export function Copyright(props) {
+  return (
+    <Card id='appbar'>
+      <Typography variant="body2" style={{ color: 'white' }} align="center" {...props}>
+        {'Copyright © Sandra Yun '}
+        <NavLink color="inherit" href="https://github.com/sandyml/take-a-hike">
+          Github
+        </NavLink>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    </Card>
+  );
+}

@@ -389,6 +389,10 @@ div.visit-list-bgc, #myvisits-div, #visitlist-div, .body-login {
   background-color: #131720;
 }
 
+#appbar { 
+  background-color: #131720;
+  
+}
 div.my-visit-list-scrollbar {
   /* width: 230vh; */
   width: 230vh;

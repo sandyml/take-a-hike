@@ -2,10 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { TrailheadCard } from './TrailheadCard';
 import { Button, Grid, Typography } from '@material-ui/core'
+import { AppBar, Toolbar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
+
+  const navigate = useNavigate();
 
   // const checkIfParkIsSaved = (checkPark) => {
   //     return savedParks.find(park => park.id === checkPark.id)
@@ -27,20 +31,33 @@ export const Trailheads = ({ isLoading }) => {
 
   return (
     <div>
-      <a variant="text" href='/' target="_parent">
-        <Button
-          component={'button'}
-          color='inherit'
-          variant="text"
-          style={{ 
-            fontFamily: 'Google Sans, Roboto, arial, sans-serif', 
-            color: "white" 
-          }}
-        >
-          Go back to homepage!
-        </Button>
-      </a>
-
+      <AppBar position="sticky" id='appbar'>
+        <Toolbar>
+        <a variant="text" href='/' target="_parent">
+          <Button
+            style={{ color: 'white' }}
+            top={8}
+            onClick={() => navigate('/')}
+            color="inherit">
+            Go back to homepage
+          </Button>
+          </a>
+          <Typography
+            style={{
+              color: 'white',
+              marginLeft: 390,
+              align: 'center',
+              fontSize: 90,
+              fontFamily: 'aesthetica',
+              letterSpacing: 0,
+              fontWeight: 260,
+            }}
+            component="h2"
+            variant="h6"
+          >All Trailheads
+          </Typography>
+        </Toolbar>
+      </AppBar><br/>
       <Grid container
         direction="column"
         justifyContent="center"
@@ -52,7 +69,7 @@ export const Trailheads = ({ isLoading }) => {
           alignItems="center"
           style={{ position: 'relative' }}
         >
-          <Typography
+          {/* <Typography
             style={{
               fontSize: 90,
               color: 'white',
@@ -66,7 +83,7 @@ export const Trailheads = ({ isLoading }) => {
             gutterBottom>
             <span className="subtitle"></span>
             All Trailheads
-          </Typography>
+          </Typography> */}
         </Grid>
 
         <Grid container item

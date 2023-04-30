@@ -81,7 +81,6 @@ export default function HomepageIntroCards() {
 
  return (
   <Box align='center' sx={{ flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-  {/* <Box align='center' sx={{ marginLeft: 5.5, display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}> */}
    {images.map((image) => (
     <ImageButton
      component={'div'}

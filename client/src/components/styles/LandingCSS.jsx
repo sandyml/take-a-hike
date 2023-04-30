@@ -82,12 +82,19 @@ export const mountain_image8 = {
   backgroundPosition: '80% 40%',
   backgroundSize: 'cover',
   position: 'relative',
-  // borderRadius: "4px",
   marginBottom: 20,
-  // marginRight: 40,
-  // marginLeft: 42,
   height: "60vh",
- }
+}
+
+export const mountain_image9 = {
+  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '80% 40%',
+  backgroundSize: 'cover',
+  position: 'relative',
+  marginBottom: 20,
+  height: "50vh",
+}
 
 export const mountain_image = {
  backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
@@ -134,6 +141,16 @@ export const mountain_image4 = {
   height: "50vh",
  }
 
+export const mountain_image10 = {
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '80% 40%',
+  backgroundColor: '#DBCFC3',
+  backgroundSize: 'cover',
+  position: 'relative',
+  marginBottom: 20,
+  height: "70vh",
+ }
+
 export const mountain_image5 = {
   backgroundImage: 'url(https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80)',
   backgroundRepeat: 'no-repeat',
@@ -161,30 +178,6 @@ export const sierra_image = {
  height: "95vh",
 }
 
-export const walking_gif = {
- backgroundImage: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2I5NTBjOTcxMmQxNDQwMjVmMTg1MDI3ZTBkZTQ3MTNiYTUzZTRmZCZjdD1z/kd8ynEx9HxlW5gVqg8/giphy.gif",
- backgroundRepeat: 'no-repeat',
- backgroundPosition: '60% 40%',
- backgroundSize: 'cover',
- position: 'relative',
- borderRadius: "4px",
- marginBottom: 20,
- marginRight: 40,
- marginLeft: 42,
- height: "2vh",
-}
-
-export const cartoon_bear_gif = {
- backgroundImage: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDU1MGMyYjJlYzU5MDA4MjQwNTI3OWMzYmEwZmQ3M2M2NDZiMjdhMCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PXM/y3dZQEKkbOwJPSSApQ/giphy.gif",
- backgroundSize: 'small',
- position: 'relative',
- borderRadius: "4px",
- marginBottom: 20,
- marginRight: 40,
- marginLeft: 42,
- height: "2vh",
-}
-
 export const loading_gif = {
  backgroundImage: "https://media0.giphy.com/media/UrEfC5EKRp4eQZdLSS/giphy.gif?cid=6c09b9529c716e9af32d817070c701b08bf924ca8b329f02&rid=giphy.gif&ct=s",
  backgroundSize: 'small',
@@ -196,7 +189,6 @@ export const loading_gif = {
  marginLeft: 42,
  // height: "2vh",
 }
-
 
 export const new_styles = theme => ({
  buttons: {

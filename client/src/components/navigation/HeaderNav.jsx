@@ -6,9 +6,10 @@ import { Box, IconButton, Toolbar, Typography } from '@mui/material';
 import ForestIcon from '@mui/icons-material/Forest';
 import MenuIcon from '@mui/icons-material/Menu';
 import Tooltip from '@mui/material/Tooltip';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import GrassIcon from '@mui/icons-material/Grass';
 
 export const HeaderNav = () => {
  const [anchorElNav, setAnchorElNav] = useState(null);
@@ -43,7 +44,7 @@ export const HeaderNav = () => {
        textDecoration: 'none',
       }}
      >
-      <ForestIcon/>
+      <GrassIcon style={{ fontSize: 70 }}/>
      </Typography>
      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
       <IconButton
@@ -98,6 +99,7 @@ export const HeaderNav = () => {
       }}
      >
       <ForestIcon /> TakeAHike
+      <GrassIcon /> TakeAHike
      </Typography>
      {currentUser && currentUser.id ? (
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -108,9 +110,9 @@ export const HeaderNav = () => {
       </Box>
      ) : (null)}
      {currentUser && currentUser.id ? (
-      <Typography style={{ fontFamily: "Aurora"}} variant='h5' component={'div'}>
+      <Typography style={{ fontFamily: "Aurora"}} component={'div'}>
        Welcome, <Typography style={{ fontFamily: "aesthetica", fontSize: 40 }} component={'div'}>
-       &emsp;{currentUser.username}! &emsp;&emsp;
+       &emsp;{currentUser.username}! &emsp;
        </Typography>
       </Typography>)
       : (null)}
@@ -119,7 +121,8 @@ export const HeaderNav = () => {
       {currentUser && currentUser.id ? (
        <Tooltip title="Open settings">
         <IconButton onClick={(e) => setAnchorElUser(e.currentTarget)} sx={{ p: 0 }}>
-         <Avatar alt="Username" src="" />
+         {/* <Avatar alt="Username" src="" /> */}
+        <AccountCircleIcon style={{ color: 'black', fontSize: 40 }} />
         </IconButton>
        </Tooltip>
       ) : null}

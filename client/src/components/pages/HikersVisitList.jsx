@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
 
-import { Button, CssBaseline, Typography } from '@mui/material';
+import { AppBar, Button, CssBaseline, Toolbar, Typography } from '@mui/material';
+import { Copyright } from './MyVisits';
 
 export const HikersVisitList = ({ isLoading }) => {
 
@@ -31,41 +32,36 @@ export const HikersVisitList = ({ isLoading }) => {
   return (
     <div id='visitlist-div'>
       <center>
-
-        <Button
-          style={{ display: 'flex' }}
-          align='left'
-          variant='body1'
-          component={'div'}
-          id='button-visitlist'
-          onClick={() => navigate('/')}>
-          Go back to homepage
-        </Button>
+      <AppBar position="sticky" id='appbar'>
+          <Toolbar>
+            <Button 
+            top={8}
+            onClick={() => navigate('/')} 
+            color="inherit">
+              Go back to homepage
+              </Button>
+            <Typography
+            style={{
+              marginLeft: 280,
+              align: 'center',
+              fontSize: 90,
+              fontFamily: 'aesthetica',
+              letterSpacing: 0,
+              fontWeight: 260,
+            }}
+             component="h2"
+             variant="h6"
+             >
+              Places Hikers has Visited
+              </Typography>
+          </Toolbar>
+        </AppBar>
         <CssBaseline />
-
-        <Typography
-        style={{
-          marginLeft: 8,
-          display: 'flex',
-          fontSize: 90,
-          color: 'white',
-          fontFamily: 'aesthetica',
-          letterSpacing: 0,
-          fontWeight: 260,
-        }}
-        align='left'
-        component={"h2"}
-        gutterBottom>
-        Places Hikers has Visited
-      </Typography>
-
-        <div className='visit-list-scrollbar' >
           <Typography component={'div'}>
             {visitCards}
           </Typography>
-        </div>
-
       </center>
+      <Copyright />
     </div>
   );
 };

@@ -16,7 +16,6 @@ import { HikersVisitList } from './components/pages/HikersVisitList';
 import NotFound from './components/navigation/NotFound';
 
 import { Trailheads } from './components/trailheads/Trailheads';
-import { Copyright } from './components/copyright/Copyright';
 import { MyVisits } from './components/pages/MyVisits';
 
 import { loadCurrentUser } from './components/actions/users';

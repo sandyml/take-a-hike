@@ -1,5 +1,5 @@
 import React from 'react';
-import { mountain_image4, mountain_image8, styles } from '../styles/LandingCSS';
+import { mountain_image8, styles } from '../styles/LandingCSS';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
