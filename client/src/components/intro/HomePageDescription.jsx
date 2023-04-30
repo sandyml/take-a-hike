@@ -20,15 +20,17 @@ class HomePageDescription extends React.Component {
           strength={680}
         >
           <div className={classes.overlay}>
-            <Grid container>
-              <Grid>
+            <Grid component={'div'} container>
+              <Grid component={'div'}>
                 <div className={classes.main}>
                   <Typography
+                    component={'div'}
                     className={classes.title3}
                     style={{ fontFamily: 'Aurora', fontWeight: 100 }}
                   >
                     Mountains aren’t just funny. They’re
                     <Typography
+                      component={'div'}
                       style={{ fontFamily: 'aesthetica', fontSize: 150 }}
                     >
                       hill-areas.

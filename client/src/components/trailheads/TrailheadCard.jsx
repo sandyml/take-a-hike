@@ -77,8 +77,6 @@ export const TrailheadCard = ({ th, isLoading }) => {
               item xs={1} md={12} sm={6}
               container
               justifyContent="center"
-            // spacing={-0.01}
-            // style={{ display: 'flex', justifyContent: 'center' }}
             >
               <Card
                 sx={{
@@ -175,12 +173,12 @@ export const TrailheadCard = ({ th, isLoading }) => {
                         {showMap ?
                           <div>
                             <iframe
+                              allowFullScreen
                               src={th.direction}
                               width="600" height="450"
                               style={{ border: "0" }}
-                              allowfullscreen=""
                               loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade"
+                              referrerPolicy="no-referrer-when-downgrade"
                               title="hike google maps"
                             >
                               Directions/GoogleMaps

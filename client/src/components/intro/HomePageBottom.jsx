@@ -90,7 +90,7 @@ class HomePageBottom extends React.Component {
           fontFamily:
            'Aurora ',
           fontWeight: 0,
-          fontSize: 90,
+          fontSize: 70,
           right: '100%'
          }}
         >
@@ -106,7 +106,7 @@ class HomePageBottom extends React.Component {
           fontFamily:
            'Playfair Display, serif',
           fontWeight: 0,
-          fontSize: 40,
+          fontSize: 30,
           left: '100%',
          }}
         >
@@ -130,7 +130,7 @@ class HomePageBottom extends React.Component {
           fontFamily:
            'Aurora ',
           fontWeight: 0,
-          fontSize: 90,
+          fontSize: 70,
           right: '100%'
          }}
         >

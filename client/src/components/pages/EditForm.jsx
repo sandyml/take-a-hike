@@ -59,7 +59,7 @@ export const EditForm = () => {
                   <Avatar sx={{ m: 1, bgcolor: 'beige.main' }}>
                     <EditCalendarIcon />
                   </Avatar>
-                  <Typography component="h1" variant="h5">
+                  <Typography component={"h1"} variant="h5">
                     Change Visit Date
                   </Typography>
                   <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
@@ -72,9 +72,9 @@ export const EditForm = () => {
                       <Grid>
                       </Grid>
                       <Grid item xs={12}>
-                        <Typography style={{ fontSize: 20 }}>
+                        <Typography component={"h2"} style={{ fontSize: 20 }}>
                           {vis.trailhead.name}
-                          <h2>{vis.trailhead.trailhead_id}</h2>
+                          {vis.trailhead.trailhead_id}
                         </Typography>
                         <Typography style={{ fontSize: 12 }}>
                           initial date: &nbsp; {vis.visited_date}
@@ -94,11 +94,11 @@ export const EditForm = () => {
                             onChange={(e) => setVisitedDate(e.target.value)}
                             autoFocus
                           /> */}
+                          <br/>
                           <DatePicker
                             style={{ color: 'green' }}
                             label="Select date"
                             value={visited_date}
-                            // onChange={(e) => setVisitedDate(e.target.value)}
                             onChange={(newValue) => setVisitedDate(newValue)}
                             textField={(props) =>
                               <TextField {...props} />
@@ -119,7 +119,6 @@ export const EditForm = () => {
                       value="Update Visitation"
                     >
                       {loading ? "Loading..." : "Submit"}
-                      Submit
                     </Button>
                     <Button
                       type="submit"

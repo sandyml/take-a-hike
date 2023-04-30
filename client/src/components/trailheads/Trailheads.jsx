@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export const Trailheads = ({ isLoading }) => {
   const trailheads = useSelector((state) => state.trailheadsReducer);
   const { currentUser } = useSelector((state) => state.usersReducer);
-
+  
   const navigate = useNavigate();
 
   // const checkIfParkIsSaved = (checkPark) => {

@@ -80,7 +80,7 @@ class LogoutLanding extends React.Component {
          <Typography
           className={classes.title}
           variant="h4"
-          style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif' }}
+          style={{ fontFamily: 'Playfair Display, serif' }}
          >
           You are now logged out! Thank you for visiting.
          </Typography>
