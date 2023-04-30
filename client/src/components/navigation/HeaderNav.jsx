@@ -43,7 +43,7 @@ export const HeaderNav = () => {
        textDecoration: 'none',
       }}
      >
-      <ForestIcon /> TakeAHike
+      <ForestIcon/>
      </Typography>
      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
       <IconButton
@@ -108,8 +108,10 @@ export const HeaderNav = () => {
       </Box>
      ) : (null)}
      {currentUser && currentUser.id ? (
-      <Typography style={{ fontFamily: "Google Sans, Roboto, arial, sans-serif"}} variant='h5' component={'div'}>
-       Welcome, {currentUser.username}! &emsp;&emsp;
+      <Typography style={{ fontFamily: "Aurora"}} variant='h5' component={'div'}>
+       Welcome, <Typography style={{ fontFamily: "aesthetica", fontSize: 40 }} component={'div'}>
+       &emsp;{currentUser.username}! &emsp;&emsp;
+       </Typography>
       </Typography>)
       : (null)}
 

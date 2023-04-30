@@ -6,25 +6,25 @@ const images = [
  {
   url: "https://cdn.aarp.net/content/dam/aarp/travel/destinations/2020/09/1140-yosemite-hero.imgcache.rev.web.1400.804.jpg",
   title: 'My Visits',
-  width: '23.9%',
+  width: '24%',
   link: "/my-visits",
  },
  {
   url: "https://wallpapercave.com/wp/wp4291553.jpg",
   title: 'All Trailheads',
-  width: '23.9%',
+  width: '24%',
   link: "/trailheads",
  },
  {
   url: "https://wallpapercave.com/wp/wp4291552.jpg",
   title: 'Trailheads With Maps',
-  width: '23.9%',
+  width: '24%',
   link: "/all-trailheads",
  },
  {
   url: "https://www.myutahparks.com/wp-content/uploads/2021/02/Zion-Watchman-swimmers_Tam19RichMartello_1600.jpg",
   title: 'Hikers Visits',
-  width: '23.9%',
+  width: '24%',
   link: "/visits",
  },
 ];
@@ -80,7 +80,8 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 export default function HomepageIntroCards() {
 
  return (
-  <Box align='center' sx={{ marginLeft: 5.5, display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  <Box align='center' sx={{ flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+  {/* <Box align='center' sx={{ marginLeft: 5.5, display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}> */}
    {images.map((image) => (
     <ImageButton
      component={'div'}
@@ -105,7 +106,9 @@ export default function HomepageIntroCards() {
        }}
       >
        <NavLink
-        style={{ fontFamily: 'Google Sans, Roboto, arial, sans-serif', color: "white" }}
+        style={{ 
+         fontFamily: 'Google Sans, Roboto, arial, sans-serif', 
+         color: "white" }}
         to={image.link} >
         {image.title}
        </NavLink>

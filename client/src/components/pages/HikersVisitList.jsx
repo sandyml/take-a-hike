@@ -56,7 +56,6 @@ export const HikersVisitList = ({ isLoading }) => {
         align='left'
         component={"h2"}
         gutterBottom>
-        <span className="subtitle"></span>
         Places Hikers has Visited
       </Typography>
 

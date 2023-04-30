@@ -99,8 +99,19 @@ export const Login = ({ isLoading }) => {
               <LockOutlinedIcon />
             </Avatar>
 
-            <Typography component="h1" variant="h5">
-              Please Login
+            <Typography
+              style={{
+                fontSize: 47.6,
+                color: 'white',
+                fontFamily: 'Playfair Display, serif',
+                letterSpacing: 0,
+                fontWeight: 200
+              }}
+              variant="h3"
+              component="h2"
+              className="center"
+              gutterBottom>
+             Please Login
             </Typography>
 
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -168,7 +179,14 @@ export const Login = ({ isLoading }) => {
               {errors.length > 0 && (
                 <ul style={{ color: "red" }}>
                   {errors.map((error) => (
-                    <Typography component={'li'} fontSize={13} variant='body2' key={error}>{error}</Typography>
+                    <Typography 
+                    id='errors'
+                    component={'li'} 
+                    fontSize={13} 
+                    variant='body2' 
+                    key={error}>
+                      {error}
+                      </Typography>
                   ))}
                 </ul>
               )}
@@ -177,7 +195,7 @@ export const Login = ({ isLoading }) => {
                 <Grid item>
                   <Link href="/signup" variant="h6" >
                     <Typography style={{ color: "white" }} component={'div'}>
-                    Don't have an account? Signup
+                      Don't have an account? Signup
                     </Typography>
                   </Link>
                 </Grid>

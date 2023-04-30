@@ -94,9 +94,24 @@ export const Signup = ({ isLoading }) => {
                 <LockOutlinedIcon />
               </Avatar>
 
-              <Typography component="h1" variant="h5">
+              {/* <Typography component="h1" variant="h5">
                 Please Create An Account
-              </Typography>
+              </Typography> */}
+
+            <Typography
+              style={{
+                fontSize: 47.6,
+                color: 'white',
+                fontFamily: 'Playfair Display, serif',
+                letterSpacing: 0,
+                fontWeight: 200
+              }}
+              variant="h3"
+              component="h2"
+              className="center"
+              gutterBottom>
+            Create An Account
+            </Typography>
 
               <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
@@ -185,7 +200,14 @@ export const Signup = ({ isLoading }) => {
                 {errors.length > 0 && (
                   <ul style={{ color: "red" }}>
                     {errors.map((error, index) => (
-                      <Typography component={'li'} fontSize={13} variant='body2' key={index}>{error}</Typography>
+                      <Typography 
+                      id='errors'
+                      component={'li'} 
+                      fontSize={13} 
+                      variant='body2' 
+                      key={index}>
+                        {error}
+                        </Typography>
                     ))}
                   </ul>
                 )}

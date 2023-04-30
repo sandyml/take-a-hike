@@ -30,16 +30,15 @@ export const MyVisits = () => {
       <center>
         <Grid container
           direction="row"
-        // justifyContent="center"
-        // alignItems="center"
         >
           <Grid container item
-            direction="row"
-          // justifyContent="center"
-          // alignItems="center" 
+            direction="row" 
           >
             <Button
-              style={{ color: 'white' }}
+              style={{ 
+                color: 'white',
+              position: 'fixed',
+             }}
               align='left'
               variant='body1'
               component={'div'}
@@ -52,9 +51,6 @@ export const MyVisits = () => {
               currentUser && currentUser.id ?
                 // ( isLoading || currentUser && currentUser.id ) ? 
                 <>
-                  {/* <Grid container
-                    spacing={4}
-                    className={classes.gridContainer}> */}
                   <Grid container item
                     direction="column"
                     justifyContent="center"
@@ -65,19 +61,18 @@ export const MyVisits = () => {
                       style={{
                         fontSize: 90,
                         color: 'white',
+                        position: 'fixed',
                         fontFamily: 'aesthetica',
                         letterSpacing: 0,
                         fontWeight: 260,
+                        marginTop: 60,
                       }}
-                      align='right'
                       variant="h3"
                       component="h2"
-                      className="center"
                       gutterBottom>
-                      <span className="subtitle"></span>
                       Places I've Visited
-                    </Typography>
-                  </Grid>
+                    </Typography><br/>
+                  </Grid><br/>
                   <Grid
                     sx={{
                       paddingRight: 2,
@@ -91,10 +86,9 @@ export const MyVisits = () => {
                     alignItems="stretch"
                     item xs={1} md={12} sm={6}
                     container
-                    justifyContent="center"
                   >
 
-                    <Typography component={'div'}>
+                    <Typography style={{ marginTop: 40 }} component={'div'}>
                       {visits.map((visit) =>
                         <VisitCard key={visit.id} visit={visit} />
                       )}

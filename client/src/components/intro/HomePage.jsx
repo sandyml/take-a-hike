@@ -31,30 +31,29 @@ export const HomePage = () => {
           </>
           :
           <Parallax
+            blur={2}
             style={sierra_image}
-            display="flex"
             bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
             strength={300}
           >
-            <Typography
-              style={{
-                fontSize: 20,
-                margin: 200,
-                color: 'black'
-              }}
-              component={'div'}
-              align='center'
-            >
+             <Typography
+            style={{
+              fontSize: 90,
+              color: 'white',
+              fontFamily: 'Playfair Display, serif',
+              letterSpacing: 0,
+              fontWeight: 100
+            }}
+            variant="h3"
+            component="h2"
+            gutterBottom>
               Not Authorized to see this Webpage.
-              Please <NavLink to='/signup'>
+              Please <NavLink to='/signup' id='homepage-hover'>
                 signup</NavLink> or
-              <NavLink to='/login'>
-                login</NavLink>
+              <NavLink
+               to='/login' id='homepage-hover'>&nbsp;login</NavLink>
             </Typography>
           </Parallax>
-
-
-
       }
     </div>
   );

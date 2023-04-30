@@ -785,6 +785,15 @@ div.absolute {
   color: white;
 }
 
+#errors {
+  align-items: right;
+  position: relative;
+  background: #ccd0c7;
+  height: auto;
+  opacity: .4; /* Set the opacity for a slightly transparent Google Form */
+  color: red;
+}
+
 #terms-policy {
   padding: 19vh;
   border: 3px solid #ccd0c7;
@@ -805,4 +814,10 @@ div.absolute {
   left: -25%;
   color: #f8d7b1;
   z-index: -1;
+}
+
+
+#homepage-hover:hover{
+ color: #f8d7b1;
+ transform: scale(1.2);
 }

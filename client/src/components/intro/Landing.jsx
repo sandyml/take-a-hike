@@ -82,14 +82,32 @@ class Landing extends React.Component {
           // className={classes.overlay}
           variant="h4"
           id='landing'
-          style={{ zIndex: 10, fontFamily: 'Playfair Display, serif', fontWeight: 80, fontSize: 100 }}
+          style={{ 
+            marginLeft: 10,
+            zIndex: 10, 
+            fontFamily: 
+              'Aurora ', 
+            fontWeight: 0, 
+            fontSize: 200 }}
          >
           Take A Hike 
-          Take A Hike 
-          Take A Hike 
+         </Typography>
+         <Typography
+          // className={classes.overlay}
+          variant="h4"
+          id='landing'
+          style={{ 
+            marginLeft: 45,
+            zIndex: 10, 
+            fontFamily: 
+              'Playfair Display, serif', 
+            fontWeight: 0, 
+            fontSize: 20 }}
+         >
+          This application is created with React Redux.   
          </Typography>
          <br />
-        </div>
+        {/* </div> */}
        </Grid>
       </Grid>
      </div>
