@@ -12,7 +12,7 @@ import { MyVisitGallery } from '../pages/MyVisitGallery';
 import { sierra_image } from '../styles/LandingCSS';
 
 import { Typography } from '@mui/material';
-import { Copyright } from '../pages/MyVisits';
+// import { Copyright } from '../pages/MyVisits';
 import HomePageBottom from './HomePageBottom';
 import StickyFooter from './StickyFooter';
 
@@ -58,7 +58,7 @@ export const HomePage = () => {
               <NavLink
                 to='/login' id='homepage-hover'>&nbsp;login</NavLink>
             </Typography>
-            <Copyright />
+            {/* <Copyright /> */}
           </Parallax>
       }
     </div>

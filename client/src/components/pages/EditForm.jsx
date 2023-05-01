@@ -64,11 +64,6 @@ export const EditForm = () => {
                   </Typography>
                   <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
                     <Grid container spacing={2}>
-
-                      <Grid item xs={12}>
-                        <center>
-                        </center>
-                      </Grid>
                       <Grid>
                       </Grid>
                       <Grid item xs={12}>
@@ -94,7 +89,7 @@ export const EditForm = () => {
                             onChange={(e) => setVisitedDate(e.target.value)}
                             autoFocus
                           /> */}
-                          <br/>
+                          <br />
                           <DatePicker
                             style={{ color: 'green' }}
                             label="Select date"
@@ -109,7 +104,7 @@ export const EditForm = () => {
                         <br /><br />
                       </Grid>
                     </Grid>
-                   
+
                     <Button
                       type="submit"
                       fullWidth

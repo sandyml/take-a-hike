@@ -1,3 +1,4 @@
+
 const trailheadsReducer = (state=[], action) => {
  switch (action.type) {
   case "LOAD_TRAILHEADS":

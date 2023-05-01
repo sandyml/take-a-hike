@@ -1,6 +1,6 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
-import { mountain_image9 } from '../styles/LandingCSS';
+import { homepageURL, mountain_image9 } from '../styles/LandingCSS';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
@@ -74,7 +74,7 @@ class HomePageBottom extends React.Component {
     <Parallax
      //  blur={3}
      style={mountain_image9}
-     bgImage="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80"
+     bgImage={homepageURL}
      strength={680}
     >
      <div className={classes.overlay}>
@@ -86,16 +86,17 @@ class HomePageBottom extends React.Component {
          style={{
           color: 'white',
           marginLeft: 10,
+          marginTop: 20,
           zIndex: 10,
           fontFamily:
            'Aurora ',
           fontWeight: 0,
-          fontSize: 70,
+          fontSize: 50,
           right: '100%'
          }}
         >
          Contact Us
-        </Typography><hr/>
+        </Typography><hr />
         <Typography
          variant="h4"
          id='landing'
@@ -110,13 +111,13 @@ class HomePageBottom extends React.Component {
           left: '100%',
          }}
         >
-         (222) 222-2222<br/>
+         (222) 222-2222<br />
          takeahike@pretentemail.com
         </Typography>
         <br />
         {/* </div> */}
        </Grid>
-      </Grid><br/>
+      </Grid><br />
 
       <Grid container>
        <Grid>
@@ -130,12 +131,12 @@ class HomePageBottom extends React.Component {
           fontFamily:
            'Aurora ',
           fontWeight: 0,
-          fontSize: 70,
+          fontSize: 50,
           right: '100%'
          }}
         >
          Follow Us
-        </Typography><hr/>
+        </Typography><hr />
         <Typography
          variant="h4"
          id='landing'
