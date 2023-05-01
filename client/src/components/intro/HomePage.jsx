@@ -3,18 +3,16 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 
-import Landing from './Landing';
-
-import HomepageIntroCards from './HomePageIntroCards';
+import { sierraURL, sierra_image } from '../styles/LandingCSS';
 import HomePageDescription from './HomePageDescription';
-import { HeaderNav } from '../navigation/HeaderNav';
 import { MyVisitGallery } from '../pages/MyVisitGallery';
-import { sierra_image } from '../styles/LandingCSS';
-
-import { Typography } from '@mui/material';
-// import { Copyright } from '../pages/MyVisits';
+import HomepageIntroCards from './HomePageIntroCards';
+import { HeaderNav } from '../navigation/HeaderNav';
 import HomePageBottom from './HomePageBottom';
 import StickyFooter from './StickyFooter';
+import Landing from './Landing';
+
+import { Typography } from '@mui/material';
 
 export const HomePage = () => {
 
@@ -38,7 +36,7 @@ export const HomePage = () => {
           <Parallax
             blur={2}
             style={sierra_image}
-            bgImage="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            bgImage={sierraURL}
             strength={300}
           >
             <Typography
@@ -58,7 +56,6 @@ export const HomePage = () => {
               <NavLink
                 to='/login' id='homepage-hover'>&nbsp;login</NavLink>
             </Typography>
-            {/* <Copyright /> */}
           </Parallax>
       }
     </div>

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import { Grid, Stack } from '@mui/material';
 
-import { mountain_image } from '../styles/LandingCSS';
+import { mountain_image, mountain_imageURL } from '../styles/LandingCSS';
 import { Parallax } from 'react-parallax';
 import '.././index.css';
 
@@ -31,7 +31,7 @@ export const MyVisitGallery = ({ isLoading }) => {
     <div>
       <Parallax
         style={mountain_image}
-        bgImage="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2952&q=80"
+        bgImage={mountain_imageURL}
         strength={680}
       >
         <Typography

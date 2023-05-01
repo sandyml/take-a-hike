@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
 import { HomePage } from './components/intro/HomePage';
-import HomepageIntroCards from './components/intro/HomePageIntroCards';
 
 import { Signup } from './components/authen/Signup';
 import { Login } from "./components/authen/Login";
@@ -47,16 +46,14 @@ export function App() {
         <Route path="/login" element={<Login isLoading={isLoading} />} />
         <Route path="/signup" element={<Signup isLoading={isLoading} />} />
         <Route path="/logout" element={<Logout isLoading={isLoading} />} />
-        <Route path="/visits/:id/edit" element={<EditForm />} />
         <Route path="/visits" element={<HikersVisitList isLoading={isLoading} />} />
+        <Route path="/visits/:id/edit" element={<EditForm />} />
         <Route path="/my-visits" element={<MyVisits />} />
-        <Route path="/all-trailheads" element={<DialogMap />} />
         <Route path="/trailheads" element={<Trailheads isLoading={isLoading} />} />
-        <Route path="/intro-cards" element={<HomepageIntroCards />} />
+        <Route path="/all-trailheads" element={<DialogMap />} />
         <Route path="/termsandconditions" element={<TermsPolicy />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      {/* <Copyright /> */}
     </LocalizationProvider>
   );
 }
