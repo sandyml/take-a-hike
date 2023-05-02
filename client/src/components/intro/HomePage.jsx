@@ -6,7 +6,7 @@ import { Parallax } from 'react-parallax';
 import { sierraURL, sierra_image } from '../styles/LandingCSS';
 import HomePageDescription from './HomePageDescription';
 import { MyVisitGallery } from '../pages/MyVisitGallery';
-import HomepageIntroCards from './HomePageIntroCards';
+import HomepageIntroCards from './HomepageIntroCards';
 import { HeaderNav } from '../navigation/HeaderNav';
 import HomePageBottom from './HomePageBottom';
 import StickyFooter from './StickyFooter';
