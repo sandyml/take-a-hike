@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 
 import { sierraURL, sierra_image } from '../styles/LandingCSS';
+
 import HomePageDescription from './HomePageDescription';
 import { MyVisitGallery } from '../pages/MyVisitGallery';
 import HomepageIntroCards from './HomepageIntroCards';
