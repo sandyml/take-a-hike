@@ -19,7 +19,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signupUser } from '../actions/users';
 import { Parallax } from 'react-parallax';
+
 import '.././index.css';
+
 import { sierra_image } from '../styles/LandingCSS';
 
 const theme = createTheme({
