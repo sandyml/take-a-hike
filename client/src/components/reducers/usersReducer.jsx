@@ -1,7 +1,4 @@
-// import { updateResource } from "../../Global"
-
 const initialState = {
-  // users: [],
   currentUser: null,
   loggedIn: false,
   visits: []

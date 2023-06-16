@@ -68,6 +68,7 @@ export const Login = ({ isLoading }) => {
 
   const togglePassword = () => {
     setShowPassword(!showPassword)
+    console.log("password", togglePassword)
   };
 
   return (

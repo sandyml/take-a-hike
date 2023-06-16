@@ -11,24 +11,6 @@ export const Trailheads = ({ isLoading }) => {
   
   const navigate = useNavigate();
 
-  // const checkIfParkIsSaved = (checkPark) => {
-  //     return savedParks.find(park => park.id === checkPark.id)
-  // }
-
-  // if (trailheads.errors) {
-  //   return (
-  //     <div>
-  //       <center>
-  //         <BottomNavigation />
-  //         <img className='loading' 
-  //         src="https://media0.giphy.com/media/UrEfC5EKRp4eQZdLSS/giphy.gif?cid=6c09b9529c716e9af32d817070c701b08bf924ca8b329f02&rid=giphy.gif&ct=s"
-  //         alt='trailheads-alt'
-  //         />
-  //       </center>
-  //     </div>
-  //   )
-  // } else {
-
   return (
     <div>
       <AppBar position="sticky" id='appbar'>
