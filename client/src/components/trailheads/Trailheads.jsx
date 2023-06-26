@@ -51,21 +51,6 @@ export const Trailheads = ({ isLoading }) => {
           alignItems="center"
           style={{ position: 'relative' }}
         >
-          {/* <Typography
-            style={{
-              fontSize: 90,
-              color: 'white',
-              fontFamily: 'aesthetica',
-              letterSpacing: 0,
-              fontWeight: 200
-            }}
-            variant="h3"
-            component="h2"
-            className="center"
-            gutterBottom>
-            <span className="subtitle"></span>
-            All Trailheads
-          </Typography> */}
         </Grid>
 
         <Grid container item
