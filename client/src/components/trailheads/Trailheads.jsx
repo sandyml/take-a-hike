@@ -52,7 +52,6 @@ export const Trailheads = ({ isLoading }) => {
           style={{ position: 'relative' }}
         >
         </Grid>
-
         <Grid container item
           direction="row"
           justifyContent="space-around"
