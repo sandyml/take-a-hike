@@ -45,7 +45,6 @@ class VisitsController < ApplicationController
     render json: @visit, include: [:user]
   end
 
-# TODO: might not work check later
   def destroy
     @visit = Visit.find(params[:id])
       if @visit.user_id == current_user.id
