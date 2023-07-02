@@ -30,6 +30,7 @@ class VisitsController < ApplicationController
   end
  
   def create
+    # user = User.find_by_id(session[:user_id])
     visit = current_user.visits.build(add_visit_params)
     if visit.save
       render json: visit, status: :created

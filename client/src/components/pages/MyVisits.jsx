@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import VisitCard from './VisitCard';
 import '.././index.css';
 
-import { AppBar, Button, Card, CssBaseline, Grid, Toolbar, Typography } from '@mui/material';
 // import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Button, Card, CssBaseline, Grid, Toolbar, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 // const useStyles = makeStyles({
