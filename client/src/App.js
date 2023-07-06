@@ -31,7 +31,6 @@ export function App() {
 
   const dispatch = useDispatch();
   // will grab all of the data(things), run once
-  // if loadVisits returns a func then thunk is going to take over because loadVisits takes in a func async activity thunk will run it and wait for ascyn to get finish before it does a state update  
   useEffect(() => {
     // make sure to call ()
     dispatch(loadVisits())
