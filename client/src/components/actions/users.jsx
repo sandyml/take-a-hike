@@ -1,23 +1,6 @@
 import { setErrors, clearErrors } from './errors';
 import { header } from '../../Global';
 
-// export const loadUsers = () => {
-// // export const loadUsers = (setIsLoading) => {
-//   return dispatch => {
-//     fetch('/users')
-//       .then((resp) => resp.json())
-//       .then((data) => {
-//         const action = {
-//           type: "LOAD_USERS",
-//           payload: data
-//         }
-//         dispatch(action);
-//         // setIsLoading(false);
-//         // dispatch(clearErrors())
-//       })
-//   }
-// }
-
 // thunk takesover using dispatch return dispatch => {}
 export const loadCurrentUser = (setIsLoading) => {
   return dispatch => {
