@@ -2,7 +2,6 @@ import { setErrors, clearErrors } from './errors';
 import { header } from '../../Global';
 
 // thunk takesover using dispatch return dispatch => {}
-
 export const loadCurrentUser = (setIsLoading) => {
   return dispatch => {
     fetch('/me')
