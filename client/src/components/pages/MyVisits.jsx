@@ -16,8 +16,6 @@ import { NavLink } from 'react-router-dom';
 //   }
 // });
 
-
-
 export const MyVisits = () => {
   // const classes = useStyles();
 
