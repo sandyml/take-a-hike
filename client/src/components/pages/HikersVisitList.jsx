@@ -36,12 +36,15 @@ export const HikersVisitList = ({ isLoading }) => {
           <Toolbar>
             <Button 
             top={8}
+            style={{ color: 'white' }}
             onClick={() => navigate('/')} 
-            color="inherit">
+            color="inherit"
+            >
               Go back to homepage
               </Button>
             <Typography
             style={{
+              color: 'white',
               marginLeft: 280,
               align: 'center',
               fontSize: 90,
