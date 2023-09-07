@@ -40,6 +40,7 @@ export const HikersVisitList = ({ isLoading }) => {
             onClick={() => navigate('/')} 
             color="inherit"
             >
+            
               Go back to homepage
               </Button>
             <Typography
