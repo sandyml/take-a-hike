@@ -20,7 +20,6 @@ export const HikersVisitList = ({ isLoading }) => {
   //     navigate('/visits')
   //   }
   // }, [isLoading, loggedIn, navigate])
-
   // if (visits.errors) { 
   //   return <div>Error!</div>
   // }
