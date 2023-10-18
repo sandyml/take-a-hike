@@ -20,6 +20,7 @@ export const HikersVisitList = ({ isLoading }) => {
   //     navigate('/visits')
   //   }
   // }, [isLoading, loggedIn, navigate])
+
   // if (visits.errors) { 
   //   return <div>Error!</div>
   // }
@@ -27,6 +28,8 @@ export const HikersVisitList = ({ isLoading }) => {
   const visitCards = visits.map((visit, ix) =>
     <VisitCard key={ix} visit={visit} isLoading={isLoading} />
   );
+
+  
 
   return (
     <div id='visitlist-div'>
