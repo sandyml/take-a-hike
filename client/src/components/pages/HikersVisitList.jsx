@@ -28,9 +28,7 @@ export const HikersVisitList = ({ isLoading }) => {
   const visitCards = visits.map((visit, ix) =>
     <VisitCard key={ix} visit={visit} isLoading={isLoading} />
   );
-
   
-
   return (
     <div id='visitlist-div'>
       <center>
