@@ -25,6 +25,8 @@ export const HikersVisitList = ({ isLoading }) => {
   //   return <div>Error!</div>
   // }
 
+  
+
   const visitCards = visits.map((visit, ix) =>
     <VisitCard key={ix} visit={visit} isLoading={isLoading} />
   );
